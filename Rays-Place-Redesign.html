@@ -1,0 +1,1450 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>Ray's Place Kent | Redesign Concept</title>
+
+<style>
+@import url('https://cdn.jsdelivr.net/npm/@tabler/icons-webfont@latest/tabler-icons.min.css');
+@import url('https://fonts.googleapis.com/css2?family=Playfair+Display:ital,wght@0,700;0,900;1,400;1,700&family=Cabin:wght@400;500;600&family=IM+Fell+English:ital@0;1&display=swap');
+
+*{margin:0;padding:0;box-sizing:border-box}
+:root{
+  --bark:#2B1E0F;
+  --bark2:#3D2B14;
+  --pine:#2F3033;
+  --moss:#5B5B60;
+  --moss-lt:#A36A78;
+  --acorn:#8B5E2A;
+  --acorn-lt:#C4893F;
+  --cream:#F4EDD8;
+  --parchment:#EDE0C4;
+  --tan:#D4C09A;
+  --warm-white:#FAF5EC;
+  --rust:#7A3018;
+}
+html{scroll-behavior:smooth}
+body{background:var(--bark);font-family:'Cabin',sans-serif;color:var(--cream);overflow-x:hidden}
+a{color:inherit;text-decoration:none}
+img{display:block}
+
+/* ── WOOD GRAIN texture via SVG pattern ── */
+.woodgrain{position:relative}
+.woodgrain::after{
+  content:'';position:absolute;inset:0;pointer-events:none;
+  background-image:url("data:image/svg+xml,%3Csvg xmlns='http://www.w3.org/2000/svg' width='400' height='400'%3E%3Cfilter id='n'%3E%3CfeTurbulence type='fractalNoise' baseFrequency='0.015 0.35' numOctaves='4' seed='8'/%3E%3CfeColorMatrix type='saturate' values='0'/%3E%3C/filter%3E%3Crect width='400' height='400' filter='url(%23n)' opacity='0.06'/%3E%3C/svg%3E");
+  opacity:0.5;mix-blend-mode:overlay;
+}
+
+/* ── NAV ── */
+nav{
+  background:var(--bark);
+  border-bottom:3px solid var(--acorn);
+  padding:0;
+}
+.nav-inner{
+  max-width:1200px;margin:0 auto;
+  display:flex;align-items:stretch;justify-content:space-between;
+  min-height:64px;
+}
+.nav-brand{
+  display:flex;align-items:center;gap:0.85rem;padding:0 1.5rem;
+  border-right:1px solid rgba(196,137,63,0.25);
+}
+.nav-logo{
+  width:76px;height:auto;display:block;object-fit:contain;
+  filter:drop-shadow(0 2px 4px rgba(0,0,0,0.35));
+}
+.nav-brand-copy{display:flex;flex-direction:column;justify-content:center}
+.nav-brand-name{
+  font-family:'Playfair Display',serif;font-size:1.35rem;font-weight:900;
+  color:var(--acorn-lt);letter-spacing:0.03em;line-height:1.1;
+}
+.nav-brand-sub{font-size:0.6rem;letter-spacing:0.25em;color:var(--tan);text-transform:uppercase;margin-top:2px}
+.nav-links-wrap{display:flex;align-items:center;flex:1;padding:0 1rem}
+.nav-links{display:flex;list-style:none;gap:0;flex-wrap:wrap}
+.nav-links li a{
+  display:block;padding:0.5rem 0.85rem;
+  font-size:0.72rem;font-weight:600;letter-spacing:0.14em;text-transform:uppercase;
+  color:var(--tan);border-radius:3px;
+  transition:color 0.18s,background 0.18s;
+}
+.nav-links li a:hover{color:var(--cream);background:rgba(196,137,63,0.15)}
+.nav-links li.has-sub{position:relative}
+.nav-links li.has-sub>a::after{content:' ▾';font-size:0.6rem;opacity:0.7}
+.nav-sub{
+  display:none;position:absolute;top:100%;left:0;z-index:200;
+  background:var(--bark2);border:1px solid rgba(196,137,63,0.3);
+  border-top:2px solid var(--acorn);min-width:160px;
+  list-style:none;padding:0.4rem 0;
+}
+.nav-links li.has-sub:hover .nav-sub{display:block}
+.nav-sub li a{
+  display:block;padding:0.5rem 1rem;font-size:0.72rem;
+  font-weight:600;letter-spacing:0.1em;text-transform:uppercase;
+  color:var(--tan);transition:color 0.15s,background 0.15s;
+}
+.nav-sub li a:hover{color:var(--cream);background:rgba(196,137,63,0.15)}
+.nav-contact{
+  display:flex;flex-direction:column;justify-content:center;
+  padding:0 1.25rem;border-left:1px solid rgba(196,137,63,0.25);
+  text-align:right;
+}
+.nav-phone{font-size:0.95rem;font-weight:600;color:var(--acorn-lt);letter-spacing:0.04em}
+.nav-hours-hint{font-size:0.62rem;letter-spacing:0.12em;text-transform:uppercase;color:var(--moss-lt);margin-top:2px}
+
+/* Mobile nav toggle */
+.nav-toggle{
+  display:none;align-items:center;justify-content:center;
+  width:48px;height:64px;cursor:pointer;
+  background:none;border:none;color:var(--acorn-lt);font-size:1.4rem;
+  padding:0;
+}
+.nav-mobile{
+  display:none;background:var(--bark2);border-top:1px solid rgba(196,137,63,0.2);
+  list-style:none;padding:0.5rem 0;
+}
+.nav-mobile.open{display:block}
+.nav-mobile li a{
+  display:block;padding:0.75rem 1.5rem;
+  font-size:0.8rem;font-weight:600;letter-spacing:0.12em;text-transform:uppercase;
+  color:var(--tan);border-bottom:1px solid rgba(196,137,63,0.1);
+}
+.nav-mobile li a:hover{color:var(--cream);background:rgba(196,137,63,0.1)}
+.nav-mobile li.mob-section{
+  font-size:0.62rem;letter-spacing:0.2em;text-transform:uppercase;
+  color:var(--moss-lt);padding:0.85rem 1.5rem 0.3rem;
+}
+.nav-mobile .mob-phone{
+  display:block;padding:1rem 1.5rem;
+  font-size:1rem;font-weight:600;color:var(--acorn-lt);
+}
+
+@media(max-width:820px){
+  .nav-links-wrap,.nav-contact{display:none}
+  .nav-toggle{display:flex}
+  .nav-inner{min-height:56px}
+}
+
+/* ── HERO ── */
+.hero{
+  background:linear-gradient(135deg, var(--bark) 0%, var(--bark2) 48%, #4A2B1D 100%);
+  padding:4.5rem 1.5rem 5rem;
+  text-align:center;
+  position:relative;
+  overflow:hidden;
+}
+.hero-treeline{
+  position:absolute;bottom:0;left:0;right:0;
+  height:80px;
+  background:var(--bark);
+  clip-path:polygon(
+    0% 100%, 0% 60%, 3% 35%, 6% 60%, 8% 20%, 11% 55%, 13% 30%, 16% 60%, 19% 10%, 22% 55%, 24% 25%, 27% 55%, 29% 35%, 32% 60%, 35% 15%, 38% 55%, 40% 30%, 43% 55%, 45% 40%, 48% 60%, 51% 20%, 54% 55%, 56% 28%, 59% 55%, 61% 35%, 64% 60%, 67% 12%, 70% 55%, 72% 25%, 75% 60%, 77% 38%, 80% 60%, 83% 18%, 86% 55%, 88% 30%, 91% 58%, 93% 38%, 96% 60%, 98% 42%, 100% 65%, 100% 100%
+  );
+}
+.hero-stars{display:none}
+.hero-logo-wrap{
+  display:flex;justify-content:center;position:relative;margin-bottom:1.2rem;
+}
+.hero-logo{
+  width:min(360px,78vw);height:auto;
+  background:rgba(250,250,250,0.94);
+  border:1px solid rgba(255,255,255,0.28);
+  border-radius:6px;
+  padding:0.9rem 1.05rem;
+  box-shadow:0 18px 42px rgba(0,0,0,0.28);
+}
+.hero-eyebrow{
+  font-family:'IM Fell English',serif;font-style:italic;
+  font-size:0.95rem;color:var(--acorn-lt);letter-spacing:0.05em;
+  margin-bottom:1rem;position:relative;
+}
+.hero-divider{
+  display:flex;align-items:center;justify-content:center;gap:0.75rem;
+  margin-bottom:1rem;position:relative;
+}
+.hero-divider-line{width:60px;height:1px;background:rgba(196,137,63,0.4)}
+.hero-h1{
+  font-family:'Playfair Display',serif;font-weight:900;font-style:italic;
+  font-size:clamp(3.5rem,13vw,8.5rem);
+  line-height:0.9;color:var(--cream);
+  position:relative;letter-spacing:-0.01em;
+  text-shadow:none;
+}
+.hero-h1 .place{
+  display:block;
+  font-size:clamp(2.5rem,9vw,6rem);
+  color:var(--acorn-lt);
+  font-style:normal;font-weight:700;
+  letter-spacing:0.12em;
+  font-family:'Playfair Display',serif;
+}
+.hero-tagline{
+  font-family:'IM Fell English',serif;
+  font-size:1.1rem;color:var(--tan);
+  margin:1.25rem auto 2.5rem;max-width:520px;line-height:1.7;
+  position:relative;
+}
+.hero-badges{
+  display:flex;flex-wrap:wrap;justify-content:center;gap:0.6rem;
+  margin-bottom:2.5rem;position:relative;
+}
+.badge{
+  background:rgba(44,30,10,0.7);
+  border:1px solid rgba(196,137,63,0.45);
+  color:var(--tan);
+  font-size:0.68rem;font-weight:600;letter-spacing:0.15em;text-transform:uppercase;
+  padding:0.35rem 0.9rem;border-radius:2px;
+}
+.hero-ctas{
+  display:flex;flex-wrap:wrap;gap:0.85rem;justify-content:center;
+  position:relative;
+}
+.btn-wood{
+  background:var(--acorn);color:var(--cream);
+  font-family:'Cabin',sans-serif;font-weight:700;font-size:0.8rem;
+  letter-spacing:0.14em;text-transform:uppercase;
+  padding:0.85rem 2rem;border-radius:2px;
+  border:2px solid var(--acorn);
+  transition:background 0.18s,border-color 0.18s;
+}
+.btn-wood:hover{background:var(--acorn-lt);border-color:var(--acorn-lt)}
+.btn-ghost{
+  background:transparent;color:var(--tan);
+  font-family:'Cabin',sans-serif;font-weight:600;font-size:0.8rem;
+  letter-spacing:0.14em;text-transform:uppercase;
+  padding:0.85rem 2rem;border-radius:2px;
+  border:2px solid rgba(196,137,63,0.35);
+  transition:border-color 0.18s,color 0.18s;
+}
+.btn-ghost:hover{border-color:var(--acorn-lt);color:var(--cream)}
+
+/* ── ROPE DIVIDER ── */
+.rope-divider{
+  height:8px;
+  background:repeating-linear-gradient(
+    90deg,
+    var(--acorn) 0px, var(--acorn) 8px,
+    var(--bark2) 8px, var(--bark2) 16px
+  );
+  opacity:0.5;
+}
+
+/* ── QUICK INFO BAR ── */
+.info-bar{
+  background:var(--bark2);
+  border-bottom:2px solid rgba(196,137,63,0.2);
+  padding:1rem 1.5rem;
+}
+.info-bar-inner{
+  max-width:1100px;margin:0 auto;
+  display:flex;flex-wrap:wrap;gap:1rem;justify-content:center;align-items:center;
+}
+.info-chip{
+  display:flex;align-items:center;gap:0.5rem;
+  font-size:0.82rem;color:var(--tan);
+  padding:0.4rem 1rem;
+  border:1px solid rgba(196,137,63,0.2);
+  border-radius:3px;
+  background:rgba(139,94,42,0.1);
+}
+.info-chip i{color:var(--acorn-lt);font-size:15px}
+.info-chip strong{color:var(--cream);font-weight:600}
+
+/* ── SECTIONS ── */
+.section{padding:4rem 1.5rem}
+.section-parchment{background:var(--parchment)}
+.section-bark{background:var(--bark)}
+.section-pine{background:linear-gradient(135deg, var(--bark) 0%, var(--bark2) 48%, #4A2B1D 100%)}
+.container{max-width:1100px;margin:0 auto}
+.section-label{
+  font-size:0.65rem;font-weight:700;letter-spacing:0.28em;text-transform:uppercase;
+  color:var(--moss-lt);margin-bottom:0.5rem;
+  display:flex;align-items:center;gap:0.6rem;
+}
+.section-label::before,.section-label::after{content:'';flex:0 0 20px;height:1px;background:var(--moss-lt);opacity:0.5}
+.section-title-dark{
+  font-family:'Playfair Display',serif;font-weight:900;
+  font-size:clamp(2rem,5vw,3.2rem);
+  line-height:1;color:var(--bark);margin-bottom:1rem;
+}
+.section-title-light{
+  font-family:'Playfair Display',serif;font-weight:900;
+  font-size:clamp(2rem,5vw,3.2rem);
+  line-height:1;color:var(--cream);margin-bottom:1rem;
+}
+.body-dark{color:#4A3B26;line-height:1.8;font-size:0.94rem}
+.body-light{color:var(--tan);line-height:1.8;font-size:0.94rem}
+
+/* ── FEATURE GRID ── */
+.feat-grid{
+  display:grid;
+  grid-template-columns:repeat(auto-fit,minmax(220px,1fr));
+  gap:1px;
+  background:rgba(139,94,42,0.2);
+  border:1px solid rgba(139,94,42,0.2);
+  border-radius:4px;
+  overflow:hidden;
+  margin-top:2.5rem;
+}
+.feat-card{
+  background:var(--warm-white);
+  padding:2rem 1.5rem;
+  transition:background 0.18s;
+}
+.feat-card:hover{background:#FFF8EC}
+.feat-icon{
+  width:44px;height:44px;
+  background:var(--bark);border-radius:50%;
+  display:flex;align-items:center;justify-content:center;
+  margin-bottom:1rem;
+}
+.feat-icon i{color:var(--acorn-lt);font-size:20px}
+.feat-card h3{
+  font-family:'Playfair Display',serif;font-weight:700;
+  font-size:1.2rem;color:var(--bark);margin-bottom:0.4rem;
+}
+.feat-card p{font-size:0.84rem;color:#6B5032;line-height:1.65}
+.feat-tag{
+  display:inline-block;margin-top:0.85rem;
+  background:var(--bark);color:var(--acorn-lt);
+  font-size:0.62rem;font-weight:700;letter-spacing:0.14em;text-transform:uppercase;
+  padding:0.22rem 0.6rem;border-radius:2px;
+}
+.feat-link{
+  display:inline-flex;align-items:center;gap:0.35rem;
+  margin-top:0.85rem;font-size:0.78rem;font-weight:600;
+  color:var(--rust);letter-spacing:0.06em;
+  transition:gap 0.15s;
+}
+.feat-link:hover{gap:0.6rem}
+
+
+/* ── REAL PHOTO GALLERY ── */
+.photo-band{
+  background:var(--bark2);
+  padding:3rem 1.5rem;
+  border-top:3px solid rgba(139,94,42,0.25);
+  border-bottom:3px solid rgba(139,94,42,0.25);
+}
+.photo-grid{
+  max-width:1100px;margin:0 auto;
+  display:grid;grid-template-columns:repeat(4,1fr);
+  gap:0.9rem;
+}
+.photo-card{
+  position:relative;overflow:hidden;border-radius:4px;
+  min-height:210px;background:var(--bark);
+  border:1px solid rgba(196,137,63,0.25);
+}
+.photo-card img{
+  width:100%;height:100%;object-fit:cover;
+  min-height:210px;
+  filter:saturate(0.95) contrast(1.05);
+  transition:transform 0.3s, filter 0.3s;
+}
+.photo-card:hover img{transform:scale(1.04);filter:saturate(1.08) contrast(1.08)}
+.photo-caption{
+  position:absolute;left:0;right:0;bottom:0;
+  padding:1.25rem 1rem 0.85rem;
+  background:linear-gradient(transparent,rgba(43,30,15,0.92));
+}
+.photo-caption h3{
+  font-family:'Playfair Display',serif;font-weight:700;
+  color:var(--cream);font-size:1.05rem;margin-bottom:0.2rem;
+}
+.photo-caption p{
+  color:var(--tan);font-size:0.72rem;letter-spacing:0.08em;text-transform:uppercase;
+}
+.photo-note{
+  max-width:1100px;margin:1rem auto 0;
+  color:rgba(212,192,154,0.65);font-size:0.72rem;text-align:center;
+  letter-spacing:0.04em;
+}
+@media(max-width:820px){.photo-grid{grid-template-columns:repeat(2,1fr)}}
+@media(max-width:480px){.photo-grid{grid-template-columns:1fr}.photo-card,.photo-card img{min-height:230px}}
+
+/* ── MOFO BANNER ── */
+.mofo-banner{
+  background:var(--rust);
+  padding:3rem 1.5rem;
+  text-align:center;
+  border-top:4px solid var(--bark);
+  border-bottom:4px solid var(--bark);
+}
+.mofo-kicker{
+  font-family:'IM Fell English',serif;font-style:italic;
+  font-size:0.95rem;color:rgba(244,237,216,0.7);letter-spacing:0.06em;
+  margin-bottom:0.5rem;
+}
+.mofo-title{
+  font-family:'Playfair Display',serif;font-weight:900;
+  font-size:clamp(2.2rem,7vw,5rem);color:var(--cream);
+  letter-spacing:-0.01em;line-height:1;margin-bottom:0.75rem;
+}
+.mofo-sub{
+  font-size:0.9rem;color:rgba(244,237,216,0.75);max-width:480px;
+  margin:0 auto 1.75rem;line-height:1.7;
+}
+.mofo-btn{
+  background:var(--cream);color:var(--rust);
+  font-family:'Cabin',sans-serif;font-weight:700;font-size:0.82rem;
+  letter-spacing:0.15em;text-transform:uppercase;
+  padding:0.85rem 2.2rem;border-radius:2px;
+  border:2px solid var(--cream);
+  display:inline-block;
+  transition:background 0.18s,color 0.18s;
+}
+.mofo-btn:hover{background:transparent;color:var(--cream)}
+
+/* ── BEER SECTION ── */
+.beer-layout{
+  display:grid;grid-template-columns:1fr 1fr;gap:3rem;align-items:center;
+}
+@media(max-width:680px){
+  .beer-layout{grid-template-columns:1fr}
+  .about-layout{grid-template-columns:1fr !important}
+}
+.tap-count{
+  font-family:'Playfair Display',serif;font-weight:900;
+  font-size:clamp(5rem,15vw,9rem);
+  line-height:1;color:var(--acorn-lt);
+  letter-spacing:-0.02em;
+}
+.tap-label{
+  font-size:0.7rem;font-weight:700;letter-spacing:0.22em;text-transform:uppercase;
+  color:var(--moss-lt);margin-top:-0.5rem;
+}
+.beer-types{display:flex;flex-wrap:wrap;gap:0.5rem;margin-top:1.5rem}
+.beer-pill{
+  background:rgba(74,94,58,0.3);
+  border:1px solid rgba(107,127,88,0.4);
+  color:var(--moss-lt);
+  font-size:0.7rem;font-weight:600;letter-spacing:0.1em;text-transform:uppercase;
+  padding:0.3rem 0.75rem;border-radius:30px;
+}
+
+/* ── HOURS ── */
+.hours-layout{
+  display:grid;grid-template-columns:1fr 1fr;gap:2rem;
+}
+@media(max-width:600px){.hours-layout{grid-template-columns:1fr}}
+.hours-card{
+  background:var(--warm-white);border-radius:3px;
+  border:1px solid rgba(139,94,42,0.2);
+  overflow:hidden;
+}
+.hours-card-head{
+  background:var(--bark);padding:1rem 1.25rem;
+  font-family:'Playfair Display',serif;font-weight:700;
+  font-size:1.1rem;color:var(--acorn-lt);
+  display:flex;align-items:center;gap:0.6rem;
+}
+.hours-card-head i{font-size:16px;color:var(--moss-lt)}
+.hours-body{padding:0.75rem 1.25rem}
+.hours-row{
+  display:flex;justify-content:space-between;align-items:baseline;
+  font-size:0.87rem;padding:0.45rem 0;
+  border-bottom:1px solid rgba(139,94,42,0.1);
+}
+.hours-row:last-child{border-bottom:none}
+.hours-row .day{color:#6B5032;font-weight:500}
+.hours-row .time{color:var(--bark);font-weight:600;font-size:0.82rem}
+.locate-card{
+  background:var(--warm-white);border-radius:3px;
+  border:1px solid rgba(139,94,42,0.2);
+  overflow:hidden;
+  margin-top:1.5rem;
+}
+.locate-head{
+  background:var(--bark);padding:1rem 1.25rem;
+  font-family:'Playfair Display',serif;font-weight:700;
+  font-size:1.1rem;color:var(--acorn-lt);
+  display:flex;align-items:center;gap:0.6rem;
+}
+.locate-head i{font-size:16px;color:var(--moss-lt)}
+.locate-body{padding:1rem 1.25rem}
+.locate-body p{font-size:0.9rem;color:#4A3B26;line-height:1.75}
+.locate-body a{color:var(--rust);font-weight:600}
+.locate-body a:hover{color:var(--acorn)}
+
+/* ── ABOUT ── */
+.about-layout{
+  display:grid;grid-template-columns:3fr 2fr;gap:3.5rem;align-items:start;
+}
+.pull-quote{
+  border-left:4px solid var(--acorn);
+  padding:1rem 1.5rem;
+  margin:1.75rem 0;
+  background:rgba(139,94,42,0.08);
+  border-radius:0 3px 3px 0;
+}
+.pull-quote p{
+  font-family:'IM Fell English',serif;font-style:italic;
+  font-size:1.1rem;color:var(--cream);line-height:1.65;
+}
+.pull-quote cite{
+  font-size:0.72rem;font-weight:700;letter-spacing:0.14em;text-transform:uppercase;
+  color:var(--acorn-lt);margin-top:0.5rem;display:block;font-style:normal;
+}
+.stat-shelf{display:flex;gap:1.5rem;flex-wrap:wrap;margin-top:1.5rem}
+.stat-block{
+  border-top:3px solid var(--acorn);
+  padding-top:0.75rem;min-width:80px;
+}
+.stat-n{
+  font-family:'Playfair Display',serif;font-weight:900;
+  font-size:2.4rem;color:var(--acorn-lt);line-height:1;
+}
+.stat-l{font-size:0.65rem;font-weight:700;letter-spacing:0.15em;text-transform:uppercase;color:var(--moss-lt);margin-top:3px}
+.awards-stack{display:flex;flex-direction:column;gap:0.75rem}
+.award-item{
+  background:rgba(139,94,42,0.12);border:1px solid rgba(196,137,63,0.2);
+  border-left:3px solid var(--acorn);
+  padding:0.85rem 1rem;border-radius:0 3px 3px 0;
+}
+.award-item h4{
+  font-family:'Playfair Display',serif;font-size:0.95rem;font-weight:700;
+  color:var(--cream);margin-bottom:0.2rem;
+}
+.award-item p{font-size:0.76rem;color:var(--tan)}
+
+/* ── PAGE LINKS ── */
+.page-links-grid{
+  display:grid;
+  grid-template-columns:repeat(4,1fr);
+  grid-auto-rows:1fr;
+  align-items:stretch;
+  gap:1px;background:rgba(139,94,42,0.2);
+  border:1px solid rgba(139,94,42,0.2);
+  border-radius:4px;overflow:hidden;
+  margin-top:2.5rem;
+}
+.page-link-card{
+  background:var(--bark2);padding:1.75rem 1.25rem;
+  display:flex;flex-direction:column;gap:0.7rem;
+  min-height:240px;height:100%;
+  transition:background 0.18s;
+}
+.page-link-card:hover{background:#3D2B14}
+.page-link-card > i{
+  width:42px;height:42px;border-radius:50%;
+  display:flex;align-items:center;justify-content:center;
+  background:rgba(196,137,63,0.12);
+  border:1px solid rgba(196,137,63,0.22);
+  font-size:22px;color:var(--acorn-lt);
+}
+.page-link-card i{font-size:22px;color:var(--acorn-lt)}
+.page-link-card h3{
+  font-family:'Playfair Display',serif;font-weight:700;
+  font-size:1.05rem;color:var(--cream);
+  min-height:1.3rem;
+}
+.page-link-card p{font-size:0.78rem;color:var(--tan);line-height:1.55;flex:1;margin:0}
+.page-link-card .arrow{
+  font-size:0.72rem;font-weight:700;letter-spacing:0.1em;text-transform:uppercase;
+  color:var(--acorn-lt);margin-top:0.25rem;
+  display:flex;align-items:center;gap:0.3rem;
+  transition:gap 0.15s;
+}
+.page-link-card:hover .arrow{gap:0.55rem}
+@media(max-width:900px){
+  .page-links-grid{grid-template-columns:repeat(2,1fr)}
+}
+@media(max-width:560px){
+  .page-links-grid{grid-template-columns:1fr}
+  .page-link-card{min-height:auto}
+}
+
+/* ── FOOTER ── */
+footer{
+  background:var(--bark);
+  border-top:3px solid rgba(139,94,42,0.4);
+  padding:2.5rem 1.5rem 2rem;
+}
+.footer-inner{
+  max-width:1100px;margin:0 auto;
+  display:grid;grid-template-columns:1fr 1fr 1fr;gap:2rem;
+}
+@media(max-width:600px){.footer-inner{grid-template-columns:1fr}}
+.footer-brand{font-family:'Playfair Display',serif;font-size:1.4rem;font-weight:900;color:var(--acorn-lt);font-style:italic;margin-bottom:0.5rem}
+.footer-tagline{font-family:'IM Fell English',serif;font-style:italic;font-size:0.88rem;color:var(--tan)}
+.footer-col h4{font-size:0.65rem;font-weight:700;letter-spacing:0.22em;text-transform:uppercase;color:var(--moss-lt);margin-bottom:0.75rem}
+.footer-col ul{list-style:none}
+.footer-col ul li{margin-bottom:0.4rem}
+.footer-col ul li a{font-size:0.83rem;color:var(--tan);transition:color 0.15s}
+.footer-col ul li a:hover{color:var(--cream)}
+.footer-col p{font-size:0.83rem;color:var(--tan);line-height:1.75}
+.footer-col a{color:var(--acorn-lt)}
+.footer-bottom{
+  max-width:1100px;margin:2rem auto 0;
+  padding-top:1.25rem;border-top:1px solid rgba(139,94,42,0.2);
+  display:flex;flex-wrap:wrap;gap:1rem;justify-content:space-between;align-items:center;
+}
+.footer-bottom p{font-size:0.72rem;color:rgba(196,160,100,0.5);letter-spacing:0.06em}
+
+/* PERFECT MOBILE PASS */
+@media (max-width: 900px) {
+  html, body {
+    width: 100%;
+    max-width: 100%;
+    overflow-x: hidden;
+  }
+
+  body {
+    -webkit-text-size-adjust: 100%;
+  }
+
+  .container,
+  .info-bar-inner,
+  .footer-inner,
+  .footer-bottom,
+  .photo-grid {
+    max-width: 100%;
+  }
+
+  nav {
+    position: sticky;
+    top: 0;
+    z-index: 999;
+  }
+
+  .nav-inner {
+    min-height: 64px;
+    padding: 0 0.8rem;
+    display: flex;
+    align-items: center;
+    justify-content: space-between;
+  }
+
+  .nav-brand {
+    padding: 0;
+    gap: 0.55rem;
+    border-right: 0;
+    min-width: 0;
+    flex: 1;
+  }
+
+  .nav-logo {
+    width: 48px;
+    min-width: 48px;
+  }
+
+  .nav-brand-copy {
+    min-width: 0;
+  }
+
+  .nav-brand-name {
+    font-size: 1.08rem;
+    line-height: 1.05;
+    white-space: nowrap;
+  }
+
+  .nav-brand-sub {
+    font-size: 0.52rem;
+    letter-spacing: 0.14em;
+    white-space: nowrap;
+  }
+
+  .nav-links-wrap,
+  .nav-contact {
+    display: none !important;
+  }
+
+  .nav-toggle {
+    display: flex !important;
+    width: 44px;
+    height: 56px;
+    flex: 0 0 44px;
+  }
+
+  .nav-mobile.open {
+    display: block;
+    max-height: calc(100vh - 64px);
+    overflow-y: auto;
+  }
+
+  .hero {
+    padding: 3.6rem 1rem 4.1rem;
+    min-height: auto;
+  }
+
+  .hero-h1 {
+    font-size: clamp(4.25rem, 23vw, 6.25rem);
+    line-height: 0.78;
+    max-width: 100%;
+    overflow-wrap: normal;
+  }
+
+  .hero-h1 .place {
+    font-size: 0.46em;
+    letter-spacing: 0.13em;
+    margin-top: 0.1rem;
+  }
+
+  .hero-eyebrow {
+    font-size: 0.92rem;
+    margin-top: 0.9rem;
+  }
+
+  .hero-tagline {
+    max-width: 94%;
+    font-size: 1rem;
+    line-height: 1.55;
+    margin: 1rem auto 1.6rem;
+  }
+
+  .hero-badges {
+    display: grid;
+    grid-template-columns: 1fr;
+    gap: 0.45rem;
+    width: min(100%, 350px);
+    margin: 0 auto 1.6rem;
+  }
+
+  .badge {
+    display: block;
+    width: 100%;
+    text-align: center;
+    padding: 0.48rem 0.7rem;
+    font-size: 0.64rem;
+    letter-spacing: 0.12em;
+  }
+
+  .hero-ctas {
+    display: grid;
+    grid-template-columns: 1fr;
+    gap: 0.7rem;
+    width: min(100%, 350px);
+    margin: 0 auto;
+  }
+
+  .hero-ctas a,
+  .btn-wood,
+  .btn-ghost {
+    width: 100%;
+    display: inline-flex;
+    justify-content: center;
+    align-items: center;
+    min-height: 48px;
+    padding: 0.82rem 1rem;
+    font-size: 0.72rem;
+    letter-spacing: 0.11em;
+    text-align: center;
+  }
+
+  .hero-treeline {
+    height: 48px;
+  }
+
+  .info-bar {
+    padding: 0.85rem 0.9rem;
+  }
+
+  .info-bar-inner {
+    display: grid;
+    grid-template-columns: 1fr;
+    gap: 0.55rem;
+  }
+
+  .info-chip {
+    width: 100%;
+    justify-content: center;
+    text-align: center;
+    line-height: 1.45;
+    padding: 0.55rem 0.75rem;
+    font-size: 0.8rem;
+  }
+
+  .section {
+    padding: 3.2rem 1rem;
+  }
+
+  .section-label {
+    justify-content: center;
+    text-align: center;
+    font-size: 0.6rem;
+    letter-spacing: 0.22em;
+  }
+
+  .section-title-dark,
+  .section-title-light {
+    font-size: clamp(2rem, 11vw, 3rem);
+    text-align: center;
+  }
+
+  .body-dark,
+  .body-light {
+    font-size: 0.94rem;
+    line-height: 1.7;
+  }
+
+  .feat-grid {
+    grid-template-columns: 1fr;
+    margin-top: 1.6rem;
+  }
+
+  .feat-card {
+    padding: 1.45rem 1.15rem;
+  }
+
+  .feat-card h3 {
+    font-size: 1.28rem;
+  }
+
+  .photo-band {
+    padding: 2.4rem 1rem;
+  }
+
+  .photo-grid {
+    grid-template-columns: 1fr;
+    gap: 1rem;
+  }
+
+  .photo-card {
+    min-height: 0;
+    height: 260px;
+    width: 100%;
+  }
+
+  .photo-card img {
+    min-height: 0;
+    height: 100%;
+    width: 100%;
+    object-fit: cover;
+  }
+
+  .mofo-banner {
+    padding: 2.5rem 1rem;
+  }
+
+  .mofo-title {
+    font-size: clamp(2.35rem, 13vw, 4rem);
+  }
+
+  .mofo-sub {
+    font-size: 0.92rem;
+  }
+
+  .beer-layout,
+  .about-layout,
+  .hours-layout {
+    grid-template-columns: 1fr !important;
+    gap: 2rem;
+  }
+
+  .tap-count {
+    text-align: center;
+    font-size: clamp(5.2rem, 28vw, 7.5rem);
+  }
+
+  .tap-label {
+    text-align: center;
+  }
+
+  .beer-types {
+    justify-content: center;
+  }
+
+  .beer-layout > div:last-child {
+    text-align: center;
+  }
+
+  .beer-layout > div:last-child div[style*="display:flex"] {
+    display: grid !important;
+    grid-template-columns: 1fr;
+    width: min(100%, 350px);
+    margin-left: auto;
+    margin-right: auto;
+  }
+
+  .about-layout div[style*="display:flex"] {
+    display: grid !important;
+    grid-template-columns: 1fr;
+  }
+
+  .pull-quote {
+    padding: 1rem;
+    margin: 1.4rem 0;
+  }
+
+  .stat-shelf {
+    display: grid;
+    grid-template-columns: repeat(3, 1fr);
+    gap: 0.9rem;
+  }
+
+  .stat-block {
+    min-width: 0;
+  }
+
+  .stat-n {
+    font-size: 2rem;
+  }
+
+  .page-links-grid {
+    grid-template-columns: 1fr;
+    margin-top: 1.6rem;
+  }
+
+  .page-link-card {
+    min-height: 0;
+    padding: 1.4rem 1.15rem;
+  }
+
+  .page-link-card h3 {
+    font-size: 1.25rem;
+  }
+
+  .hours-row {
+    gap: 1rem;
+    align-items: flex-start;
+  }
+
+  .hours-row .day {
+    flex: 1;
+  }
+
+  .hours-row .time {
+    text-align: right;
+    flex: 1;
+  }
+
+  .locate-card {
+    margin-top: 0;
+  }
+
+  .locate-body div[style*="display:flex"] {
+    flex-wrap: wrap;
+  }
+
+  footer {
+    padding: 2.25rem 1rem 1.7rem;
+  }
+
+  .footer-inner {
+    grid-template-columns: 1fr;
+    gap: 1.75rem;
+  }
+
+  .footer-inner img {
+    width: 110px !important;
+  }
+
+  .footer-bottom {
+    display: grid;
+    grid-template-columns: 1fr;
+    gap: 0.65rem;
+    text-align: left;
+    margin-top: 1.5rem;
+  }
+}
+
+@media (max-width: 480px) {
+  .nav-inner {
+    min-height: 60px;
+  }
+
+  .nav-logo {
+    width: 42px;
+    min-width: 42px;
+  }
+
+  .nav-brand-name {
+    font-size: 0.98rem;
+  }
+
+  .nav-brand-sub {
+    font-size: 0.48rem;
+    letter-spacing: 0.11em;
+  }
+
+  .hero {
+    padding-top: 3.1rem;
+  }
+
+  .hero-h1 {
+    font-size: clamp(3.75rem, 24vw, 5.35rem);
+  }
+
+  .hero-tagline {
+    max-width: 100%;
+  }
+
+  .photo-card {
+    height: 235px;
+  }
+
+  .stat-shelf {
+    grid-template-columns: 1fr;
+  }
+
+  .hours-row {
+    display: grid;
+    grid-template-columns: 1fr;
+    gap: 0.15rem;
+  }
+
+  .hours-row .time {
+    text-align: left;
+  }
+}
+
+</style>
+</head>
+<body>
+
+
+<h2 class="sr-only" style="position:absolute;left:-9999px">Ray's Place Kent Ohio — Homepage</h2>
+
+<!-- NAV -->
+<nav>
+  <div class="nav-inner">
+    <div class="nav-brand">
+      <img class="nav-logo" src="https://static.wixstatic.com/media/44fe95_56ce23cfa35b4815b13e64ccb5dee00f~mv2.gif" alt="Ray's Place logo">
+      <div class="nav-brand-copy">
+        <div class="nav-brand-name">Ray's Place</div>
+        <div class="nav-brand-sub">Kent, Ohio · Since 1937</div>
+      </div>
+    </div>
+    <div class="nav-links-wrap">
+      <ul class="nav-links">
+        <li><a href="#about">Our Story</a></li>
+        <li class="has-sub">
+          <a href="#menu">Menu</a>
+          <ul class="nav-sub">
+            <li><a href="https://www.raysplacekent.com/_files/ugd/44fe95_802c737a30b54e92b8c24fca22e00791.pdf" target="_blank">Food Menu</a></li>
+            <li><a href="https://www.raysplacekent.com/banquet-menu" target="_blank">Banquet Menu</a></li>
+          </ul>
+        </li>
+        <li class="has-sub">
+          <a href="https://www.raysplacekent.com/liquids" target="_blank">Liquids</a>
+          <ul class="nav-sub">
+            <li><a href="https://www.raysplacekent.com/new-beer-this-month" target="_blank">New Beers / Specials</a></li>
+            <li><a href="https://www.raysplacekent.com/draft-beer" target="_blank">Draft Beer</a></li>
+            <li><a href="https://www.raysplacekent.com/bottled-beer" target="_blank">Bottled Beer</a></li>
+            <li><a href="https://www.raysplacekent.com/wine-selection" target="_blank">Wine</a></li>
+            <li><a href="https://www.raysplacekent.com/soft-drinks" target="_blank">Soft Drinks</a></li>
+          </ul>
+        </li>
+        <li><a href="https://www.raysplacekent.com/memorylane" target="_blank">Memory Lane</a></li>
+        <li><a href="https://www.raysplacekent.com/awards" target="_blank">Awards</a></li>
+        <li><a href="#contact">Contact</a></li>
+      </ul>
+    </div>
+    <div class="nav-contact">
+      <div class="nav-phone">330-673-2233</div>
+      <div class="nav-hours-hint">Open Daily from Noon</div>
+    </div>
+    <button class="nav-toggle" id="navToggle" aria-label="Open menu">
+      <i class="ti ti-menu-2" aria-hidden="true"></i>
+    </button>
+  </div>
+  <ul class="nav-mobile" id="mobileNav">
+    <li><a href="#about">Our Story</a></li>
+    <li class="mob-section">Menu</li>
+    <li><a href="https://www.raysplacekent.com/_files/ugd/44fe95_802c737a30b54e92b8c24fca22e00791.pdf" target="_blank">Food Menu (PDF)</a></li>
+    <li><a href="https://www.raysplacekent.com/banquet-menu" target="_blank">Banquet Menu</a></li>
+    <li class="mob-section">Liquids</li>
+    <li><a href="https://www.raysplacekent.com/new-beer-this-month" target="_blank">New Beers / Specials</a></li>
+    <li><a href="https://www.raysplacekent.com/draft-beer" target="_blank">Draft Beer</a></li>
+    <li><a href="https://www.raysplacekent.com/bottled-beer" target="_blank">Bottled Beer</a></li>
+    <li><a href="https://www.raysplacekent.com/wine-selection" target="_blank">Wine Selection</a></li>
+    <li><a href="https://www.raysplacekent.com/soft-drinks" target="_blank">Soft Drinks</a></li>
+    <li class="mob-section">Explore</li>
+    <li><a href="https://www.raysplacekent.com/memorylane" target="_blank">Memory Lane</a></li>
+    <li><a href="https://www.raysplacekent.com/awards" target="_blank">Awards</a></li>
+    <li><a href="https://virtual.buy360tour.com/tour/rays-place" target="_blank">Virtual Tour</a></li>
+    <li><a href="https://www.raysplacekent.com/employees" target="_blank">Meet the Staff</a></li>
+    <li><a href="https://www.raysplacekent.com/raysplacescholarship" target="_blank">Scholarship</a></li>
+    <li><a href="#contact">Hours &amp; Contact</a></li>
+    <a class="mob-phone" href="tel:3306732233"><i class="ti ti-phone" style="font-size:15px;margin-right:6px" aria-hidden="true"></i>330-673-2233</a>
+  </ul>
+</nav>
+
+<!-- HERO -->
+<section class="hero woodgrain">
+  <div class="hero-stars"></div>
+  <h1 class="hero-h1">
+    Ray's
+    <span class="place">Place</span>
+  </h1>
+  <p class="hero-eyebrow">Downtown Kent, Ohio</p>
+  <div class="hero-divider">
+    <span class="hero-divider-line"></span>
+    <span class="hero-divider-line"></span>
+  </div>
+  <p class="hero-tagline">Kent's legendary bar &amp; restaurant. Cold beer, great food, and generations of good times — right in the heart of downtown.</p>
+  <div class="hero-badges">
+    <span class="badge">64 Beers on Tap</span>
+    <span class="badge">Since 1937</span>
+    <span class="badge">As Seen on Food Network</span>
+    <span class="badge">Family Friendly</span>
+    <span class="badge">Home of the MOFO Burger</span>
+  </div>
+  <div class="hero-ctas">
+    <a class="btn-wood" href="https://www.raysplacekent.com/_files/ugd/44fe95_802c737a30b54e92b8c24fca22e00791.pdf" target="_blank">
+      <i class="ti ti-notebook" style="font-size:15px;margin-right:6px;vertical-align:-2px" aria-hidden="true"></i>View the Menu
+    </a>
+    <a class="btn-ghost" href="tel:3306732233">
+      <i class="ti ti-phone" style="font-size:15px;margin-right:6px;vertical-align:-2px" aria-hidden="true"></i>Order Take Out
+    </a>
+    <a class="btn-ghost" href="#hours">
+      <i class="ti ti-clock" style="font-size:15px;margin-right:6px;vertical-align:-2px" aria-hidden="true"></i>Hours &amp; Location
+    </a>
+  </div>
+  <div class="hero-treeline"></div>
+</section>
+
+<!-- QUICK INFO BAR -->
+<div class="info-bar">
+  <div class="info-bar-inner">
+    <div class="info-chip">
+      <i class="ti ti-map-pin" aria-hidden="true"></i>
+      <span>135 Franklin Ave, Kent OH</span>
+    </div>
+    <div class="info-chip">
+      <i class="ti ti-phone" aria-hidden="true"></i>
+      <a href="tel:3306732233" style="color:var(--tan)"><strong>330-673-2233</strong></a>
+    </div>
+    <div class="info-chip">
+      <i class="ti ti-clock" aria-hidden="true"></i>
+      <span>Mon–Wed <strong>Noon–Midnight</strong> &nbsp;|&nbsp; Thu–Sat <strong>Noon–1am+</strong> &nbsp;|&nbsp; Sun <strong>Noon–10pm</strong></span>
+    </div>
+    <div class="info-chip">
+      <i class="ti ti-tools-kitchen-2" aria-hidden="true"></i>
+      <span>Kitchen open <strong>daily until 9pm</strong></span>
+    </div>
+  </div>
+</div>
+
+<!-- FEATURE CARDS -->
+<section class="section section-parchment" id="menu">
+  <div class="container">
+    <p class="section-label" style="color:var(--moss);justify-content:center">What We're Known For</p>
+    <div class="feat-grid">
+      <div class="feat-card">
+        <div class="feat-icon"><i class="ti ti-meat" aria-hidden="true"></i></div>
+        <h3>The MOFO Burger</h3>
+        <p>Big, bold, and famous. Iron Chef Michael Symon called it out on Food Network's <em>Best Thing I Ever Ate</em> — and we haven't stopped making them since.</p>
+        <span class="feat-tag">Food Network Pick</span>
+      </div>
+      <div class="feat-card">
+        <div class="feat-icon"><i class="ti ti-trophy" aria-hidden="true"></i></div>
+        <h3>Award-Winning Wings</h3>
+        <p>Kent's biggest and baddest wings. Crispy, saucy, and legendary — multiple local award winner year after year.</p>
+        <span class="feat-tag">Local Favorite</span>
+      </div>
+      <div class="feat-card">
+        <div class="feat-icon"><i class="ti ti-beer" aria-hidden="true"></i></div>
+        <h3>64 Beers on Tap</h3>
+        <p>One of northeast Ohio's best selections — Ohio craft, IPAs, stouts, lagers, seasonals, and imports. New taps added every month.</p>
+        <a class="feat-link" href="https://www.raysplacekent.com/draft-beer" target="_blank">See all drafts <i class="ti ti-arrow-right" style="font-size:13px" aria-hidden="true"></i></a>
+      </div>
+      <div class="feat-card">
+        <div class="feat-icon"><i class="ti ti-confetti" aria-hidden="true"></i></div>
+        <h3>Banquets &amp; Events</h3>
+        <p>Hosting a party, reunion, or celebration? Ray's has banquet space and a menu built for groups.</p>
+        <a class="feat-link" href="https://www.raysplacekent.com/banquet-menu" target="_blank">Banquet menu <i class="ti ti-arrow-right" style="font-size:13px" aria-hidden="true"></i></a>
+      </div>
+    </div>
+    <div style="text-align:center;margin-top:2rem">
+      <a class="btn-wood" style="background:var(--bark);border-color:var(--bark);display:inline-block" href="https://www.raysplacekent.com/_files/ugd/44fe95_802c737a30b54e92b8c24fca22e00791.pdf" target="_blank">Full Food Menu (PDF)</a>
+    </div>
+  </div>
+</section>
+
+
+<!-- REAL PHOTOS FROM CURRENT RAY'S SITE -->
+<section class="photo-band" aria-label="Ray's Place photo highlights">
+  <div class="photo-grid">
+    <a class="photo-card" href="https://www.raysplacekent.com/_files/ugd/44fe95_802c737a30b54e92b8c24fca22e00791.pdf" target="_blank">
+      <img src="https://static.wixstatic.com/media/07231bdc0ecc439dadebd375044e018e.jpg/v1/fill/w_640,h_420,al_c,q_85,enc_avif,quality_auto/Two%20Delicious%20Hamburgers%20%20.jpg" alt="Two hamburgers from Ray's Place menu">
+      <div class="photo-caption">
+        <h3>Food Menu</h3>
+        <p>Burgers, wings &amp; more</p>
+      </div>
+    </a>
+    <a class="photo-card" href="https://www.raysplacekent.com/eat-the-mofo" target="_blank">
+      <img src="https://static.wixstatic.com/media/d9d184_ff09923751df4054a70cbcc9ba24a0f7.jpg/v1/fill/w_640,h_420,al_c,q_85,enc_avif,quality_auto/d9d184_ff09923751df4054a70cbcc9ba24a0f7.jpg" alt="MOFO burger from Ray's Place">
+      <div class="photo-caption">
+        <h3>The MOFO</h3>
+        <p>Food Network favorite</p>
+      </div>
+    </a>
+    <a class="photo-card" href="https://www.raysplacekent.com/memorylane" target="_blank">
+      <img src="https://static.wixstatic.com/media/44fe95_30df511b5b46f27581ed12c65075d7c7.jpg/v1/fill/w_250,h_181,al_c,q_90,enc_auto/44fe95_30df511b5b46f27581ed12c65075d7c7.jpg" alt="Historical Ray's Place photo">
+      <div class="photo-caption">
+        <h3>Since 1937</h3>
+        <p>Kent history</p>
+      </div>
+    </a>
+    <a class="photo-card" href="https://virtual.buy360tour.com/tour/rays-place" target="_blank">
+      <img src="https://s3-media0.fl.yelpcdn.com/bphoto/LaD9adWtwhXYCde6qgAogg/348s.jpg" alt="Ray's Place virtual tour preview">
+      <div class="photo-caption">
+        <h3>Step Inside</h3>
+        <p>Virtual tour</p>
+      </div>
+    </a>
+  </div>
+  <p class="photo-note">Placeholder Photos</p>
+</section>
+
+<!-- MOFO BANNER -->
+<div class="mofo-banner">
+  <p class="mofo-kicker">As Seen on Food Network · Best Thing I Ever Ate</p>
+  <h2 class="mofo-title">The MOFO Burger</h2>
+  <p class="mofo-sub">Iron Chef Michael Symon made it famous. We've been serving it since before that meant anything. Come find out what all the fuss is about.</p>
+  <a class="mofo-btn" href="https://www.raysplacekent.com/eat-the-mofo" target="_blank">The MOFO Story</a>
+</div>
+
+<!-- BEER -->
+<section class="section section-pine" id="beers">
+  <div class="container">
+    <div class="beer-layout">
+      <div>
+        <p class="section-label" style="color:var(--moss-lt)">On Tap</p>
+        <div class="tap-count">64</div>
+        <div class="tap-label">Beers on Draft</div>
+        <div class="beer-types">
+          <span class="beer-pill">Ohio Craft</span>
+          <span class="beer-pill">IPAs</span>
+          <span class="beer-pill">Lagers</span>
+          <span class="beer-pill">Stouts</span>
+          <span class="beer-pill">Seasonals</span>
+          <span class="beer-pill">Imports</span>
+          <span class="beer-pill">Sours</span>
+          <span class="beer-pill">Wheat Ales</span>
+        </div>
+      </div>
+      <div>
+        <p class="section-title-light" style="font-size:clamp(1.6rem,4vw,2.4rem)">Northeast Ohio's Best Beer Selection</p>
+        <p class="body-light">We rotate new taps constantly, with a deep focus on Ohio craft brewers alongside the classics. Beyond the 64 drafts, we carry an extensive bottle selection, wine, and soft drinks — something for everyone at the table.</p>
+        <div style="margin-top:2rem;display:flex;flex-wrap:wrap;gap:0.75rem">
+          <a class="btn-wood" href="https://www.raysplacekent.com/draft-beer" target="_blank">Draft List</a>
+          <a class="btn-ghost" href="https://www.raysplacekent.com/new-beer-this-month" target="_blank">New This Month</a>
+          <a class="btn-ghost" href="https://www.raysplacekent.com/bottled-beer" target="_blank">Bottles</a>
+        </div>
+      </div>
+    </div>
+  </div>
+</section>
+
+<!-- ABOUT / HISTORY -->
+<section class="section section-bark" id="about">
+  <div class="container">
+    <div class="about-layout">
+      <div>
+        <p class="section-label" style="color:var(--moss-lt)">Since 1937</p>
+        <h2 class="section-title-light">A Kent Institution</h2>
+        <p class="body-light">Since 1937, Ray's Place has been the heartbeat of downtown Kent — a gathering place for students, locals, and legends alike. Over eight decades, it has outlasted everything: recessions, pandemics, and trends that came and went. Ray's just keeps going.</p>
+        <div class="pull-quote">
+          <p>"Hundreds of students have worked there, thousands of customers have dined there, and millions of glasses have been raised there."</p>
+          <cite>— Meet Me at Ray's, by Patrick J. O'Connor</cite>
+        </div>
+        <div class="stat-shelf">
+          <div class="stat-block">
+            <div class="stat-n" style="font-size:1.9rem">Since</div>
+            <div class="stat-l">1937</div>
+          </div>
+          <div class="stat-block">
+            <div class="stat-n">64</div>
+            <div class="stat-l">Beers on Tap</div>
+          </div>
+          <div class="stat-block">
+            <div class="stat-n">1</div>
+            <div class="stat-l">Best Bar in Kent</div>
+          </div>
+        </div>
+        <div style="margin-top:2rem;display:flex;flex-wrap:wrap;gap:0.75rem">
+          <a class="btn-ghost" href="https://www.raysplacekent.com/memorylane" target="_blank">Memory Lane</a>
+          <a class="btn-ghost" href="https://virtual.buy360tour.com/tour/rays-place" target="_blank">Virtual Tour</a>
+          <a class="btn-ghost" href="https://www.amazon.com/Meet-Me-Rays-Celebration-Place/dp/1606351737" target="_blank">Buy the Book</a>
+        </div>
+      </div>
+      <div class="awards-stack">
+        <div style="font-size:0.65rem;font-weight:700;letter-spacing:0.22em;text-transform:uppercase;color:var(--moss-lt);margin-bottom:0.5rem">Recognition &amp; Awards</div>
+        <div class="award-item">
+          <h4>Food Network — Best Thing I Ever Ate</h4>
+          <p>Iron Chef Michael Symon's pick for the MOFO Burger</p>
+        </div>
+        <div class="award-item">
+          <h4>Kent's Best Bar</h4>
+          <p>Repeatedly recognized by local readers and press</p>
+        </div>
+        <div class="award-item">
+          <h4>Best Wings in Kent</h4>
+          <p>Award-winning wings, voted on by the community</p>
+        </div>
+        <div class="award-item">
+          <h4>Best Beer Selection</h4>
+          <p>64 taps, Ohio craft focus, constantly rotating</p>
+        </div>
+        <div class="award-item">
+          <h4>Ray's Place Scholarship</h4>
+          <p>Entrepreneurship scholarship at Kent State University, created by Charles Thomas</p>
+        </div>
+        <a class="btn-ghost" style="margin-top:0.5rem;display:inline-block;font-size:0.78rem" href="https://www.raysplacekent.com/awards" target="_blank">All Awards</a>
+      </div>
+    </div>
+  </div>
+</section>
+
+<!-- ALL PAGES NAV -->
+<section class="section section-parchment">
+  <div class="container">
+    <p class="section-label" style="color:var(--moss);justify-content:center">Explore Ray's Place</p>
+    <div class="page-links-grid">
+      <a class="page-link-card" href="https://www.raysplacekent.com/_files/ugd/44fe95_802c737a30b54e92b8c24fca22e00791.pdf" target="_blank">
+        <i class="ti ti-notebook" aria-hidden="true"></i>
+        <h3>Food Menu</h3>
+        <p>Burgers, wings, apps, sandwiches, and desserts.</p>
+        <span class="arrow">Open PDF <i class="ti ti-arrow-right" style="font-size:12px" aria-hidden="true"></i></span>
+      </a>
+      <a class="page-link-card" href="https://www.raysplacekent.com/liquids" target="_blank">
+        <i class="ti ti-beer" aria-hidden="true"></i>
+        <h3>Liquids</h3>
+        <p>Drafts, bottles, wine, soft drinks, and monthly specials.</p>
+        <span class="arrow">Browse <i class="ti ti-arrow-right" style="font-size:12px" aria-hidden="true"></i></span>
+      </a>
+      <a class="page-link-card" href="https://www.raysplacekent.com/memorylane" target="_blank">
+        <i class="ti ti-history" aria-hidden="true"></i>
+        <h3>Memory Lane</h3>
+        <p>History since 1937, stories, and famous patrons.</p>
+        <span class="arrow">Read More <i class="ti ti-arrow-right" style="font-size:12px" aria-hidden="true"></i></span>
+      </a>
+      <a class="page-link-card" href="https://www.raysplacekent.com/awards" target="_blank">
+        <i class="ti ti-trophy" aria-hidden="true"></i>
+        <h3>Awards</h3>
+        <p>Food Network, local awards, and community recognition.</p>
+        <span class="arrow">See Awards <i class="ti ti-arrow-right" style="font-size:12px" aria-hidden="true"></i></span>
+      </a>
+      <a class="page-link-card" href="https://virtual.buy360tour.com/tour/rays-place" target="_blank">
+        <i class="ti ti-360-view" aria-hidden="true"></i>
+        <h3>Virtual Tour</h3>
+        <p>Explore the bar before your first visit — or relive it.</p>
+        <span class="arrow">Take Tour <i class="ti ti-arrow-right" style="font-size:12px" aria-hidden="true"></i></span>
+      </a>
+      <a class="page-link-card" href="https://www.raysplacekent.com/employees" target="_blank">
+        <i class="ti ti-users" aria-hidden="true"></i>
+        <h3>Meet the Staff</h3>
+        <p>The friendly faces that make Ray's Place feel like home.</p>
+        <span class="arrow">Meet Them <i class="ti ti-arrow-right" style="font-size:12px" aria-hidden="true"></i></span>
+      </a>
+      <a class="page-link-card" href="https://www.raysplacekent.com/banquet-menu" target="_blank">
+        <i class="ti ti-confetti" aria-hidden="true"></i>
+        <h3>Banquets</h3>
+        <p>Private events, parties, and group dining at Ray's.</p>
+        <span class="arrow">Plan Event <i class="ti ti-arrow-right" style="font-size:12px" aria-hidden="true"></i></span>
+      </a>
+      <a class="page-link-card" href="https://www.raysplacekent.com/raysplacescholarship" target="_blank">
+        <i class="ti ti-school" aria-hidden="true"></i>
+        <h3>Scholarship</h3>
+        <p>The Ray's Place Entrepreneurship Scholarship at KSU.</p>
+        <span class="arrow">Learn More <i class="ti ti-arrow-right" style="font-size:12px" aria-hidden="true"></i></span>
+      </a>
+    </div>
+  </div>
+</section>
+
+<!-- HOURS & CONTACT -->
+<section class="section section-parchment" id="hours">
+  <div class="container">
+    <p class="section-label" style="color:var(--moss);justify-content:center">Find Us</p>
+    <div class="hours-layout">
+      <div>
+        <div class="hours-card">
+          <div class="hours-card-head"><i class="ti ti-beer" aria-hidden="true"></i>Bar Hours</div>
+          <div class="hours-body">
+            <div class="hours-row"><span class="day">Monday</span><span class="time">Noon – Midnight</span></div>
+            <div class="hours-row"><span class="day">Tuesday</span><span class="time">Noon – Midnight</span></div>
+            <div class="hours-row"><span class="day">Wednesday</span><span class="time">Noon – Midnight</span></div>
+            <div class="hours-row"><span class="day">Thursday</span><span class="time">Noon – 1am or later</span></div>
+            <div class="hours-row"><span class="day">Friday</span><span class="time">Noon – 1am or later</span></div>
+            <div class="hours-row"><span class="day">Saturday</span><span class="time">Noon – 1am or later</span></div>
+            <div class="hours-row"><span class="day">Sunday</span><span class="time">Noon – 10pm</span></div>
+          </div>
+        </div>
+        <div class="hours-card" style="margin-top:1rem">
+          <div class="hours-card-head"><i class="ti ti-tools-kitchen-2" aria-hidden="true"></i>Kitchen Hours</div>
+          <div class="hours-body">
+            <div class="hours-row"><span class="day">Monday – Sunday</span><span class="time">Noon – 9pm</span></div>
+          </div>
+        </div>
+      </div>
+      <div id="contact">
+        <div class="locate-card">
+          <div class="locate-head"><i class="ti ti-map-pin" aria-hidden="true"></i>Location &amp; Contact</div>
+          <div class="locate-body">
+            <p>
+              <strong style="color:var(--bark)">135 Franklin Ave</strong><br>
+              Kent, Ohio 44240<br><br>
+              <a href="tel:3306732233"><i class="ti ti-phone" style="font-size:14px;margin-right:4px;vertical-align:-2px" aria-hidden="true"></i>330-673-2233</a><br>
+              <a href="mailto:raysplacerr@neo.rr.com" style="font-size:0.83rem"><i class="ti ti-mail" style="font-size:14px;margin-right:4px;vertical-align:-2px" aria-hidden="true"></i>raysplacerr@neo.rr.com</a>
+            </p>
+            <div style="margin-top:1.25rem;padding-top:1rem;border-top:1px solid rgba(139,94,42,0.15)">
+              <p style="font-size:0.72rem;font-weight:700;letter-spacing:0.15em;text-transform:uppercase;color:#8B7050;margin-bottom:0.6rem">Follow Along</p>
+              <div style="display:flex;gap:0.75rem">
+                <a href="https://x.com/raysplacekent" target="_blank" style="display:flex;align-items:center;gap:0.35rem;font-size:0.8rem;color:var(--rust);font-weight:600"><i class="ti ti-brand-x" style="font-size:16px" aria-hidden="true"></i>X / Twitter</a>
+                <a href="https://www.instagram.com/raysplacekent/" target="_blank" style="display:flex;align-items:center;gap:0.35rem;font-size:0.8rem;color:var(--rust);font-weight:600"><i class="ti ti-brand-instagram" style="font-size:16px" aria-hidden="true"></i>Instagram</a>
+              </div>
+            </div>
+            <div style="margin-top:1rem;padding-top:1rem;border-top:1px solid rgba(139,94,42,0.15)">
+              <p style="font-size:0.75rem;color:#8B7050;font-style:italic">Ray's Place is not affiliated with any third-party delivery service.</p>
+            </div>
+          </div>
+        </div>
+      </div>
+    </div>
+  </div>
+</section>
+
+<!-- FOOTER -->
+<footer class="woodgrain">
+  <div class="footer-inner">
+    <div>
+      <img src="https://static.wixstatic.com/media/44fe95_56ce23cfa35b4815b13e64ccb5dee00f~mv2.gif" alt="Ray's Place logo" style="width:130px;height:auto;margin-bottom:0.75rem">
+      <p class="footer-tagline">Kent's home since 1937.</p>
+      <p style="font-size:0.8rem;color:var(--tan);margin-top:0.75rem;line-height:1.7">135 Franklin Ave<br>Kent, Ohio 44240<br><a href="tel:3306732233" style="color:var(--acorn-lt)">330-673-2233</a></p>
+    </div>
+    <div class="footer-col">
+      <h4>Navigate</h4>
+      <ul>
+        <li><a href="https://www.raysplacekent.com/_files/ugd/44fe95_802c737a30b54e92b8c24fca22e00791.pdf" target="_blank">Food Menu</a></li>
+        <li><a href="https://www.raysplacekent.com/banquet-menu" target="_blank">Banquet Menu</a></li>
+        <li><a href="https://www.raysplacekent.com/liquids" target="_blank">Liquids</a></li>
+        <li><a href="https://www.raysplacekent.com/memorylane" target="_blank">Memory Lane</a></li>
+        <li><a href="https://www.raysplacekent.com/awards" target="_blank">Awards</a></li>
+        <li><a href="https://www.raysplacekent.com/employees" target="_blank">Meet the Staff</a></li>
+        <li><a href="https://virtual.buy360tour.com/tour/rays-place" target="_blank">Virtual Tour</a></li>
+        <li><a href="https://www.raysplacekent.com/raysplacescholarship" target="_blank">Scholarship</a></li>
+      </ul>
+    </div>
+    <div class="footer-col">
+      <h4>Hours</h4>
+      <p>Mon–Wed: Noon–Midnight<br>Thu–Sat: Noon–1am+<br>Sun: Noon–10pm<br><br>Kitchen daily: Noon–9pm</p>
+      <div style="margin-top:1rem">
+        <a href="https://x.com/raysplacekent" target="_blank" style="display:inline-flex;align-items:center;gap:0.35rem;font-size:0.8rem;color:var(--acorn-lt);margin-right:0.75rem"><i class="ti ti-brand-x" aria-hidden="true"></i>Twitter</a>
+        <a href="https://www.instagram.com/raysplacekent/" target="_blank" style="display:inline-flex;align-items:center;gap:0.35rem;font-size:0.8rem;color:var(--acorn-lt)"><i class="ti ti-brand-instagram" aria-hidden="true"></i>Instagram</a>
+      </div>
+    </div>
+  </div>
+  <div class="footer-bottom">
+    <p>© 2026 Ray's Place · Kent, Ohio</p>
+    <p>Not affiliated with any third-party delivery service.</p>
+    <p>Website redesign concept</p>
+  </div>
+</footer>
+
+<script>
+const toggle = document.getElementById('navToggle');
+const mobileNav = document.getElementById('mobileNav');
+toggle.addEventListener('click', () => {
+  mobileNav.classList.toggle('open');
+  const icon = toggle.querySelector('i');
+  icon.className = mobileNav.classList.contains('open') ? 'ti ti-x' : 'ti ti-menu-2';
+});
+</script>
+</body>
+</html>

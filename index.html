@@ -1,14 +1,30 @@
 <!DOCTYPE html>
 <html lang="en">
 <head>
+  <!-- =========================================================
+       MAXWELL WILSON — WEBSITE REDESIGN PORTFOLIO
+       File: index.html
+       How to edit:
+       1. Put screenshots inside /images
+       2. Update project cards in the "PROJECTS" section
+       3. Update your email in the "CONTACT" section
+       ========================================================= -->
+
   <meta charset="UTF-8" />
   <meta name="viewport" content="width=device-width, initial-scale=1.0" />
 
   <title>Maxwell Wilson | Website Redesign Portfolio</title>
-  <meta name="description" content="Website redesign portfolio by Maxwell Wilson. View before and after website redesign concepts for local businesses." />
+  <meta
+    name="description"
+    content="Website redesign portfolio by Maxwell Wilson. View before and after website redesign concepts for local businesses."
+  />
 
   <style>
-    @import url('https://fonts.googleapis.com/css2?family=Inter:wght@400;500;600;700;800&display=swap');
+    /* =========================================================
+       1. FONTS, RESET, AND SITE COLORS
+       ========================================================= */
+
+    @import url("https://fonts.googleapis.com/css2?family=Inter:wght@400;500;600;700;800;900&display=swap");
 
     * {
       margin: 0;
@@ -19,10 +35,13 @@
     :root {
       --bg: #101217;
       --card: #181c25;
-      --card2: #202532;
+      --card-light: #202532;
+
       --text: #f7f8fc;
       --muted: #aeb6c8;
+
       --line: rgba(255, 255, 255, 0.12);
+
       --gold: #c28b45;
       --gold-dark: #8b5e2a;
       --green: #67d391;
@@ -57,6 +76,10 @@
       width: min(1120px, calc(100% - 40px));
       margin: 0 auto;
     }
+
+    /* =========================================================
+       2. NAVIGATION
+       ========================================================= */
 
     nav {
       position: sticky;
@@ -113,6 +136,14 @@
       border-radius: 999px;
     }
 
+    /* =========================================================
+       3. HERO SECTION
+       Edit the intro headline and text here.
+       The animated preview uses:
+       images/before-rays.png
+       images/after-rays.png
+       ========================================================= */
+
     .hero {
       padding: 6rem 0 4rem;
     }
@@ -124,7 +155,7 @@
       align-items: center;
     }
 
-    .badge {
+    .availability-badge {
       display: inline-flex;
       align-items: center;
       gap: 0.5rem;
@@ -139,7 +170,7 @@
       margin-bottom: 1.2rem;
     }
 
-    .dot {
+    .status-dot {
       width: 8px;
       height: 8px;
       border-radius: 50%;
@@ -161,7 +192,7 @@
       max-width: 640px;
     }
 
-    .actions {
+    .button-row {
       display: flex;
       flex-wrap: wrap;
       gap: 0.8rem;
@@ -185,16 +216,18 @@
       transform: translateY(-2px);
     }
 
-    .primary {
+    .btn-primary {
       background: var(--gold);
       border-color: var(--gold);
       color: #15100a;
     }
 
-    .secondary {
+    .btn-secondary {
       background: rgba(255, 255, 255, 0.05);
       color: var(--text);
     }
+
+    /* Hero browser shell */
 
     .preview-card {
       background: linear-gradient(145deg, rgba(255, 255, 255, 0.08), rgba(255, 255, 255, 0.03));
@@ -227,32 +260,124 @@
       background: rgba(255, 255, 255, 0.3);
     }
 
-    .browser-body {
+    /* Animated before/after transition */
+
+    .transition-preview {
+      position: relative;
       min-height: 330px;
-      background:
-        linear-gradient(rgba(0, 0, 0, 0.15), rgba(0, 0, 0, 0.75)),
-        url('Images/After-Rays.PNG');
-      background-size: cover;
-      background-position: center;
-      padding: 1.5rem;
-      display: flex;
-      flex-direction: column;
-      justify-content: flex-end;
+      overflow: hidden;
+      background: #0b0d12;
     }
 
-    .browser-body small {
+    .transition-image {
+      position: absolute;
+      inset: 0;
+      background-size: cover;
+      background-position: top center;
+    }
+
+    .transition-before {
+      background-image: url("images/before-rays.png");
+      filter: saturate(0.85) contrast(0.95);
+    }
+
+    .transition-after {
+      background-image: url("images/after-rays.png");
+      clip-path: inset(0 100% 0 0);
+      animation: revealAfter 6s ease-in-out infinite;
+    }
+
+    .transition-divider {
+      position: absolute;
+      top: 0;
+      bottom: 0;
+      left: 0%;
+      width: 3px;
+      background: var(--gold);
+      box-shadow: 0 0 20px rgba(194, 139, 69, 0.8);
+      animation: moveDivider 6s ease-in-out infinite;
+      z-index: 3;
+    }
+
+    .transition-label {
+      position: absolute;
+      top: 1rem;
+      z-index: 4;
+      padding: 0.42rem 0.65rem;
+      border-radius: 999px;
+      background: rgba(0, 0, 0, 0.68);
+      border: 1px solid rgba(255, 255, 255, 0.15);
+      backdrop-filter: blur(10px);
+      font-size: 0.68rem;
+      font-weight: 900;
+      letter-spacing: 0.12em;
+      text-transform: uppercase;
+    }
+
+    .transition-label.before {
+      left: 1rem;
+      color: var(--red);
+    }
+
+    .transition-label.after {
+      right: 1rem;
+      color: var(--green);
+    }
+
+    .transition-copy {
+      position: absolute;
+      left: 1.4rem;
+      right: 1.4rem;
+      bottom: 1.35rem;
+      z-index: 5;
+      text-shadow: 0 4px 18px rgba(0, 0, 0, 0.75);
+    }
+
+    .transition-copy small {
       color: var(--gold);
       text-transform: uppercase;
       letter-spacing: 0.18em;
-      font-weight: 800;
+      font-weight: 900;
     }
 
-    .browser-body h2 {
-      font-size: 2.2rem;
-      letter-spacing: -0.06em;
+    .transition-copy h2 {
+      font-size: 2.15rem;
       line-height: 1;
-      margin-top: 0.5rem;
+      letter-spacing: -0.06em;
+      margin-top: 0.45rem;
     }
+
+    @keyframes revealAfter {
+      0%, 18% {
+        clip-path: inset(0 100% 0 0);
+      }
+
+      45%, 70% {
+        clip-path: inset(0 0 0 0);
+      }
+
+      100% {
+        clip-path: inset(0 100% 0 0);
+      }
+    }
+
+    @keyframes moveDivider {
+      0%, 18% {
+        left: 0%;
+      }
+
+      45%, 70% {
+        left: 100%;
+      }
+
+      100% {
+        left: 0%;
+      }
+    }
+
+    /* =========================================================
+       4. REUSABLE SECTION STYLES
+       ========================================================= */
 
     section {
       padding: 4rem 0;
@@ -275,7 +400,7 @@
       margin-bottom: 0.6rem;
     }
 
-    .title {
+    .section-title {
       font-size: clamp(2rem, 5vw, 3.3rem);
       letter-spacing: -0.06em;
       line-height: 1;
@@ -287,7 +412,14 @@
       line-height: 1.7;
     }
 
-    .project {
+    /* =========================================================
+       5. PROJECT CARDS
+       To add a new project:
+       Copy one full <article class="project-card"> block
+       and update the text, image paths, and links.
+       ========================================================= */
+
+    .project-card {
       background: rgba(255, 255, 255, 0.045);
       border: 1px solid var(--line);
       border-radius: 28px;
@@ -304,19 +436,19 @@
       gap: 1rem;
     }
 
-    .project h3 {
+    .project-top h3 {
       font-size: 1.4rem;
       margin-bottom: 0.35rem;
       letter-spacing: -0.03em;
     }
 
-    .project p {
+    .project-top p {
       color: var(--muted);
       line-height: 1.65;
       max-width: 680px;
     }
 
-    .tags {
+    .tag-row {
       display: flex;
       flex-wrap: wrap;
       gap: 0.4rem;
@@ -334,22 +466,22 @@
       height: max-content;
     }
 
-    .compare {
+    .compare-grid {
       display: grid;
       grid-template-columns: 1fr 1fr;
     }
 
-    .side {
+    .compare-side {
       position: relative;
       padding: 1rem;
       min-height: 430px;
     }
 
-    .side:first-child {
+    .compare-side:first-child {
       border-right: 1px solid var(--line);
     }
 
-    .label {
+    .compare-label {
       position: absolute;
       top: 1.25rem;
       left: 1.25rem;
@@ -422,31 +554,40 @@
       border-top: 1px solid var(--line);
     }
 
-    .grid {
+    /* =========================================================
+       6. PROCESS SECTION
+       ========================================================= */
+
+    .info-grid {
       display: grid;
       grid-template-columns: repeat(3, 1fr);
       gap: 1rem;
       margin-top: 1.5rem;
     }
 
-    .mini {
+    .info-card {
       background: rgba(255, 255, 255, 0.045);
       border: 1px solid var(--line);
       border-radius: 22px;
       padding: 1.25rem;
     }
 
-    .mini h3 {
+    .info-card h3 {
       margin-bottom: 0.5rem;
       letter-spacing: -0.03em;
     }
 
-    .mini p {
+    .info-card p {
       color: var(--muted);
       line-height: 1.65;
     }
 
-    .contact {
+    /* =========================================================
+       7. CONTACT SECTION
+       Update your email in the mailto link.
+       ========================================================= */
+
+    .contact-panel {
       background: linear-gradient(145deg, rgba(194, 139, 69, 0.14), rgba(255, 255, 255, 0.04));
       border: 1px solid var(--line);
       border-radius: 28px;
@@ -454,18 +595,22 @@
       text-align: center;
     }
 
-    .contact h2 {
+    .contact-panel h2 {
       font-size: clamp(2rem, 5vw, 3.2rem);
       letter-spacing: -0.06em;
       margin-bottom: 0.75rem;
     }
 
-    .contact p {
+    .contact-panel p {
       color: var(--muted);
       line-height: 1.7;
       max-width: 620px;
       margin: 0 auto;
     }
+
+    /* =========================================================
+       8. FOOTER
+       ========================================================= */
 
     footer {
       border-top: 1px solid var(--line);
@@ -480,6 +625,10 @@
       flex-wrap: wrap;
     }
 
+    /* =========================================================
+       9. MOBILE RESPONSIVE STYLES
+       ========================================================= */
+
     @media (max-width: 860px) {
       .nav-links a:not(.nav-cta) {
         display: none;
@@ -490,7 +639,7 @@
       }
 
       .hero-grid,
-      .compare {
+      .compare-grid {
         grid-template-columns: 1fr;
       }
 
@@ -500,21 +649,21 @@
       }
 
       .section-text,
-      .tags {
+      .tag-row {
         margin-top: 1rem;
       }
 
-      .tags {
+      .tag-row {
         justify-content: flex-start;
         min-width: 0;
       }
 
-      .side:first-child {
+      .compare-side:first-child {
         border-right: 0;
         border-bottom: 1px solid var(--line);
       }
 
-      .grid {
+      .info-grid {
         grid-template-columns: 1fr;
       }
     }
@@ -549,7 +698,7 @@
         font-size: 1rem;
       }
 
-      .actions,
+      .button-row,
       .project-links {
         display: grid;
         grid-template-columns: 1fr;
@@ -559,17 +708,27 @@
         width: 100%;
       }
 
-      .browser-body {
+      .transition-preview {
         min-height: 280px;
       }
 
-      .project,
-      .contact,
+      .transition-copy {
+        left: 1rem;
+        right: 1rem;
+        bottom: 1rem;
+      }
+
+      .transition-copy h2 {
+        font-size: 1.65rem;
+      }
+
+      .project-card,
+      .contact-panel,
       .preview-card {
         border-radius: 22px;
       }
 
-      .side {
+      .compare-side {
         padding: 0.8rem;
         min-height: 330px;
       }
@@ -592,6 +751,9 @@
 </head>
 
 <body>
+  <!-- =========================================================
+       NAVIGATION
+       ========================================================= -->
   <nav>
     <div class="container nav-inner">
       <a class="brand" href="#top">
@@ -607,11 +769,14 @@
     </div>
   </nav>
 
+  <!-- =========================================================
+       HERO
+       ========================================================= -->
   <header class="hero" id="top">
     <div class="container hero-grid">
       <div>
-        <div class="badge">
-          <span class="dot"></span>
+        <div class="availability-badge">
+          <span class="status-dot"></span>
           Available for website redesign projects
         </div>
 
@@ -623,9 +788,9 @@
           information like menus, hours, services, and contact details.
         </p>
 
-        <div class="actions">
-          <a class="btn primary" href="#work">View My Work</a>
-          <a class="btn secondary" href="#contact">Work With Me</a>
+        <div class="button-row">
+          <a class="btn btn-primary" href="#work">View My Work</a>
+          <a class="btn btn-secondary" href="#contact">Work With Me</a>
         </div>
       </div>
 
@@ -637,21 +802,34 @@
             <span class="browser-dot"></span>
           </div>
 
-          <div class="browser-body">
-            <small>Before → After</small>
-            <h2>Redesigns that feel like the business, just better.</h2>
+          <div class="transition-preview">
+            <div class="transition-image transition-before"></div>
+            <div class="transition-image transition-after"></div>
+            <div class="transition-divider"></div>
+
+            <div class="transition-label before">Before</div>
+            <div class="transition-label after">After</div>
+
+            <div class="transition-copy">
+              <small>Before → After</small>
+              <h2>Redesigns that feel like the business, just better.</h2>
+            </div>
           </div>
         </div>
       </div>
     </div>
   </header>
 
+  <!-- =========================================================
+       PROJECTS
+       Add new redesign projects here.
+       ========================================================= -->
   <section id="work">
     <div class="container">
       <div class="section-head">
         <div>
           <div class="kicker">Featured Work</div>
-          <h2 class="title">Before and after website redesigns</h2>
+          <h2 class="section-title">Before and after website redesigns</h2>
         </div>
 
         <p class="section-text">
@@ -660,7 +838,8 @@
         </p>
       </div>
 
-      <article class="project">
+      <!-- PROJECT 1: RAY'S PLACE -->
+      <article class="project-card">
         <div class="project-top">
           <div>
             <h3>Ray’s Place Kent</h3>
@@ -670,7 +849,7 @@
             </p>
           </div>
 
-          <div class="tags">
+          <div class="tag-row">
             <span class="tag">Restaurant</span>
             <span class="tag">Mobile Friendly</span>
             <span class="tag">Local Business</span>
@@ -678,9 +857,10 @@
           </div>
         </div>
 
-        <div class="compare">
-          <div class="side">
-            <div class="label before-label">Before</div>
+        <div class="compare-grid">
+          <!-- BEFORE SCREENSHOT -->
+          <div class="compare-side">
+            <div class="compare-label before-label">Before</div>
 
             <div class="screenshot-window">
               <div class="screenshot-bar">
@@ -692,15 +872,16 @@
               <div class="screenshot-wrap">
                 <img
                   class="screenshot"
-                  src="Images/Before-Rays.PNG"
+                  src="images/before-rays.png"
                   alt="Before screenshot of the original Ray's Place website"
                 />
               </div>
             </div>
           </div>
 
-          <div class="side">
-            <div class="label after-label">After</div>
+          <!-- AFTER SCREENSHOT -->
+          <div class="compare-side">
+            <div class="compare-label after-label">After</div>
 
             <div class="screenshot-window">
               <div class="screenshot-bar">
@@ -712,7 +893,7 @@
               <div class="screenshot-wrap">
                 <img
                   class="screenshot"
-                  src="Images/After-Rays.PNG"
+                  src="images/after-rays.png"
                   alt="After screenshot of the Ray's Place redesign concept"
                 />
               </div>
@@ -721,21 +902,69 @@
         </div>
 
         <div class="project-links">
-          <a class="btn primary" href="./rays-place-redesign.html" target="_blank">View Redesign</a>
-          <a class="btn secondary" href="https://www.raysplacekent.com/" target="_blank">View Current Site</a>
+          <a class="btn btn-primary" href="./rays-place-redesign.html" target="_blank">View Redesign</a>
+          <a class="btn btn-secondary" href="https://www.raysplacekent.com/" target="_blank">View Current Site</a>
         </div>
       </article>
 
-      <article class="project">
+      <!--
+        COPY THIS BLOCK FOR YOUR NEXT PROJECT:
+
+        <article class="project-card">
+          <div class="project-top">
+            <div>
+              <h3>Business Name</h3>
+              <p>Short description of what you improved.</p>
+            </div>
+
+            <div class="tag-row">
+              <span class="tag">Industry</span>
+              <span class="tag">Mobile Friendly</span>
+              <span class="tag">Before / After</span>
+            </div>
+          </div>
+
+          <div class="compare-grid">
+            <div class="compare-side">
+              <div class="compare-label before-label">Before</div>
+              <div class="screenshot-window">
+                <div class="screenshot-bar"><span></span><span></span><span></span></div>
+                <div class="screenshot-wrap">
+                  <img class="screenshot" src="images/business-before.png" alt="Before screenshot" />
+                </div>
+              </div>
+            </div>
+
+            <div class="compare-side">
+              <div class="compare-label after-label">After</div>
+              <div class="screenshot-window">
+                <div class="screenshot-bar"><span></span><span></span><span></span></div>
+                <div class="screenshot-wrap">
+                  <img class="screenshot" src="images/business-after.png" alt="After screenshot" />
+                </div>
+              </div>
+            </div>
+          </div>
+
+          <div class="project-links">
+            <a class="btn btn-primary" href="./business-redesign.html" target="_blank">View Redesign</a>
+            <a class="btn btn-secondary" href="https://example.com" target="_blank">View Current Site</a>
+          </div>
+        </article>
+      -->
+
+      <!-- PLACEHOLDER PROJECT -->
+      <article class="project-card">
         <div class="project-top">
           <div>
-            <h3>Next Redesign Project Coming Soon!</h3>
+            <h3>Next Redesign Project</h3>
             <p>
-              If you want to inquire about a Design/Redesign for your website contact me!
+              Add your next business redesign here with screenshots, notes, and links.
+              You can duplicate the commented block above when you create more redesigns.
             </p>
           </div>
 
-          <div class="tags">
+          <div class="tag-row">
             <span class="tag">Coming Soon</span>
             <span class="tag">Before / After</span>
           </div>
@@ -744,13 +973,16 @@
     </div>
   </section>
 
+  <!-- =========================================================
+       PROCESS
+       ========================================================= -->
   <section id="process">
     <div class="container">
       <div class="kicker">Why Redesign?</div>
-      <h2 class="title">What I focus on improving</h2>
+      <h2 class="section-title">What I focus on improving</h2>
 
-      <div class="grid">
-        <div class="mini">
+      <div class="info-grid">
+        <div class="info-card">
           <h3>Mobile Experience</h3>
           <p>
             Most people check businesses from their phone first, so I make layouts
@@ -758,7 +990,7 @@
           </p>
         </div>
 
-        <div class="mini">
+        <div class="info-card">
           <h3>Clear Information</h3>
           <p>
             I organize hours, menus, location, contact buttons, and services so customers
@@ -766,7 +998,7 @@
           </p>
         </div>
 
-        <div class="mini">
+        <div class="info-card">
           <h3>Better First Impression</h3>
           <p>
             A clean website can make a business feel more current, trustworthy,
@@ -777,9 +1009,13 @@
     </div>
   </section>
 
+  <!-- =========================================================
+       CONTACT
+       Change your-email@example.com to your real email.
+       ========================================================= -->
   <section id="contact">
     <div class="container">
-      <div class="contact">
+      <div class="contact-panel">
         <h2>Interested in a redesign?</h2>
 
         <p>
@@ -787,14 +1023,17 @@
           how an updated website could help your business.
         </p>
 
-        <div class="actions" style="justify-content:center">
-          <a class="btn primary" href="mailto:your-email@example.com?subject=Website Redesign Inquiry">Email Me</a>
-          <a class="btn secondary" href="#work">View Projects</a>
+        <div class="button-row" style="justify-content:center">
+          <a class="btn btn-primary" href="mailto:your-email@example.com?subject=Website Redesign Inquiry">Email Me</a>
+          <a class="btn btn-secondary" href="#work">View Projects</a>
         </div>
       </div>
     </div>
   </section>
 
+  <!-- =========================================================
+       FOOTER
+       ========================================================= -->
   <footer>
     <div class="container footer-inner">
       <p>© 2026 Maxwell Wilson</p>

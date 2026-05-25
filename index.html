@@ -1,1042 +1,616 @@
 <!DOCTYPE html>
 <html lang="en">
 <head>
-  <!-- =========================================================
-       MAXWELL WILSON — WEBSITE REDESIGN PORTFOLIO
-       File: index.html
-       How to edit:
-       1. Put screenshots inside /images
-       2. Update project cards in the "PROJECTS" section
-       3. Update your email in the "CONTACT" section
-       ========================================================= -->
-
-  <meta charset="UTF-8" />
-  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
-
-  <title>Maxwell Wilson | Website Redesign Portfolio</title>
-  <meta
-    name="description"
-    content="Website redesign portfolio by Maxwell Wilson. View before and after website redesign concepts for local businesses."
-  />
+  <meta charset="UTF-8"/>
+  <meta name="viewport" content="width=device-width, initial-scale=1.0"/>
+  <meta name="description" content="Maxwell Wilson — Web Designer Portfolio"/>
+  <title>Maxwell Wilson — Web Designer</title>
+  <link rel="preconnect" href="https://fonts.googleapis.com"/>
+  <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin/>
+  <link href="https://fonts.googleapis.com/css2?family=UnifrakturMaguntia&family=Crimson+Pro:ital,wght@0,300;0,400;0,600;1,300;1,400;1,600&family=Barlow:wght@300;400;500;600&display=swap" rel="stylesheet"/>
 
   <style>
-    /* =========================================================
-       1. FONTS, RESET, AND SITE COLORS
-       ========================================================= */
-
-    @import url("https://fonts.googleapis.com/css2?family=Inter:wght@400;500;600;700;800;900&display=swap");
-
-    * {
-      margin: 0;
-      padding: 0;
-      box-sizing: border-box;
-    }
-
-    :root {
-      --bg: #101217;
-      --card: #181c25;
-      --card-light: #202532;
-
-      --text: #f7f8fc;
-      --muted: #aeb6c8;
-
-      --line: rgba(255, 255, 255, 0.12);
-
-      --gold: #c28b45;
-      --gold-dark: #8b5e2a;
-      --green: #67d391;
-      --red: #ff7b7b;
-    }
-
-    html {
-      scroll-behavior: smooth;
-    }
-
-    body {
-      font-family: Inter, Arial, sans-serif;
-      background:
-        radial-gradient(circle at top left, rgba(194, 139, 69, 0.18), transparent 34%),
-        radial-gradient(circle at top right, rgba(123, 76, 255, 0.12), transparent 34%),
-        var(--bg);
-      color: var(--text);
-      overflow-x: hidden;
-    }
-
-    a {
-      color: inherit;
-      text-decoration: none;
-    }
-
-    img {
-      display: block;
-      max-width: 100%;
-    }
-
-    .container {
-      width: min(1120px, calc(100% - 40px));
-      margin: 0 auto;
-    }
-
-    /* =========================================================
-       2. NAVIGATION
-       ========================================================= */
-
-    nav {
-      position: sticky;
-      top: 0;
-      z-index: 50;
-      background: rgba(16, 18, 23, 0.88);
-      backdrop-filter: blur(14px);
-      border-bottom: 1px solid var(--line);
-    }
-
-    .nav-inner {
-      min-height: 72px;
-      display: flex;
-      justify-content: space-between;
-      align-items: center;
-      gap: 1rem;
-    }
-
-    .brand strong {
-      display: block;
-      font-size: 1rem;
-      letter-spacing: -0.02em;
-    }
-
-    .brand span {
-      display: block;
-      color: var(--muted);
-      font-size: 0.72rem;
-      text-transform: uppercase;
-      letter-spacing: 0.08em;
-      margin-top: 0.18rem;
-    }
-
-    .nav-links {
-      display: flex;
-      align-items: center;
-      gap: 1rem;
-    }
-
-    .nav-links a {
-      color: var(--muted);
-      font-size: 0.9rem;
-      font-weight: 700;
-    }
-
-    .nav-links a:hover {
-      color: var(--text);
-    }
-
-    .nav-cta {
-      background: var(--text);
-      color: #111 !important;
-      padding: 0.7rem 1rem;
-      border-radius: 999px;
-    }
-
-    /* =========================================================
-       3. HERO SECTION
-       Edit the intro headline and text here.
-       The animated preview uses:
-       images/before-rays.png
-       images/after-rays.png
-       ========================================================= */
-
-    .hero {
-      padding: 6rem 0 4rem;
-    }
-
-    .hero-grid {
-      display: grid;
-      grid-template-columns: 1.1fr 0.9fr;
-      gap: 3rem;
-      align-items: center;
-    }
-
-    .availability-badge {
-      display: inline-flex;
-      align-items: center;
-      gap: 0.5rem;
-      width: fit-content;
-      border: 1px solid var(--line);
-      background: rgba(255, 255, 255, 0.05);
-      color: var(--muted);
-      padding: 0.55rem 0.8rem;
-      border-radius: 999px;
-      font-size: 0.82rem;
-      font-weight: 700;
-      margin-bottom: 1.2rem;
-    }
-
-    .status-dot {
-      width: 8px;
-      height: 8px;
-      border-radius: 50%;
-      background: var(--green);
-      box-shadow: 0 0 18px var(--green);
-    }
-
-    h1 {
-      font-size: clamp(2.7rem, 7vw, 5.7rem);
-      letter-spacing: -0.07em;
-      line-height: 0.95;
-      margin-bottom: 1.2rem;
-    }
-
-    .hero p {
-      color: var(--muted);
-      font-size: 1.08rem;
-      line-height: 1.75;
-      max-width: 640px;
-    }
-
-    .button-row {
-      display: flex;
-      flex-wrap: wrap;
-      gap: 0.8rem;
-      margin-top: 2rem;
-    }
-
-    .btn {
-      display: inline-flex;
-      align-items: center;
-      justify-content: center;
-      min-height: 48px;
-      padding: 0.85rem 1.15rem;
-      border-radius: 999px;
-      font-weight: 800;
-      font-size: 0.92rem;
-      border: 1px solid var(--line);
-      transition: transform 0.18s ease, background 0.18s ease;
-    }
-
-    .btn:hover {
-      transform: translateY(-2px);
-    }
-
-    .btn-primary {
-      background: var(--gold);
-      border-color: var(--gold);
-      color: #15100a;
-    }
-
-    .btn-secondary {
-      background: rgba(255, 255, 255, 0.05);
-      color: var(--text);
-    }
-
-    /* Hero browser shell */
-
-    .preview-card {
-      background: linear-gradient(145deg, rgba(255, 255, 255, 0.08), rgba(255, 255, 255, 0.03));
-      border: 1px solid var(--line);
-      border-radius: 28px;
-      padding: 1rem;
-      box-shadow: 0 22px 70px rgba(0, 0, 0, 0.35);
-    }
-
-    .browser {
-      border: 1px solid var(--line);
-      border-radius: 22px;
-      overflow: hidden;
-      background: #0b0d12;
-    }
-
-    .browser-top {
-      height: 40px;
-      border-bottom: 1px solid var(--line);
-      display: flex;
-      align-items: center;
-      gap: 0.4rem;
-      padding: 0 0.8rem;
-    }
-
-    .browser-dot {
-      width: 9px;
-      height: 9px;
-      border-radius: 50%;
-      background: rgba(255, 255, 255, 0.3);
-    }
-
-    /* Animated before/after transition */
-
-    .transition-preview {
-      position: relative;
-      min-height: 330px;
-      overflow: hidden;
-      background: #0b0d12;
-    }
-
-    .transition-image {
-      position: absolute;
-      inset: 0;
-      background-size: cover;
-      background-position: top center;
-    }
-
-    .transition-before {
-      background-image: url("Images/Before-Rays.PNG");
-      filter: saturate(0.85) contrast(0.95);
-    }
-
-    .transition-after {
-      background-image: url("Images/After-Rays.PNG");
-      clip-path: inset(0 100% 0 0);
-      animation: revealAfter 6s ease-in-out infinite;
-    }
-
-    .transition-divider {
-      position: absolute;
-      top: 0;
-      bottom: 0;
-      left: 0%;
-      width: 3px;
-      background: var(--gold);
-      box-shadow: 0 0 20px rgba(194, 139, 69, 0.8);
-      animation: moveDivider 6s ease-in-out infinite;
-      z-index: 3;
-    }
-
-    .transition-label {
-      position: absolute;
-      top: 1rem;
-      z-index: 4;
-      padding: 0.42rem 0.65rem;
-      border-radius: 999px;
-      background: rgba(0, 0, 0, 0.68);
-      border: 1px solid rgba(255, 255, 255, 0.15);
-      backdrop-filter: blur(10px);
-      font-size: 0.68rem;
-      font-weight: 900;
-      letter-spacing: 0.12em;
-      text-transform: uppercase;
-    }
-
-    .transition-label.before {
-      left: 1rem;
-      color: var(--red);
-    }
-
-    .transition-label.after {
-      right: 1rem;
-      color: var(--green);
-    }
-
-    .transition-copy {
-      position: absolute;
-      left: 1.4rem;
-      right: 1.4rem;
-      bottom: 1.35rem;
-      z-index: 5;
-      text-shadow: 0 4px 18px rgba(0, 0, 0, 0.75);
-    }
-
-    .transition-copy small {
-      color: var(--gold);
-      text-transform: uppercase;
-      letter-spacing: 0.18em;
-      font-weight: 900;
-    }
-
-    .transition-copy h2 {
-      font-size: 2.15rem;
-      line-height: 1;
-      letter-spacing: -0.06em;
-      margin-top: 0.45rem;
-    }
-
-    @keyframes revealAfter {
-      0%, 18% {
-        clip-path: inset(0 100% 0 0);
-      }
-
-      45%, 70% {
-        clip-path: inset(0 0 0 0);
-      }
-
-      100% {
-        clip-path: inset(0 100% 0 0);
-      }
-    }
-
-    @keyframes moveDivider {
-      0%, 18% {
-        left: 0%;
-      }
-
-      45%, 70% {
-        left: 100%;
-      }
-
-      100% {
-        left: 0%;
-      }
-    }
-
-    /* =========================================================
-       4. REUSABLE SECTION STYLES
-       ========================================================= */
-
-    section {
-      padding: 4rem 0;
-    }
-
-    .section-head {
-      display: flex;
-      justify-content: space-between;
-      gap: 2rem;
-      align-items: end;
-      margin-bottom: 1.5rem;
-    }
-
-    .kicker {
-      color: var(--gold);
-      letter-spacing: 0.18em;
-      text-transform: uppercase;
-      font-weight: 800;
-      font-size: 0.75rem;
-      margin-bottom: 0.6rem;
-    }
-
-    .section-title {
-      font-size: clamp(2rem, 5vw, 3.3rem);
-      letter-spacing: -0.06em;
-      line-height: 1;
-    }
-
-    .section-text {
-      max-width: 540px;
-      color: var(--muted);
-      line-height: 1.7;
-    }
-
-    /* =========================================================
-       5. PROJECT CARDS
-       To add a new project:
-       Copy one full <article class="project-card"> block
-       and update the text, image paths, and links.
-       ========================================================= */
-
-    .project-card {
-      background: rgba(255, 255, 255, 0.045);
-      border: 1px solid var(--line);
-      border-radius: 28px;
-      overflow: hidden;
-      margin-bottom: 1.25rem;
-      box-shadow: 0 20px 70px rgba(0, 0, 0, 0.22);
-    }
-
-    .project-top {
-      padding: 1.35rem;
-      border-bottom: 1px solid var(--line);
-      display: flex;
-      justify-content: space-between;
-      gap: 1rem;
-    }
-
-    .project-top h3 {
-      font-size: 1.4rem;
-      margin-bottom: 0.35rem;
-      letter-spacing: -0.03em;
-    }
-
-    .project-top p {
-      color: var(--muted);
-      line-height: 1.65;
-      max-width: 680px;
-    }
-
-    .tag-row {
-      display: flex;
-      flex-wrap: wrap;
-      gap: 0.4rem;
-      justify-content: flex-end;
-      min-width: 250px;
-    }
-
-    .tag {
-      border: 1px solid var(--line);
-      border-radius: 999px;
-      padding: 0.35rem 0.6rem;
-      color: var(--muted);
-      font-size: 0.72rem;
-      font-weight: 800;
-      height: max-content;
-    }
-
-    .compare-grid {
-      display: grid;
-      grid-template-columns: 1fr 1fr;
-    }
-
-    .compare-side {
-      position: relative;
-      padding: 1rem;
-      min-height: 430px;
-    }
-
-    .compare-side:first-child {
-      border-right: 1px solid var(--line);
-    }
-
-    .compare-label {
-      position: absolute;
-      top: 1.25rem;
-      left: 1.25rem;
-      z-index: 2;
-      background: rgba(0, 0, 0, 0.68);
-      border: 1px solid var(--line);
-      border-radius: 999px;
-      padding: 0.42rem 0.65rem;
-      font-size: 0.7rem;
-      font-weight: 900;
-      letter-spacing: 0.12em;
-      text-transform: uppercase;
-      backdrop-filter: blur(10px);
-    }
-
-    .before-label {
-      color: var(--red);
-    }
-
-    .after-label {
-      color: var(--green);
-    }
-
-    .screenshot-window {
-      height: 100%;
-      min-height: 390px;
-      border: 1px solid var(--line);
-      border-radius: 20px;
-      overflow: hidden;
-      background: var(--card);
-    }
-
-    .screenshot-bar {
-      height: 38px;
-      background: #202634;
-      display: flex;
-      gap: 0.35rem;
-      align-items: center;
-      padding: 0 0.75rem;
-      border-bottom: 1px solid var(--line);
-    }
-
-    .screenshot-bar span {
-      width: 8px;
-      height: 8px;
-      border-radius: 50%;
-      background: rgba(255, 255, 255, 0.35);
-    }
-
-    .screenshot-wrap {
-      height: calc(100% - 38px);
-      min-height: 352px;
-      background: #0d0f14;
-      overflow: hidden;
-    }
-
-    .screenshot {
-      width: 100%;
-      height: 100%;
-      min-height: 352px;
-      object-fit: cover;
-      object-position: top center;
-    }
-
-    .project-links {
-      padding: 1.2rem;
-      display: flex;
-      flex-wrap: wrap;
-      gap: 0.75rem;
-      border-top: 1px solid var(--line);
-    }
-
-    /* =========================================================
-       6. PROCESS SECTION
-       ========================================================= */
-
-    .info-grid {
-      display: grid;
-      grid-template-columns: repeat(3, 1fr);
-      gap: 1rem;
-      margin-top: 1.5rem;
-    }
-
-    .info-card {
-      background: rgba(255, 255, 255, 0.045);
-      border: 1px solid var(--line);
-      border-radius: 22px;
-      padding: 1.25rem;
-    }
-
-    .info-card h3 {
-      margin-bottom: 0.5rem;
-      letter-spacing: -0.03em;
-    }
-
-    .info-card p {
-      color: var(--muted);
-      line-height: 1.65;
-    }
-
-    /* =========================================================
-       7. CONTACT SECTION
-       Update your email in the mailto link.
-       ========================================================= */
-
-    .contact-panel {
-      background: linear-gradient(145deg, rgba(194, 139, 69, 0.14), rgba(255, 255, 255, 0.04));
-      border: 1px solid var(--line);
-      border-radius: 28px;
-      padding: 2rem;
-      text-align: center;
-    }
-
-    .contact-panel h2 {
-      font-size: clamp(2rem, 5vw, 3.2rem);
-      letter-spacing: -0.06em;
-      margin-bottom: 0.75rem;
-    }
-
-    .contact-panel p {
-      color: var(--muted);
-      line-height: 1.7;
-      max-width: 620px;
-      margin: 0 auto;
-    }
-
-    /* =========================================================
-       8. FOOTER
-       ========================================================= */
-
-    footer {
-      border-top: 1px solid var(--line);
-      color: var(--muted);
-      padding: 2rem 0;
-    }
-
-    .footer-inner {
-      display: flex;
-      justify-content: space-between;
-      gap: 1rem;
-      flex-wrap: wrap;
-    }
-
-    /* =========================================================
-       9. MOBILE RESPONSIVE STYLES
-       ========================================================= */
-
-    @media (max-width: 860px) {
-      .nav-links a:not(.nav-cta) {
-        display: none;
-      }
-
-      .hero {
-        padding: 4rem 0 2.5rem;
-      }
-
-      .hero-grid,
-      .compare-grid {
-        grid-template-columns: 1fr;
-      }
-
-      .section-head,
-      .project-top {
-        display: block;
-      }
-
-      .section-text,
-      .tag-row {
-        margin-top: 1rem;
-      }
-
-      .tag-row {
-        justify-content: flex-start;
-        min-width: 0;
-      }
-
-      .compare-side:first-child {
-        border-right: 0;
-        border-bottom: 1px solid var(--line);
-      }
-
-      .info-grid {
-        grid-template-columns: 1fr;
-      }
-    }
-
-    @media (max-width: 520px) {
-      .container {
-        width: calc(100% - 26px);
-      }
-
-      .nav-inner {
-        min-height: 64px;
-      }
-
-      .brand strong {
-        font-size: 0.95rem;
-      }
-
-      .brand span {
-        font-size: 0.6rem;
-      }
-
-      .nav-cta {
-        padding: 0.65rem 0.8rem;
-        font-size: 0.82rem;
-      }
-
-      h1 {
-        font-size: clamp(2.5rem, 14vw, 4rem);
-      }
-
-      .hero p {
-        font-size: 1rem;
-      }
-
-      .button-row,
-      .project-links {
-        display: grid;
-        grid-template-columns: 1fr;
-      }
-
-      .btn {
-        width: 100%;
-      }
-
-      .transition-preview {
-        min-height: 280px;
-      }
-
-      .transition-copy {
-        left: 1rem;
-        right: 1rem;
-        bottom: 1rem;
-      }
-
-      .transition-copy h2 {
-        font-size: 1.65rem;
-      }
-
-      .project-card,
-      .contact-panel,
-      .preview-card {
-        border-radius: 22px;
-      }
-
-      .compare-side {
-        padding: 0.8rem;
-        min-height: 330px;
-      }
-
-      .screenshot-window {
-        min-height: 300px;
-      }
-
-      .screenshot-wrap,
-      .screenshot {
-        min-height: 262px;
-      }
-
-      .footer-inner {
-        display: grid;
-        grid-template-columns: 1fr;
-      }
-    }
+  *, *::before, *::after { box-sizing: border-box; margin: 0; padding: 0; }
+
+  :root {
+    --black:   #080808;
+    --void:    #0d0d0d;
+    --deep:    #111111;
+    --surface: #181818;
+    --border:  rgba(255,255,255,0.08);
+    --border2: rgba(255,255,255,0.14);
+    --text:    #d8d5d0;
+    --muted:   rgba(216,213,208,0.42);
+    --silver:  #a8a5a0;
+    --white:   #ece9e4;
+  }
+
+  html { scroll-behavior: smooth; }
+
+  body {
+    background: var(--black);
+    color: var(--text);
+    font-family: 'Barlow', sans-serif;
+    font-weight: 300;
+    overflow-x: hidden;
+    cursor: none;
+  }
+
+  ::selection { background: rgba(200,200,200,0.2); color: var(--white); }
+
+  /* GRAIN */
+  body::after {
+    content: '';
+    position: fixed; inset: 0; z-index: 9000; pointer-events: none;
+    background-image: url("data:image/svg+xml,%3Csvg viewBox='0 0 256 256' xmlns='http://www.w3.org/2000/svg'%3E%3Cfilter id='n'%3E%3CfeTurbulence type='fractalNoise' baseFrequency='0.9' numOctaves='4' stitchTiles='stitch'/%3E%3C/filter%3E%3Crect width='100%25' height='100%25' filter='url(%23n)'/%3E%3C/svg%3E");
+    opacity: 0.025;
+  }
+
+  /* TRACERY */
+  .tracery-bg {
+    position: absolute; inset: 0; z-index: 0; pointer-events: none;
+    background-image: url("data:image/svg+xml,%3Csvg width='60' height='60' viewBox='0 0 60 60' xmlns='http://www.w3.org/2000/svg'%3E%3Cg fill='none' stroke='rgba(255,255,255,0.028)' stroke-width='0.5'%3E%3Cpath d='M30 0 L30 60 M0 30 L60 30'/%3E%3Ccircle cx='30' cy='30' r='20'/%3E%3Ccircle cx='30' cy='30' r='10'/%3E%3Cpath d='M30 10 L36 24 L30 20 L24 24 Z'/%3E%3Cpath d='M30 50 L36 36 L30 40 L24 36 Z'/%3E%3Cpath d='M10 30 L24 36 L20 30 L24 24 Z'/%3E%3Cpath d='M50 30 L36 36 L40 30 L36 24 Z'/%3E%3C/g%3E%3C/svg%3E");
+    background-size: 60px 60px;
+    mask-image: radial-gradient(ellipse at center, black 20%, transparent 75%);
+  }
+
+  /* CURSOR */
+  #cur-dot {
+    position: fixed; z-index: 9999; pointer-events: none;
+    width: 6px; height: 6px; border-radius: 50%;
+    background: var(--white); transform: translate(-50%,-50%);
+    transition: width 0.2s, height 0.2s, background 0.2s;
+  }
+  #cur-ring {
+    position: fixed; z-index: 9998; pointer-events: none;
+    width: 34px; height: 34px; border-radius: 50%;
+    border: 1px solid rgba(200,200,200,0.35);
+    transform: translate(-50%,-50%);
+    transition: left 0.1s ease-out, top 0.1s ease-out, width 0.3s, height 0.3s, border-color 0.3s;
+  }
+  body.hov #cur-dot { width: 4px; height: 4px; background: var(--silver); }
+  body.hov #cur-ring { width: 52px; height: 52px; border-color: rgba(168,165,160,0.6); }
+
+  /* NAV */
+  nav {
+    position: fixed; top: 0; left: 0; right: 0; z-index: 600;
+    display: flex; justify-content: space-between; align-items: center;
+    padding: 1.6rem 3.5rem;
+    background: rgba(8,8,8,0.88);
+    backdrop-filter: blur(16px);
+    border-bottom: 1px solid var(--border);
+  }
+  .nav-logo {
+    font-family: 'UnifrakturMaguntia', cursive;
+    font-size: 1.5rem; color: var(--white);
+    text-decoration: none;
+  }
+  .nav-links { display: flex; gap: 2.8rem; list-style: none; }
+  .nav-links a {
+    font-size: 0.7rem; font-weight: 500; letter-spacing: 0.2em;
+    text-transform: uppercase; color: var(--muted);
+    text-decoration: none; position: relative; transition: color 0.25s;
+  }
+  .nav-links a::after {
+    content: ''; position: absolute; bottom: -4px; left: 50%; right: 50%;
+    height: 1px; background: var(--silver);
+    transition: left 0.3s, right 0.3s;
+  }
+  .nav-links a:hover { color: var(--white); }
+  .nav-links a:hover::after { left: 0; right: 0; }
+  .nav-avail {
+    font-size: 0.68rem; font-weight: 500; letter-spacing: 0.16em;
+    text-transform: uppercase; color: var(--silver);
+    border: 1px solid var(--border2); padding: 0.4rem 1rem;
+    display: flex; align-items: center; gap: 0.5rem;
+  }
+  .nav-avail::before {
+    content: ''; width: 5px; height: 5px; border-radius: 50%;
+    background: #7a9a7a; box-shadow: 0 0 6px #7a9a7a;
+  }
+
+  /* HERO */
+  .hero {
+    min-height: 100vh;
+    display: flex; flex-direction: column;
+    justify-content: center; align-items: flex-start;
+    padding: 10rem 3.5rem 6rem;
+    position: relative; overflow: hidden;
+  }
+  .hero-vignette {
+    position: absolute; inset: 0; z-index: 0;
+    background: radial-gradient(ellipse 90% 80% at 50% 50%, transparent 40%, var(--black) 100%);
+  }
+  .hero-arch {
+    position: absolute; top: 0; left: 50%; transform: translateX(-50%);
+    width: 600px; height: 300px; z-index: 0;
+    background: radial-gradient(ellipse at 50% 0%, rgba(255,255,255,0.025) 0%, transparent 70%);
+    clip-path: polygon(10% 0%, 90% 0%, 100% 100%, 0% 100%);
+  }
+  .hero-eyebrow {
+    position: relative; z-index: 2;
+    font-size: 0.68rem; font-weight: 500; letter-spacing: 0.24em;
+    text-transform: uppercase; color: var(--silver);
+    margin-bottom: 2.2rem;
+    display: flex; align-items: center; gap: 1rem;
+    opacity: 0; animation: fadeSlide 0.7s 0.2s cubic-bezier(0.22,1,0.36,1) forwards;
+  }
+  .hero-eyebrow::before { content: '✦'; font-size: 0.6rem; color: var(--silver); opacity: 0.6; }
+  .hero-title {
+    position: relative; z-index: 2;
+    font-family: 'Crimson Pro', serif;
+    font-size: clamp(4rem, 9.5vw, 9.5rem);
+    font-weight: 300; line-height: 0.95;
+    letter-spacing: -0.01em;
+    margin-bottom: 3.5rem;
+  }
+  .hero-title .row { display: block; overflow: hidden; }
+  .hero-title .row span {
+    display: block;
+    opacity: 0; transform: translateY(110%);
+    animation: riseText 1s cubic-bezier(0.22,1,0.36,1) forwards;
+  }
+  .hero-title .row:nth-child(1) span { animation-delay: 0.35s; }
+  .hero-title .row:nth-child(2) span { animation-delay: 0.5s; }
+  .hero-title .row:nth-child(3) span { animation-delay: 0.65s; }
+  .hero-title em { font-style: italic; color: var(--silver); }
+
+  .hero-btns {
+    position: relative; z-index: 2;
+    display: flex; gap: 1rem;
+    opacity: 0; animation: fadeSlide 0.8s 1s cubic-bezier(0.22,1,0.36,1) forwards;
+  }
+  .scroll-cue {
+    position: absolute; bottom: 2.5rem; right: 3.5rem; z-index: 2;
+    display: flex; align-items: center; gap: 0.8rem;
+    font-size: 0.65rem; letter-spacing: 0.2em; text-transform: uppercase; color: var(--muted);
+    writing-mode: vertical-rl;
+    opacity: 0; animation: fadeIn 1s 1.6s forwards;
+  }
+  .scroll-cue-line {
+    width: 1px; height: 48px;
+    background: linear-gradient(to bottom, transparent, var(--border2));
+    animation: elongate 2.2s 2s ease-in-out infinite;
+  }
+
+  /* BUTTONS */
+  .btn-main {
+    display: inline-block; padding: 0.95rem 2.2rem;
+    font-size: 0.72rem; font-weight: 500; letter-spacing: 0.18em; text-transform: uppercase;
+    text-decoration: none; color: var(--black);
+    background: var(--text); border: 1px solid var(--text);
+    transition: background 0.25s, transform 0.2s;
+  }
+  .btn-main:hover { background: var(--white); transform: translateY(-2px); }
+  .btn-outline {
+    display: inline-block; padding: 0.95rem 2.2rem;
+    font-size: 0.72rem; font-weight: 500; letter-spacing: 0.18em; text-transform: uppercase;
+    text-decoration: none; color: var(--silver);
+    background: transparent; border: 1px solid var(--border2);
+    transition: border-color 0.25s, color 0.25s, transform 0.2s;
+  }
+  .btn-outline:hover { border-color: var(--silver); color: var(--white); transform: translateY(-2px); }
+
+  /* REVEAL */
+  .reveal {
+    opacity: 0; transform: translateY(28px);
+    transition: opacity 0.85s cubic-bezier(0.22,1,0.36,1), transform 0.85s cubic-bezier(0.22,1,0.36,1);
+  }
+  .reveal.in { opacity: 1; transform: none; }
+  .d1 { transition-delay: 0.12s; }
+  .d2 { transition-delay: 0.24s; }
+
+  /* ABOUT — slim version */
+  #about {
+    padding: 7rem 3.5rem;
+    display: grid; grid-template-columns: auto 1fr;
+    gap: 5rem; align-items: center;
+    max-width: 1100px; margin: 0 auto;
+    border-top: 1px solid var(--border);
+  }
+  .about-portrait {
+    width: 220px; aspect-ratio: 2/3;
+    background: var(--surface);
+    border: 1px solid var(--border2);
+    position: relative; overflow: hidden;
+    clip-path: polygon(0 0, 100% 0, 100% 90%, 50% 100%, 0 90%);
+    flex-shrink: 0;
+  }
+  .about-portrait::before {
+    content: '';
+    position: absolute; inset: 0;
+    background: linear-gradient(to bottom, rgba(255,255,255,0.03) 0%, transparent 40%);
+  }
+  .portrait-inner {
+    width: 100%; height: 100%;
+    display: flex; flex-direction: column;
+    align-items: center; justify-content: center; gap: 0.5rem;
+  }
+  .portrait-glyph {
+    font-family: 'UnifrakturMaguntia', cursive;
+    font-size: 5rem; line-height: 1;
+    color: rgba(168,165,160,0.18);
+  }
+  .portrait-sub {
+    font-size: 0.6rem; letter-spacing: 0.2em; text-transform: uppercase; color: var(--muted);
+  }
+  .about-right { }
+  .about-name {
+    font-family: 'Crimson Pro', serif;
+    font-size: clamp(2rem, 4vw, 3.2rem);
+    font-weight: 300; line-height: 1.1; margin-bottom: 0.5rem;
+  }
+  .about-name em { font-style: italic; color: var(--silver); }
+  .about-role {
+    font-size: 0.8rem; letter-spacing: 0.18em; text-transform: uppercase;
+    color: var(--muted); margin-bottom: 2rem;
+  }
+  .stats-row {
+    display: flex; gap: 0; border: 1px solid var(--border); margin-bottom: 2rem;
+  }
+  .stat {
+    padding: 1.2rem 1.8rem; border-right: 1px solid var(--border);
+    transition: background 0.3s; text-align: center;
+  }
+  .stat:last-child { border-right: none; }
+  .stat:hover { background: var(--surface); }
+  .stat-n {
+    font-family: 'Crimson Pro', serif;
+    font-size: 2rem; font-weight: 300; color: var(--text); line-height: 1;
+  }
+  .stat-l {
+    font-size: 0.6rem; font-weight: 500; letter-spacing: 0.12em;
+    text-transform: uppercase; color: var(--muted); margin-top: 0.2rem;
+  }
+
+  /* WORK */
+  #work {
+    padding: 0 3.5rem 9rem;
+    border-top: 1px solid var(--border);
+  }
+  .work-header {
+    padding: 4rem 0 3rem;
+    display: flex; justify-content: space-between; align-items: flex-end;
+  }
+  .work-title {
+    font-family: 'Crimson Pro', serif;
+    font-size: clamp(3rem, 6.5vw, 7rem);
+    font-weight: 300; line-height: 0.95;
+  }
+  .work-title em { font-style: italic; color: var(--silver); }
+  .work-count {
+    font-size: 0.68rem; letter-spacing: 0.16em; text-transform: uppercase; color: var(--muted);
+  }
+
+  .gothic-rule {
+    display: flex; align-items: center; gap: 0; margin-bottom: 0;
+  }
+  .gothic-rule-line { flex: 1; height: 1px; background: var(--border); }
+  .gothic-rule-center {
+    padding: 0 1.5rem; font-size: 0.75rem; color: var(--border2); letter-spacing: 0.3em;
+  }
+
+  /* PROJECT GRID — image cards */
+  .proj-grid {
+    display: grid;
+    grid-template-columns: repeat(2, 1fr);
+    gap: 1px;
+    background: var(--border);
+    margin-top: 1px;
+  }
+
+  .proj-card {
+    background: var(--black);
+    position: relative; overflow: hidden;
+    aspect-ratio: 16/10;
+    display: block; text-decoration: none;
+  }
+  .proj-card img {
+    width: 100%; height: 100%; object-fit: cover; display: block;
+    transition: transform 0.6s cubic-bezier(0.22,1,0.36,1), opacity 0.4s;
+    opacity: 0.75;
+  }
+  .proj-card:hover img { transform: scale(1.04); opacity: 0.5; }
+
+  .proj-card-placeholder {
+    width: 100%; height: 100%;
+    background: var(--surface);
+    display: flex; flex-direction: column;
+    align-items: center; justify-content: center; gap: 0.5rem;
+    transition: background 0.4s;
+  }
+  .proj-card:hover .proj-card-placeholder { background: var(--panel); }
+  .placeholder-glyph {
+    font-family: 'Crimson Pro', serif;
+    font-size: 4rem; font-weight: 300; line-height: 1;
+    color: rgba(168,165,160,0.15); text-align: center;
+    transition: color 0.4s;
+  }
+  .proj-card:hover .placeholder-glyph { color: rgba(168,165,160,0.25); }
+
+  .proj-card-overlay {
+    position: absolute; inset: 0;
+    background: linear-gradient(to top, rgba(8,8,8,0.9) 0%, transparent 55%);
+    display: flex; flex-direction: column;
+    justify-content: flex-end; padding: 2rem;
+    opacity: 1;
+    transition: background 0.4s;
+  }
+  .proj-card:hover .proj-card-overlay {
+    background: linear-gradient(to top, rgba(8,8,8,0.95) 0%, rgba(8,8,8,0.4) 100%);
+  }
+
+  .proj-card-tags {
+    display: flex; gap: 0.4rem; flex-wrap: wrap; margin-bottom: 0.6rem;
+  }
+  .ptag {
+    font-size: 0.6rem; font-weight: 500; letter-spacing: 0.12em; text-transform: uppercase;
+    padding: 0.2rem 0.55rem; border: 1px solid var(--border); color: var(--muted);
+  }
+  .ptag.live { border-color: rgba(122,154,122,0.5); color: #7a9a7a; }
+
+  .proj-card-name {
+    font-family: 'Crimson Pro', serif;
+    font-size: clamp(1.4rem, 2.5vw, 2rem); font-weight: 400; color: var(--white);
+    line-height: 1.1; margin-bottom: 0.4rem;
+  }
+  .proj-card-type {
+    font-size: 0.7rem; letter-spacing: 0.14em; text-transform: uppercase; color: var(--muted);
+  }
+
+  /* arrow that appears on hover */
+  .proj-card-arrow {
+    position: absolute; top: 1.5rem; right: 1.5rem;
+    width: 38px; height: 38px; border: 1px solid var(--border2);
+    display: flex; align-items: center; justify-content: center;
+    color: var(--silver); font-size: 1rem;
+    opacity: 0; transform: translateY(-6px);
+    transition: opacity 0.3s, transform 0.3s, background 0.25s;
+  }
+  .proj-card:hover .proj-card-arrow {
+    opacity: 1; transform: translateY(0);
+    background: rgba(255,255,255,0.06);
+  }
+
+  /* CONTACT */
+  #contact {
+    margin: 0 3.5rem 8rem;
+    background: var(--deep);
+    border: 1px solid var(--border2);
+    padding: 5rem;
+    position: relative; overflow: hidden;
+    display: flex; justify-content: space-between; align-items: center;
+    gap: 4rem;
+  }
+  #contact::before {
+    content: '';
+    position: absolute; inset: 0; z-index: 0;
+    background-image: url("data:image/svg+xml,%3Csvg width='120' height='120' viewBox='0 0 120 120' xmlns='http://www.w3.org/2000/svg'%3E%3Cg fill='none' stroke='rgba(255,255,255,0.025)' stroke-width='0.5'%3E%3Ccircle cx='60' cy='60' r='50'/%3E%3Ccircle cx='60' cy='60' r='30'/%3E%3Ccircle cx='60' cy='60' r='10'/%3E%3Cpath d='M60 10 L60 110 M10 60 L110 60'/%3E%3Cpath d='M24.4 24.4 L95.6 95.6 M95.6 24.4 L24.4 95.6'/%3E%3C/g%3E%3C/svg%3E");
+    background-size: 120px 120px;
+  }
+  #contact::after {
+    content: 'MW';
+    position: absolute; right: 2rem; top: 50%; transform: translateY(-50%);
+    font-family: 'UnifrakturMaguntia', cursive;
+    font-size: 12rem; line-height: 1;
+    color: rgba(255,255,255,0.025);
+    pointer-events: none; user-select: none; z-index: 0;
+  }
+  .cta-text { position: relative; z-index: 1; }
+  .cta-heading {
+    font-family: 'Crimson Pro', serif;
+    font-size: clamp(2rem, 4vw, 3.8rem); font-weight: 300; line-height: 1.05;
+  }
+  .cta-heading em { font-style: italic; color: var(--silver); }
+  .cta-actions { display: flex; gap: 1rem; flex-wrap: wrap; position: relative; z-index: 1; }
+
+  /* FOOTER */
+  footer {
+    border-top: 1px solid var(--border);
+    padding: 2.5rem 3.5rem;
+    display: flex; justify-content: space-between; align-items: center;
+  }
+  .foot-logo { font-family: 'UnifrakturMaguntia', cursive; font-size: 1.2rem; color: var(--muted); }
+  .foot-copy { font-size: 0.68rem; letter-spacing: 0.1em; color: var(--muted); }
+  .foot-links { display: flex; gap: 2rem; }
+  .foot-links a {
+    font-size: 0.68rem; letter-spacing: 0.14em; text-transform: uppercase;
+    color: var(--muted); text-decoration: none; transition: color 0.2s;
+  }
+  .foot-links a:hover { color: var(--silver); }
+
+  /* KEYFRAMES */
+  @keyframes riseText {
+    to { opacity: 1; transform: translateY(0); }
+  }
+  @keyframes fadeSlide {
+    from { opacity: 0; transform: translateY(16px); }
+    to   { opacity: 1; transform: translateY(0); }
+  }
+  @keyframes fadeIn { to { opacity: 1; } }
+  @keyframes elongate {
+    0%,100% { opacity: 0.6; }
+    50%      { opacity: 0.15; }
+  }
+
+  /* RESPONSIVE */
+  @media (max-width: 900px) {
+    nav { padding: 1.2rem 1.5rem; }
+    .nav-avail { display: none; }
+    .hero { padding: 9rem 1.5rem 5rem; }
+    #about { grid-template-columns: 1fr; gap: 2.5rem; padding: 5rem 1.5rem; }
+    .about-portrait { width: 160px; }
+    .stats-row { flex-wrap: wrap; }
+    .stat { flex: 1 1 auto; }
+    #work { padding: 0 1.5rem 6rem; }
+    .proj-grid { grid-template-columns: 1fr; }
+    #contact { flex-direction: column; margin: 0 1.5rem 5rem; padding: 3rem 2rem; }
+    footer { flex-direction: column; gap: 1rem; text-align: center; padding: 2rem 1.5rem; }
+  }
+  @media (max-width: 600px) {
+    .nav-links { display: none; }
+    .hero-title { font-size: clamp(3rem, 13vw, 5rem); }
+  }
   </style>
 </head>
-
 <body>
-  <!-- =========================================================
-       NAVIGATION
-       ========================================================= -->
-  <nav>
-    <div class="container nav-inner">
-      <a class="brand" href="#top">
-        <strong>Maxwell Wilson</strong>
-        <span>Website Redesign Portfolio</span>
-      </a>
 
-      <div class="nav-links">
-        <a href="#work">Work</a>
-        <a href="#process">Process</a>
-        <a href="#contact" class="nav-cta">Contact</a>
+<div id="cur-dot"></div>
+<div id="cur-ring"></div>
+
+<!-- NAV -->
+<nav>
+  <a href="#" class="nav-logo">Maxwell Wilson</a>
+  <ul class="nav-links">
+    <li><a href="#about">About</a></li>
+    <li><a href="#work">Work</a></li>
+    <li><a href="#contact">Contact</a></li>
+  </ul>
+  <div class="nav-avail">Available for Projects</div>
+</nav>
+
+<!-- HERO -->
+<section class="hero">
+  <div class="tracery-bg"></div>
+  <div class="hero-vignette"></div>
+  <div class="hero-arch"></div>
+
+  <p class="hero-eyebrow">Web Designer — Kent State University 2026</p>
+
+  <h1 class="hero-title">
+    <span class="row"><span>Websites</span></span>
+    <span class="row"><span>that make you</span></span>
+    <span class="row"><span><em>Seen</em></span></span>
+  </h1>
+
+  <div class="hero-btns">
+    <a href="#work" class="btn-main">View My Work</a>
+    <a href="#contact" class="btn-outline">Get In Touch</a>
+  </div>
+
+  <div class="scroll-cue">
+    <div class="scroll-cue-line"></div>
+    Scroll
+  </div>
+</section>
+
+<!-- ABOUT -->
+<section id="about">
+  <div class="about-portrait reveal">
+    <div class="portrait-inner">
+      <div class="portrait-glyph">MW</div>
+      <div class="portrait-sub">Designer</div>
+    </div>
+  </div>
+
+  <div class="about-right reveal d1">
+    <h2 class="about-name">Maxwell <em>Wilson</em></h2>
+    <p class="about-role">Web Designer &amp; Redesign Specialist</p>
+    <div class="stats-row">
+      <div class="stat">
+        <div class="stat-n">KSU</div>
+        <div class="stat-l">Class of '26</div>
+      </div>
+      <div class="stat">
+        <div class="stat-n">100%</div>
+        <div class="stat-l">Mobile Optimized</div>
       </div>
     </div>
-  </nav>
+    <a href="#contact" class="btn-main">Start a Project</a>
+  </div>
+</section>
 
-  <!-- =========================================================
-       HERO
-       ========================================================= -->
-  <header class="hero" id="top">
-    <div class="container hero-grid">
-      <div>
-        <div class="availability-badge">
-          <span class="status-dot"></span>
-          Available for website redesign projects
+<!-- WORK -->
+<section id="work">
+  <div class="work-header reveal">
+    <h2 class="work-title">Selected <em>Work</em></h2>
+    <div class="work-count">02 Projects</div>
+  </div>
+
+  <div class="gothic-rule" aria-hidden="true">
+    <div class="gothic-rule-line"></div>
+    <div class="gothic-rule-center">✦ ✦ ✦</div>
+    <div class="gothic-rule-line"></div>
+  </div>
+
+  <div class="proj-grid">
+
+    <!-- Ray's Place -->
+    <a href="https://shmagssites.github.io/Portfolio/rays-place-redesign.html"
+       class="proj-card reveal" title="View Ray's Place Redesign">
+      <img src="https://shmagssites.github.io/Portfolio/Images/After-Rays.PNG"
+           alt="Ray's Place redesign"
+           onerror="this.style.display='none'"/>
+      <div class="proj-card-overlay">
+        <div class="proj-card-tags">
+          <span class="ptag">Restaurant</span>
+          <span class="ptag">Redesign</span>
         </div>
-
-        <h1>Helping older websites feel modern, clean, and easier to use.</h1>
-
-      <p>
-  I am a 2026 Kent State University graduate with a passion for web design. I create
-  website redesign concepts for local businesses that need a cleaner look, better mobile
-  experience, stronger calls to action, and easier access to important information like
-  menus, hours, services, and contact details.
-      </p>
-        <div class="button-row">
-          <a class="btn btn-primary" href="#work">View My Work</a>
-          <a class="btn btn-secondary" href="#contact">Work With Me</a>
-        </div>
+        <div class="proj-card-name">Ray's Place Kent</div>
+        <div class="proj-card-type">Before / After</div>
       </div>
+      <div class="proj-card-arrow">↗</div>
+    </a>
 
-      <div class="preview-card">
-        <div class="browser">
-          <div class="browser-top">
-            <span class="browser-dot"></span>
-            <span class="browser-dot"></span>
-            <span class="browser-dot"></span>
-          </div>
-
-          <div class="transition-preview">
-            <div class="transition-image transition-before"></div>
-            <div class="transition-image transition-after"></div>
-            <div class="transition-divider"></div>
-
-            <div class="transition-label before">Before</div>
-            <div class="transition-label after">After</div>
-
-            <div class="transition-copy">
-              <small>Before → After</small>
-              <h2>Redesigns that feel like the business, just better.</h2>
-            </div>
-          </div>
-        </div>
+    <!-- Sweet Kneads -->
+    <a href="https://thesweetkneadsbakery.com" target="_blank" rel="noopener"
+       class="proj-card reveal d1" title="Visit The Sweet Kneads Bakery">
+      <div class="proj-card-placeholder">
+        <div class="placeholder-glyph">The Sweet<br/>Kneads</div>
       </div>
-    </div>
-  </header>
-
-  <!-- =========================================================
-       PROJECTS
-       Add new redesign projects here.
-       ========================================================= -->
-  <section id="work">
-    <div class="container">
-      <div class="section-head">
-        <div>
-          <div class="kicker">Featured Work</div>
-          <h2 class="section-title">Before and after website redesigns</h2>
+      <div class="proj-card-overlay">
+        <div class="proj-card-tags">
+          <span class="ptag">Bakery</span>
+          <span class="ptag">New Build</span>
+          <span class="ptag live">✦ Live</span>
         </div>
-
-        <p class="section-text">
-          Each project shows the original website compared with a cleaner redesigned concept
-          focused on layout, mobile usability, branding, and easier navigation.
-        </p>
+        <div class="proj-card-name">The Sweet Kneads Bakery</div>
+        <div class="proj-card-type">Live Website</div>
       </div>
+      <div class="proj-card-arrow">↗</div>
+    </a>
 
-      <!-- PROJECT 1: RAY'S PLACE -->
-      <article class="project-card">
-        <div class="project-top">
-          <div>
-            <h3>Ray’s Place Kent</h3>
-            <p>
-              A refreshed restaurant website concept focused on food, hours, takeout,
-              beer selection, history, and easier mobile browsing.
-            </p>
-          </div>
+  </div>
+</section>
 
-          <div class="tag-row">
-            <span class="tag">Restaurant</span>
-            <span class="tag">Mobile Friendly</span>
-            <span class="tag">Local Business</span>
-            <span class="tag">Before / After</span>
-          </div>
-        </div>
+<!-- CONTACT -->
+<section id="contact">
+  <div class="cta-text reveal">
+    <h2 class="cta-heading">Let's work<br /><em>together.</em></h2>
+  </div>
+  <div class="cta-actions reveal d1">
+    <a href="mailto:ShmagsSites@gmail.com" class="btn-main">Email Me ↗</a>
+    <a href="#work" class="btn-outline">View Projects</a>
+  </div>
+</section>
 
-        <div class="compare-grid">
-          <!-- BEFORE SCREENSHOT -->
-          <div class="compare-side">
-            <div class="compare-label before-label">Before</div>
+<!-- FOOTER -->
+<footer>
+  <div class="foot-logo">Maxwell Wilson</div>
+  <div class="foot-copy">© 2026 · Web Design Portfolio</div>
+  <div class="foot-links">
+    <a href="mailto:ShmagsSites@gmail.com">Email</a>
+    <a href="#work">Work</a>
+    <a href="#about">About</a>
+  </div>
+</footer>
 
-            <div class="screenshot-window">
-              <div class="screenshot-bar">
-                <span></span>
-                <span></span>
-                <span></span>
-              </div>
+<script>
+  const dot = document.getElementById('cur-dot');
+  const ring = document.getElementById('cur-ring');
+  document.addEventListener('mousemove', e => {
+    dot.style.left = ring.style.left = e.clientX + 'px';
+    dot.style.top  = ring.style.top  = e.clientY + 'px';
+  });
+  document.querySelectorAll('a,button,.stat').forEach(el => {
+    el.addEventListener('mouseenter', () => document.body.classList.add('hov'));
+    el.addEventListener('mouseleave', () => document.body.classList.remove('hov'));
+  });
 
-              <div class="screenshot-wrap">
-                <img
-                  class="screenshot"
-                  src="Images/Before-Rays.PNG"
-                  alt="Before screenshot of the original Ray's Place website"
-                />
-              </div>
-            </div>
-          </div>
-
-          <!-- AFTER SCREENSHOT -->
-          <div class="compare-side">
-            <div class="compare-label after-label">After</div>
-
-            <div class="screenshot-window">
-              <div class="screenshot-bar">
-                <span></span>
-                <span></span>
-                <span></span>
-              </div>
-
-              <div class="screenshot-wrap">
-                <img
-                  class="screenshot"
-                  src="Images/After-Rays.PNG"
-                  alt="After screenshot of the Ray's Place redesign concept"
-                />
-              </div>
-            </div>
-          </div>
-        </div>
-
-        <div class="project-links">
-          <a class="btn btn-primary" href="./rays-place-redesign.html" target="_blank">View Redesign</a>
-          <a class="btn btn-secondary" href="https://www.raysplacekent.com/" target="_blank">View Current Site</a>
-        </div>
-      </article>
-
-      <!--
-        COPY THIS BLOCK FOR YOUR NEXT PROJECT:
-
-        <article class="project-card">
-          <div class="project-top">
-            <div>
-              <h3>Business Name</h3>
-              <p>Short description of what you improved.</p>
-            </div>
-
-            <div class="tag-row">
-              <span class="tag">Industry</span>
-              <span class="tag">Mobile Friendly</span>
-              <span class="tag">Before / After</span>
-            </div>
-          </div>
-
-          <div class="compare-grid">
-            <div class="compare-side">
-              <div class="compare-label before-label">Before</div>
-              <div class="screenshot-window">
-                <div class="screenshot-bar"><span></span><span></span><span></span></div>
-                <div class="screenshot-wrap">
-                  <img class="screenshot" src="images/business-before.png" alt="Before screenshot" />
-                </div>
-              </div>
-            </div>
-
-            <div class="compare-side">
-              <div class="compare-label after-label">After</div>
-              <div class="screenshot-window">
-                <div class="screenshot-bar"><span></span><span></span><span></span></div>
-                <div class="screenshot-wrap">
-                  <img class="screenshot" src="images/business-after.png" alt="After screenshot" />
-                </div>
-              </div>
-            </div>
-          </div>
-
-          <div class="project-links">
-            <a class="btn btn-primary" href="./business-redesign.html" target="_blank">View Redesign</a>
-            <a class="btn btn-secondary" href="https://example.com" target="_blank">View Current Site</a>
-          </div>
-        </article>
-      -->
-
-      <!-- PLACEHOLDER PROJECT -->
-      <article class="project-card">
-        <div class="project-top">
-          <div>
-            <h3>Next Redesign Project Could Be You!</h3>
-            <p>
-              If you want a Design/Redesign Contact Me!
-            </p>
-          </div>
-
-          <div class="tag-row">
-            <span class="tag">Coming Soon</span>
-            <span class="tag">Before / After</span>
-          </div>
-        </div>
-      </article>
-    </div>
-  </section>
-
-  <!-- =========================================================
-       PROCESS
-       ========================================================= -->
-  <section id="process">
-    <div class="container">
-      <div class="kicker">Why Redesign?</div>
-      <h2 class="section-title">What I focus on improving</h2>
-
-      <div class="info-grid">
-        <div class="info-card">
-          <h3>Mobile Experience</h3>
-          <p>
-            Most people check businesses from their phone first, so I make layouts
-            easier to read, scroll, and use.
-          </p>
-        </div>
-
-        <div class="info-card">
-          <h3>Clear Information</h3>
-          <p>
-            I organize hours, menus, location, contact buttons, and services so customers
-            can find what they need quickly.
-          </p>
-        </div>
-
-        <div class="info-card">
-          <h3>Better First Impression</h3>
-          <p>
-            A clean website can make a business feel more current, trustworthy,
-            and easier to choose.
-          </p>
-        </div>
-      </div>
-    </div>
-  </section>
-
-  <!-- =========================================================
-       CONTACT
-       ========================================================= -->
-  <section id="contact">
-    <div class="container">
-      <div class="contact-panel">
-        <h2>Interested in a redesign?</h2>
-
-        <p>
-          I would be happy to show the concept, explain what changed, and talk about
-          how an updated website could help your business.
-        </p>
-
-        <div class="button-row" style="justify-content:center">
-          <a class="btn btn-primary" href="mailto:ShmagsSites@gmail.com">Email Me</a>
-          <a class="btn btn-secondary" href="#work">View Projects</a>
-        </div>
-      </div>
-    </div>
-  </section>
-
-  <!-- =========================================================
-       FOOTER
-       ========================================================= -->
-  <footer>
-    <div class="container footer-inner">
-      <p>© 2026 Maxwell Wilson</p>
-      <p>Website redesign portfolio</p>
-    </div>
-  </footer>
+  const obs = new IntersectionObserver(entries => {
+    entries.forEach(e => { if (e.isIntersecting) e.target.classList.add('in'); });
+  }, { threshold: 0.1 });
+  document.querySelectorAll('.reveal').forEach(el => obs.observe(el));
+</script>
 </body>
 </html>

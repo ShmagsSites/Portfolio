@@ -1,0 +1,882 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8"/>
+  <meta name="viewport" content="width=device-width, initial-scale=1.0"/>
+  <title>Meadowbrook Lawn &amp; Landscape — Portage County, OH</title>
+  <link href="https://fonts.googleapis.com/css2?family=Inter:wght@300;400;500;600;700;800&display=swap" rel="stylesheet"/>
+  <style>
+    *, *::before, *::after { box-sizing: border-box; margin: 0; padding: 0; }
+    :root {
+      --green:      #15803d;
+      --green-dark: #14532d;
+      --green-deep: #0c3b1f;
+      --green-mid:  #16a34a;
+      --green-pale: #dcfce7;
+      --green-light:#f0fdf4;
+      --amber:      #d97706;
+      --amber2:     #f59e0b;
+      --text:       #0c1a0f;
+      --muted:      #3d5c47;
+      --white:      #ffffff;
+      --off:        #f3faf5;
+      --border:     #bbf7d0;
+    }
+    html { scroll-behavior: smooth; }
+    body { font-family: 'Inter', sans-serif; color: var(--text); background: var(--white); }
+
+    /* SEASONAL BAR */
+    .seasonal-bar {
+      background: var(--green-dark); color: white;
+      text-align: center; padding: 0.55rem 2rem;
+      font-size: 0.79rem; font-weight: 600; letter-spacing: 0.03em;
+    }
+    .seasonal-bar strong { color: #86efac; }
+    .seasonal-bar a { color: #86efac; font-weight: 800; text-decoration: none; border-bottom: 1px solid rgba(134,239,172,0.4); }
+
+    /* NAV */
+    nav {
+      background: var(--green-deep);
+      padding: 0 4rem;
+      display: flex; align-items: center; justify-content: space-between;
+      min-height: 64px; position: sticky; top: 0; z-index: 200;
+      box-shadow: 0 2px 12px rgba(0,0,0,0.25);
+    }
+    .nav-brand { display: flex; align-items: center; gap: 0.85rem; text-decoration: none; }
+    .nav-brand-icon {
+      width: 40px; height: 40px; background: var(--green);
+      border-radius: 10px; display: flex; align-items: center;
+      justify-content: center; font-size: 1.2rem;
+      box-shadow: 0 0 0 2px rgba(134,239,172,0.2);
+    }
+    .nav-brand-name { color: white; font-weight: 800; font-size: 1rem; }
+    .nav-brand-sub { color: rgba(255,255,255,0.45); font-size: 0.63rem; letter-spacing: 0.08em; }
+    .nav-phone {
+      color: white; font-weight: 800; font-size: 1rem;
+      text-decoration: none; display: flex; align-items: center; gap: 0.5rem;
+      transition: color 0.2s;
+    }
+    .nav-phone:hover { color: #86efac; }
+    .nav-phone-label { font-size: 0.63rem; font-weight: 500; color: rgba(255,255,255,0.45); letter-spacing: 0.08em; text-transform: uppercase; }
+    .nav-links { display: flex; list-style: none; }
+    .nav-links a {
+      padding: 0 1.1rem; line-height: 64px; font-size: 0.82rem; font-weight: 500;
+      color: rgba(255,255,255,0.55); text-decoration: none; transition: color 0.2s;
+    }
+    .nav-links a:hover { color: white; }
+
+    /* HERO */
+    .hero {
+      background: var(--green-deep);
+      display: grid; grid-template-columns: 1fr 460px;
+      align-items: stretch; min-height: 540px;
+      position: relative; overflow: hidden;
+    }
+    .hero::before {
+      content: ''; position: absolute; inset: 0; pointer-events: none;
+      background-image:
+        radial-gradient(circle at 20% 80%, rgba(21,128,61,0.35) 0%, transparent 55%),
+        radial-gradient(circle at 70% 20%, rgba(22,163,74,0.15) 0%, transparent 40%);
+    }
+    /* subtle grass texture overlay */
+    .hero::after {
+      content: ''; position: absolute; inset: 0; pointer-events: none;
+      background-image: repeating-linear-gradient(
+        90deg,
+        transparent,
+        transparent 3px,
+        rgba(134,239,172,0.015) 3px,
+        rgba(134,239,172,0.015) 4px
+      );
+    }
+    .hero-left {
+      padding: 5rem 4rem; position: relative; z-index: 1;
+      display: flex; flex-direction: column; justify-content: center;
+    }
+    .hero-badge {
+      display: inline-flex; align-items: center; gap: 0.5rem;
+      background: rgba(134,239,172,0.1); border: 1px solid rgba(134,239,172,0.25);
+      color: #86efac; padding: 0.35rem 0.9rem;
+      font-size: 0.72rem; font-weight: 700; letter-spacing: 0.1em;
+      text-transform: uppercase; margin-bottom: 1.75rem; width: fit-content;
+      border-radius: 4px;
+    }
+    .badge-dot { width: 6px; height: 6px; background: #86efac; border-radius: 50%; box-shadow: 0 0 8px #86efac; }
+    .hero h1 {
+      font-size: clamp(2.4rem, 4.5vw, 3.8rem); font-weight: 800;
+      line-height: 1.1; color: white; margin-bottom: 1.25rem;
+    }
+    .hero h1 span { color: #86efac; }
+    .hero p { font-size: 1rem; color: rgba(255,255,255,0.6); line-height: 1.75; max-width: 440px; margin-bottom: 2.5rem; }
+    .hero-pills { display: flex; gap: 0.6rem; flex-wrap: wrap; }
+    .hero-pill {
+      background: rgba(255,255,255,0.06); border: 1px solid rgba(255,255,255,0.1);
+      padding: 0.35rem 0.85rem; font-size: 0.73rem; font-weight: 600;
+      color: rgba(255,255,255,0.7); display: flex; align-items: center; gap: 0.4rem;
+      border-radius: 4px;
+    }
+    .hero-pill span { color: #86efac; }
+
+    .hero-right {
+      background: white;
+      clip-path: polygon(6% 0%, 100% 0%, 100% 100%, 0% 100%);
+      padding: 3.5rem 3rem 3.5rem 4rem;
+      display: flex; flex-direction: column; justify-content: center;
+    }
+    .hero-form-title { font-size: 1.05rem; font-weight: 800; color: var(--text); margin-bottom: 0.3rem; }
+    .hero-form-sub { font-size: 0.78rem; color: var(--muted); margin-bottom: 1.5rem; }
+    .fg { margin-bottom: 0.9rem; }
+    .fg label { display: block; font-size: 0.7rem; font-weight: 700; color: var(--muted); text-transform: uppercase; letter-spacing: 0.08em; margin-bottom: 0.32rem; }
+    .fg input, .fg select, .fg textarea {
+      width: 100%; padding: 0.7rem 0.9rem;
+      border: 1.5px solid var(--border); font-family: 'Inter', sans-serif;
+      font-size: 0.87rem; color: var(--text); background: white; outline: none;
+      border-radius: 6px; transition: border-color 0.2s;
+    }
+    .fg input:focus, .fg select:focus, .fg textarea:focus { border-color: var(--green); }
+    .fg textarea { min-height: 70px; resize: vertical; }
+    .fg-row { display: grid; grid-template-columns: 1fr 1fr; gap: 0.7rem; }
+    .form-submit {
+      width: 100%; background: var(--green); color: white; border: none;
+      padding: 0.9rem; border-radius: 6px; font-family: 'Inter', sans-serif;
+      font-size: 0.88rem; font-weight: 700; cursor: pointer; transition: background 0.2s;
+    }
+    .form-submit:hover { background: var(--green-mid); }
+    .form-note { font-size: 0.68rem; color: var(--muted); text-align: center; margin-top: 0.6rem; }
+
+    /* TRUST STRIP */
+    .trust-strip {
+      background: var(--off); border-top: 1px solid var(--border); border-bottom: 1px solid var(--border);
+      padding: 1.4rem 4rem;
+      display: flex; justify-content: space-around; flex-wrap: wrap; gap: 1rem;
+    }
+    .ts-item { display: flex; align-items: center; gap: 0.65rem; }
+    .ts-icon { font-size: 1.3rem; }
+    .ts-text { font-size: 0.82rem; font-weight: 600; color: var(--text); }
+    .ts-text span { font-weight: 400; color: var(--muted); display: block; font-size: 0.72rem; }
+
+    /* LAWN HEALTH BANNER */
+    .lawn-score-bar {
+      background: var(--green); color: white;
+      padding: 1.8rem 4rem;
+      display: flex; align-items: center; justify-content: space-between; gap: 2rem; flex-wrap: wrap;
+    }
+    .lsb-left { }
+    .lsb-title { font-size: 1.05rem; font-weight: 800; margin-bottom: 0.2rem; }
+    .lsb-sub { font-size: 0.82rem; color: rgba(255,255,255,0.7); }
+    .lsb-steps {
+      display: flex; gap: 0.5rem; flex-wrap: wrap;
+    }
+    .lsb-step {
+      background: rgba(255,255,255,0.12); border: 1px solid rgba(255,255,255,0.2);
+      padding: 0.45rem 1rem; font-size: 0.75rem; font-weight: 600;
+      display: flex; align-items: center; gap: 0.4rem; border-radius: 4px;
+    }
+    .lsb-cta {
+      background: white; color: var(--green-dark); border: none;
+      padding: 0.8rem 1.8rem; border-radius: 6px; font-family: 'Inter', sans-serif;
+      font-size: 0.85rem; font-weight: 700; cursor: pointer; transition: background 0.2s;
+      white-space: nowrap;
+    }
+    .lsb-cta:hover { background: var(--green-pale); }
+
+    /* SERVICES */
+    #services { padding: 6rem 4rem; background: white; }
+    .container { max-width: 1100px; margin: 0 auto; }
+    .sec-label { font-size: 0.7rem; font-weight: 700; letter-spacing: 0.18em; text-transform: uppercase; color: var(--green); margin-bottom: 0.7rem; }
+    .sec-title { font-size: clamp(1.9rem, 3.5vw, 2.8rem); font-weight: 800; color: var(--text); line-height: 1.15; margin-bottom: 0.8rem; }
+    .sec-body { font-size: 0.93rem; color: var(--muted); max-width: 520px; line-height: 1.8; margin-bottom: 3rem; }
+    .svc-grid { display: grid; grid-template-columns: repeat(3,1fr); gap: 1rem; }
+    .svc-card {
+      border: 1.5px solid var(--border); border-radius: 12px; padding: 1.75rem;
+      transition: border-color 0.25s, transform 0.25s, box-shadow 0.25s;
+      position: relative;
+    }
+    .svc-card:hover { border-color: var(--green); transform: translateY(-3px); box-shadow: 0 8px 28px rgba(21,128,61,0.12); }
+    .svc-icon {
+      width: 48px; height: 48px; background: var(--green-pale);
+      border-radius: 10px; display: flex; align-items: center; justify-content: center;
+      font-size: 1.3rem; margin-bottom: 1.1rem;
+    }
+    .svc-card h3 { font-size: 0.97rem; font-weight: 700; color: var(--text); margin-bottom: 0.45rem; }
+    .svc-card p { font-size: 0.82rem; color: var(--muted); line-height: 1.65; }
+    .svc-popular {
+      position: absolute; top: -0px; right: 1.25rem;
+      background: var(--green); color: white;
+      font-size: 0.6rem; font-weight: 700; letter-spacing: 0.1em; text-transform: uppercase;
+      padding: 0.2rem 0.65rem; border-radius: 0 0 6px 6px;
+    }
+    .svc-seasonal { border-left: 3px solid var(--amber); }
+    .svc-seasonal .svc-icon { background: #fffbeb; }
+    .seasonal-label { font-size: 0.65rem; font-weight: 700; letter-spacing: 0.1em; text-transform: uppercase; color: var(--amber); margin-bottom: 0.5rem; }
+    .svc-detail-list { margin-top: 0.75rem; padding-top: 0.75rem; border-top: 1px solid var(--border); }
+    .svc-detail-list li { font-size: 0.76rem; color: var(--muted); line-height: 1.8; list-style: none; display: flex; align-items: flex-start; gap: 0.4rem; }
+    .svc-detail-list li::before { content: '✓'; color: var(--green); font-weight: 700; flex-shrink: 0; }
+
+    /* PROGRAMS */
+    #programs { padding: 6rem 4rem; background: var(--off); border-top: 1px solid var(--border); }
+    .prog-grid { display: grid; grid-template-columns: repeat(3,1fr); gap: 1.25rem; margin-top: 3rem; }
+    .prog-card {
+      background: white; border: 1.5px solid var(--border); border-radius: 14px; padding: 2rem;
+      transition: border-color 0.25s, transform 0.25s, box-shadow 0.25s;
+    }
+    .prog-card:hover { border-color: var(--green); transform: translateY(-3px); box-shadow: 0 8px 28px rgba(21,128,61,0.1); }
+    .prog-card.featured { border-color: var(--green); box-shadow: 0 0 0 3px rgba(21,128,61,0.1); }
+    .prog-badge { font-size: 0.65rem; font-weight: 700; letter-spacing: 0.1em; text-transform: uppercase; margin-bottom: 0.75rem; }
+    .prog-badge.gold { color: var(--amber); }
+    .prog-badge.green { color: var(--green); }
+    .prog-badge.featured-b { color: white; background: var(--green); padding: 0.2rem 0.65rem; border-radius: 4px; display: inline-block; }
+    .prog-name { font-size: 1.15rem; font-weight: 800; color: var(--text); margin-bottom: 0.3rem; }
+    .prog-tagline { font-size: 0.8rem; color: var(--muted); margin-bottom: 1.25rem; line-height: 1.5; }
+    .prog-includes { list-style: none; display: flex; flex-direction: column; gap: 0.55rem; }
+    .prog-includes li { font-size: 0.81rem; color: var(--muted); display: flex; align-items: flex-start; gap: 0.5rem; }
+    .prog-includes li::before { content: '✓'; color: var(--green); font-weight: 700; flex-shrink: 0; margin-top: 0.05rem; }
+
+    /* BOOK */
+    #book { padding: 6rem 4rem; background: var(--green-deep); }
+    .book-grid { display: grid; grid-template-columns: 1fr 1fr; gap: 6rem; align-items: start; }
+    .book-left { color: white; }
+    .book-left .sec-label { color: rgba(255,255,255,0.5); }
+    .book-left .sec-title { color: white; margin-bottom: 1.25rem; }
+    .book-left p { font-size: 0.92rem; color: rgba(255,255,255,0.6); line-height: 1.8; margin-bottom: 2rem; }
+    .book-info { display: flex; flex-direction: column; gap: 1rem; }
+    .book-info-item {
+      display: flex; align-items: flex-start; gap: 1rem;
+      padding: 1rem; background: rgba(255,255,255,0.05);
+      border: 1px solid rgba(255,255,255,0.08); border-radius: 8px;
+    }
+    .bi-icon { font-size: 1.3rem; flex-shrink: 0; }
+    .bi-text h4 { font-size: 0.88rem; font-weight: 700; color: white; margin-bottom: 0.2rem; }
+    .bi-text p { font-size: 0.78rem; color: rgba(255,255,255,0.5); line-height: 1.6; }
+    .book-form {
+      background: white; border-radius: 14px; padding: 2.25rem;
+      box-shadow: 0 20px 60px rgba(0,0,0,0.3);
+    }
+    .book-form h3 { font-size: 1.05rem; font-weight: 800; color: var(--text); margin-bottom: 1.4rem; }
+
+    /* REVIEWS */
+    #reviews { padding: 5.5rem 4rem; background: white; border-top: 1px solid var(--border); }
+    .review-grid { display: grid; grid-template-columns: repeat(3,1fr); gap: 1.25rem; margin-top: 2.5rem; }
+    .review-card {
+      border: 1.5px solid var(--border); border-radius: 12px; padding: 1.75rem;
+      background: var(--off);
+    }
+    .review-stars { color: #f59e0b; font-size: 0.85rem; margin-bottom: 0.75rem; letter-spacing: 0.05em; }
+    .review-text { font-size: 0.86rem; color: var(--text); line-height: 1.7; margin-bottom: 1.1rem; font-style: italic; }
+    .review-author { display: flex; align-items: center; gap: 0.65rem; }
+    .review-avatar {
+      width: 36px; height: 36px; border-radius: 50%; background: var(--green-pale);
+      display: flex; align-items: center; justify-content: center;
+      font-size: 0.75rem; font-weight: 700; color: var(--green-dark);
+    }
+    .review-name { font-size: 0.82rem; font-weight: 700; color: var(--text); }
+    .review-meta { font-size: 0.7rem; color: var(--muted); }
+
+    /* WHY */
+    #why { padding: 5rem 4rem; background: var(--off); border-top: 1px solid var(--border); }
+    .why-row { display: flex; justify-content: space-between; align-items: center; flex-wrap: wrap; gap: 2rem; }
+    .why-left { max-width: 440px; }
+    .why-left .sec-title { margin-bottom: 1rem; }
+    .why-left p { font-size: 0.9rem; color: var(--muted); line-height: 1.8; margin-bottom: 1rem; }
+    .why-certs { display: flex; flex-direction: column; gap: 0.6rem; margin-top: 1.25rem; }
+    .why-cert {
+      display: flex; align-items: center; gap: 0.6rem;
+      font-size: 0.78rem; color: var(--muted);
+    }
+    .cert-dot { width: 8px; height: 8px; background: var(--green); border-radius: 50%; flex-shrink: 0; }
+    .why-stats { display: flex; gap: 1px; background: var(--border); flex-wrap: wrap; border-radius: 10px; overflow: hidden; }
+    .why-stat { background: white; padding: 1.75rem 2.25rem; text-align: center; }
+    .why-stat-n { font-size: 2.4rem; font-weight: 800; color: var(--green); line-height: 1; }
+    .why-stat-l { font-size: 0.7rem; font-weight: 600; color: var(--muted); text-transform: uppercase; letter-spacing: 0.08em; margin-top: 0.3rem; }
+
+    /* GUARANTEE BAND */
+    .guarantee-band {
+      background: var(--green); color: white;
+      padding: 2.5rem 4rem;
+      display: flex; align-items: center; justify-content: space-between; gap: 2rem; flex-wrap: wrap;
+    }
+    .gb-left { max-width: 600px; }
+    .gb-title { font-size: 1.3rem; font-weight: 800; margin-bottom: 0.4rem; }
+    .gb-sub { font-size: 0.88rem; color: rgba(255,255,255,0.75); line-height: 1.6; }
+    .gb-seal {
+      background: rgba(255,255,255,0.12); border: 2px solid rgba(255,255,255,0.25);
+      border-radius: 50%; width: 110px; height: 110px; flex-shrink: 0;
+      display: flex; flex-direction: column; align-items: center; justify-content: center;
+      text-align: center; font-weight: 700;
+    }
+    .gb-seal-num { font-size: 1.6rem; line-height: 1; }
+    .gb-seal-txt { font-size: 0.58rem; letter-spacing: 0.08em; text-transform: uppercase; color: rgba(255,255,255,0.8); margin-top: 0.2rem; }
+
+    /* FOOTER */
+    footer {
+      background: var(--text); color: white;
+      padding: 3rem 4rem;
+      display: flex; justify-content: space-between; flex-wrap: wrap; gap: 2rem; align-items: center;
+    }
+    .foot-brand { font-weight: 800; font-size: 1rem; color: white; }
+    .foot-brand span { color: #86efac; }
+    .foot-tagline { font-size: 0.72rem; color: rgba(255,255,255,0.4); margin-top: 0.2rem; }
+    .foot-contact { font-size: 0.82rem; color: rgba(255,255,255,0.55); line-height: 2; text-align: right; }
+    .foot-contact a { color: #86efac; text-decoration: none; font-weight: 700; }
+    .foot-links { display: flex; gap: 1.5rem; margin-top: 0.75rem; }
+    .foot-links a { font-size: 0.78rem; color: rgba(255,255,255,0.4); text-decoration: none; transition: color 0.2s; }
+    .foot-links a:hover { color: #86efac; }
+
+    @media (max-width: 1000px) {
+      nav { padding: 0 1.5rem; }
+      .nav-links { display: none; }
+      .hero { grid-template-columns: 1fr; }
+      .hero-right { clip-path: none; padding: 2.5rem 1.5rem; }
+      .hero-left { padding: 4rem 1.5rem 2rem; }
+      #services, #programs, #book, #reviews, #why { padding: 4rem 1.5rem; }
+      .svc-grid, .prog-grid, .review-grid { grid-template-columns: 1fr 1fr; }
+      .book-grid { grid-template-columns: 1fr; gap: 3rem; }
+      .trust-strip, .lawn-score-bar, .guarantee-band { padding: 1.5rem; }
+      footer { flex-direction: column; text-align: center; padding: 2.5rem 1.5rem; }
+      .foot-contact { text-align: center; }
+    }
+    @media (max-width: 580px) {
+      .svc-grid, .prog-grid, .review-grid { grid-template-columns: 1fr; }
+      .fg-row { grid-template-columns: 1fr; }
+      .why-row { flex-direction: column; }
+      .why-stats { flex-direction: column; }
+    }
+  </style>
+</head>
+<body>
+
+<div class="seasonal-bar">
+  🌿 <strong>Summer Lawn Care Season is here.</strong> Lock in your mowing schedule — spots filling fast. <a href="#book">Book Online →</a>
+</div>
+
+<nav>
+  <a href="#" class="nav-brand">
+    <div class="nav-brand-icon">🌿</div>
+    <div>
+      <div class="nav-brand-name">Meadowbrook Lawn &amp; Landscape</div>
+      <div class="nav-brand-sub">Licensed · Insured · Portage County, OH</div>
+    </div>
+  </a>
+  <ul class="nav-links">
+    <li><a href="#services">Services</a></li>
+    <li><a href="#programs">Programs</a></li>
+    <li><a href="#reviews">Reviews</a></li>
+    <li><a href="#book">Get a Quote</a></li>
+    <li><a href="#why">About</a></li>
+  </ul>
+  <div style="text-align:right;">
+    <div class="nav-phone-label">Call or Text Anytime</div>
+    <a href="tel:3305551840" class="nav-phone">📞 (330) 555-1840</a>
+  </div>
+</nav>
+
+<section class="hero">
+  <div class="hero-left">
+    <div class="hero-badge"><span class="badge-dot"></span> Locally Owned Since 2009</div>
+    <h1>The Lawn You've<br/>Always Wanted.<br/><span>Guaranteed.</span></h1>
+    <p>Professional lawn care and landscaping for Portage County homeowners. We show up on schedule, treat your yard like our own, and back every service with a 100% satisfaction guarantee.</p>
+    <div class="hero-pills">
+      <div class="hero-pill"><span>✓</span> Ohio Pesticide License #PAC-08847</div>
+      <div class="hero-pill"><span>✓</span> Fully Insured &amp; Background-Checked</div>
+      <div class="hero-pill"><span>✓</span> Free On-Site Estimate</div>
+      <div class="hero-pill"><span>✓</span> No Long-Term Contracts</div>
+    </div>
+  </div>
+  <div class="hero-right">
+    <div class="hero-form-title">Get Your Free Lawn Estimate</div>
+    <div class="hero-form-sub">We respond within 2 hours — usually faster</div>
+    <div class="fg-row">
+      <div class="fg">
+        <label>Your Name</label>
+        <input type="text" placeholder="First &amp; last"/>
+      </div>
+      <div class="fg">
+        <label>Phone Number</label>
+        <input type="tel" placeholder="(330) 555-0000"/>
+      </div>
+    </div>
+    <div class="fg">
+      <label>Service Address</label>
+      <input type="text" placeholder="Street address, city, OH"/>
+    </div>
+    <div class="fg">
+      <label>Property Size (Estimate)</label>
+      <select>
+        <option value="">How large is your lawn?</option>
+        <option>Under ¼ acre (small)</option>
+        <option>¼ – ½ acre (medium)</option>
+        <option>½ – 1 acre (large)</option>
+        <option>Over 1 acre</option>
+        <option>Not Sure — Please Measure It</option>
+      </select>
+    </div>
+    <div class="fg">
+      <label>What Do You Need?</label>
+      <select>
+        <option value="">Select a service...</option>
+        <option>Weekly / Bi-Weekly Mowing</option>
+        <option>Fertilization &amp; Weed Control Program</option>
+        <option>Aeration &amp; Overseeding</option>
+        <option>Spring or Fall Cleanup</option>
+        <option>Mulching &amp; Bed Maintenance</option>
+        <option>Shrub &amp; Hedge Trimming</option>
+        <option>Full-Season Lawn Program</option>
+        <option>Other / Not Sure</option>
+      </select>
+    </div>
+    <div class="fg">
+      <label>Anything Else? (optional)</label>
+      <textarea placeholder="Tell us about your lawn — current condition, problem spots, goals, or specific concerns..."></textarea>
+    </div>
+    <button class="form-submit">Get My Free Estimate →</button>
+    <p class="form-note">🔒 No spam. No sales pressure. Just an honest quote.</p>
+  </div>
+</section>
+
+<div class="trust-strip">
+  <div class="ts-item"><span class="ts-icon">🪪</span><div class="ts-text">Ohio Licensed<span>Pesticide Applicator #PAC-08847</span></div></div>
+  <div class="ts-item"><span class="ts-icon">🛡️</span><div class="ts-text">Fully Insured<span>$2M general liability + workers comp</span></div></div>
+  <div class="ts-item"><span class="ts-icon">🌱</span><div class="ts-text">Eco-Conscious Options<span>Low-impact &amp; organic treatments available</span></div></div>
+  <div class="ts-item"><span class="ts-icon">📱</span><div class="ts-text">Digital Visit Reports<span>Photo confirmation after every service</span></div></div>
+  <div class="ts-item"><span class="ts-icon">⭐</span><div class="ts-text">4.9 Stars · 340+ Reviews<span>Google · Angi · Nextdoor</span></div></div>
+</div>
+
+<div class="lawn-score-bar">
+  <div class="lsb-left">
+    <div class="lsb-title">Free 25-Point Lawn Health Assessment</div>
+    <div class="lsb-sub">Before we touch your yard, we walk it and score it. You get a written report — soil, thatch, drainage, weed pressure, turf density — so you know exactly what your lawn needs and why.</div>
+  </div>
+  <div class="lsb-steps">
+    <div class="lsb-step">📋 We walk &amp; assess</div>
+    <div class="lsb-step">📊 You get a written score</div>
+    <div class="lsb-step">💬 We recommend a plan</div>
+    <div class="lsb-step">✅ No pressure — ever</div>
+  </div>
+  <button class="lsb-cta">Book Free Assessment →</button>
+</div>
+
+<section id="services">
+  <div class="container">
+    <p class="sec-label">What We Do</p>
+    <h2 class="sec-title">Complete Lawn Care,<br/>Done Right.</h2>
+    <p class="sec-body">From weekly mowing to full-season fertilization programs, our licensed crews handle every inch of your property — with the equipment, training, and accountability that DIY and cut-rate outfits simply can't match.</p>
+    <div class="svc-grid">
+
+      <div class="svc-card">
+        <div class="svc-popular">Most Popular</div>
+        <div class="svc-icon">🌿</div>
+        <h3>Lawn Mowing &amp; Edging</h3>
+        <p>Weekly or bi-weekly cuts, clean line edging along all borders, and blow-down of all hard surfaces after every visit. We mow at the right height for your grass type — not just the fastest pass.</p>
+        <ul class="svc-detail-list">
+          <li>Height calibrated per grass species</li>
+          <li>Sharp commercial blades — no tearing</li>
+          <li>Clippings dispersed or bagged on request</li>
+          <li>Consistent crew assigned to your route</li>
+        </ul>
+      </div>
+
+      <div class="svc-card">
+        <div class="svc-icon">🧪</div>
+        <h3>Fertilization &amp; Weed Control</h3>
+        <p>A 5-round annual program calibrated to Northeast Ohio's soil and climate. We pull a soil sample before round one so every application targets your lawn's actual deficiencies — not a generic formula.</p>
+        <ul class="svc-detail-list">
+          <li>Soil test included, every season</li>
+          <li>Pre- and post-emergent weed control</li>
+          <li>Slow-release nitrogen blends</li>
+          <li>Organic upgrade available</li>
+        </ul>
+      </div>
+
+      <div class="svc-card">
+        <div class="svc-icon">💨</div>
+        <h3>Core Aeration &amp; Overseeding</h3>
+        <p>Compacted soil is the #1 reason Ohio lawns thin out over time. Our core aerators pull actual plugs from the soil — not spike rolls — allowing water, air, and seed direct root contact.</p>
+        <ul class="svc-detail-list">
+          <li>Deep-tine core aeration (not spike)</li>
+          <li>Premium tall fescue / bluegrass seed blends</li>
+          <li>Best done late August – October in OH</li>
+          <li>Follow-up moisture check included</li>
+        </ul>
+      </div>
+
+      <div class="svc-card svc-seasonal">
+        <div class="seasonal-label">⚡ Seasonal Priority</div>
+        <div class="svc-icon">🍂</div>
+        <h3>Spring &amp; Fall Cleanup</h3>
+        <p>Leaf removal, debris hauling, bed edging, and turf cleanup. We don't just blow everything to the curb — we haul it off. Spring visits also include a post-winter lawn damage assessment at no extra charge.</p>
+        <ul class="svc-detail-list">
+          <li>Full leaf removal &amp; haul-off</li>
+          <li>Bed clearing &amp; re-edge</li>
+          <li>Post-winter turf damage report</li>
+        </ul>
+      </div>
+
+      <div class="svc-card svc-seasonal">
+        <div class="seasonal-label">🌸 Spring Service</div>
+        <div class="svc-icon">🪵</div>
+        <h3>Mulching &amp; Bed Maintenance</h3>
+        <p>Fresh mulch installation, bed weeding, edging definition, and annual renewal — the fastest way to make your whole property look professionally maintained between lawn visits.</p>
+        <ul class="svc-detail-list">
+          <li>Double or triple-shred hardwood mulch</li>
+          <li>Pre-emergent weed barrier install</li>
+          <li>Crisp edging along all bed borders</li>
+        </ul>
+      </div>
+
+      <div class="svc-card">
+        <div class="svc-icon">✂️</div>
+        <h3>Shrub &amp; Hedge Trimming</h3>
+        <p>Precision trimming of ornamentals, hedges, and foundation shrubs. We use hand shears for delicate specimens and don't "top" plants — proper form preserves plant health and keeps the look clean through the season.</p>
+        <ul class="svc-detail-list">
+          <li>Timed to bloom cycles, not calendars</li>
+          <li>All debris removed same day</li>
+          <li>Shrub health check at every visit</li>
+        </ul>
+      </div>
+
+    </div>
+  </div>
+</section>
+
+<section id="programs">
+  <div class="container">
+    <p class="sec-label">Lawn Programs</p>
+    <h2 class="sec-title">One Plan. All Season.<br/>Zero Hassle.</h2>
+    <p class="sec-body">Our managed programs handle your lawn's entire calendar — scheduling, reminders, product applications, and weather adjustments — so you don't have to think about it.</p>
+    <div class="prog-grid">
+
+      <div class="prog-card">
+        <div class="prog-badge green">Essential</div>
+        <div class="prog-name">Green &amp; Clean</div>
+        <div class="prog-tagline">Our most popular entry program — keeps your lawn cut, edged, and looking great all season.</div>
+        <ul class="prog-includes">
+          <li>Weekly or bi-weekly mowing</li>
+          <li>Line trimming &amp; edging every visit</li>
+          <li>Hard-surface blowdown every visit</li>
+          <li>One spring cleanup included</li>
+          <li>One fall cleanup included</li>
+          <li>Text/photo confirmation after each service</li>
+          <li>No contracts — pause or cancel anytime</li>
+        </ul>
+      </div>
+
+      <div class="prog-card featured">
+        <div class="prog-badge featured-b">Most Popular</div>
+        <div style="margin-top:0.5rem;" class="prog-name">Full Season Pro</div>
+        <div class="prog-tagline">Everything in Green &amp; Clean, plus a complete 5-round fertilization and weed control program backed by our results guarantee.</div>
+        <ul class="prog-includes">
+          <li>All Green &amp; Clean services</li>
+          <li>Soil test before first application</li>
+          <li>5-round fertilization program</li>
+          <li>Pre &amp; post-emergent weed control</li>
+          <li>Grub prevention treatment (June)</li>
+          <li>Crabgrass control (spring)</li>
+          <li>Late-fall winterizer application</li>
+          <li>Priority scheduling — your slot is guaranteed</li>
+          <li>Free re-service within 5 days if not satisfied</li>
+        </ul>
+      </div>
+
+      <div class="prog-card">
+        <div class="prog-badge gold">Premium</div>
+        <div class="prog-name">Total Lawn Care</div>
+        <div class="prog-tagline">Our most comprehensive offering — everything your lawn could ever need, handled by one team, on one invoice.</div>
+        <ul class="prog-includes">
+          <li>All Full Season Pro services</li>
+          <li>Core aeration &amp; overseeding (fall)</li>
+          <li>Shrub trimming (2x per season)</li>
+          <li>Mulch refresh (spring install)</li>
+          <li>Bed weeding &amp; edging (monthly)</li>
+          <li>Irrigation system check (spring)</li>
+          <li>Dedicated crew — same faces, every time</li>
+          <li>Annual lawn health progress report</li>
+        </ul>
+      </div>
+
+    </div>
+  </div>
+</section>
+
+<section id="book">
+  <div class="container">
+    <div class="book-grid">
+      <div class="book-left">
+        <p class="sec-label">Scheduling</p>
+        <h2 class="sec-title">Book Your<br/>Free Estimate</h2>
+        <p>We come to you, walk the property, and give you a written quote — no vague ballpark, no pressure. Most estimates are delivered within 24 hours of our visit.</p>
+        <div class="book-info">
+          <div class="book-info-item">
+            <div class="bi-icon">📋</div>
+            <div class="bi-text">
+              <h4>Free 25-Point Property Walk</h4>
+              <p>We assess soil, thatch, drainage, grade, weed pressure, and turf density before quoting. You'll know more about your lawn than you did before we arrived.</p>
+            </div>
+          </div>
+          <div class="book-info-item">
+            <div class="bi-icon">📱</div>
+            <div class="bi-text">
+              <h4>Photo Reports After Every Service</h4>
+              <p>You'll receive a text confirmation with geo-stamped photos when your crew leaves. Always know what was done, when, and by whom.</p>
+            </div>
+          </div>
+          <div class="book-info-item">
+            <div class="bi-icon">🗓️</div>
+            <div class="bi-text">
+              <h4>Consistent Crew, Consistent Day</h4>
+              <p>We assign you to a permanent route crew and a regular service day. No revolving door of strangers showing up at random times.</p>
+            </div>
+          </div>
+          <div class="book-info-item">
+            <div class="bi-icon">🔐</div>
+            <div class="bi-text">
+              <h4>5-Day Re-Service Guarantee</h4>
+              <p>Not happy with any service? Tell us within 5 days and we return to make it right — completely free. No questions, no debate.</p>
+            </div>
+          </div>
+          <div class="book-info-item">
+            <div class="bi-icon">🧾</div>
+            <div class="bi-text">
+              <h4>No Contracts Required</h4>
+              <p>Every program runs month-to-month. Pause for vacation, skip a round, or cancel anytime — we earn your business every single visit.</p>
+            </div>
+          </div>
+        </div>
+      </div>
+      <div class="book-form">
+        <h3>Schedule a Free On-Site Estimate</h3>
+        <div class="fg-row">
+          <div class="fg">
+            <label>First Name</label>
+            <input type="text" placeholder="First"/>
+          </div>
+          <div class="fg">
+            <label>Last Name</label>
+            <input type="text" placeholder="Last"/>
+          </div>
+        </div>
+        <div class="fg">
+          <label>Phone Number</label>
+          <input type="tel" placeholder="(330) 555-0000"/>
+        </div>
+        <div class="fg">
+          <label>Email Address</label>
+          <input type="email" placeholder="you@email.com"/>
+        </div>
+        <div class="fg">
+          <label>Property Address</label>
+          <input type="text" placeholder="Street address, city, OH"/>
+        </div>
+        <div class="fg">
+          <label>Property Type</label>
+          <select>
+            <option>Single-Family Home</option>
+            <option>Rental / Investment Property</option>
+            <option>HOA Community / Condo</option>
+            <option>Commercial Property</option>
+          </select>
+        </div>
+        <div class="fg">
+          <label>Primary Interest</label>
+          <select>
+            <option value="">What brings you here?</option>
+            <option>Weekly Mowing Service</option>
+            <option>Fertilization &amp; Weed Control</option>
+            <option>Aeration &amp; Overseeding</option>
+            <option>Spring / Fall Cleanup</option>
+            <option>Mulching &amp; Beds</option>
+            <option>Full Season Program</option>
+            <option>Multiple Services / Not Sure Yet</option>
+          </select>
+        </div>
+        <div class="fg-row">
+          <div class="fg">
+            <label>Preferred Visit Date</label>
+            <input type="date"/>
+          </div>
+          <div class="fg">
+            <label>Best Time to Reach You</label>
+            <select>
+              <option>Morning (8am–12pm)</option>
+              <option>Afternoon (12pm–5pm)</option>
+              <option>Evening (5pm–8pm)</option>
+              <option>Any time</option>
+            </select>
+          </div>
+        </div>
+        <div class="fg">
+          <label>Current Lawn Condition</label>
+          <select>
+            <option value="">How would you describe your lawn?</option>
+            <option>Great — just want to maintain it</option>
+            <option>Pretty good — minor issues to address</option>
+            <option>Patchy / thin in spots</option>
+            <option>Lots of weeds / bare areas</option>
+            <option>Neglected — needs real work</option>
+          </select>
+        </div>
+        <div class="fg">
+          <label>Additional Notes (optional)</label>
+          <textarea placeholder="Anything that would help us prepare — pets, gate codes, problem areas, prior treatments, neighboring trees..."></textarea>
+        </div>
+        <button class="form-submit">Request My Free Estimate →</button>
+        <p class="form-note">🔒 No commitment. No spam. Just a straight answer and an honest price.</p>
+      </div>
+    </div>
+  </div>
+</section>
+
+<section id="reviews">
+  <div class="container">
+    <p class="sec-label">What Customers Say</p>
+    <h2 class="sec-title">Trusted by 500+<br/>Portage County Homeowners</h2>
+    <div class="review-grid">
+
+      <div class="review-card">
+        <div class="review-stars">★★★★★</div>
+        <p class="review-text">"They walked the whole yard before quoting me, pointed out a drainage issue I'd never noticed, and gave me options at different price points. That kind of transparency is rare. Hired them on the spot."</p>
+        <div class="review-author">
+          <div class="review-avatar">DM</div>
+          <div>
+            <div class="review-name">Derek M.</div>
+            <div class="review-meta">Ravenna, OH · Full Season Pro · 2 years</div>
+          </div>
+        </div>
+      </div>
+
+      <div class="review-card">
+        <div class="review-stars">★★★★★</div>
+        <p class="review-text">"Our lawn had never looked this good — thick, green, no crabgrass. The photo reports after every service are a genius touch. I always know someone came, and I can see exactly what they did."</p>
+        <div class="review-author">
+          <div class="review-avatar">SL</div>
+          <div>
+            <div class="review-name">Sandra L.</div>
+            <div class="review-meta">Kent, OH · Total Lawn Care · 3 years</div>
+          </div>
+        </div>
+      </div>
+
+      <div class="review-card">
+        <div class="review-stars">★★★★★</div>
+        <p class="review-text">"First year in, the aeration and overseeding completely transformed the bare patches on my back slope. I've tried to do it myself for years. These guys did it once and I haven't had bare spots since."</p>
+        <div class="review-author">
+          <div class="review-avatar">TR</div>
+          <div>
+            <div class="review-name">Tom R.</div>
+            <div class="review-meta">Streetsboro, OH · Aeration Program · 3 years</div>
+          </div>
+        </div>
+      </div>
+
+      <div class="review-card">
+        <div class="review-stars">★★★★★</div>
+        <p class="review-text">"I was skeptical about the soil test thing but I'm glad I listened. They found my yard was severely phosphorus-deficient, adjusted the fertilizer plan, and by July it was the greenest lawn on the street."</p>
+        <div class="review-author">
+          <div class="review-avatar">KJ</div>
+          <div>
+            <div class="review-name">Karen J.</div>
+            <div class="review-meta">Aurora, OH · Fertilization Program · 2 years</div>
+          </div>
+        </div>
+      </div>
+
+      <div class="review-card">
+        <div class="review-stars">★★★★★</div>
+        <p class="review-text">"Same crew every week, which I really appreciated. They learned our yard quirks, were always careful around my wife's flower beds, and never once left without cleaning the sidewalk. Professional every time."</p>
+        <div class="review-author">
+          <div class="review-avatar">BW</div>
+          <div>
+            <div class="review-name">Brian W.</div>
+            <div class="review-meta">Mantua, OH · Green &amp; Clean · 4 years</div>
+          </div>
+        </div>
+      </div>
+
+      <div class="review-card">
+        <div class="review-stars">★★★★★</div>
+        <p class="review-text">"Called them for a spring cleanup and they showed up the next morning, did an immaculate job, and left a lawn health report in my mailbox. I've been on the Full Season Pro plan ever since. Worth every penny."</p>
+        <div class="review-author">
+          <div class="review-avatar">MH</div>
+          <div>
+            <div class="review-name">Michelle H.</div>
+            <div class="review-meta">Rootstown, OH · Full Season Pro · 18 months</div>
+          </div>
+        </div>
+      </div>
+
+    </div>
+  </div>
+</section>
+
+<div class="guarantee-band">
+  <div class="gb-left">
+    <div class="gb-title">The Meadowbrook Satisfaction Guarantee</div>
+    <div class="gb-sub">If any service doesn't meet your expectations, tell us within 5 days and we'll return to make it right — completely free of charge, no questions asked. We've never had to use this more than once with any customer, and we intend to keep it that way.</div>
+  </div>
+  <div class="gb-seal">
+    <div class="gb-seal-num">100%</div>
+    <div class="gb-seal-txt">Satisfaction<br/>Guaranteed</div>
+  </div>
+</div>
+
+<section id="why">
+  <div class="container">
+    <div class="why-row">
+      <div class="why-left">
+        <p class="sec-label">About Meadowbrook</p>
+        <h2 class="sec-title">Portage County's<br/>Lawn Care Experts</h2>
+        <p>Meadowbrook Lawn &amp; Landscape has been caring for yards across Portage County since 2009. We're a family-owned company — not a franchise, not a call center. Every crew member is a direct employee, background-checked, and trained on our specific standards before they service a single property.</p>
+        <p>Our crews use commercial-grade Toro and Husqvarna equipment, maintained weekly. GPS-tracked service vehicles mean you always know when we're on the way. And every application is made by an Ohio-licensed pesticide applicator — no cutting corners, ever.</p>
+        <div class="why-certs">
+          <div class="why-cert"><span class="cert-dot"></span>Ohio Pesticide Applicator License #PAC-08847</div>
+          <div class="why-cert"><span class="cert-dot"></span>NALP Member — National Association of Landscape Professionals</div>
+          <div class="why-cert"><span class="cert-dot"></span>Better Business Bureau — A+ Rated</div>
+          <div class="why-cert"><span class="cert-dot"></span>$2M General Liability · $500K Commercial Auto · Workers Comp</div>
+          <div class="why-cert"><span class="cert-dot"></span>All crew members background-checked annually</div>
+        </div>
+      </div>
+      <div>
+        <div class="why-stats">
+          <div class="why-stat">
+            <div class="why-stat-n">16+</div>
+            <div class="why-stat-l">Years Serving<br/>Portage County</div>
+          </div>
+          <div class="why-stat">
+            <div class="why-stat-n">500+</div>
+            <div class="why-stat-l">Active Lawn<br/>Care Clients</div>
+          </div>
+          <div class="why-stat">
+            <div class="why-stat-n">4.9★</div>
+            <div class="why-stat-l">Average Rating<br/>340+ Reviews</div>
+          </div>
+          <div class="why-stat">
+            <div class="why-stat-n">98%</div>
+            <div class="why-stat-l">Client Retention<br/>Year over Year</div>
+          </div>
+        </div>
+      </div>
+    </div>
+  </div>
+</section>
+
+<footer>
+  <div>
+    <div class="foot-brand">Meadowbrook <span>Lawn &amp; Landscape</span></div>
+    <div class="foot-tagline">Portage County's trusted lawn care team since 2009</div>
+    <div class="foot-links">
+      <a href="#services">Services</a>
+      <a href="#programs">Programs</a>
+      <a href="#reviews">Reviews</a>
+      <a href="#book">Get a Quote</a>
+      <a href="#why">About</a>
+    </div>
+  </div>
+  <div class="foot-contact">
+    Serving Kent · Ravenna · Aurora · Streetsboro · Rootstown &amp; Surrounding Areas<br/>
+    <a href="tel:3305551840">(330) 555-1840</a> — Call or Text<br/>
+    hello@meadowbrooklawn.com<br/>
+    Mon–Sat 7am–7pm · Estimates available evenings
+  </div>
+</footer>
+
+</body>
+</html>

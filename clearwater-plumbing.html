@@ -1,0 +1,530 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8"/>
+  <meta name="viewport" content="width=device-width, initial-scale=1.0"/>
+  <title>Clearwater Plumbing — Kent, OH</title>
+  <link href="https://fonts.googleapis.com/css2?family=Inter:wght@300;400;500;600;700;800&display=swap" rel="stylesheet"/>
+  <style>
+    *, *::before, *::after { box-sizing: border-box; margin: 0; padding: 0; }
+    :root {
+      --blue:      #0369a1;
+      --blue-dark: #023e6e;
+      --blue-pale: #e0f2fe;
+      --blue-mid:  #0284c7;
+      --orange:    #ea580c;
+      --orange2:   #f97316;
+      --text:      #0c1a2e;
+      --muted:     #4a6280;
+      --white:     #ffffff;
+      --off:       #f4f9fd;
+      --border:    #d0e4f0;
+    }
+    html { scroll-behavior: smooth; }
+    body { font-family: 'Inter', sans-serif; color: var(--text); background: var(--white); }
+
+    /* EMERGENCY BAR */
+    .emergency-bar {
+      background: var(--orange); color: white;
+      text-align: center; padding: 0.55rem 2rem;
+      font-size: 0.8rem; font-weight: 600; letter-spacing: 0.03em;
+    }
+    .emergency-bar a { color: white; font-weight: 800; text-decoration: none; border-bottom: 1px solid rgba(255,255,255,0.4); }
+
+    /* NAV */
+    nav {
+      background: var(--blue-dark);
+      padding: 0 4rem;
+      display: flex; align-items: center; justify-content: space-between;
+      min-height: 64px; position: sticky; top: 0; z-index: 200;
+    }
+    .nav-brand { display: flex; align-items: center; gap: 0.85rem; text-decoration: none; }
+    .nav-brand-icon {
+      width: 38px; height: 38px; background: var(--blue);
+      border-radius: 50%; display: flex; align-items: center;
+      justify-content: center; font-size: 1.1rem;
+    }
+    .nav-brand-name { color: white; font-weight: 800; font-size: 1rem; }
+    .nav-brand-sub { color: rgba(255,255,255,0.5); font-size: 0.65rem; letter-spacing: 0.08em; }
+    .nav-phone {
+      color: white; font-weight: 800; font-size: 1rem;
+      text-decoration: none; display: flex; align-items: center; gap: 0.5rem;
+      transition: color 0.2s;
+    }
+    .nav-phone:hover { color: var(--orange2); }
+    .nav-phone-label { font-size: 0.65rem; font-weight: 500; color: rgba(255,255,255,0.5); letter-spacing: 0.08em; text-transform: uppercase; }
+    .nav-links { display: flex; list-style: none; }
+    .nav-links a {
+      padding: 0 1.1rem; line-height: 64px; font-size: 0.82rem; font-weight: 500;
+      color: rgba(255,255,255,0.6); text-decoration: none; transition: color 0.2s;
+    }
+    .nav-links a:hover { color: white; }
+
+    /* HERO */
+    .hero {
+      background: var(--blue-dark);
+      display: grid; grid-template-columns: 1fr 460px;
+      align-items: stretch; min-height: 520px;
+      position: relative; overflow: hidden;
+    }
+    .hero::before {
+      content: ''; position: absolute; inset: 0; pointer-events: none;
+      background-image: radial-gradient(circle at 30% 60%, rgba(3,105,161,0.3) 0%, transparent 55%);
+    }
+    .hero-left {
+      padding: 5rem 4rem; position: relative; z-index: 1;
+      display: flex; flex-direction: column; justify-content: center;
+    }
+    .hero-badge {
+      display: inline-flex; align-items: center; gap: 0.5rem;
+      background: rgba(234,88,12,0.15); border: 1px solid rgba(234,88,12,0.35);
+      color: var(--orange2); padding: 0.35rem 0.9rem;
+      font-size: 0.72rem; font-weight: 700; letter-spacing: 0.1em;
+      text-transform: uppercase; margin-bottom: 1.75rem; width: fit-content;
+    }
+    .badge-dot { width: 6px; height: 6px; background: var(--orange2); border-radius: 50%; box-shadow: 0 0 6px var(--orange2); }
+    .hero h1 {
+      font-size: clamp(2.4rem, 4.5vw, 3.8rem); font-weight: 800;
+      line-height: 1.12; color: white; margin-bottom: 1.25rem;
+    }
+    .hero h1 span { color: var(--orange2); }
+    .hero p { font-size: 1rem; color: rgba(255,255,255,0.6); line-height: 1.75; max-width: 420px; margin-bottom: 2.5rem; }
+    .hero-pills { display: flex; gap: 0.6rem; flex-wrap: wrap; }
+    .hero-pill {
+      background: rgba(255,255,255,0.07); border: 1px solid rgba(255,255,255,0.12);
+      padding: 0.35rem 0.85rem; font-size: 0.73rem; font-weight: 600;
+      color: rgba(255,255,255,0.7); display: flex; align-items: center; gap: 0.4rem;
+    }
+    .hero-pill span { color: var(--orange2); }
+
+    .hero-right {
+      background: white;
+      clip-path: polygon(6% 0%, 100% 0%, 100% 100%, 0% 100%);
+      padding: 3.5rem 3rem 3.5rem 4rem;
+      display: flex; flex-direction: column; justify-content: center;
+    }
+    .hero-form-title { font-size: 1.05rem; font-weight: 800; color: var(--text); margin-bottom: 0.35rem; }
+    .hero-form-sub { font-size: 0.78rem; color: var(--muted); margin-bottom: 1.5rem; }
+    .fg { margin-bottom: 0.9rem; }
+    .fg label { display: block; font-size: 0.7rem; font-weight: 700; color: var(--muted); text-transform: uppercase; letter-spacing: 0.08em; margin-bottom: 0.32rem; }
+    .fg input, .fg select, .fg textarea {
+      width: 100%; padding: 0.7rem 0.9rem;
+      border: 1.5px solid var(--border); font-family: 'Inter', sans-serif;
+      font-size: 0.87rem; color: var(--text); background: white; outline: none;
+      border-radius: 6px; transition: border-color 0.2s;
+    }
+    .fg input:focus, .fg select:focus, .fg textarea:focus { border-color: var(--blue); }
+    .fg textarea { min-height: 70px; resize: vertical; }
+    .fg-row { display: grid; grid-template-columns: 1fr 1fr; gap: 0.7rem; }
+    .form-submit {
+      width: 100%; background: var(--blue); color: white; border: none;
+      padding: 0.88rem; border-radius: 6px; font-family: 'Inter', sans-serif;
+      font-size: 0.88rem; font-weight: 700; cursor: pointer; transition: background 0.2s;
+    }
+    .form-submit:hover { background: var(--blue-mid); }
+    .form-note { font-size: 0.68rem; color: var(--muted); text-align: center; margin-top: 0.6rem; }
+
+    /* TRUST STRIP */
+    .trust-strip {
+      background: var(--off); border-top: 1px solid var(--border); border-bottom: 1px solid var(--border);
+      padding: 1.4rem 4rem;
+      display: flex; justify-content: space-around; flex-wrap: wrap; gap: 1rem;
+    }
+    .ts-item { display: flex; align-items: center; gap: 0.65rem; }
+    .ts-icon { font-size: 1.3rem; }
+    .ts-text { font-size: 0.82rem; font-weight: 600; color: var(--text); }
+    .ts-text span { font-weight: 400; color: var(--muted); display: block; font-size: 0.72rem; }
+
+    /* SERVICES */
+    #services { padding: 6rem 4rem; background: white; }
+    .container { max-width: 1100px; margin: 0 auto; }
+    .sec-label { font-size: 0.7rem; font-weight: 700; letter-spacing: 0.18em; text-transform: uppercase; color: var(--blue); margin-bottom: 0.7rem; }
+    .sec-title { font-size: clamp(1.9rem, 3.5vw, 2.8rem); font-weight: 800; color: var(--text); line-height: 1.15; margin-bottom: 0.8rem; }
+    .sec-body { font-size: 0.93rem; color: var(--muted); max-width: 500px; line-height: 1.8; margin-bottom: 3rem; }
+    .svc-grid { display: grid; grid-template-columns: repeat(3,1fr); gap: 1rem; }
+    .svc-card {
+      border: 1.5px solid var(--border); border-radius: 10px; padding: 1.75rem;
+      transition: border-color 0.25s, transform 0.25s, box-shadow 0.25s;
+    }
+    .svc-card:hover { border-color: var(--blue); transform: translateY(-3px); box-shadow: 0 8px 28px rgba(3,105,161,0.1); }
+    .svc-icon {
+      width: 48px; height: 48px; background: var(--blue-pale);
+      border-radius: 10px; display: flex; align-items: center; justify-content: center;
+      font-size: 1.3rem; margin-bottom: 1.1rem;
+    }
+    .svc-card h3 { font-size: 0.97rem; font-weight: 700; color: var(--text); margin-bottom: 0.45rem; }
+    .svc-card p { font-size: 0.82rem; color: var(--muted); line-height: 1.65; }
+    .svc-urgent { border-left: 3px solid var(--orange); }
+    .svc-urgent .svc-icon { background: #fff3ee; }
+    .urgent-label { font-size: 0.65rem; font-weight: 700; letter-spacing: 0.1em; text-transform: uppercase; color: var(--orange); margin-bottom: 0.5rem; }
+
+    /* BOOK */
+    #book { padding: 6rem 4rem; background: var(--blue-dark); }
+    .book-grid { display: grid; grid-template-columns: 1fr 1fr; gap: 6rem; align-items: start; }
+    .book-left { color: white; }
+    .book-left .sec-label { color: rgba(255,255,255,0.5); }
+    .book-left .sec-title { color: white; margin-bottom: 1.25rem; }
+    .book-left p { font-size: 0.92rem; color: rgba(255,255,255,0.6); line-height: 1.8; margin-bottom: 2rem; }
+    .book-info { display: flex; flex-direction: column; gap: 1rem; }
+    .book-info-item {
+      display: flex; align-items: flex-start; gap: 1rem;
+      padding: 1rem; background: rgba(255,255,255,0.05);
+      border: 1px solid rgba(255,255,255,0.08); border-radius: 8px;
+    }
+    .bi-icon { font-size: 1.3rem; flex-shrink: 0; }
+    .bi-text h4 { font-size: 0.88rem; font-weight: 700; color: white; margin-bottom: 0.2rem; }
+    .bi-text p { font-size: 0.78rem; color: rgba(255,255,255,0.5); line-height: 1.6; }
+    .book-form {
+      background: white; border-radius: 12px; padding: 2.25rem;
+      box-shadow: 0 20px 60px rgba(0,0,0,0.25);
+    }
+    .book-form h3 { font-size: 1.05rem; font-weight: 800; color: var(--text); margin-bottom: 1.4rem; }
+
+    /* WHY */
+    #why { padding: 5rem 4rem; background: var(--off); border-top: 1px solid var(--border); }
+    .why-row { display: flex; justify-content: space-between; align-items: center; flex-wrap: wrap; gap: 2rem; }
+    .why-left { max-width: 420px; }
+    .why-left .sec-title { margin-bottom: 1rem; }
+    .why-left p { font-size: 0.9rem; color: var(--muted); line-height: 1.8; }
+    .why-stats { display: flex; gap: 1px; background: var(--border); flex-wrap: wrap; }
+    .why-stat { background: white; padding: 1.75rem 2.25rem; text-align: center; }
+    .why-stat-n { font-size: 2.5rem; font-weight: 800; color: var(--blue); line-height: 1; }
+    .why-stat-l { font-size: 0.7rem; font-weight: 600; color: var(--muted); text-transform: uppercase; letter-spacing: 0.08em; margin-top: 0.25rem; }
+
+    /* FOOTER */
+    footer {
+      background: var(--text); color: white;
+      padding: 3rem 4rem;
+      display: flex; justify-content: space-between; flex-wrap: wrap; gap: 2rem; align-items: center;
+    }
+    .foot-brand { font-weight: 800; font-size: 1rem; color: white; }
+    .foot-brand span { color: #5ab4e0; }
+    .foot-tagline { font-size: 0.72rem; color: rgba(255,255,255,0.4); margin-top: 0.2rem; }
+    .foot-contact { font-size: 0.82rem; color: rgba(255,255,255,0.55); line-height: 2; text-align: right; }
+    .foot-contact a { color: var(--orange2); text-decoration: none; font-weight: 700; }
+    .foot-links { display: flex; gap: 1.5rem; }
+    .foot-links a { font-size: 0.78rem; color: rgba(255,255,255,0.45); text-decoration: none; transition: color 0.2s; }
+    .foot-links a:hover { color: #5ab4e0; }
+
+    @media (max-width: 960px) {
+      nav { padding: 0 1.5rem; }
+      .nav-links { display: none; }
+      .hero { grid-template-columns: 1fr; }
+      .hero-right { clip-path: none; padding: 2.5rem 1.5rem; }
+      .hero-left { padding: 4rem 1.5rem 2rem; }
+      #services, #book, #why { padding: 4rem 1.5rem; }
+      .svc-grid { grid-template-columns: 1fr 1fr; }
+      .book-grid { grid-template-columns: 1fr; gap: 3rem; }
+      .trust-strip { padding: 1.5rem; }
+      footer { flex-direction: column; text-align: center; padding: 2.5rem 1.5rem; }
+      .foot-contact { text-align: center; }
+    }
+    @media (max-width: 560px) {
+      .svc-grid { grid-template-columns: 1fr; }
+      .fg-row { grid-template-columns: 1fr; }
+      .why-stats { flex-direction: column; }
+    }
+  </style>
+</head>
+<body>
+
+<div class="emergency-bar">
+  🚨 Plumbing emergency? We answer 24/7 — <a href="tel:3305550800">(330) 555-0800</a>
+</div>
+
+<nav>
+  <a href="#" class="nav-brand">
+    <div class="nav-brand-icon">💧</div>
+    <div>
+      <div class="nav-brand-name">Clearwater Plumbing</div>
+      <div class="nav-brand-sub">Licensed · Insured · Kent, OH</div>
+    </div>
+  </a>
+  <ul class="nav-links">
+    <li><a href="#services">Services</a></li>
+    <li><a href="#book">Schedule</a></li>
+    <li><a href="#why">About</a></li>
+  </ul>
+  <div style="text-align:right;">
+    <div class="nav-phone-label">Call or Text Anytime</div>
+    <a href="tel:3305550800" class="nav-phone">📞 (330) 555-0800</a>
+  </div>
+</nav>
+
+<section class="hero">
+  <div class="hero-left">
+    <div class="hero-badge"><span class="badge-dot"></span> 24 / 7 Emergency Service</div>
+    <h1>Fast Plumbing.<br/><span>No Surprises.</span></h1>
+    <p>Licensed plumbers you can actually trust. We show up on time, tell you the price before we touch anything, and fix it right the first time.</p>
+    <div class="hero-pills">
+      <div class="hero-pill"><span>✓</span> Licensed &amp; Insured</div>
+      <div class="hero-pill"><span>✓</span> Upfront Flat-Rate Pricing</div>
+      <div class="hero-pill"><span>✓</span> Same-Day Service Available</div>
+    </div>
+  </div>
+  <div class="hero-right">
+    <div class="hero-form-title">Request a Plumber</div>
+    <div class="hero-form-sub">We'll call you back within 30 minutes</div>
+    <div class="fg-row">
+      <div class="fg">
+        <label>Your Name</label>
+        <input type="text" placeholder="First &amp; last"/>
+      </div>
+      <div class="fg">
+        <label>Phone Number</label>
+        <input type="tel" placeholder="(330) 555-0000"/>
+      </div>
+    </div>
+    <div class="fg">
+      <label>Service Needed</label>
+      <select>
+        <option value="">What's the issue?</option>
+        <option>Drain Clog or Backup</option>
+        <option>Leak (pipe, faucet, toilet)</option>
+        <option>Water Heater Issue</option>
+        <option>No Hot Water</option>
+        <option>Burst Pipe — Emergency</option>
+        <option>Toilet Running or Won't Flush</option>
+        <option>Low Water Pressure</option>
+        <option>Sump Pump Issue</option>
+        <option>New Installation or Remodel</option>
+        <option>Other / Not Sure</option>
+      </select>
+    </div>
+    <div class="fg-row">
+      <div class="fg">
+        <label>Preferred Date</label>
+        <input type="date"/>
+      </div>
+      <div class="fg">
+        <label>Preferred Time</label>
+        <select>
+          <option>Morning (7am–12pm)</option>
+          <option>Afternoon (12pm–5pm)</option>
+          <option>Evening (5pm–8pm)</option>
+          <option>ASAP — It's Urgent</option>
+        </select>
+      </div>
+    </div>
+    <div class="fg">
+      <label>Brief Description (optional)</label>
+      <textarea placeholder="Tell us what's going on — the more detail, the better we can help…"></textarea>
+    </div>
+    <button class="form-submit">Request Service →</button>
+    <p class="form-note">🔒 No spam. Your info stays private.</p>
+  </div>
+</section>
+
+<div class="trust-strip">
+  <div class="ts-item"><span class="ts-icon">🪪</span><div class="ts-text">State Licensed<span>Ohio Plumbing License #PL-48291</span></div></div>
+  <div class="ts-item"><span class="ts-icon">🛡️</span><div class="ts-text">Fully Insured<span>$1M liability + workers comp</span></div></div>
+  <div class="ts-item"><span class="ts-icon">⏱️</span><div class="ts-text">Same-Day Available<span>Call before noon for today's slot</span></div></div>
+  <div class="ts-item"><span class="ts-icon">💲</span><div class="ts-text">Upfront Flat Pricing<span>You approve before we start</span></div></div>
+  <div class="ts-item"><span class="ts-icon">⭐</span><div class="ts-text">4.9 Stars · 200+ Reviews<span>Google · HomeAdvisor · Angi</span></div></div>
+</div>
+
+<section id="services">
+  <div class="container">
+    <p class="sec-label">What We Fix</p>
+    <h2 class="sec-title">Every Plumbing Problem,<br/>Handled.</h2>
+    <p class="sec-body">Whether it's a dripping faucet or a flooded basement, our licensed team handles residential and light commercial plumbing throughout Portage County.</p>
+    <div class="svc-grid">
+      <div class="svc-card svc-urgent">
+        <div class="urgent-label">⚡ Emergency</div>
+        <div class="svc-icon" style="background:#fff3ee;">🚨</div>
+        <h3>Burst Pipes &amp; Flooding</h3>
+        <p>Water pouring where it shouldn't be? Call us now. We have 24/7 emergency crews ready to respond and stop the damage fast.</p>
+      </div>
+      <div class="svc-card">
+        <div class="svc-icon">🚰</div>
+        <h3>Drain Cleaning</h3>
+        <p>Slow drains, full clogs, recurring backups. We use professional-grade augers and hydro-jetting to clear the line completely — not just push it down.</p>
+      </div>
+      <div class="svc-card">
+        <div class="svc-icon">🔧</div>
+        <h3>Leak Repair</h3>
+        <p>Leaky faucets, running toilets, dripping supply lines, slab leaks. We find it, quote it, and fix it — often in a single visit.</p>
+      </div>
+      <div class="svc-card">
+        <div class="svc-icon">🌡️</div>
+        <h3>Water Heater Service</h3>
+        <p>Tank and tankless water heater repair, replacement, and installation. We carry common tank sizes on the truck for same-day installs.</p>
+      </div>
+      <div class="svc-card">
+        <div class="svc-icon">🚽</div>
+        <h3>Toilet Repair &amp; Replacement</h3>
+        <p>Running, rocking, not flushing, or leaking at the base — we repair all brands and can replace with a new unit the same day.</p>
+      </div>
+      <div class="svc-card">
+        <div class="svc-icon">🏠</div>
+        <h3>Remodel &amp; New Installs</h3>
+        <p>Bathroom or kitchen remodel? Adding a laundry room? We rough-in and finish plumbing for new construction and renovation projects of all sizes.</p>
+      </div>
+    </div>
+  </div>
+</section>
+
+<section id="book">
+  <div class="container">
+    <div class="book-grid">
+      <div class="book-left">
+        <p class="sec-label">Scheduling</p>
+        <h2 class="sec-title">Book a Visit</h2>
+        <p>Fill out the form and we'll confirm your appointment within 30 minutes during business hours — or first thing the next morning if you submit after hours.</p>
+        <div class="book-info">
+          <div class="book-info-item">
+            <div class="bi-icon">📋</div>
+            <div class="bi-text">
+              <h4>Free Diagnostic</h4>
+              <p>We diagnose the problem at no charge and give you a flat-rate quote before any work begins. No hourly surprises.</p>
+            </div>
+          </div>
+          <div class="book-info-item">
+            <div class="bi-icon">🛻</div>
+            <div class="bi-text">
+              <h4>Fully Stocked Trucks</h4>
+              <p>Our service vehicles carry thousands of parts. Most repairs — even complex ones — are finished in a single trip.</p>
+            </div>
+          </div>
+          <div class="book-info-item">
+            <div class="bi-icon">🕐</div>
+            <div class="bi-text">
+              <h4>On-Time Arrival Window</h4>
+              <p>We give you a 1-hour arrival window (not a 4-hour block) and text you when the plumber is on the way.</p>
+            </div>
+          </div>
+          <div class="book-info-item">
+            <div class="bi-icon">🔐</div>
+            <div class="bi-text">
+              <h4>90-Day Labor Warranty</h4>
+              <p>Every repair comes with a 90-day workmanship guarantee. If it comes back, we come back — no charge.</p>
+            </div>
+          </div>
+        </div>
+      </div>
+      <div class="book-form">
+        <h3>Schedule Your Appointment</h3>
+        <div class="fg-row">
+          <div class="fg">
+            <label>First Name</label>
+            <input type="text" placeholder="First"/>
+          </div>
+          <div class="fg">
+            <label>Last Name</label>
+            <input type="text" placeholder="Last"/>
+          </div>
+        </div>
+        <div class="fg">
+          <label>Phone Number</label>
+          <input type="tel" placeholder="(330) 555-0000"/>
+        </div>
+        <div class="fg">
+          <label>Email Address</label>
+          <input type="email" placeholder="you@email.com"/>
+        </div>
+        <div class="fg">
+          <label>Service Address</label>
+          <input type="text" placeholder="Street address, Kent, OH"/>
+        </div>
+        <div class="fg">
+          <label>Type of Property</label>
+          <select>
+            <option>Single-Family Home</option>
+            <option>Apartment / Condo</option>
+            <option>Rental Property</option>
+            <option>Small Business / Commercial</option>
+          </select>
+        </div>
+        <div class="fg">
+          <label>What's Going On?</label>
+          <select>
+            <option value="">Select an issue...</option>
+            <option>Drain Clog / Slow Drain</option>
+            <option>Leak — Pipe, Faucet, or Toilet</option>
+            <option>Water Heater — Repair or Replace</option>
+            <option>No Hot Water</option>
+            <option>Running or Non-Flushing Toilet</option>
+            <option>Low Water Pressure</option>
+            <option>Burst Pipe — Emergency</option>
+            <option>Sump Pump</option>
+            <option>Remodel / New Install</option>
+            <option>Annual Inspection</option>
+          </select>
+        </div>
+        <div class="fg-row">
+          <div class="fg">
+            <label>Preferred Date</label>
+            <input type="date"/>
+          </div>
+          <div class="fg">
+            <label>Arrival Window</label>
+            <select>
+              <option>Morning 7am–12pm</option>
+              <option>Afternoon 12pm–5pm</option>
+              <option>Evening 5pm–8pm</option>
+              <option>ASAP / Emergency</option>
+            </select>
+          </div>
+        </div>
+        <div class="fg">
+          <label>Additional Notes</label>
+          <textarea placeholder="Anything else that would help us prepare? (Age of home, shut-off location, prior repairs, etc.)"></textarea>
+        </div>
+        <button class="form-submit">Book My Appointment →</button>
+      </div>
+    </div>
+  </div>
+</section>
+
+<section id="why">
+  <div class="container">
+    <div class="why-row">
+      <div class="why-left">
+        <p class="sec-label">About Clearwater</p>
+        <h2 class="sec-title">Local Plumbers<br/>You Can Count On</h2>
+        <p>Clearwater Plumbing has been serving Kent and surrounding Portage County communities since 2008. We're not a call center — when you call, a local plumber picks up. Every technician on our team is a licensed journeyman or master plumber with a background check on file.</p>
+      </div>
+      <div class="why-stats">
+        <div class="why-stat">
+          <div class="why-stat-n">17+</div>
+          <div class="why-stat-l">Years Serving Kent</div>
+        </div>
+        <div class="why-stat">
+          <div class="why-stat-n">5K+</div>
+          <div class="why-stat-l">Jobs Completed</div>
+        </div>
+        <div class="why-stat">
+          <div class="why-stat-n">4.9★</div>
+          <div class="why-stat-l">Average Rating</div>
+        </div>
+        <div class="why-stat">
+          <div class="why-stat-n">24/7</div>
+          <div class="why-stat-l">Emergency Line</div>
+        </div>
+      </div>
+    </div>
+  </div>
+</section>
+
+<footer>
+  <div>
+    <div class="foot-brand">Clearwater <span>Plumbing</span></div>
+    <div class="foot-tagline">Kent's trusted plumbers since 2008</div>
+    <div style="margin-top:1rem;">
+      <div class="foot-links">
+        <a href="#services">Services</a>
+        <a href="#book">Book</a>
+        <a href="#why">About</a>
+      </div>
+    </div>
+  </div>
+  <div class="foot-contact">
+    212 Maple St, Kent, OH 44240<br/>
+    <a href="tel:3305550800">(330) 555-0800</a> — Call or Text<br/>
+    service@clearwaterplumbingkent.com<br/>
+    Mon–Sat 7am–8pm · Emergency: 24/7
+  </div>
+</footer>
+
+</body>
+</html>

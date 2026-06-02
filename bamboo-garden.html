@@ -1,0 +1,753 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8"/>
+  <meta name="viewport" content="width=device-width, initial-scale=1.0"/>
+  <title>Bamboo Garden — Asian Fusion Kitchen</title>
+  <link href="https://fonts.googleapis.com/css2?family=Nunito:wght@300;400;600;700;800&family=Bebas+Neue&display=swap" rel="stylesheet"/>
+  <style>
+    *, *::before, *::after { box-sizing: border-box; margin: 0; padding: 0; }
+    :root {
+      --green: #2d5a27;
+      --green-dark: #1e3d1a;
+      --green-light: #3d7a35;
+      --green-pale: #e8f2e6;
+      --amber: #e8a030;
+      --amber-light: #f5b845;
+      --red: #c0392b;
+      --text: #1a2a18;
+      --muted: #5a6e58;
+      --cream: #faf6ed;
+      --white: #ffffff;
+    }
+    html { scroll-behavior: smooth; }
+    body { font-family: 'Nunito', sans-serif; color: var(--text); background: var(--cream); }
+
+    nav {
+      position: fixed; top: 0; left: 0; right: 0; z-index: 200;
+      background: white;
+      border-bottom: 3px solid var(--green);
+      padding: 0 4rem;
+      display: flex; align-items: center; justify-content: space-between;
+      min-height: 66px;
+    }
+    .nav-brand { display: flex; align-items: center; gap: 0.9rem; text-decoration: none; }
+    .nav-brand-icon {
+      width: 40px; height: 40px; background: var(--green);
+      border-radius: 4px; display: flex; align-items: center;
+      justify-content: center; font-size: 1.3rem;
+    }
+    .nav-brand-name {
+      font-family: 'Bebas Neue', sans-serif;
+      font-size: 1.5rem; letter-spacing: 0.08em; color: var(--green);
+      line-height: 1;
+    }
+    .nav-brand-sub { font-size: 0.65rem; color: var(--muted); font-weight: 600; letter-spacing: 0.1em; text-transform: uppercase; }
+    .nav-links { display: flex; list-style: none; }
+    .nav-links a {
+      padding: 0 1.2rem; line-height: 66px;
+      font-size: 0.82rem; font-weight: 700; color: var(--muted);
+      text-decoration: none; letter-spacing: 0.04em;
+      transition: color 0.2s;
+    }
+    .nav-links a:hover { color: var(--green); }
+    .nav-order {
+      background: var(--amber); color: var(--text);
+      padding: 0.6rem 1.4rem; font-size: 0.82rem; font-weight: 800;
+      text-decoration: none; border-radius: 4px;
+      transition: background 0.2s; letter-spacing: 0.04em;
+    }
+    .nav-order:hover { background: var(--amber-light); }
+
+    .hero {
+      min-height: 100vh;
+      background: var(--green-dark);
+      display: grid; grid-template-columns: 1fr 1fr;
+      margin-top: 66px; overflow: hidden;
+    }
+    .hero-left {
+      display: flex; flex-direction: column;
+      justify-content: center; padding: 6rem 4rem;
+      position: relative;
+    }
+    .hero-left::after {
+      content: ''; position: absolute; inset: 0;
+      background: url("data:image/svg+xml,%3Csvg width='60' height='60' viewBox='0 0 60 60' xmlns='http://www.w3.org/2000/svg'%3E%3Cg fill='none' stroke='rgba(255,255,255,0.03)' stroke-width='1'%3E%3Ccircle cx='30' cy='30' r='25'/%3E%3Ccircle cx='30' cy='30' r='12'/%3E%3C/g%3E%3C/svg%3E") repeat;
+      background-size: 60px 60px; pointer-events: none;
+    }
+    .hero-eyebrow {
+      display: inline-flex; align-items: center; gap: 0.6rem;
+      background: var(--amber); color: var(--text);
+      padding: 0.35rem 0.9rem; border-radius: 4px;
+      font-size: 0.72rem; font-weight: 800; letter-spacing: 0.1em;
+      text-transform: uppercase; margin-bottom: 2rem;
+      width: fit-content; position: relative; z-index: 1;
+    }
+    .hero h1 {
+      font-family: 'Bebas Neue', sans-serif;
+      font-size: clamp(5rem, 10vw, 9rem); line-height: 0.9;
+      color: white; letter-spacing: 0.02em;
+      margin-bottom: 2rem; position: relative; z-index: 1;
+    }
+    .hero h1 span { color: var(--amber); }
+    .hero-desc {
+      font-size: 1rem; color: rgba(255,255,255,0.65); line-height: 1.75;
+      max-width: 400px; margin-bottom: 2.5rem; position: relative; z-index: 1;
+    }
+    .hero-btns { display: flex; gap: 0.75rem; flex-wrap: wrap; position: relative; z-index: 1; }
+    .btn-amber {
+      background: var(--amber); color: var(--text);
+      padding: 0.88rem 2rem; border-radius: 4px; font-size: 0.88rem; font-weight: 800;
+      text-decoration: none; transition: background 0.2s;
+    }
+    .btn-amber:hover { background: var(--amber-light); }
+    .btn-green-outline {
+      background: transparent; color: white;
+      border: 2px solid rgba(255,255,255,0.3); padding: 0.88rem 2rem;
+      border-radius: 4px; font-size: 0.88rem; font-weight: 700;
+      text-decoration: none; transition: border-color 0.2s;
+    }
+    .btn-green-outline:hover { border-color: white; }
+
+    .hero-right {
+      position: relative; overflow: hidden;
+      background: var(--green);
+    }
+    .hero-right::before {
+      content: '🎋'; position: absolute;
+      font-size: 20rem; line-height: 1;
+      right: -2rem; top: 50%; transform: translateY(-50%);
+      opacity: 0.06; pointer-events: none;
+    }
+    .hero-cards {
+      position: absolute; inset: 0;
+      display: flex; align-items: center; justify-content: center;
+      flex-direction: column; gap: 1rem; padding: 2rem;
+    }
+    .hero-pill {
+      background: rgba(255,255,255,0.1); backdrop-filter: blur(4px);
+      border: 1px solid rgba(255,255,255,0.15);
+      padding: 1rem 1.5rem; width: 100%; max-width: 320px;
+      display: flex; align-items: center; gap: 1rem;
+      color: white;
+    }
+    .hero-pill-icon { font-size: 1.8rem; flex-shrink: 0; }
+    .hero-pill-text h4 { font-size: 0.9rem; font-weight: 700; }
+    .hero-pill-text p { font-size: 0.78rem; color: rgba(255,255,255,0.6); }
+
+    .banner-strip {
+      background: var(--amber); padding: 1rem 4rem;
+      display: flex; justify-content: center; gap: 4rem; flex-wrap: wrap;
+    }
+    .banner-item { display: flex; align-items: center; gap: 0.6rem; font-size: 0.82rem; font-weight: 700; color: var(--text); }
+
+    #menu {
+      padding: 6rem 4rem;
+      background: var(--cream);
+    }
+    .container { max-width: 1100px; margin: 0 auto; }
+    .menu-top { display: flex; justify-content: space-between; align-items: flex-end; margin-bottom: 3rem; }
+    .menu-label { font-size: 0.72rem; font-weight: 800; letter-spacing: 0.18em; text-transform: uppercase; color: var(--green); margin-bottom: 0.5rem; }
+    .menu-title {
+      font-family: 'Bebas Neue', sans-serif;
+      font-size: clamp(2.5rem, 5vw, 4rem); color: var(--text); letter-spacing: 0.04em; line-height: 1;
+    }
+    .menu-tabs {
+      display: flex; gap: 0.5rem; flex-wrap: wrap;
+    }
+    .mtab {
+      padding: 0.6rem 1.2rem; border: 2px solid #d0d8cc;
+      background: white; font-family: 'Nunito', sans-serif;
+      font-size: 0.8rem; font-weight: 700; color: var(--muted);
+      cursor: pointer; border-radius: 4px; transition: all 0.2s;
+    }
+    .mtab.active { background: var(--green); border-color: var(--green); color: white; }
+    .mtab:hover:not(.active) { border-color: var(--green); color: var(--green); }
+
+    .menu-panel { display: none; }
+    .menu-panel.active { display: grid; grid-template-columns: repeat(3, 1fr); gap: 1rem; }
+    .dish-card {
+      background: white; border-radius: 8px; overflow: hidden;
+      transition: transform 0.25s, box-shadow 0.25s;
+      border: 1px solid #e8ede6;
+    }
+    .dish-card:hover { transform: translateY(-3px); box-shadow: 0 8px 30px rgba(0,0,0,0.08); }
+    .dish-img {
+      height: 130px; display: flex; align-items: center; justify-content: center;
+      font-size: 3.5rem;
+    }
+    .dish-img.bg-g { background: linear-gradient(135deg, #d8edd6, #c0e0bc); }
+    .dish-img.bg-r { background: linear-gradient(135deg, #f0e0dc, #e8c8c2); }
+    .dish-img.bg-y { background: linear-gradient(135deg, #f5edd8, #ecdcc0); }
+    .dish-img.bg-b { background: linear-gradient(135deg, #dce8f0, #c4d8e8); }
+    .dish-body { padding: 1.1rem; }
+    .dish-header { display: flex; justify-content: space-between; align-items: baseline; margin-bottom: 0.3rem; }
+    .dish-name { font-size: 0.9rem; font-weight: 800; color: var(--text); }
+    .dish-price { font-size: 0.95rem; font-weight: 800; color: var(--green); white-space: nowrap; }
+    .dish-desc { font-size: 0.77rem; color: var(--muted); line-height: 1.55; margin-bottom: 0.6rem; }
+    .dish-tags { display: flex; gap: 0.35rem; flex-wrap: wrap; }
+    .dtag {
+      font-size: 0.63rem; font-weight: 800; letter-spacing: 0.06em;
+      padding: 0.15rem 0.45rem; border-radius: 3px;
+    }
+    .dtag-v { background: #e8f5e4; color: var(--green); }
+    .dtag-s { background: #fde8e5; color: var(--red); }
+    .dtag-gf { background: #fdf5e4; color: #a06020; }
+    .dtag-pop { background: #e8edf8; color: #3050a0; }
+
+    #order {
+      padding: 6rem 4rem;
+      background: var(--green-dark);
+      position: relative; overflow: hidden;
+    }
+    #order::before {
+      content: '🥡'; position: absolute;
+      font-size: 18rem; right: 2rem; top: 50%; transform: translateY(-50%);
+      opacity: 0.04; pointer-events: none;
+    }
+    .order-grid { display: grid; grid-template-columns: 1fr 1fr; gap: 5rem; align-items: center; position: relative; z-index: 1; }
+    .order-left { color: white; }
+    .order-label { font-size: 0.72rem; font-weight: 800; letter-spacing: 0.18em; text-transform: uppercase; color: var(--amber); margin-bottom: 0.5rem; }
+    .order-title {
+      font-family: 'Bebas Neue', sans-serif;
+      font-size: clamp(2.5rem, 5vw, 4.5rem); color: white;
+      letter-spacing: 0.04em; line-height: 0.95; margin-bottom: 1.5rem;
+    }
+    .order-title span { color: var(--amber); }
+    .order-left p { color: rgba(255,255,255,0.65); line-height: 1.75; font-size: 0.95rem; margin-bottom: 2rem; }
+    .order-perks { display: flex; flex-direction: column; gap: 0.75rem; }
+    .order-perk {
+      display: flex; align-items: center; gap: 0.9rem;
+      font-size: 0.88rem; color: rgba(255,255,255,0.75);
+    }
+    .perk-icon {
+      width: 32px; height: 32px; background: var(--amber);
+      border-radius: 4px; display: flex; align-items: center; justify-content: center;
+      font-size: 0.95rem; flex-shrink: 0; color: var(--text);
+    }
+    .order-form { background: white; border-radius: 8px; padding: 2.25rem; }
+    .order-form h3 { font-size: 1.1rem; font-weight: 800; color: var(--text); margin-bottom: 1.5rem; }
+    .of { margin-bottom: 1rem; }
+    .of label { display: block; font-size: 0.74rem; font-weight: 700; color: var(--muted); text-transform: uppercase; letter-spacing: 0.08em; margin-bottom: 0.35rem; }
+    .of input, .of select, .of textarea {
+      width: 100%; padding: 0.7rem 0.9rem;
+      border: 2px solid #e0e8dc; border-radius: 4px;
+      font-family: 'Nunito', sans-serif; font-size: 0.88rem;
+      color: var(--text); background: white; outline: none;
+      transition: border-color 0.2s;
+    }
+    .of input:focus, .of select:focus, .of textarea:focus { border-color: var(--green); }
+    .of textarea { min-height: 90px; resize: vertical; }
+    .of-row { display: grid; grid-template-columns: 1fr 1fr; gap: 0.75rem; }
+    .order-btn {
+      width: 100%; background: var(--green); color: white; border: none;
+      padding: 0.9rem; border-radius: 4px; font-family: 'Nunito', sans-serif;
+      font-size: 0.9rem; font-weight: 800; cursor: pointer;
+      transition: background 0.2s; letter-spacing: 0.04em;
+    }
+    .order-btn:hover { background: var(--green-light); }
+
+    #about {
+      padding: 6rem 4rem;
+      background: white;
+    }
+    .about-grid { display: grid; grid-template-columns: 1fr 1fr; gap: 5rem; align-items: center; }
+    .about-left { }
+    .about-label { font-size: 0.72rem; font-weight: 800; letter-spacing: 0.18em; text-transform: uppercase; color: var(--green); margin-bottom: 0.5rem; }
+    .about-title {
+      font-family: 'Bebas Neue', sans-serif;
+      font-size: clamp(2.5rem, 5vw, 4rem); color: var(--text);
+      letter-spacing: 0.04em; line-height: 1; margin-bottom: 1.5rem;
+    }
+    .about-title span { color: var(--green); }
+    .about-left p { font-size: 0.92rem; color: var(--muted); line-height: 1.8; margin-bottom: 1rem; }
+    .about-stats { display: grid; grid-template-columns: repeat(3,1fr); gap: 1px; background: #e8ede6; margin-top: 2rem; }
+    .about-stat { background: white; padding: 1.5rem; text-align: center; }
+    .about-stat-n { font-family: 'Bebas Neue', sans-serif; font-size: 2.5rem; color: var(--green); line-height: 1; }
+    .about-stat-l { font-size: 0.72rem; font-weight: 700; color: var(--muted); text-transform: uppercase; letter-spacing: 0.08em; margin-top: 0.3rem; }
+    .about-visual {
+      height: 460px; background: var(--green-pale); border-radius: 8px;
+      display: flex; align-items: center; justify-content: center;
+      position: relative; overflow: hidden;
+    }
+    .about-visual::before {
+      content: ''; position: absolute; inset: 0;
+      background: linear-gradient(135deg, var(--green-pale) 0%, #c8e8c4 100%);
+    }
+    .about-visual-emoji { font-size: 8rem; position: relative; z-index: 1; opacity: 0.35; }
+
+    footer {
+      background: var(--green-dark); color: white;
+      padding: 3.5rem 4rem;
+      display: grid; grid-template-columns: 2fr 1fr 1fr 1fr;
+      gap: 2rem;
+    }
+    .foot-brand {
+      font-family: 'Bebas Neue', sans-serif;
+      font-size: 1.8rem; letter-spacing: 0.08em; color: var(--amber); margin-bottom: 0.75rem;
+    }
+    .foot-text { font-size: 0.82rem; color: rgba(255,255,255,0.5); line-height: 1.9; }
+    .foot-col h4 { font-size: 0.68rem; font-weight: 800; letter-spacing: 0.18em; text-transform: uppercase; color: var(--amber); margin-bottom: 1.1rem; }
+    .foot-col a { display: block; font-size: 0.82rem; color: rgba(255,255,255,0.55); text-decoration: none; margin-bottom: 0.5rem; transition: color 0.2s; }
+    .foot-col a:hover { color: var(--amber); }
+    .foot-col p { font-size: 0.82rem; color: rgba(255,255,255,0.5); line-height: 1.9; }
+    .foot-copy { grid-column: 1/-1; border-top: 1px solid rgba(255,255,255,0.1); padding-top: 1.5rem; font-size: 0.72rem; color: rgba(255,255,255,0.3); text-align: center; }
+
+    @media (max-width: 1000px) {
+      nav { padding: 0 1.5rem; }
+      .nav-links { display: none; }
+      .hero { grid-template-columns: 1fr; margin-top: 66px; }
+      .hero-right { min-height: 280px; }
+      .hero-left { padding: 4rem 1.5rem; }
+      #menu, #order, #about { padding: 4rem 1.5rem; }
+      .menu-top { flex-direction: column; gap: 1.5rem; align-items: flex-start; }
+      .menu-panel.active { grid-template-columns: 1fr 1fr; }
+      .order-grid { grid-template-columns: 1fr; gap: 3rem; }
+      .about-grid { grid-template-columns: 1fr; }
+      .about-visual { height: 260px; }
+      footer { grid-template-columns: 1fr 1fr; padding: 2.5rem 1.5rem; }
+      .banner-strip { padding: 1rem 1.5rem; gap: 1.5rem; }
+    }
+    @media (max-width: 600px) {
+      .menu-panel.active { grid-template-columns: 1fr; }
+      .of-row { grid-template-columns: 1fr; }
+      footer { grid-template-columns: 1fr; }
+    }
+  </style>
+</head>
+<body>
+
+<nav>
+  <a href="#" class="nav-brand">
+    <div class="nav-brand-icon">🎋</div>
+    <div>
+      <div class="nav-brand-name">Bamboo Garden</div>
+      <div class="nav-brand-sub">Asian Fusion Kitchen</div>
+    </div>
+  </a>
+  <ul class="nav-links">
+    <li><a href="#menu">Menu</a></li>
+    <li><a href="#order">Order Online</a></li>
+    <li><a href="#about">About</a></li>
+    <li><a href="#">Catering</a></li>
+  </ul>
+  <a href="#order" class="nav-order">🥡 Order Now</a>
+</nav>
+
+<section class="hero">
+  <div class="hero-left">
+    <div class="hero-eyebrow">🌟 #1 Rated in Kent</div>
+    <h1>FRESH.<br/><span>BOLD.</span><br/>FUSION.</h1>
+    <p class="hero-desc">Japanese, Chinese, and Thai flavors come alive in our kitchen. Made fresh to order, always bold, never boring.</p>
+    <div class="hero-btns">
+      <a href="#menu" class="btn-amber">Browse the Menu</a>
+      <a href="#order" class="btn-green-outline">Order Takeout</a>
+    </div>
+  </div>
+  <div class="hero-right">
+    <div class="hero-cards">
+      <div class="hero-pill">
+        <div class="hero-pill-icon">🍱</div>
+        <div class="hero-pill-text">
+          <h4>Lunch Specials</h4>
+          <p>From $11.99 · Mon–Fri 11am–3pm</p>
+        </div>
+      </div>
+      <div class="hero-pill">
+        <div class="hero-pill-icon">🍣</div>
+        <div class="hero-pill-text">
+          <h4>Fresh Sushi Daily</h4>
+          <p>Hand-rolled every morning</p>
+        </div>
+      </div>
+      <div class="hero-pill">
+        <div class="hero-pill-icon">🥡</div>
+        <div class="hero-pill-text">
+          <h4>Fast Takeout</h4>
+          <p>Ready in 20–30 minutes</p>
+        </div>
+      </div>
+      <div class="hero-pill">
+        <div class="hero-pill-icon">🌶️</div>
+        <div class="hero-pill-text">
+          <h4>Spice Your Way</h4>
+          <p>Mild, medium, hot, or Thai-hot</p>
+        </div>
+      </div>
+    </div>
+  </div>
+</section>
+
+<div class="banner-strip">
+  <div class="banner-item">🕐 Open Daily 11am–10pm</div>
+  <div class="banner-item">📍 321 College Ave, Kent, OH</div>
+  <div class="banner-item">📞 (330) 555-0400</div>
+  <div class="banner-item">🎋 Dine-In &amp; Takeout</div>
+</div>
+
+<section id="menu">
+  <div class="container">
+    <div class="menu-top">
+      <div>
+        <div class="menu-label">Our Kitchen</div>
+        <div class="menu-title">THE MENU</div>
+      </div>
+      <div class="menu-tabs">
+        <button class="mtab active" onclick="switchMenu('appetizers',this)">Appetizers</button>
+        <button class="mtab" onclick="switchMenu('entrees',this)">Entrees</button>
+        <button class="mtab" onclick="switchMenu('sushi',this)">Sushi &amp; Rolls</button>
+        <button class="mtab" onclick="switchMenu('noodles',this)">Noodles &amp; Rice</button>
+        <button class="mtab" onclick="switchMenu('drinks',this)">Drinks</button>
+      </div>
+    </div>
+
+    <div id="mp-appetizers" class="menu-panel active">
+      <div class="dish-card">
+        <div class="dish-img bg-y">🥟</div>
+        <div class="dish-body">
+          <div class="dish-header"><span class="dish-name">Pork Gyoza</span><span class="dish-price">$9</span></div>
+          <div class="dish-desc">Pan-seared Japanese dumplings, crispy on one side, tender inside. Served with ponzu dipping sauce.</div>
+          <div class="dish-tags"><span class="dtag dtag-pop">Fan Fav</span></div>
+        </div>
+      </div>
+      <div class="dish-card">
+        <div class="dish-img bg-g">🌱</div>
+        <div class="dish-body">
+          <div class="dish-header"><span class="dish-name">Edamame</span><span class="dish-price">$6</span></div>
+          <div class="dish-desc">Steamed salted edamame, finished with flaky sea salt and togarashi. Simple and addictive.</div>
+          <div class="dish-tags"><span class="dtag dtag-v">Vegan</span><span class="dtag dtag-gf">GF</span></div>
+        </div>
+      </div>
+      <div class="dish-card">
+        <div class="dish-img bg-r">🍤</div>
+        <div class="dish-body">
+          <div class="dish-header"><span class="dish-name">Shrimp Spring Rolls</span><span class="dish-price">$10</span></div>
+          <div class="dish-desc">Crispy fried rolls stuffed with shrimp, glass noodles, and vegetables. Sweet chili on the side.</div>
+          <div class="dish-tags"></div>
+        </div>
+      </div>
+      <div class="dish-card">
+        <div class="dish-img bg-b">🥣</div>
+        <div class="dish-body">
+          <div class="dish-header"><span class="dish-name">Tom Yum Soup</span><span class="dish-price">$8</span></div>
+          <div class="dish-desc">Classic Thai hot-and-sour broth with mushrooms, lemongrass, galangal, shrimp, and kaffir lime.</div>
+          <div class="dish-tags"><span class="dtag dtag-s">Spicy</span><span class="dtag dtag-gf">GF</span></div>
+        </div>
+      </div>
+      <div class="dish-card">
+        <div class="dish-img bg-g">🥬</div>
+        <div class="dish-body">
+          <div class="dish-header"><span class="dish-name">Veggie Lettuce Wraps</span><span class="dish-price">$12</span></div>
+          <div class="dish-desc">Seasoned tofu, shiitake mushrooms, and water chestnuts in crisp butter lettuce cups with hoisin.</div>
+          <div class="dish-tags"><span class="dtag dtag-v">Vegan</span></div>
+        </div>
+      </div>
+      <div class="dish-card">
+        <div class="dish-img bg-y">🍢</div>
+        <div class="dish-body">
+          <div class="dish-header"><span class="dish-name">Chicken Satay</span><span class="dish-price">$13</span></div>
+          <div class="dish-desc">Grilled lemongrass chicken skewers served with creamy peanut sauce and cucumber relish.</div>
+          <div class="dish-tags"><span class="dtag dtag-gf">GF</span><span class="dtag dtag-pop">Fan Fav</span></div>
+        </div>
+      </div>
+    </div>
+
+    <div id="mp-entrees" class="menu-panel">
+      <div class="dish-card">
+        <div class="dish-img bg-r">🍗</div>
+        <div class="dish-body">
+          <div class="dish-header"><span class="dish-name">General Tso's Chicken</span><span class="dish-price">$16</span></div>
+          <div class="dish-desc">Crispy chicken tossed in a sweet-spicy sauce with dried chilis. Served with steamed rice.</div>
+          <div class="dish-tags"><span class="dtag dtag-pop">Most Ordered</span></div>
+        </div>
+      </div>
+      <div class="dish-card">
+        <div class="dish-img bg-g">🥦</div>
+        <div class="dish-body">
+          <div class="dish-header"><span class="dish-name">Mongolian Beef</span><span class="dish-price">$18</span></div>
+          <div class="dish-desc">Tender sliced flank steak wok-tossed with green onion and garlic in a savory brown sauce.</div>
+          <div class="dish-tags"><span class="dtag dtag-gf">GF</span></div>
+        </div>
+      </div>
+      <div class="dish-card">
+        <div class="dish-img bg-y">🍤</div>
+        <div class="dish-body">
+          <div class="dish-header"><span class="dish-name">Thai Basil Shrimp</span><span class="dish-price">$20</span></div>
+          <div class="dish-desc">Wok-fried jumbo shrimp with Thai basil, bell pepper, and garlic in oyster sauce. Jasmine rice.</div>
+          <div class="dish-tags"><span class="dtag dtag-s">Spicy</span></div>
+        </div>
+      </div>
+      <div class="dish-card">
+        <div class="dish-img bg-b">🌿</div>
+        <div class="dish-body">
+          <div class="dish-header"><span class="dish-name">Mapo Tofu</span><span class="dish-price">$15</span></div>
+          <div class="dish-desc">Silken tofu and ground pork in a numbing Szechuan peppercorn and chili oil sauce. Steamed rice.</div>
+          <div class="dish-tags"><span class="dtag dtag-s">Spicy</span><span class="dtag dtag-v">Vegan Option</span></div>
+        </div>
+      </div>
+      <div class="dish-card">
+        <div class="dish-img bg-r">🦆</div>
+        <div class="dish-body">
+          <div class="dish-header"><span class="dish-name">Peking Duck Half</span><span class="dish-price">$32</span></div>
+          <div class="dish-desc">Crispy-skinned duck with hoisin, cucumber, green onion, and house-made Mandarin pancakes.</div>
+          <div class="dish-tags"><span class="dtag dtag-pop">Chef Special</span></div>
+        </div>
+      </div>
+      <div class="dish-card">
+        <div class="dish-img bg-g">🥬</div>
+        <div class="dish-body">
+          <div class="dish-header"><span class="dish-name">Kung Pao Vegetables</span><span class="dish-price">$14</span></div>
+          <div class="dish-desc">Seasonal vegetables and roasted peanuts in a classic Szechuan sauce with dried chilis and vinegar.</div>
+          <div class="dish-tags"><span class="dtag dtag-v">Vegan</span><span class="dtag dtag-s">Spicy</span></div>
+        </div>
+      </div>
+    </div>
+
+    <div id="mp-sushi" class="menu-panel">
+      <div class="dish-card">
+        <div class="dish-img bg-b">🍣</div>
+        <div class="dish-body">
+          <div class="dish-header"><span class="dish-name">California Roll (8 pc)</span><span class="dish-price">$11</span></div>
+          <div class="dish-desc">Crab blend, avocado, cucumber, rolled in sesame-topped sushi rice. A classic for good reason.</div>
+          <div class="dish-tags"></div>
+        </div>
+      </div>
+      <div class="dish-card">
+        <div class="dish-img bg-r">🌶️</div>
+        <div class="dish-body">
+          <div class="dish-header"><span class="dish-name">Spicy Tuna Roll (8 pc)</span><span class="dish-price">$14</span></div>
+          <div class="dish-desc">Sashimi-grade tuna with sriracha mayo, cucumber, and masago. Topped with chili threads.</div>
+          <div class="dish-tags"><span class="dtag dtag-s">Spicy</span><span class="dtag dtag-pop">Fan Fav</span></div>
+        </div>
+      </div>
+      <div class="dish-card">
+        <div class="dish-img bg-g">🐉</div>
+        <div class="dish-body">
+          <div class="dish-header"><span class="dish-name">Dragon Roll (8 pc)</span><span class="dish-price">$18</span></div>
+          <div class="dish-desc">Shrimp tempura inside, topped with thinly sliced avocado, eel sauce, and spicy mayo.</div>
+          <div class="dish-tags"><span class="dtag dtag-pop">House Special</span></div>
+        </div>
+      </div>
+      <div class="dish-card">
+        <div class="dish-img bg-y">🐟</div>
+        <div class="dish-body">
+          <div class="dish-header"><span class="dish-name">Sashimi Plate (12 pc)</span><span class="dish-price">$24</span></div>
+          <div class="dish-desc">Chef's selection of premium tuna, salmon, yellowtail, and sea bream. Wasabi and pickled ginger.</div>
+          <div class="dish-tags"><span class="dtag dtag-gf">GF</span></div>
+        </div>
+      </div>
+      <div class="dish-card">
+        <div class="dish-img bg-b">🥑</div>
+        <div class="dish-body">
+          <div class="dish-header"><span class="dish-name">Avocado Roll (6 pc)</span><span class="dish-price">$9</span></div>
+          <div class="dish-desc">Simple, fresh, and perfect. Creamy avocado in seasoned sushi rice with a touch of sesame.</div>
+          <div class="dish-tags"><span class="dtag dtag-v">Vegan</span></div>
+        </div>
+      </div>
+      <div class="dish-card">
+        <div class="dish-img bg-r">🦐</div>
+        <div class="dish-body">
+          <div class="dish-header"><span class="dish-name">Tempura Roll (8 pc)</span><span class="dish-price">$15</span></div>
+          <div class="dish-desc">Crunchy shrimp tempura with avocado and cucumber, finished with sweet unagi sauce.</div>
+          <div class="dish-tags"></div>
+        </div>
+      </div>
+    </div>
+
+    <div id="mp-noodles" class="menu-panel">
+      <div class="dish-card">
+        <div class="dish-img bg-y">🍜</div>
+        <div class="dish-body">
+          <div class="dish-header"><span class="dish-name">Pad Thai</span><span class="dish-price">$15</span></div>
+          <div class="dish-desc">Rice noodles stir-fried with egg, bean sprouts, green onion, and your choice of protein. Topped with crushed peanuts.</div>
+          <div class="dish-tags"><span class="dtag dtag-gf">GF</span><span class="dtag dtag-pop">Fan Fav</span></div>
+        </div>
+      </div>
+      <div class="dish-card">
+        <div class="dish-img bg-b">🍝</div>
+        <div class="dish-body">
+          <div class="dish-header"><span class="dish-name">Lo Mein</span><span class="dish-price">$14</span></div>
+          <div class="dish-desc">Soft wheat noodles tossed with vegetables and your choice of chicken, beef, shrimp, or tofu in savory soy sauce.</div>
+          <div class="dish-tags"><span class="dtag dtag-v">Vegan Option</span></div>
+        </div>
+      </div>
+      <div class="dish-card">
+        <div class="dish-img bg-r">🍚</div>
+        <div class="dish-body">
+          <div class="dish-header"><span class="dish-name">Fried Rice</span><span class="dish-price">$13</span></div>
+          <div class="dish-desc">Wok-fried day-old rice with egg, vegetables, soy sauce, and your choice of protein. Simple and satisfying.</div>
+          <div class="dish-tags"><span class="dtag dtag-gf">GF</span></div>
+        </div>
+      </div>
+      <div class="dish-card">
+        <div class="dish-img bg-g">🍜</div>
+        <div class="dish-body">
+          <div class="dish-header"><span class="dish-name">Ramen Bowl</span><span class="dish-price">$17</span></div>
+          <div class="dish-desc">Rich tonkotsu or miso broth, wavy noodles, chashu pork, soft egg, bamboo shoots, and nori.</div>
+          <div class="dish-tags"><span class="dtag dtag-pop">Must Try</span></div>
+        </div>
+      </div>
+    </div>
+
+    <div id="mp-drinks" class="menu-panel">
+      <div class="dish-card">
+        <div class="dish-img bg-b">🧋</div>
+        <div class="dish-body">
+          <div class="dish-header"><span class="dish-name">Bubble Tea</span><span class="dish-price">$6</span></div>
+          <div class="dish-desc">Classic milk tea or fruit tea with chewy tapioca pearls. Available in 10+ flavors.</div>
+          <div class="dish-tags"><span class="dtag dtag-v">Vegan Option</span></div>
+        </div>
+      </div>
+      <div class="dish-card">
+        <div class="dish-img bg-g">🍵</div>
+        <div class="dish-body">
+          <div class="dish-header"><span class="dish-name">Matcha Latte</span><span class="dish-price">$5</span></div>
+          <div class="dish-desc">Ceremonial-grade matcha with your choice of oat, almond, or whole milk. Hot or iced.</div>
+          <div class="dish-tags"><span class="dtag dtag-v">Vegan Option</span></div>
+        </div>
+      </div>
+      <div class="dish-card">
+        <div class="dish-img bg-y">☕</div>
+        <div class="dish-body">
+          <div class="dish-header"><span class="dish-name">Thai Iced Coffee</span><span class="dish-price">$5</span></div>
+          <div class="dish-desc">Strong Thai coffee poured over ice with sweet condensed milk. Rich, smooth, and irresistible.</div>
+          <div class="dish-tags"></div>
+        </div>
+      </div>
+      <div class="dish-card">
+        <div class="dish-img bg-r">🍺</div>
+        <div class="dish-body">
+          <div class="dish-header"><span class="dish-name">Asian Draft Beer</span><span class="dish-price">$6</span></div>
+          <div class="dish-desc">Rotating selection of Sapporo, Asahi, Tsingtao, and Tiger. Ask your server what's on tap.</div>
+          <div class="dish-tags"></div>
+        </div>
+      </div>
+    </div>
+  </div>
+</section>
+
+<section id="order">
+  <div class="container">
+    <div class="order-grid">
+      <div class="order-left">
+        <div class="order-label">Skip the Wait</div>
+        <div class="order-title">ORDER<br/><span>ONLINE</span></div>
+        <p>Call ahead or submit your order online and we'll have it hot and ready for pickup when you arrive. We aim for 20–30 minutes on most orders.</p>
+        <div class="order-perks">
+          <div class="order-perk"><div class="perk-icon">⏱</div>Ready in 20–30 minutes</div>
+          <div class="order-perk"><div class="perk-icon">🚗</div>Curbside pickup available — just text us</div>
+          <div class="order-perk"><div class="perk-icon">🥡</div>Eco-friendly packaging on all orders</div>
+          <div class="order-perk"><div class="perk-icon">🌶️</div>Customize spice levels on any dish</div>
+          <div class="order-perk"><div class="perk-icon">🎋</div>Catering trays for 10+ with 24-hr notice</div>
+        </div>
+      </div>
+      <div class="order-form">
+        <h3>Place Your Takeout Order</h3>
+        <div class="of-row">
+          <div class="of">
+            <label>First Name</label>
+            <input type="text" placeholder="First"/>
+          </div>
+          <div class="of">
+            <label>Phone</label>
+            <input type="tel" placeholder="(330) 555-0000"/>
+          </div>
+        </div>
+        <div class="of">
+          <label>Pickup Time</label>
+          <select>
+            <option>ASAP (20–30 min)</option>
+            <option>In 45 minutes</option>
+            <option>In 1 hour</option>
+            <option>Specific time...</option>
+          </select>
+        </div>
+        <div class="of">
+          <label>Your Order</label>
+          <textarea placeholder="List items here, e.g.:&#10;- Pad Thai (chicken, medium spice) x2&#10;- Dragon Roll x1&#10;- Bubble Tea (taro) x2"></textarea>
+        </div>
+        <div class="of">
+          <label>Allergies / Dietary Notes</label>
+          <input type="text" placeholder="Peanut allergy, gluten-free, etc."/>
+        </div>
+        <button class="order-btn">Submit Order →</button>
+      </div>
+    </div>
+  </div>
+</section>
+
+<section id="about">
+  <div class="container">
+    <div class="about-grid">
+      <div class="about-left">
+        <div class="about-label">Our Story</div>
+        <div class="about-title">ROOTED IN<br/><span>TRADITION</span></div>
+        <p>Bamboo Garden started as a tiny 8-table restaurant in 2009 — the dream of the Liu family, who brought recipes from Guangdong, Chiang Mai, and Tokyo all under one roof. The idea was simple: great food shouldn't require a passport or a reservation six months in advance.</p>
+        <p>Today we serve over 400 guests daily and ship our sauces regionally, but the kitchen still runs the same way it did on day one — fresh ingredients, high heat, and a whole lot of heart.</p>
+        <div class="about-stats">
+          <div class="about-stat">
+            <div class="about-stat-n">17</div>
+            <div class="about-stat-l">Years Open</div>
+          </div>
+          <div class="about-stat">
+            <div class="about-stat-n">60+</div>
+            <div class="about-stat-l">Menu Items</div>
+          </div>
+          <div class="about-stat">
+            <div class="about-stat-n">4.7★</div>
+            <div class="about-stat-l">Google Rating</div>
+          </div>
+        </div>
+      </div>
+      <div class="about-visual">
+        <div class="about-visual-emoji">🎋</div>
+      </div>
+    </div>
+  </div>
+</section>
+
+<footer>
+  <div>
+    <div class="foot-brand">Bamboo Garden</div>
+    <div class="foot-text">Asian Fusion Kitchen<br/>321 College Ave, Kent, OH 44240<br/>(330) 555-0400<br/>hello@bamboogardenkent.com</div>
+  </div>
+  <div class="foot-col">
+    <h4>Menu</h4>
+    <a href="#menu">Appetizers</a>
+    <a href="#menu">Entrees</a>
+    <a href="#menu">Sushi &amp; Rolls</a>
+    <a href="#menu">Noodles &amp; Rice</a>
+    <a href="#menu">Drinks</a>
+  </div>
+  <div class="foot-col">
+    <h4>Visit</h4>
+    <p>
+      Open Daily<br/>
+      11:00am – 10:00pm<br/><br/>
+      Lunch Specials<br/>
+      Mon–Fri, 11am–3pm<br/><br/>
+      Dine-In &amp; Takeout
+    </p>
+  </div>
+  <div class="foot-col">
+    <h4>Quick Links</h4>
+    <a href="#order">Order Online</a>
+    <a href="#">Catering</a>
+    <a href="#">Gift Cards</a>
+    <a href="#about">About Us</a>
+    <a href="#">Careers</a>
+  </div>
+  <div class="foot-copy">© 2026 Bamboo Garden Asian Fusion Kitchen. All rights reserved.</div>
+</footer>
+
+<script>
+  function switchMenu(id, btn) {
+    document.querySelectorAll('.menu-panel').forEach(p => p.classList.remove('active'));
+    document.querySelectorAll('.mtab').forEach(b => b.classList.remove('active'));
+    document.getElementById('mp-' + id).classList.add('active');
+    btn.classList.add('active');
+  }
+</script>
+
+</body>
+</html>

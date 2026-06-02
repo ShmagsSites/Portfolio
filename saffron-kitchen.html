@@ -1,0 +1,648 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8"/>
+  <meta name="viewport" content="width=device-width, initial-scale=1.0"/>
+  <title>Saffron Kitchen — Modern Indian Cuisine</title>
+  <link href="https://fonts.googleapis.com/css2?family=Raleway:wght@300;400;500;600&family=Playfair+Display:ital,wght@0,400;0,700;1,400;1,700&display=swap" rel="stylesheet"/>
+  <style>
+    *, *::before, *::after { box-sizing: border-box; margin: 0; padding: 0; }
+    :root {
+      --burgundy: #2a0a0f;
+      --burgundy-mid: #3d1018;
+      --burgundy-light: #5c1a26;
+      --gold: #c9a84c;
+      --gold-light: #e0c068;
+      --cream: #f9f3e5;
+      --cream-dark: #ede5d0;
+      --text: #1a0a08;
+      --muted: #7a6a5a;
+      --white: #fff8f0;
+    }
+    html { scroll-behavior: smooth; }
+    body { font-family: 'Raleway', sans-serif; color: var(--text); background: var(--burgundy); }
+
+    nav {
+      position: fixed; top: 0; left: 0; right: 0; z-index: 200;
+      background: rgba(30,8,12,0.93);
+      backdrop-filter: blur(16px);
+      border-bottom: 1px solid rgba(201,168,76,0.2);
+      padding: 1.1rem 5rem;
+      display: flex; align-items: center; justify-content: space-between;
+    }
+    .nav-logo {
+      font-family: 'Playfair Display', serif;
+      font-size: 1.5rem; font-weight: 700; color: var(--gold);
+      text-decoration: none; letter-spacing: 0.04em;
+    }
+    .nav-logo span { font-style: italic; font-weight: 400; }
+    .nav-links { display: flex; gap: 2.5rem; list-style: none; }
+    .nav-links a { color: rgba(249,243,229,0.65); font-size: 0.82rem; font-weight: 500; text-decoration: none; letter-spacing: 0.08em; text-transform: uppercase; transition: color 0.2s; }
+    .nav-links a:hover { color: var(--gold); }
+    .nav-reserve {
+      border: 1px solid var(--gold); color: var(--gold);
+      padding: 0.55rem 1.3rem; font-size: 0.78rem; font-weight: 600;
+      letter-spacing: 0.1em; text-transform: uppercase; text-decoration: none;
+      transition: all 0.25s;
+    }
+    .nav-reserve:hover { background: var(--gold); color: var(--burgundy); }
+
+    .hero {
+      min-height: 100vh; position: relative;
+      display: flex; flex-direction: column;
+      justify-content: center; align-items: center;
+      text-align: center; padding: 8rem 3rem 5rem;
+      overflow: hidden;
+    }
+    .hero-bg {
+      position: absolute; inset: 0; z-index: 0;
+      background:
+        radial-gradient(ellipse at 30% 60%, rgba(201,168,76,0.08) 0%, transparent 55%),
+        radial-gradient(ellipse at 70% 30%, rgba(92,26,38,0.6) 0%, transparent 55%),
+        linear-gradient(to bottom, var(--burgundy) 0%, var(--burgundy-mid) 60%, var(--burgundy) 100%);
+    }
+    .hero-ornament {
+      position: absolute; inset: 0; z-index: 0; pointer-events: none; opacity: 0.04;
+      background-image: url("data:image/svg+xml,%3Csvg width='80' height='80' viewBox='0 0 80 80' xmlns='http://www.w3.org/2000/svg'%3E%3Cg fill='none' stroke='%23c9a84c' stroke-width='0.8'%3E%3Ccircle cx='40' cy='40' r='32'/%3E%3Ccircle cx='40' cy='40' r='16'/%3E%3Cpath d='M40 8 L40 72 M8 40 L72 40'/%3E%3Cpath d='M17.4 17.4 L62.6 62.6 M62.6 17.4 L17.4 62.6'/%3E%3C/g%3E%3C/svg%3E");
+      background-size: 80px 80px;
+    }
+    .hero-eyebrow {
+      position: relative; z-index: 2;
+      font-size: 0.72rem; font-weight: 600; letter-spacing: 0.28em;
+      text-transform: uppercase; color: var(--gold); margin-bottom: 1.5rem;
+      display: flex; align-items: center; gap: 1rem;
+    }
+    .hero-eyebrow::before, .hero-eyebrow::after { content: ''; flex: 0 0 40px; height: 1px; background: rgba(201,168,76,0.4); }
+    .hero h1 {
+      position: relative; z-index: 2;
+      font-family: 'Playfair Display', serif;
+      font-size: clamp(3.5rem, 9vw, 8rem);
+      font-weight: 700; line-height: 0.95; letter-spacing: -0.01em;
+      color: var(--cream); margin-bottom: 0.5rem;
+    }
+    .hero h1 em { font-style: italic; color: var(--gold); font-weight: 400; }
+    .hero-subtitle {
+      position: relative; z-index: 2;
+      font-family: 'Playfair Display', serif;
+      font-size: clamp(1rem, 2vw, 1.4rem); font-style: italic;
+      color: rgba(249,243,229,0.55); margin-bottom: 2.5rem;
+    }
+    .hero-btns {
+      position: relative; z-index: 2;
+      display: flex; gap: 1rem; flex-wrap: wrap; justify-content: center;
+    }
+    .btn-gold {
+      background: var(--gold); color: var(--burgundy);
+      padding: 0.9rem 2.2rem; font-size: 0.82rem; font-weight: 700;
+      letter-spacing: 0.1em; text-transform: uppercase; text-decoration: none;
+      transition: background 0.2s, transform 0.2s;
+    }
+    .btn-gold:hover { background: var(--gold-light); transform: translateY(-2px); }
+    .btn-outline-gold {
+      border: 1px solid rgba(201,168,76,0.5); color: var(--gold);
+      padding: 0.9rem 2.2rem; font-size: 0.82rem; font-weight: 600;
+      letter-spacing: 0.1em; text-transform: uppercase; text-decoration: none;
+      transition: all 0.25s;
+    }
+    .btn-outline-gold:hover { border-color: var(--gold); background: rgba(201,168,76,0.08); }
+    .hero-scroll {
+      position: absolute; bottom: 2.5rem; left: 50%; transform: translateX(-50%);
+      z-index: 2; color: rgba(201,168,76,0.5);
+      font-size: 0.68rem; letter-spacing: 0.2em; text-transform: uppercase;
+      display: flex; flex-direction: column; align-items: center; gap: 0.5rem;
+    }
+    .hero-scroll-line { width: 1px; height: 40px; background: linear-gradient(to bottom, rgba(201,168,76,0.5), transparent); }
+
+    .intro-strip {
+      background: var(--cream); padding: 1.5rem 5rem;
+      display: flex; justify-content: center; gap: 4rem;
+      border-top: 3px solid var(--gold); border-bottom: 1px solid var(--cream-dark);
+    }
+    .intro-item { display: flex; align-items: center; gap: 0.75rem; font-size: 0.82rem; color: var(--muted); font-weight: 500; letter-spacing: 0.06em; }
+    .intro-icon { font-size: 1.1rem; }
+
+    #menu {
+      background: var(--cream); padding: 7rem 5rem;
+    }
+    .container { max-width: 1100px; margin: 0 auto; }
+    .menu-header { text-align: center; margin-bottom: 4rem; }
+    .sec-ornament { color: var(--gold); font-size: 1.2rem; letter-spacing: 0.3em; margin-bottom: 1rem; }
+    .sec-title {
+      font-family: 'Playfair Display', serif;
+      font-size: clamp(2.2rem, 4vw, 3.2rem); color: var(--burgundy);
+      font-weight: 700; margin-bottom: 0.75rem;
+    }
+    .sec-body { font-size: 0.92rem; color: var(--muted); max-width: 480px; margin: 0 auto; line-height: 1.8; }
+
+    .menu-tabs {
+      display: flex; justify-content: center; gap: 0;
+      border-bottom: 2px solid var(--cream-dark);
+      margin-bottom: 3.5rem;
+    }
+    .tab-btn {
+      padding: 0.85rem 2rem; background: none; border: none;
+      font-family: 'Raleway', sans-serif; font-size: 0.82rem; font-weight: 600;
+      letter-spacing: 0.1em; text-transform: uppercase;
+      color: var(--muted); cursor: pointer; position: relative;
+      transition: color 0.2s;
+    }
+    .tab-btn.active { color: var(--burgundy); }
+    .tab-btn.active::after {
+      content: ''; position: absolute; bottom: -2px; left: 0; right: 0;
+      height: 2px; background: var(--gold);
+    }
+    .tab-btn:hover { color: var(--burgundy); }
+
+    .menu-panel { display: none; }
+    .menu-panel.active { display: block; }
+    .menu-grid { display: grid; grid-template-columns: 1fr 1fr; gap: 1.5rem; }
+    .menu-item {
+      display: flex; align-items: flex-start; gap: 1.25rem;
+      padding: 1.5rem; background: white;
+      border-left: 3px solid transparent;
+      transition: border-color 0.2s, box-shadow 0.2s;
+    }
+    .menu-item:hover { border-left-color: var(--gold); box-shadow: 0 4px 20px rgba(0,0,0,0.06); }
+    .menu-item-photo {
+      width: 80px; height: 70px; flex-shrink: 0;
+      background: linear-gradient(135deg, var(--cream-dark), var(--cream));
+      display: flex; align-items: center; justify-content: center;
+      font-size: 2rem;
+    }
+    .menu-item-text { flex: 1; }
+    .menu-item-header { display: flex; justify-content: space-between; align-items: baseline; margin-bottom: 0.35rem; gap: 0.5rem; }
+    .menu-item-name { font-family: 'Playfair Display', serif; font-size: 1rem; font-weight: 700; color: var(--burgundy); }
+    .menu-item-price { font-size: 1rem; font-weight: 600; color: var(--gold); white-space: nowrap; }
+    .menu-item-desc { font-size: 0.8rem; color: var(--muted); line-height: 1.6; }
+    .menu-item-badge {
+      display: inline-block; margin-top: 0.5rem;
+      font-size: 0.68rem; font-weight: 700; letter-spacing: 0.08em;
+      padding: 0.15rem 0.5rem; background: rgba(201,168,76,0.15); color: var(--burgundy);
+    }
+
+    #takeout {
+      background: var(--burgundy-mid); padding: 7rem 5rem;
+      position: relative; overflow: hidden;
+    }
+    #takeout::before {
+      content: ''; position: absolute; inset: 0; pointer-events: none; opacity: 0.04;
+      background-image: url("data:image/svg+xml,%3Csvg width='80' height='80' viewBox='0 0 80 80' xmlns='http://www.w3.org/2000/svg'%3E%3Cg fill='none' stroke='%23c9a84c' stroke-width='0.8'%3E%3Ccircle cx='40' cy='40' r='32'/%3E%3Cpath d='M40 8 L40 72 M8 40 L72 40'/%3E%3C/g%3E%3C/svg%3E");
+      background-size: 80px 80px;
+    }
+    .takeout-grid {
+      display: grid; grid-template-columns: 1fr 1fr;
+      gap: 6rem; align-items: center; position: relative; z-index: 1;
+    }
+    .takeout-left { color: var(--cream); }
+    .takeout-left .sec-ornament { color: var(--gold); }
+    .takeout-left .sec-title { color: var(--cream); }
+    .takeout-left p { font-size: 0.95rem; color: rgba(249,243,229,0.68); line-height: 1.8; margin-bottom: 2rem; }
+    .takeout-features { display: flex; flex-direction: column; gap: 1rem; }
+    .takeout-feature {
+      display: flex; align-items: center; gap: 1rem;
+      font-size: 0.88rem; color: rgba(249,243,229,0.8);
+    }
+    .tf-dot { width: 8px; height: 8px; background: var(--gold); transform: rotate(45deg); flex-shrink: 0; }
+    .takeout-form {
+      background: var(--cream); padding: 2.5rem;
+    }
+    .takeout-form h3 {
+      font-family: 'Playfair Display', serif;
+      font-size: 1.4rem; color: var(--burgundy); margin-bottom: 1.5rem;
+    }
+    .of { margin-bottom: 1rem; }
+    .of label { display: block; font-size: 0.72rem; font-weight: 600; letter-spacing: 0.1em; text-transform: uppercase; color: var(--muted); margin-bottom: 0.38rem; }
+    .of input, .of select, .of textarea {
+      width: 100%; padding: 0.72rem 0.9rem;
+      border: 1.5px solid var(--cream-dark); font-family: 'Raleway', sans-serif;
+      font-size: 0.88rem; color: var(--text); background: white; outline: none;
+      transition: border-color 0.2s;
+    }
+    .of input:focus, .of select:focus, .of textarea:focus { border-color: var(--gold); }
+    .of textarea { resize: vertical; min-height: 80px; }
+    .order-btn {
+      width: 100%; background: var(--burgundy); color: var(--gold); border: none;
+      padding: 0.9rem; font-family: 'Raleway', sans-serif;
+      font-size: 0.85rem; font-weight: 700; letter-spacing: 0.1em;
+      text-transform: uppercase; cursor: pointer; transition: background 0.2s;
+    }
+    .order-btn:hover { background: var(--burgundy-light); }
+
+    #about-section {
+      background: var(--cream); padding: 7rem 5rem;
+    }
+    .about-grid { display: grid; grid-template-columns: 1fr 1fr; gap: 5rem; align-items: center; }
+    .about-visual {
+      height: 420px;
+      background: linear-gradient(145deg, var(--burgundy-light) 0%, var(--burgundy) 100%);
+      display: flex; align-items: center; justify-content: center;
+      position: relative; overflow: hidden;
+    }
+    .about-visual::before {
+      content: ''; position: absolute; inset: 0;
+      background: radial-gradient(ellipse at 50% 80%, rgba(201,168,76,0.15), transparent 60%);
+    }
+    .about-visual-text {
+      font-family: 'Playfair Display', serif;
+      font-size: 6rem; color: rgba(201,168,76,0.15); font-style: italic;
+    }
+    .about-text .sec-ornament { text-align: left; }
+    .about-text .sec-title { text-align: left; margin-bottom: 1.5rem; }
+    .about-text p { font-size: 0.93rem; color: var(--muted); line-height: 1.85; margin-bottom: 1.25rem; }
+    .about-highlight {
+      border-left: 3px solid var(--gold); padding-left: 1.25rem;
+      font-family: 'Playfair Display', serif; font-style: italic;
+      font-size: 1.1rem; color: var(--burgundy); line-height: 1.5;
+      margin: 1.75rem 0;
+    }
+
+    footer {
+      background: var(--burgundy); border-top: 1px solid rgba(201,168,76,0.2);
+      padding: 4rem 5rem 2.5rem;
+      display: grid; grid-template-columns: 2fr 1fr 1fr;
+      gap: 3rem;
+    }
+    .foot-logo {
+      font-family: 'Playfair Display', serif;
+      font-size: 1.6rem; font-weight: 700; color: var(--gold); margin-bottom: 1rem;
+    }
+    .foot-logo em { font-style: italic; font-weight: 400; }
+    .foot-tagline { font-size: 0.8rem; color: rgba(249,243,229,0.4); font-style: italic; margin-bottom: 1.5rem; }
+    .foot-addr { font-size: 0.82rem; color: rgba(249,243,229,0.55); line-height: 1.9; }
+    .foot-col h4 { font-size: 0.68rem; font-weight: 700; letter-spacing: 0.18em; text-transform: uppercase; color: var(--gold); margin-bottom: 1.25rem; opacity: 0.7; }
+    .foot-col a { display: block; font-size: 0.82rem; color: rgba(249,243,229,0.55); text-decoration: none; margin-bottom: 0.6rem; transition: color 0.2s; }
+    .foot-col a:hover { color: var(--gold); }
+    .foot-col p { font-size: 0.82rem; color: rgba(249,243,229,0.55); line-height: 1.9; }
+    .foot-copy { grid-column: 1 / -1; padding-top: 2rem; border-top: 1px solid rgba(201,168,76,0.15); font-size: 0.72rem; color: rgba(249,243,229,0.25); text-align: center; }
+
+    @media (max-width: 1000px) {
+      nav { padding: 1rem 1.5rem; }
+      .nav-links { display: none; }
+      .hero { padding: 7rem 2rem 4rem; }
+      .intro-strip { padding: 1.5rem 2rem; flex-wrap: wrap; gap: 1.5rem; }
+      #menu, #takeout, #about-section { padding: 5rem 1.5rem; }
+      .menu-grid { grid-template-columns: 1fr; }
+      .takeout-grid { grid-template-columns: 1fr; gap: 3rem; }
+      .about-grid { grid-template-columns: 1fr; }
+      .about-visual { height: 260px; }
+      footer { grid-template-columns: 1fr; padding: 3rem 1.5rem 2rem; }
+      .menu-tabs { flex-wrap: wrap; }
+    }
+  </style>
+</head>
+<body>
+
+<nav>
+  <a href="#" class="nav-logo">Saffron <span>Kitchen</span></a>
+  <ul class="nav-links">
+    <li><a href="#menu">Menu</a></li>
+    <li><a href="#takeout">Order Takeout</a></li>
+    <li><a href="#about-section">Our Story</a></li>
+    <li><a href="#">Reservations</a></li>
+  </ul>
+  <a href="#takeout" class="nav-reserve">Order Online</a>
+</nav>
+
+<section class="hero">
+  <div class="hero-bg"></div>
+  <div class="hero-ornament"></div>
+  <div class="hero-eyebrow">Modern Indian Cuisine</div>
+  <h1>Bold Flavors.<br/><em>Artful Plates.</em></h1>
+  <div class="hero-subtitle">Celebrating the spice routes from Mumbai to the Mediterranean</div>
+  <div class="hero-btns">
+    <a href="#menu" class="btn-gold">Explore the Menu</a>
+    <a href="#takeout" class="btn-outline-gold">Order Takeout</a>
+  </div>
+  <div class="hero-scroll">
+    <div class="hero-scroll-line"></div>
+    Scroll
+  </div>
+</section>
+
+<div class="intro-strip">
+  <div class="intro-item"><span class="intro-icon">🕐</span> Dinner: Tue–Sun 5pm–10pm</div>
+  <div class="intro-item"><span class="intro-icon">🥡</span> Takeout: Tue–Sun 4pm–9:30pm</div>
+  <div class="intro-item"><span class="intro-icon">📍</span> 789 Main St, Kent, OH 44240</div>
+  <div class="intro-item"><span class="intro-icon">📞</span> (330) 555-0300</div>
+</div>
+
+<section id="menu">
+  <div class="container">
+    <div class="menu-header">
+      <div class="sec-ornament">✦ ✦ ✦</div>
+      <h2 class="sec-title">The Menu</h2>
+      <p class="sec-body">Crafted from heirloom spices, seasonal produce, and family recipes refined over generations. Every plate tells a story.</p>
+    </div>
+    <div class="menu-tabs">
+      <button class="tab-btn active" onclick="switchTab('starters',this)">Starters</button>
+      <button class="tab-btn" onclick="switchTab('mains',this)">Main Course</button>
+      <button class="tab-btn" onclick="switchTab('vegetarian',this)">Vegetarian</button>
+      <button class="tab-btn" onclick="switchTab('desserts',this)">Desserts</button>
+      <button class="tab-btn" onclick="switchTab('drinks',this)">Drinks</button>
+    </div>
+
+    <div id="tab-starters" class="menu-panel active">
+      <div class="menu-grid">
+        <div class="menu-item">
+          <div class="menu-item-photo">🥟</div>
+          <div class="menu-item-text">
+            <div class="menu-item-header"><span class="menu-item-name">Samosa Trio</span><span class="menu-item-price">$11</span></div>
+            <div class="menu-item-desc">Crisp pastry filled with spiced potato and peas, served with tamarind chutney and mint raita.</div>
+          </div>
+        </div>
+        <div class="menu-item">
+          <div class="menu-item-photo">🍢</div>
+          <div class="menu-item-text">
+            <div class="menu-item-header"><span class="menu-item-name">Lamb Kofta Skewers</span><span class="menu-item-price">$17</span></div>
+            <div class="menu-item-desc">Spiced ground lamb on skewers, charred over open flame, with saffron yogurt and pickled onion.</div>
+            <span class="menu-item-badge">Chef's Pick</span>
+          </div>
+        </div>
+        <div class="menu-item">
+          <div class="menu-item-photo">🫙</div>
+          <div class="menu-item-text">
+            <div class="menu-item-header"><span class="menu-item-name">Hummus &amp; Peshwari Naan</span><span class="menu-item-price">$13</span></div>
+            <div class="menu-item-desc">House-made roasted red pepper hummus with warm almond-coconut naan for dipping.</div>
+          </div>
+        </div>
+        <div class="menu-item">
+          <div class="menu-item-photo">🦐</div>
+          <div class="menu-item-text">
+            <div class="menu-item-header"><span class="menu-item-name">Masala Shrimp</span><span class="menu-item-price">$19</span></div>
+            <div class="menu-item-desc">Jumbo shrimp tossed in a tangy masala reduction, finished with cilantro oil and crispy curry leaf.</div>
+          </div>
+        </div>
+        <div class="menu-item">
+          <div class="menu-item-photo">🥗</div>
+          <div class="menu-item-text">
+            <div class="menu-item-header"><span class="menu-item-name">Chaat Salad</span><span class="menu-item-price">$14</span></div>
+            <div class="menu-item-desc">Crispy chickpea, pomegranate, cucumber, red onion tossed in tamarind vinaigrette with sev.</div>
+            <span class="menu-item-badge">Vegan</span>
+          </div>
+        </div>
+        <div class="menu-item">
+          <div class="menu-item-photo">🍲</div>
+          <div class="menu-item-text">
+            <div class="menu-item-header"><span class="menu-item-name">Mulligatawny Soup</span><span class="menu-item-price">$9</span></div>
+            <div class="menu-item-desc">A rich, slow-simmered lentil and vegetable broth scented with coconut and fresh curry leaves.</div>
+          </div>
+        </div>
+      </div>
+    </div>
+
+    <div id="tab-mains" class="menu-panel">
+      <div class="menu-grid">
+        <div class="menu-item">
+          <div class="menu-item-photo">🍗</div>
+          <div class="menu-item-text">
+            <div class="menu-item-header"><span class="menu-item-name">Chicken Tikka Masala</span><span class="menu-item-price">$26</span></div>
+            <div class="menu-item-desc">The classic, elevated. Tandoor-roasted chicken in a velvety tomato-cream sauce with basmati and garlic naan.</div>
+            <span class="menu-item-badge">Most Ordered</span>
+          </div>
+        </div>
+        <div class="menu-item">
+          <div class="menu-item-photo">🥩</div>
+          <div class="menu-item-text">
+            <div class="menu-item-header"><span class="menu-item-name">Saffron Braised Lamb Shank</span><span class="menu-item-price">$38</span></div>
+            <div class="menu-item-desc">12-hour slow-braised New Zealand lamb in saffron-Persian spice jus, served over jewelled rice.</div>
+            <span class="menu-item-badge">Signature</span>
+          </div>
+        </div>
+        <div class="menu-item">
+          <div class="menu-item-photo">🐟</div>
+          <div class="menu-item-text">
+            <div class="menu-item-header"><span class="menu-item-name">Tandoori Sea Bass</span><span class="menu-item-price">$34</span></div>
+            <div class="menu-item-desc">Chilean sea bass marinated in yogurt and Kashmiri spices, served with pickled cucumber and mint chutney.</div>
+          </div>
+        </div>
+        <div class="menu-item">
+          <div class="menu-item-photo">🍛</div>
+          <div class="menu-item-text">
+            <div class="menu-item-header"><span class="menu-item-name">Lamb Rogan Josh</span><span class="menu-item-price">$30</span></div>
+            <div class="menu-item-desc">Kashmiri-style braised lamb shoulder with aromatic whole spices, served with saffron basmati.</div>
+          </div>
+        </div>
+        <div class="menu-item">
+          <div class="menu-item-photo">🍤</div>
+          <div class="menu-item-text">
+            <div class="menu-item-header"><span class="menu-item-name">Goan Prawn Curry</span><span class="menu-item-price">$29</span></div>
+            <div class="menu-item-desc">Wild-caught prawns simmered in coconut-kokum curry with a touch of fire. Steamed rice, papad.</div>
+          </div>
+        </div>
+        <div class="menu-item">
+          <div class="menu-item-photo">🥘</div>
+          <div class="menu-item-text">
+            <div class="menu-item-header"><span class="menu-item-name">Chicken Biryani</span><span class="menu-item-price">$27</span></div>
+            <div class="menu-item-desc">Dum-cooked aged basmati with chicken, fried onion, whole spices, and rose water. Served with raita.</div>
+          </div>
+        </div>
+      </div>
+    </div>
+
+    <div id="tab-vegetarian" class="menu-panel">
+      <div class="menu-grid">
+        <div class="menu-item">
+          <div class="menu-item-photo">🌿</div>
+          <div class="menu-item-text">
+            <div class="menu-item-header"><span class="menu-item-name">Dal Makhani</span><span class="menu-item-price">$21</span></div>
+            <div class="menu-item-desc">Black lentils slow-simmered for 24 hours with tomato, ginger, and a touch of cream. With garlic naan.</div>
+            <span class="menu-item-badge">Vegan Option</span>
+          </div>
+        </div>
+        <div class="menu-item">
+          <div class="menu-item-photo">🧀</div>
+          <div class="menu-item-text">
+            <div class="menu-item-header"><span class="menu-item-name">Palak Paneer</span><span class="menu-item-price">$22</span></div>
+            <div class="menu-item-desc">House-made paneer in a silky purée of baby spinach, garlic, ginger, and warming spices.</div>
+          </div>
+        </div>
+        <div class="menu-item">
+          <div class="menu-item-photo">🥦</div>
+          <div class="menu-item-text">
+            <div class="menu-item-header"><span class="menu-item-name">Aloo Gobi Masala</span><span class="menu-item-price">$19</span></div>
+            <div class="menu-item-desc">Roasted cauliflower and potato in a bold dry masala with garam spices and fresh coriander.</div>
+            <span class="menu-item-badge">Vegan</span>
+          </div>
+        </div>
+        <div class="menu-item">
+          <div class="menu-item-photo">🍅</div>
+          <div class="menu-item-text">
+            <div class="menu-item-header"><span class="menu-item-name">Vegetable Biryani</span><span class="menu-item-price">$22</span></div>
+            <div class="menu-item-desc">Seasonal vegetables dum-cooked in saffron basmati with fried onion, cashew, and rose water.</div>
+          </div>
+        </div>
+      </div>
+    </div>
+
+    <div id="tab-desserts" class="menu-panel">
+      <div class="menu-grid">
+        <div class="menu-item">
+          <div class="menu-item-photo">🍨</div>
+          <div class="menu-item-text">
+            <div class="menu-item-header"><span class="menu-item-name">Mango Kulfi</span><span class="menu-item-price">$9</span></div>
+            <div class="menu-item-desc">Traditional dense Indian ice cream made with Alphonso mango, cardamom, and pistachios.</div>
+          </div>
+        </div>
+        <div class="menu-item">
+          <div class="menu-item-photo">🥐</div>
+          <div class="menu-item-text">
+            <div class="menu-item-header"><span class="menu-item-name">Cardamom Crème Brûlée</span><span class="menu-item-price">$11</span></div>
+            <div class="menu-item-desc">Classic crème brûlée infused with green cardamom and saffron, finished tableside.</div>
+            <span class="menu-item-badge">Chef's Pick</span>
+          </div>
+        </div>
+        <div class="menu-item">
+          <div class="menu-item-photo">🍯</div>
+          <div class="menu-item-text">
+            <div class="menu-item-header"><span class="menu-item-name">Gulab Jamun</span><span class="menu-item-price">$8</span></div>
+            <div class="menu-item-desc">Warm milk-solid dumplings soaked in rose syrup, served with a scoop of pistachio kulfi.</div>
+          </div>
+        </div>
+        <div class="menu-item">
+          <div class="menu-item-photo">🎂</div>
+          <div class="menu-item-text">
+            <div class="menu-item-header"><span class="menu-item-name">Chai-Spiced Cheesecake</span><span class="menu-item-price">$12</span></div>
+            <div class="menu-item-desc">New York-style cheesecake infused with masala chai spices on a ginger-biscuit crust.</div>
+          </div>
+        </div>
+      </div>
+    </div>
+
+    <div id="tab-drinks" class="menu-panel">
+      <div class="menu-grid">
+        <div class="menu-item">
+          <div class="menu-item-photo">🥭</div>
+          <div class="menu-item-text">
+            <div class="menu-item-header"><span class="menu-item-name">Mango Lassi</span><span class="menu-item-price">$7</span></div>
+            <div class="menu-item-desc">House-blended Alphonso mango with chilled yogurt and a hint of cardamom. Alcohol-free.</div>
+          </div>
+        </div>
+        <div class="menu-item">
+          <div class="menu-item-photo">🍹</div>
+          <div class="menu-item-text">
+            <div class="menu-item-header"><span class="menu-item-name">Saffron Spritz</span><span class="menu-item-price">$14</span></div>
+            <div class="menu-item-desc">Saffron-infused gin, elderflower liqueur, fresh lemon, and prosecco. A Saffron Kitchen signature.</div>
+          </div>
+        </div>
+        <div class="menu-item">
+          <div class="menu-item-photo">☕</div>
+          <div class="menu-item-text">
+            <div class="menu-item-header"><span class="menu-item-name">Masala Chai</span><span class="menu-item-price">$5</span></div>
+            <div class="menu-item-desc">House-spiced black tea with ginger, cinnamon, cardamom, and your choice of oat or whole milk.</div>
+          </div>
+        </div>
+        <div class="menu-item">
+          <div class="menu-item-photo">🍷</div>
+          <div class="menu-item-text">
+            <div class="menu-item-header"><span class="menu-item-name">Wine Pairing (per glass)</span><span class="menu-item-price">$12–18</span></div>
+            <div class="menu-item-desc">Ask your server for our curated selection of Old and New World wines paired for Indian cuisine.</div>
+          </div>
+        </div>
+      </div>
+    </div>
+  </div>
+</section>
+
+<section id="takeout">
+  <div class="container">
+    <div class="takeout-grid">
+      <div class="takeout-left">
+        <div class="sec-ornament">✦ ✦ ✦</div>
+        <h2 class="sec-title" style="color:var(--cream);">Order Takeout</h2>
+        <p>Bring the Saffron Kitchen experience home. Our takeout containers are designed to keep every dish at its best — from spiced sauces to crispy starters.</p>
+        <div class="takeout-features">
+          <div class="takeout-feature"><div class="tf-dot"></div>Ready in 25–35 minutes</div>
+          <div class="takeout-feature"><div class="tf-dot"></div>Curbside pickup available</div>
+          <div class="takeout-feature"><div class="tf-dot"></div>Orders accepted until 9:30pm</div>
+          <div class="takeout-feature"><div class="tf-dot"></div>Allergen &amp; dietary info provided</div>
+          <div class="takeout-feature"><div class="tf-dot"></div>Party trays available with 24-hr notice</div>
+        </div>
+      </div>
+      <div class="takeout-form">
+        <h3>Place Your Order</h3>
+        <div class="of">
+          <label>Your Name</label>
+          <input type="text" placeholder="Full name for pickup"/>
+        </div>
+        <div class="of">
+          <label>Phone</label>
+          <input type="tel" placeholder="(330) 555-0000"/>
+        </div>
+        <div class="of">
+          <label>Pickup Time</label>
+          <select>
+            <option>ASAP (25–35 min)</option>
+            <option>In 1 hour</option>
+            <option>Specific time...</option>
+          </select>
+        </div>
+        <div class="of">
+          <label>What would you like to order?</label>
+          <textarea placeholder="List items with any modifications (e.g. 'Chicken Tikka Masala – medium spice, no cream; Garlic Naan x2')"></textarea>
+        </div>
+        <div class="of">
+          <label>Dietary Notes / Allergies</label>
+          <input type="text" placeholder="Gluten-free, nut allergy, vegan, etc."/>
+        </div>
+        <button class="order-btn">Submit Takeout Order →</button>
+      </div>
+    </div>
+  </div>
+</section>
+
+<section id="about-section">
+  <div class="container">
+    <div class="about-grid">
+      <div class="about-visual">
+        <div class="about-visual-text">سفر</div>
+      </div>
+      <div class="about-text">
+        <div class="sec-ornament" style="text-align:left;">✦ ✦ ✦</div>
+        <h2 class="sec-title">Our Story</h2>
+        <p>Saffron Kitchen was born from a single conviction: that the flavors of the Indian subcontinent deserve the same reverence as any fine cuisine in the world. Our chef-owner, Arjun Mehta, grew up in Mumbai before training under Michelin-starred chefs in London and New York.</p>
+        <div class="about-highlight">"Food is memory. Every spice in my kitchen carries a story from my mother's hands."</div>
+        <p>We source our spices directly from small farms in Kerala, Rajasthan, and Jammu — ground fresh each morning in our kitchen. Nothing here comes from a jar.</p>
+        <a href="#menu" class="btn-gold" style="display:inline-block; margin-top:1rem;">View the Menu</a>
+      </div>
+    </div>
+  </div>
+</section>
+
+<footer>
+  <div>
+    <div class="foot-logo">Saffron <em>Kitchen</em></div>
+    <div class="foot-tagline">Where spice meets artistry</div>
+    <div class="foot-addr">789 Main Street, Kent, OH 44240<br/>(330) 555-0300 · hello@saffronkitchen.com</div>
+  </div>
+  <div class="foot-col">
+    <h4>Navigate</h4>
+    <a href="#menu">The Menu</a>
+    <a href="#takeout">Order Takeout</a>
+    <a href="#about-section">Our Story</a>
+    <a href="#">Reservations</a>
+    <a href="#">Private Dining</a>
+    <a href="#">Gift Cards</a>
+  </div>
+  <div class="foot-col">
+    <h4>Hours</h4>
+    <p>
+      Tuesday – Thursday<br/>5:00pm – 10:00pm<br/><br/>
+      Friday – Saturday<br/>4:30pm – 11:00pm<br/><br/>
+      Sunday<br/>4:30pm – 9:00pm<br/><br/>
+      Closed Monday
+    </p>
+  </div>
+  <div class="foot-copy">© 2026 Saffron Kitchen. All rights reserved.</div>
+</footer>
+
+<script>
+  function switchTab(id, btn) {
+    document.querySelectorAll('.menu-panel').forEach(p => p.classList.remove('active'));
+    document.querySelectorAll('.tab-btn').forEach(b => b.classList.remove('active'));
+    document.getElementById('tab-' + id).classList.add('active');
+    btn.classList.add('active');
+  }
+</script>
+
+</body>
+</html>

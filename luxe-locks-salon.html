@@ -1,0 +1,708 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8"/>
+  <meta name="viewport" content="width=device-width, initial-scale=1.0"/>
+  <title>Luxe Locks — Luxury Hair Studio</title>
+  <link href="https://fonts.googleapis.com/css2?family=Montserrat:wght@300;400;500;600;700&family=Cormorant+Garamond:ital,wght@0,300;0,400;0,600;1,300;1,400;1,600&display=swap" rel="stylesheet"/>
+  <style>
+    *, *::before, *::after { box-sizing: border-box; margin: 0; padding: 0; }
+    :root {
+      --black: #080808;
+      --void: #0f0f0f;
+      --surface: #161616;
+      --panel: #1e1e1e;
+      --gold: #c4a35a;
+      --gold-light: #d9bc7e;
+      --rose: #b07080;
+      --rose-light: #c88898;
+      --text: #e8e0d8;
+      --muted: rgba(232,224,216,0.48);
+      --border: rgba(196,163,90,0.15);
+      --border2: rgba(196,163,90,0.25);
+    }
+    html { scroll-behavior: smooth; }
+    body { font-family: 'Montserrat', sans-serif; color: var(--text); background: var(--black); }
+    ::selection { background: rgba(196,163,90,0.2); }
+
+    nav {
+      position: fixed; top: 0; left: 0; right: 0; z-index: 200;
+      background: rgba(8,8,8,0.92); backdrop-filter: blur(16px);
+      border-bottom: 1px solid var(--border);
+      padding: 1.4rem 5rem;
+      display: flex; align-items: center; justify-content: space-between;
+    }
+    .nav-logo {
+      font-family: 'Cormorant Garamond', serif;
+      font-size: 1.7rem; font-weight: 600; color: var(--gold);
+      text-decoration: none; letter-spacing: 0.06em;
+    }
+    .nav-logo em { font-style: italic; font-weight: 300; }
+    .nav-links { display: flex; gap: 2.5rem; list-style: none; }
+    .nav-links a {
+      font-size: 0.72rem; font-weight: 500; letter-spacing: 0.16em;
+      text-transform: uppercase; color: var(--muted); text-decoration: none;
+      transition: color 0.25s;
+    }
+    .nav-links a:hover { color: var(--gold); }
+    .nav-book {
+      font-size: 0.72rem; font-weight: 600; letter-spacing: 0.14em;
+      text-transform: uppercase; color: var(--gold);
+      border: 1px solid var(--border2); padding: 0.55rem 1.3rem;
+      text-decoration: none; transition: all 0.25s;
+    }
+    .nav-book:hover { background: var(--gold); color: var(--black); }
+
+    .hero {
+      min-height: 100vh;
+      display: flex; flex-direction: column;
+      justify-content: flex-end; padding: 10rem 5rem 6rem;
+      position: relative; overflow: hidden;
+      background: linear-gradient(to bottom right, #0d0808, var(--black) 60%);
+    }
+    .hero-grid-bg {
+      position: absolute; inset: 0; pointer-events: none;
+      background-image: linear-gradient(rgba(196,163,90,0.03) 1px, transparent 1px),
+                        linear-gradient(90deg, rgba(196,163,90,0.03) 1px, transparent 1px);
+      background-size: 80px 80px;
+      mask-image: radial-gradient(ellipse at 60% 50%, black 30%, transparent 75%);
+    }
+    .hero-accent {
+      position: absolute; right: 5rem; top: 50%; transform: translateY(-50%);
+      width: 520px; height: 520px; pointer-events: none;
+    }
+    .hero-accent-ring {
+      position: absolute; inset: 0; border-radius: 50%;
+      border: 1px solid var(--border);
+    }
+    .hero-accent-ring:nth-child(2) { inset: 60px; border-color: var(--border2); }
+    .hero-accent-ring:nth-child(3) { inset: 120px; border-color: rgba(196,163,90,0.35); }
+    .hero-accent-letter {
+      position: absolute; inset: 0;
+      display: flex; align-items: center; justify-content: center;
+      font-family: 'Cormorant Garamond', serif;
+      font-size: 14rem; font-weight: 300; font-style: italic;
+      color: rgba(196,163,90,0.08); line-height: 1;
+    }
+    .hero-eyebrow {
+      position: relative; z-index: 2;
+      font-size: 0.68rem; font-weight: 500; letter-spacing: 0.28em;
+      text-transform: uppercase; color: var(--gold);
+      margin-bottom: 1.5rem;
+      display: flex; align-items: center; gap: 1rem;
+    }
+    .hero-eyebrow::before { content: ''; width: 40px; height: 1px; background: rgba(196,163,90,0.4); }
+    .hero h1 {
+      position: relative; z-index: 2;
+      font-family: 'Cormorant Garamond', serif;
+      font-size: clamp(4rem, 9vw, 9rem);
+      font-weight: 300; line-height: 0.9; letter-spacing: -0.01em;
+      color: var(--text); margin-bottom: 2rem;
+    }
+    .hero h1 em { font-style: italic; color: var(--gold); }
+    .hero-sub {
+      position: relative; z-index: 2;
+      font-size: 0.92rem; color: var(--muted); line-height: 1.75;
+      max-width: 480px; margin-bottom: 3rem;
+    }
+    .hero-btns {
+      position: relative; z-index: 2;
+      display: flex; gap: 1rem;
+    }
+    .btn-gold {
+      background: var(--gold); color: var(--black);
+      padding: 0.9rem 2rem; font-size: 0.75rem; font-weight: 700;
+      letter-spacing: 0.14em; text-transform: uppercase; text-decoration: none;
+      transition: background 0.2s, transform 0.2s;
+    }
+    .btn-gold:hover { background: var(--gold-light); transform: translateY(-2px); }
+    .btn-ghost {
+      background: transparent; color: var(--gold);
+      border: 1px solid var(--border2);
+      padding: 0.9rem 2rem; font-size: 0.75rem; font-weight: 600;
+      letter-spacing: 0.14em; text-transform: uppercase; text-decoration: none;
+      transition: all 0.25s;
+    }
+    .btn-ghost:hover { border-color: var(--gold); background: rgba(196,163,90,0.06); }
+
+    #services {
+      padding: 8rem 5rem;
+      background: var(--void);
+      border-top: 1px solid var(--border);
+    }
+    .container { max-width: 1140px; margin: 0 auto; }
+    .sec-eyebrow {
+      font-size: 0.65rem; font-weight: 600; letter-spacing: 0.24em;
+      text-transform: uppercase; color: var(--gold); margin-bottom: 1rem;
+    }
+    .sec-title {
+      font-family: 'Cormorant Garamond', serif;
+      font-size: clamp(2.5rem, 5vw, 4.5rem); font-weight: 300;
+      color: var(--text); line-height: 1; margin-bottom: 0.75rem;
+    }
+    .sec-title em { font-style: italic; color: var(--gold); }
+    .sec-body { font-size: 0.88rem; color: var(--muted); max-width: 440px; line-height: 1.8; margin-bottom: 4rem; }
+
+    .pricing-grid { display: grid; grid-template-columns: repeat(3,1fr); gap: 1px; background: var(--border); }
+    .pricing-col { background: var(--surface); padding: 2.5rem 2rem; }
+    .pricing-col-head {
+      font-size: 0.65rem; font-weight: 600; letter-spacing: 0.2em;
+      text-transform: uppercase; color: var(--gold);
+      padding-bottom: 1.25rem; margin-bottom: 1.25rem;
+      border-bottom: 1px solid var(--border);
+    }
+    .price-item {
+      display: flex; justify-content: space-between; align-items: baseline;
+      padding: 0.8rem 0; border-bottom: 1px solid rgba(255,255,255,0.04);
+      transition: background 0.2s;
+    }
+    .price-item:last-child { border-bottom: none; }
+    .price-item:hover { padding-left: 0.5rem; }
+    .price-name { font-size: 0.85rem; color: var(--text); font-weight: 300; }
+    .price-amount { font-size: 0.88rem; color: var(--gold); font-weight: 600; white-space: nowrap; padding-left: 1rem; }
+    .price-note { font-size: 0.72rem; color: var(--muted); margin-top: 0.15rem; }
+
+    #gallery {
+      padding: 8rem 5rem;
+      background: var(--black);
+      border-top: 1px solid var(--border);
+    }
+    .gallery-header { display: flex; justify-content: space-between; align-items: flex-end; margin-bottom: 3rem; }
+    .gallery-grid {
+      display: grid;
+      grid-template-columns: repeat(4, 1fr);
+      grid-template-rows: repeat(2, 260px);
+      gap: 8px;
+    }
+    .gallery-item {
+      position: relative; overflow: hidden;
+      cursor: pointer;
+    }
+    .gallery-item:nth-child(1) { grid-column: span 2; grid-row: span 2; }
+    .gallery-item:nth-child(4) { grid-column: span 2; }
+    .gallery-art {
+      width: 100%; height: 100%;
+      display: flex; align-items: center; justify-content: center;
+      position: relative; overflow: hidden;
+      transition: transform 0.6s cubic-bezier(0.22,1,0.36,1);
+    }
+    .gallery-item:hover .gallery-art { transform: scale(1.04); }
+    .gallery-art::after {
+      content: ''; position: absolute; inset: 0;
+      background: linear-gradient(to top, rgba(8,8,8,0.5) 0%, transparent 60%);
+      opacity: 0; transition: opacity 0.4s;
+    }
+    .gallery-item:hover .gallery-art::after { opacity: 1; }
+
+    .g-a { background: linear-gradient(135deg, #1a0f12, #2d1820, #3a2030); }
+    .g-b { background: linear-gradient(145deg, #0f1a14, #1a2d1e, #203a28); }
+    .g-c { background: linear-gradient(135deg, #1a1508, #2d2014, #3a2a18); }
+    .g-d { background: linear-gradient(155deg, #12101a, #1e1a2d, #28203a); }
+    .g-e { background: linear-gradient(135deg, #1a0f18, #2d1828, #3a2035); }
+    .g-f { background: linear-gradient(145deg, #0f1518, #1a2530, #203040); }
+
+    .g-symbol {
+      font-family: 'Cormorant Garamond', serif;
+      font-size: 5rem; font-style: italic;
+      color: rgba(196,163,90,0.12); user-select: none;
+    }
+    .gallery-item:nth-child(1) .g-symbol { font-size: 9rem; }
+    .gallery-label {
+      position: absolute; bottom: 0; left: 0; right: 0;
+      padding: 1rem 1.25rem;
+      font-size: 0.72rem; font-weight: 500; letter-spacing: 0.12em;
+      text-transform: uppercase; color: var(--gold);
+      opacity: 0; transform: translateY(4px);
+      transition: opacity 0.3s, transform 0.3s;
+    }
+    .gallery-item:hover .gallery-label { opacity: 1; transform: none; }
+
+    #team {
+      padding: 8rem 5rem;
+      background: var(--void);
+      border-top: 1px solid var(--border);
+    }
+    .team-grid { display: grid; grid-template-columns: repeat(4,1fr); gap: 1px; background: var(--border); margin-top: 4rem; }
+    .stylist-card {
+      background: var(--surface); padding: 0;
+      transition: background 0.3s;
+    }
+    .stylist-card:hover { background: var(--panel); }
+    .stylist-photo {
+      height: 240px; position: relative; overflow: hidden;
+      display: flex; align-items: center; justify-content: center;
+    }
+    .stylist-photo-inner { width: 100%; height: 100%; display: flex; align-items: center; justify-content: center; }
+    .sp-a { background: linear-gradient(145deg, #1a1215, #2a1e22, #3a2830); }
+    .sp-b { background: linear-gradient(145deg, #121518, #1e2228, #283038); }
+    .sp-c { background: linear-gradient(145deg, #161214, #221a1e, #2e2228); }
+    .sp-d { background: linear-gradient(145deg, #141518, #201e28, #2a2838); }
+    .sp-glyph {
+      font-family: 'Cormorant Garamond', serif;
+      font-size: 4rem; font-style: italic;
+      color: rgba(196,163,90,0.15);
+    }
+    .stylist-info { padding: 1.75rem; border-top: 1px solid var(--border); }
+    .stylist-name {
+      font-family: 'Cormorant Garamond', serif;
+      font-size: 1.25rem; font-weight: 400; color: var(--text);
+      margin-bottom: 0.25rem;
+    }
+    .stylist-title { font-size: 0.68rem; font-weight: 600; letter-spacing: 0.14em; text-transform: uppercase; color: var(--gold); margin-bottom: 0.75rem; }
+    .stylist-spec { font-size: 0.78rem; color: var(--muted); line-height: 1.6; }
+    .stylist-years { display: inline-block; margin-top: 0.75rem; font-size: 0.68rem; font-weight: 600; letter-spacing: 0.1em; text-transform: uppercase; color: var(--muted); border: 1px solid var(--border); padding: 0.2rem 0.6rem; }
+
+    #booking {
+      padding: 8rem 5rem;
+      background: var(--surface);
+      border-top: 1px solid var(--border);
+    }
+    .booking-grid { display: grid; grid-template-columns: 1fr 1fr; gap: 7rem; align-items: start; }
+    .booking-left .sec-title { margin-bottom: 1.5rem; }
+    .booking-left p { font-size: 0.88rem; color: var(--muted); line-height: 1.8; margin-bottom: 2rem; }
+    .policies { display: flex; flex-direction: column; gap: 0.9rem; }
+    .policy {
+      display: flex; gap: 1rem; align-items: flex-start;
+      font-size: 0.83rem; color: var(--muted); line-height: 1.6;
+    }
+    .policy-dot { width: 5px; height: 5px; background: var(--gold); margin-top: 0.5rem; flex-shrink: 0; transform: rotate(45deg); }
+    .booking-form { }
+    .bf { margin-bottom: 1.25rem; }
+    .bf label {
+      display: block; font-size: 0.65rem; font-weight: 600;
+      letter-spacing: 0.18em; text-transform: uppercase; color: var(--muted);
+      margin-bottom: 0.5rem;
+    }
+    .bf input, .bf select, .bf textarea {
+      width: 100%; padding: 0.85rem 1rem;
+      background: var(--panel); border: 1px solid rgba(255,255,255,0.08);
+      color: var(--text); font-family: 'Montserrat', sans-serif;
+      font-size: 0.88rem; outline: none;
+      transition: border-color 0.25s;
+    }
+    .bf input:focus, .bf select:focus, .bf textarea:focus { border-color: var(--gold); }
+    .bf select option { background: var(--panel); }
+    .bf textarea { min-height: 90px; resize: vertical; }
+    .bf-row { display: grid; grid-template-columns: 1fr 1fr; gap: 1rem; }
+    .book-btn {
+      width: 100%; background: var(--gold); color: var(--black); border: none;
+      padding: 1rem; font-family: 'Montserrat', sans-serif;
+      font-size: 0.75rem; font-weight: 700; letter-spacing: 0.16em;
+      text-transform: uppercase; cursor: pointer; transition: background 0.2s;
+    }
+    .book-btn:hover { background: var(--gold-light); }
+
+    footer {
+      background: var(--black); border-top: 1px solid var(--border);
+      padding: 4rem 5rem 2.5rem;
+      display: grid; grid-template-columns: 2fr 1fr 1fr;
+      gap: 3rem;
+    }
+    .foot-logo {
+      font-family: 'Cormorant Garamond', serif;
+      font-size: 2rem; font-weight: 300; font-style: italic;
+      color: var(--gold); margin-bottom: 0.75rem;
+    }
+    .foot-tagline { font-size: 0.72rem; letter-spacing: 0.14em; text-transform: uppercase; color: var(--muted); margin-bottom: 1.5rem; }
+    .foot-addr { font-size: 0.8rem; color: rgba(232,224,216,0.35); line-height: 2; }
+    .foot-col h4 {
+      font-size: 0.62rem; font-weight: 600; letter-spacing: 0.22em;
+      text-transform: uppercase; color: var(--gold); opacity: 0.6;
+      margin-bottom: 1.25rem;
+    }
+    .foot-col a { display: block; font-size: 0.8rem; color: rgba(232,224,216,0.35); text-decoration: none; margin-bottom: 0.6rem; transition: color 0.2s; }
+    .foot-col a:hover { color: var(--gold); }
+    .foot-col p { font-size: 0.8rem; color: rgba(232,224,216,0.35); line-height: 2; }
+    .foot-copy { grid-column: 1/-1; border-top: 1px solid var(--border); padding-top: 1.75rem; font-size: 0.68rem; letter-spacing: 0.08em; color: rgba(232,224,216,0.2); text-align: center; }
+
+    @media (max-width: 1100px) {
+      nav { padding: 1rem 2rem; }
+      .nav-links { display: none; }
+      .hero { padding: 8rem 2rem 4rem; }
+      .hero-accent { display: none; }
+      #services, #gallery, #team, #booking { padding: 5rem 2rem; }
+      .pricing-grid { grid-template-columns: 1fr; }
+      .gallery-grid { grid-template-columns: repeat(2,1fr); grid-template-rows: auto; }
+      .gallery-item:nth-child(1) { grid-column: span 2; grid-row: span 1; }
+      .gallery-item:nth-child(4) { grid-column: span 1; }
+      .team-grid { grid-template-columns: 1fr 1fr; }
+      .booking-grid { grid-template-columns: 1fr; gap: 4rem; }
+      .bf-row { grid-template-columns: 1fr; }
+      footer { grid-template-columns: 1fr; padding: 3rem 2rem 2rem; }
+    }
+    @media (max-width: 600px) {
+      .gallery-grid { grid-template-columns: 1fr; }
+      .gallery-item:nth-child(1) { grid-column: span 1; }
+      .gallery-item:nth-child(4) { grid-column: span 1; }
+      .team-grid { grid-template-columns: 1fr; }
+    }
+  </style>
+</head>
+<body>
+
+<nav>
+  <a href="#" class="nav-logo">Luxe <em>Locks</em></a>
+  <ul class="nav-links">
+    <li><a href="#services">Services</a></li>
+    <li><a href="#gallery">Gallery</a></li>
+    <li><a href="#team">Stylists</a></li>
+    <li><a href="#booking">Book</a></li>
+  </ul>
+  <a href="#booking" class="nav-book">Book a Visit</a>
+</nav>
+
+<section class="hero">
+  <div class="hero-grid-bg"></div>
+  <div class="hero-accent">
+    <div class="hero-accent-ring"></div>
+    <div class="hero-accent-ring"></div>
+    <div class="hero-accent-ring"></div>
+    <div class="hero-accent-letter">L</div>
+  </div>
+  <div class="hero-eyebrow">Luxury Hair Studio · Kent, Ohio</div>
+  <h1>Where Style<br/>Becomes <em>Art</em></h1>
+  <p class="hero-sub">Precision cuts, flawless color, and transformative styling — delivered by artists who understand that your hair is your signature. No rush. No compromise.</p>
+  <div class="hero-btns">
+    <a href="#booking" class="btn-gold">Book a Consultation</a>
+    <a href="#gallery" class="btn-ghost">View Our Work</a>
+  </div>
+</section>
+
+<section id="services">
+  <div class="container">
+    <p class="sec-eyebrow">Services &amp; Pricing</p>
+    <h2 class="sec-title">The <em>Menu</em></h2>
+    <p class="sec-body">Every service begins with a complimentary consultation. Prices reflect starting rates — your stylist will quote a final price before any work begins.</p>
+    <div class="pricing-grid">
+      <div class="pricing-col">
+        <div class="pricing-col-head">Cuts &amp; Styling</div>
+        <div class="price-item">
+          <div><div class="price-name">Women's Cut &amp; Style</div><div class="price-note">Wash, cut, blowout, finish</div></div>
+          <div class="price-amount">$65+</div>
+        </div>
+        <div class="price-item">
+          <div><div class="price-name">Men's Cut &amp; Style</div><div class="price-note">Wash, cut, style</div></div>
+          <div class="price-amount">$40+</div>
+        </div>
+        <div class="price-item">
+          <div><div class="price-name">Children's Cut</div><div class="price-note">Under 12 · wash &amp; dry</div></div>
+          <div class="price-amount">$30+</div>
+        </div>
+        <div class="price-item">
+          <div><div class="price-name">Blowout &amp; Style</div><div class="price-note">No cut · wash &amp; blowout</div></div>
+          <div class="price-amount">$45+</div>
+        </div>
+        <div class="price-item">
+          <div><div class="price-name">Special Occasion Updo</div><div class="price-note">Wedding, prom, event</div></div>
+          <div class="price-amount">$90+</div>
+        </div>
+        <div class="price-item">
+          <div><div class="price-name">Bridal Trial</div><div class="price-note">Full trial run of wedding look</div></div>
+          <div class="price-amount">$110+</div>
+        </div>
+      </div>
+      <div class="pricing-col">
+        <div class="pricing-col-head">Color &amp; Highlights</div>
+        <div class="price-item">
+          <div><div class="price-name">Single Process Color</div><div class="price-note">Full root-to-tip application</div></div>
+          <div class="price-amount">$80+</div>
+        </div>
+        <div class="price-item">
+          <div><div class="price-name">Partial Highlights</div><div class="price-note">Top &amp; face-framing pieces</div></div>
+          <div class="price-amount">$95+</div>
+        </div>
+        <div class="price-item">
+          <div><div class="price-name">Full Highlights</div><div class="price-note">All-over foil</div></div>
+          <div class="price-amount">$130+</div>
+        </div>
+        <div class="price-item">
+          <div><div class="price-name">Balayage</div><div class="price-note">Hand-painted, natural grow-out</div></div>
+          <div class="price-amount">$165+</div>
+        </div>
+        <div class="price-item">
+          <div><div class="price-name">Gloss / Toner</div><div class="price-note">Shine &amp; tone adjustment</div></div>
+          <div class="price-amount">$45+</div>
+        </div>
+        <div class="price-item">
+          <div><div class="price-name">Color Correction</div><div class="price-note">Consultation required</div></div>
+          <div class="price-amount">From $200</div>
+        </div>
+      </div>
+      <div class="pricing-col">
+        <div class="pricing-col-head">Treatments &amp; Extensions</div>
+        <div class="price-item">
+          <div><div class="price-name">Deep Conditioning</div><div class="price-note">Intense moisture + repair mask</div></div>
+          <div class="price-amount">$45</div>
+        </div>
+        <div class="price-item">
+          <div><div class="price-name">Scalp Treatment</div><div class="price-note">Detox + stimulating massage</div></div>
+          <div class="price-amount">$55</div>
+        </div>
+        <div class="price-item">
+          <div><div class="price-name">Keratin Smoothing</div><div class="price-note">12–16 weeks of frizz control</div></div>
+          <div class="price-amount">$250+</div>
+        </div>
+        <div class="price-item">
+          <div><div class="price-name">Brazilian Blowout</div><div class="price-note">Smoothing + shine treatment</div></div>
+          <div class="price-amount">$300+</div>
+        </div>
+        <div class="price-item">
+          <div><div class="price-name">Tape-In Extensions</div><div class="price-note">Consultation required</div></div>
+          <div class="price-amount">Consult</div>
+        </div>
+        <div class="price-item">
+          <div><div class="price-name">Hand-Tied Extensions</div><div class="price-note">Weft method · consult required</div></div>
+          <div class="price-amount">Consult</div>
+        </div>
+      </div>
+    </div>
+  </div>
+</section>
+
+<section id="gallery">
+  <div class="container">
+    <div class="gallery-header">
+      <div>
+        <p class="sec-eyebrow">Portfolio</p>
+        <h2 class="sec-title">Our <em>Work</em></h2>
+      </div>
+      <a href="#booking" class="btn-ghost">Book a Transformation</a>
+    </div>
+    <div class="gallery-grid">
+      <div class="gallery-item">
+        <div class="gallery-art g-a">
+          <div class="g-symbol">Balayage</div>
+        </div>
+        <div class="gallery-label">Honey Balayage</div>
+      </div>
+      <div class="gallery-item">
+        <div class="gallery-art g-b">
+          <div class="g-symbol">Precision</div>
+        </div>
+        <div class="gallery-label">Precision Bob</div>
+      </div>
+      <div class="gallery-item">
+        <div class="gallery-art g-c">
+          <div class="g-symbol">Color</div>
+        </div>
+        <div class="gallery-label">Dimensional Color</div>
+      </div>
+      <div class="gallery-item">
+        <div class="gallery-art g-d">
+          <div class="g-symbol">Bridal</div>
+        </div>
+        <div class="gallery-label">Bridal Updo</div>
+      </div>
+      <div class="gallery-item">
+        <div class="gallery-art g-e">
+          <div class="g-symbol">Texture</div>
+        </div>
+        <div class="gallery-label">Textured Lob</div>
+      </div>
+      <div class="gallery-item">
+        <div class="gallery-art g-f">
+          <div class="g-symbol">Gloss</div>
+        </div>
+        <div class="gallery-label">Mirror Gloss</div>
+      </div>
+    </div>
+  </div>
+</section>
+
+<section id="team">
+  <div class="container">
+    <p class="sec-eyebrow">The Artists</p>
+    <h2 class="sec-title">Meet Your <em>Stylists</em></h2>
+    <p class="sec-body">Every member of our team is a licensed cosmetologist with ongoing advanced education in color science, cutting technique, and hair health.</p>
+    <div class="team-grid">
+      <div class="stylist-card">
+        <div class="stylist-photo">
+          <div class="stylist-photo-inner sp-a">
+            <div class="sp-glyph">M</div>
+          </div>
+        </div>
+        <div class="stylist-info">
+          <div class="stylist-name">Margaux Delacroix</div>
+          <div class="stylist-title">Founder · Master Stylist</div>
+          <div class="stylist-spec">Balayage, lived-in color, precision cutting. Trained in Paris at the Mod's Hair Academy.</div>
+          <div class="stylist-years">18 Years</div>
+        </div>
+      </div>
+      <div class="stylist-card">
+        <div class="stylist-photo">
+          <div class="stylist-photo-inner sp-b">
+            <div class="sp-glyph">S</div>
+          </div>
+        </div>
+        <div class="stylist-info">
+          <div class="stylist-name">Simone Vaught</div>
+          <div class="stylist-title">Senior Color Specialist</div>
+          <div class="stylist-spec">Vivid fantasy color, correction work, extensions. Certified Kenra Platinum educator.</div>
+          <div class="stylist-years">11 Years</div>
+        </div>
+      </div>
+      <div class="stylist-card">
+        <div class="stylist-photo">
+          <div class="stylist-photo-inner sp-c">
+            <div class="sp-glyph">J</div>
+          </div>
+        </div>
+        <div class="stylist-info">
+          <div class="stylist-name">Jordan Kessler</div>
+          <div class="stylist-title">Extensions Specialist</div>
+          <div class="stylist-spec">Hand-tied &amp; tape-in extensions, bridal, men's grooming. Certified Great Lengths artist.</div>
+          <div class="stylist-years">7 Years</div>
+        </div>
+      </div>
+      <div class="stylist-card">
+        <div class="stylist-photo">
+          <div class="stylist-photo-inner sp-d">
+            <div class="sp-glyph">A</div>
+          </div>
+        </div>
+        <div class="stylist-info">
+          <div class="stylist-name">Amara Obasi</div>
+          <div class="stylist-title">Texture &amp; Curl Expert</div>
+          <div class="stylist-spec">Specializing in natural hair, locs, and textured curl systems. DevaCurl certified.</div>
+          <div class="stylist-years">9 Years</div>
+        </div>
+      </div>
+    </div>
+  </div>
+</section>
+
+<section id="booking">
+  <div class="container">
+    <div class="booking-grid">
+      <div class="booking-left">
+        <p class="sec-eyebrow">Reservations</p>
+        <h2 class="sec-title">Book Your <em>Visit</em></h2>
+        <p>We're a by-appointment studio — this ensures every guest receives our complete, unhurried attention. Request your visit below and we'll confirm within a few hours.</p>
+        <div class="policies">
+          <div class="policy">
+            <div class="policy-dot"></div>
+            <span>New guests receive a complimentary 15-minute consultation before any service begins.</span>
+          </div>
+          <div class="policy">
+            <div class="policy-dot"></div>
+            <span>A credit card is required to hold your appointment. No charge until your visit.</span>
+          </div>
+          <div class="policy">
+            <div class="policy-dot"></div>
+            <span>We ask for 48 hours' notice for cancellations to avoid a 50% late-cancel fee.</span>
+          </div>
+          <div class="policy">
+            <div class="policy-dot"></div>
+            <span>Color correction and extension consultations are required before scheduling the full service.</span>
+          </div>
+          <div class="policy">
+            <div class="policy-dot"></div>
+            <span>Children under 12 must be accompanied by a parent for the duration of the visit.</span>
+          </div>
+        </div>
+      </div>
+      <div class="booking-form">
+        <div class="bf-row">
+          <div class="bf">
+            <label>First Name</label>
+            <input type="text" placeholder="First"/>
+          </div>
+          <div class="bf">
+            <label>Last Name</label>
+            <input type="text" placeholder="Last"/>
+          </div>
+        </div>
+        <div class="bf">
+          <label>Email Address</label>
+          <input type="email" placeholder="your@email.com"/>
+        </div>
+        <div class="bf">
+          <label>Phone Number</label>
+          <input type="tel" placeholder="(330) 555-0000"/>
+        </div>
+        <div class="bf">
+          <label>Preferred Stylist</label>
+          <select>
+            <option value="">No Preference</option>
+            <option>Margaux Delacroix</option>
+            <option>Simone Vaught</option>
+            <option>Jordan Kessler</option>
+            <option>Amara Obasi</option>
+          </select>
+        </div>
+        <div class="bf">
+          <label>Service(s) Requested</label>
+          <select>
+            <option value="">Select a service...</option>
+            <option>Women's Cut &amp; Style</option>
+            <option>Men's Cut &amp; Style</option>
+            <option>Balayage</option>
+            <option>Full Highlights</option>
+            <option>Single Process Color</option>
+            <option>Color Correction Consultation</option>
+            <option>Keratin / Brazilian Blowout</option>
+            <option>Extensions Consultation</option>
+            <option>Bridal / Special Occasion</option>
+            <option>Other / Not Sure</option>
+          </select>
+        </div>
+        <div class="bf-row">
+          <div class="bf">
+            <label>Preferred Date</label>
+            <input type="date"/>
+          </div>
+          <div class="bf">
+            <label>Preferred Time</label>
+            <select>
+              <option>Morning (9am–12pm)</option>
+              <option>Afternoon (12pm–4pm)</option>
+              <option>Late Afternoon (4pm–7pm)</option>
+            </select>
+          </div>
+        </div>
+        <div class="bf">
+          <label>Notes for Your Stylist</label>
+          <textarea placeholder="Inspiration photos, hair history, concerns, goals — tell us anything that will help us prepare..."></textarea>
+        </div>
+        <button class="book-btn">Request Appointment →</button>
+      </div>
+    </div>
+  </div>
+</section>
+
+<footer>
+  <div>
+    <div class="foot-logo">Luxe Locks</div>
+    <div class="foot-tagline">Luxury Hair Studio · Est. 2018</div>
+    <div class="foot-addr">
+      555 Water Street, Suite 12<br/>
+      Kent, OH 44240<br/>
+      (330) 555-0500<br/>
+      hello@luxelockssalon.com
+    </div>
+  </div>
+  <div class="foot-col">
+    <h4>Studio</h4>
+    <a href="#services">Services &amp; Pricing</a>
+    <a href="#gallery">Gallery</a>
+    <a href="#team">Our Stylists</a>
+    <a href="#booking">Book a Visit</a>
+    <a href="#">Gift Cards</a>
+    <a href="#">Retail Shop</a>
+  </div>
+  <div class="foot-col">
+    <h4>Hours</h4>
+    <p>
+      Tuesday – Friday<br/>
+      9:00am – 7:00pm<br/><br/>
+      Saturday<br/>
+      9:00am – 5:00pm<br/><br/>
+      Closed Sun &amp; Mon<br/><br/>
+      By appointment only
+    </p>
+  </div>
+  <div class="foot-copy">© 2026 Luxe Locks Hair Studio. All rights reserved.</div>
+</footer>
+
+</body>
+</html>

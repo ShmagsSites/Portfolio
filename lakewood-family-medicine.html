@@ -1,0 +1,510 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8"/>
+  <meta name="viewport" content="width=device-width, initial-scale=1.0"/>
+  <title>Lakewood Family Medicine — Primary Care</title>
+  <link href="https://fonts.googleapis.com/css2?family=Lato:wght@300;400;700;900&family=Libre+Baskerville:ital,wght@0,400;0,700;1,400&display=swap" rel="stylesheet"/>
+  <style>
+    *, *::before, *::after { box-sizing: border-box; margin: 0; padding: 0; }
+    :root {
+      --navy: #1a3a5c;
+      --navy-mid: #254d77;
+      --navy-light: #3a6fa0;
+      --cream: #f8f4ee;
+      --cream-dark: #eee8de;
+      --coral: #c9503a;
+      --coral-light: #e0614a;
+      --text: #1a2a3a;
+      --muted: #5a6a7a;
+      --white: #ffffff;
+    }
+    html { scroll-behavior: smooth; }
+    body { font-family: 'Lato', sans-serif; color: var(--text); background: var(--white); }
+
+    nav {
+      position: fixed; top: 0; left: 0; right: 0; z-index: 100;
+      background: var(--navy);
+      padding: 0 4rem;
+      display: flex; align-items: center; justify-content: space-between;
+      min-height: 68px;
+    }
+    .nav-brand { display: flex; align-items: center; gap: 1rem; text-decoration: none; }
+    .nav-brand-icon {
+      width: 38px; height: 38px; border: 2px solid rgba(255,255,255,0.25);
+      display: flex; align-items: center; justify-content: center;
+      color: white; font-size: 1rem;
+    }
+    .nav-brand-name { color: white; font-weight: 700; font-size: 1rem; line-height: 1.1; }
+    .nav-brand-sub { color: rgba(255,255,255,0.5); font-size: 0.7rem; letter-spacing: 0.1em; text-transform: uppercase; }
+    .nav-links { display: flex; list-style: none; }
+    .nav-links a {
+      display: block; padding: 0 1.4rem; line-height: 68px;
+      color: rgba(255,255,255,0.65); font-size: 0.83rem; text-decoration: none;
+      transition: color 0.2s, background 0.2s;
+    }
+    .nav-links a:hover { color: white; background: rgba(255,255,255,0.07); }
+    .nav-appt {
+      background: var(--coral); color: white;
+      padding: 0.6rem 1.4rem; font-size: 0.82rem; font-weight: 700;
+      text-decoration: none; letter-spacing: 0.03em;
+      transition: background 0.2s;
+    }
+    .nav-appt:hover { background: var(--coral-light); }
+
+    .urgent-bar {
+      background: var(--coral); color: white;
+      text-align: center; padding: 0.6rem 2rem;
+      font-size: 0.8rem; letter-spacing: 0.04em;
+      margin-top: 68px;
+    }
+    .urgent-bar strong { font-weight: 700; }
+    .urgent-bar a { color: white; font-weight: 700; text-decoration: underline; }
+
+    .hero {
+      background: var(--cream);
+      padding: 6rem 4rem 5rem;
+      display: grid; grid-template-columns: 1fr 480px;
+      gap: 4rem; align-items: center;
+      position: relative; overflow: hidden;
+    }
+    .hero::before {
+      content: ''; position: absolute;
+      right: 0; top: 0; bottom: 0; width: 480px;
+      background: var(--navy);
+      clip-path: polygon(8% 0%, 100% 0%, 100% 100%, 0% 100%);
+    }
+    .hero-text { position: relative; z-index: 1; }
+    .hero-tag {
+      display: inline-block;
+      background: var(--navy); color: white;
+      padding: 0.35rem 1rem; font-size: 0.72rem; font-weight: 700;
+      letter-spacing: 0.12em; text-transform: uppercase;
+      margin-bottom: 1.75rem;
+    }
+    .hero h1 {
+      font-family: 'Libre Baskerville', serif;
+      font-size: clamp(2.2rem, 4vw, 3.4rem);
+      font-weight: 700; line-height: 1.18;
+      color: var(--text); margin-bottom: 1.5rem;
+    }
+    .hero h1 em { font-style: italic; color: var(--navy); }
+    .hero p { font-size: 1rem; color: var(--muted); line-height: 1.8; max-width: 500px; margin-bottom: 2.5rem; }
+    .hero-btns { display: flex; gap: 1rem; flex-wrap: wrap; }
+    .btn-coral {
+      background: var(--coral); color: white;
+      padding: 0.85rem 2rem; font-size: 0.88rem; font-weight: 700;
+      text-decoration: none; transition: background 0.2s;
+    }
+    .btn-coral:hover { background: var(--coral-light); }
+    .btn-ghost {
+      background: transparent; color: var(--navy);
+      border: 2px solid var(--navy); padding: 0.85rem 2rem;
+      font-size: 0.88rem; font-weight: 700; text-decoration: none;
+      transition: all 0.2s;
+    }
+    .btn-ghost:hover { background: var(--navy); color: white; }
+
+    .hero-card {
+      position: relative; z-index: 1;
+      background: white; padding: 2.5rem;
+      box-shadow: 0 12px 50px rgba(0,0,0,0.15);
+    }
+    .hero-card h3 { font-size: 0.88rem; font-weight: 700; letter-spacing: 0.1em; text-transform: uppercase; color: var(--coral); margin-bottom: 1.5rem; }
+    .quick-form .qf { margin-bottom: 1rem; }
+    .quick-form label { display: block; font-size: 0.75rem; font-weight: 700; color: var(--muted); text-transform: uppercase; letter-spacing: 0.08em; margin-bottom: 0.35rem; }
+    .quick-form input, .quick-form select {
+      width: 100%; padding: 0.72rem 0.9rem;
+      border: 1.5px solid #d0d8e0; font-family: 'Lato', sans-serif;
+      font-size: 0.88rem; color: var(--text); background: white; outline: none;
+      transition: border-color 0.2s;
+    }
+    .quick-form input:focus, .quick-form select:focus { border-color: var(--navy); }
+    .qf-row { display: grid; grid-template-columns: 1fr 1fr; gap: 0.75rem; }
+    .qf-submit {
+      width: 100%; background: var(--navy); color: white; border: none;
+      padding: 0.85rem; font-family: 'Lato', sans-serif;
+      font-size: 0.88rem; font-weight: 700; cursor: pointer;
+      letter-spacing: 0.05em; text-transform: uppercase;
+      transition: background 0.2s;
+    }
+    .qf-submit:hover { background: var(--navy-mid); }
+    .hero-hours {
+      margin-top: 1.25rem; padding-top: 1.25rem;
+      border-top: 1px solid #e0e8f0;
+      font-size: 0.78rem; color: var(--muted); line-height: 1.9;
+    }
+    .hero-hours strong { color: var(--text); }
+
+    .trust-bar {
+      background: var(--navy); padding: 2rem 4rem;
+      display: flex; justify-content: space-around; align-items: center;
+      flex-wrap: wrap; gap: 1.5rem;
+    }
+    .trust-item { text-align: center; }
+    .trust-n {
+      font-family: 'Libre Baskerville', serif;
+      font-size: 2.2rem; font-weight: 700; color: white; line-height: 1;
+    }
+    .trust-l { font-size: 0.72rem; color: rgba(255,255,255,0.5); letter-spacing: 0.1em; text-transform: uppercase; margin-top: 0.3rem; }
+
+    #services {
+      padding: 7rem 4rem;
+      background: white;
+    }
+    .container { max-width: 1100px; margin: 0 auto; }
+    .sec-label { font-size: 0.72rem; font-weight: 700; letter-spacing: 0.18em; text-transform: uppercase; color: var(--coral); margin-bottom: 0.75rem; }
+    .sec-title {
+      font-family: 'Libre Baskerville', serif;
+      font-size: clamp(1.8rem, 3vw, 2.6rem); font-weight: 700;
+      color: var(--text); margin-bottom: 0.9rem;
+    }
+    .sec-body { font-size: 0.95rem; color: var(--muted); max-width: 520px; line-height: 1.8; margin-bottom: 3.5rem; }
+    .svc-list { display: grid; grid-template-columns: repeat(2, 1fr); gap: 0; border: 1px solid #e0e8f0; }
+    .svc-row {
+      display: flex; align-items: flex-start; gap: 1.5rem;
+      padding: 1.8rem 2rem;
+      border-right: 1px solid #e0e8f0;
+      border-bottom: 1px solid #e0e8f0;
+      transition: background 0.2s;
+    }
+    .svc-row:hover { background: var(--cream); }
+    .svc-row:nth-child(even) { border-right: none; }
+    .svc-num {
+      font-family: 'Libre Baskerville', serif;
+      font-size: 1.4rem; font-weight: 700; color: var(--navy); opacity: 0.2;
+      flex-shrink: 0; min-width: 2rem;
+    }
+    .svc-row h3 { font-size: 0.95rem; font-weight: 700; margin-bottom: 0.4rem; }
+    .svc-row p { font-size: 0.82rem; color: var(--muted); line-height: 1.65; }
+
+    #providers {
+      padding: 7rem 4rem;
+      background: var(--cream);
+    }
+    .providers-grid { display: grid; grid-template-columns: repeat(3, 1fr); gap: 2rem; margin-top: 3rem; }
+    .prov-card {
+      background: white;
+      box-shadow: 0 2px 20px rgba(0,0,0,0.06);
+      overflow: hidden; transition: transform 0.3s, box-shadow 0.3s;
+    }
+    .prov-card:hover { transform: translateY(-4px); box-shadow: 0 12px 40px rgba(0,0,0,0.1); }
+    .prov-photo {
+      height: 220px;
+      background: linear-gradient(145deg, #c5d5e8, #9cb8d4);
+      display: flex; align-items: center; justify-content: center;
+      font-size: 4rem; color: var(--navy); opacity: 0.3;
+    }
+    .prov-info { padding: 1.75rem; }
+    .prov-info h3 { font-size: 1.05rem; font-weight: 700; margin-bottom: 0.25rem; }
+    .prov-spec { font-size: 0.78rem; color: var(--coral); font-weight: 700; text-transform: uppercase; letter-spacing: 0.08em; margin-bottom: 0.5rem; }
+    .prov-edu { font-size: 0.8rem; color: var(--muted); line-height: 1.6; }
+    .prov-langs { display: inline-block; margin-top: 0.75rem; font-size: 0.72rem; background: var(--cream); padding: 0.25rem 0.7rem; color: var(--navy); font-weight: 700; }
+
+    #insurance {
+      padding: 5rem 4rem;
+      background: var(--navy); text-align: center;
+    }
+    #insurance .sec-label { color: rgba(255,255,255,0.5); }
+    #insurance .sec-title { color: white; margin-bottom: 1rem; }
+    #insurance p { color: rgba(255,255,255,0.65); max-width: 600px; margin: 0 auto 3rem; font-size: 0.95rem; line-height: 1.75; }
+    .ins-grid { display: flex; flex-wrap: wrap; justify-content: center; gap: 1rem; }
+    .ins-pill {
+      background: rgba(255,255,255,0.1); color: rgba(255,255,255,0.75);
+      padding: 0.5rem 1.4rem; font-size: 0.82rem; font-weight: 700;
+      letter-spacing: 0.06em;
+    }
+    .ins-note { margin-top: 2rem; font-size: 0.8rem; color: rgba(255,255,255,0.4); }
+
+    footer {
+      background: #0f2236; color: white;
+      padding: 3rem 4rem;
+      display: grid; grid-template-columns: 1fr 1fr 1fr;
+      gap: 2rem;
+    }
+    .foot-brand-name { font-size: 1rem; font-weight: 700; margin-bottom: 0.4rem; }
+    .foot-brand-sub { font-size: 0.72rem; color: rgba(255,255,255,0.4); letter-spacing: 0.1em; text-transform: uppercase; }
+    .foot-brand-copy { font-size: 0.75rem; color: rgba(255,255,255,0.35); margin-top: 1.5rem; }
+    .foot-col h4 { font-size: 0.72rem; font-weight: 700; letter-spacing: 0.14em; text-transform: uppercase; color: rgba(255,255,255,0.4); margin-bottom: 1rem; }
+    .foot-col a { display: block; font-size: 0.82rem; color: rgba(255,255,255,0.6); text-decoration: none; margin-bottom: 0.5rem; transition: color 0.2s; }
+    .foot-col a:hover { color: white; }
+    .foot-col p { font-size: 0.82rem; color: rgba(255,255,255,0.55); line-height: 1.9; }
+
+    @media (max-width: 1000px) {
+      nav { padding: 0 1.5rem; }
+      .nav-links { display: none; }
+      .hero { grid-template-columns: 1fr; padding: 5rem 1.5rem 3rem; }
+      .hero::before { display: none; }
+      #services, #providers, #insurance { padding: 4rem 1.5rem; }
+      .svc-list { grid-template-columns: 1fr; }
+      .svc-row { border-right: none; }
+      .svc-row:nth-child(even) { border-right: none; }
+      .providers-grid { grid-template-columns: 1fr 1fr; }
+      footer { grid-template-columns: 1fr; padding: 2.5rem 1.5rem; }
+      .trust-bar { padding: 2rem 1.5rem; }
+    }
+    @media (max-width: 600px) {
+      .providers-grid { grid-template-columns: 1fr; }
+      .qf-row { grid-template-columns: 1fr; }
+    }
+  </style>
+</head>
+<body>
+
+<nav>
+  <a href="#" class="nav-brand">
+    <div class="nav-brand-icon">+</div>
+    <div>
+      <div class="nav-brand-name">Lakewood Family Medicine</div>
+      <div class="nav-brand-sub">Primary &amp; Preventive Care</div>
+    </div>
+  </a>
+  <ul class="nav-links">
+    <li><a href="#services">Services</a></li>
+    <li><a href="#providers">Providers</a></li>
+    <li><a href="#insurance">Insurance</a></li>
+    <li><a href="#booking">Patient Info</a></li>
+  </ul>
+  <a href="#booking" class="nav-appt">Schedule a Visit</a>
+</nav>
+
+<div class="urgent-bar">
+  <strong>Urgent Care Hours:</strong> Walk-ins welcome Mon–Sat 8am–8pm &nbsp;·&nbsp;
+  <a href="tel:3305550200">(330) 555-0200</a> &nbsp;·&nbsp; <strong>After-hours nurse line available</strong>
+</div>
+
+<section class="hero">
+  <div class="hero-text">
+    <div class="hero-tag">Accepting New Patients — All Ages</div>
+    <h1>Compassionate Care for <em>Every Stage</em> of Life</h1>
+    <p>From newborns to grandparents, our board-certified physicians and nurse practitioners deliver personalized, evidence-based medicine in a warm, unhurried environment. Your health is our whole focus.</p>
+    <div class="hero-btns">
+      <a href="#booking" class="btn-coral">Schedule an Appointment</a>
+      <a href="#services" class="btn-ghost">View Services</a>
+    </div>
+  </div>
+  <div class="hero-card">
+    <h3>Request an Appointment</h3>
+    <div class="quick-form">
+      <div class="qf-row">
+        <div class="qf">
+          <label>First Name</label>
+          <input type="text" placeholder="First"/>
+        </div>
+        <div class="qf">
+          <label>Last Name</label>
+          <input type="text" placeholder="Last"/>
+        </div>
+      </div>
+      <div class="qf">
+        <label>Date of Birth</label>
+        <input type="date"/>
+      </div>
+      <div class="qf">
+        <label>Phone Number</label>
+        <input type="tel" placeholder="(330) 555-0000"/>
+      </div>
+      <div class="qf">
+        <label>Reason for Visit</label>
+        <select>
+          <option value="">Select a reason...</option>
+          <option>Annual Physical / Wellness Exam</option>
+          <option>Sick Visit</option>
+          <option>Follow-Up Appointment</option>
+          <option>Lab Results Review</option>
+          <option>Pediatric Well-Child Visit</option>
+          <option>Chronic Disease Management</option>
+          <option>Mental Health Check-In</option>
+          <option>Other</option>
+        </select>
+      </div>
+      <div class="qf">
+        <label>Preferred Provider</label>
+        <select>
+          <option>No Preference</option>
+          <option>Dr. Sandra Okafor</option>
+          <option>Dr. Michael Baum</option>
+          <option>NP Elena Vasquez</option>
+        </select>
+      </div>
+      <div class="qf">
+        <label>Preferred Date</label>
+        <input type="date"/>
+      </div>
+      <button class="qf-submit">Submit Request</button>
+    </div>
+    <div class="hero-hours">
+      <strong>Office Hours</strong><br/>
+      Mon – Fri: 7:30am – 6:00pm<br/>
+      Saturday: 8:00am – 2:00pm<br/>
+      Same-day sick appointments available
+    </div>
+  </div>
+</section>
+
+<div class="trust-bar">
+  <div class="trust-item">
+    <div class="trust-n">4,800+</div>
+    <div class="trust-l">Active Patients</div>
+  </div>
+  <div class="trust-item">
+    <div class="trust-n">3</div>
+    <div class="trust-l">Board-Certified Providers</div>
+  </div>
+  <div class="trust-item">
+    <div class="trust-n">20+</div>
+    <div class="trust-l">Years Serving Kent</div>
+  </div>
+  <div class="trust-item">
+    <div class="trust-n">4.8 ★</div>
+    <div class="trust-l">Patient Satisfaction</div>
+  </div>
+  <div class="trust-item">
+    <div class="trust-n">30+</div>
+    <div class="trust-l">Insurance Plans Accepted</div>
+  </div>
+</div>
+
+<section id="services">
+  <div class="container">
+    <p class="sec-label">Our Expertise</p>
+    <h2 class="sec-title">Full-Spectrum Primary Care</h2>
+    <p class="sec-body">We are your first call for everything from a sore throat to managing long-term conditions. As your medical home, we coordinate every aspect of your care.</p>
+    <div class="svc-list">
+      <div class="svc-row">
+        <div class="svc-num">01</div>
+        <div>
+          <h3>Annual Physicals &amp; Preventive Screenings</h3>
+          <p>Comprehensive yearly exams, age-appropriate cancer screenings, immunizations, and lifestyle counseling to keep you ahead of potential health issues.</p>
+        </div>
+      </div>
+      <div class="svc-row">
+        <div class="svc-num">02</div>
+        <div>
+          <h3>Pediatric &amp; Adolescent Care</h3>
+          <p>Well-child visits, vaccinations, developmental screenings, sports physicals, and adolescent health services from birth through college age.</p>
+        </div>
+      </div>
+      <div class="svc-row">
+        <div class="svc-num">03</div>
+        <div>
+          <h3>Chronic Disease Management</h3>
+          <p>Ongoing, coordinated care for diabetes, hypertension, asthma, thyroid disease, and other conditions — with a focus on keeping you well, not just managing illness.</p>
+        </div>
+      </div>
+      <div class="svc-row">
+        <div class="svc-num">04</div>
+        <div>
+          <h3>Women's Health</h3>
+          <p>Annual well-woman exams, Pap smears, contraception counseling, menopause management, and prenatal care coordination.</p>
+        </div>
+      </div>
+      <div class="svc-row">
+        <div class="svc-num">05</div>
+        <div>
+          <h3>Mental Health &amp; Behavioral Care</h3>
+          <p>Screening and ongoing management of anxiety, depression, and ADHD, with warm referrals to specialists when needed.</p>
+        </div>
+      </div>
+      <div class="svc-row">
+        <div class="svc-num">06</div>
+        <div>
+          <h3>On-Site Lab &amp; Diagnostics</h3>
+          <p>In-office blood work, rapid strep and flu testing, EKG, and referrals for imaging — results in hours, not days.</p>
+        </div>
+      </div>
+    </div>
+  </div>
+</section>
+
+<section id="providers">
+  <div class="container">
+    <p class="sec-label">Meet the Team</p>
+    <h2 class="sec-title">Your Providers</h2>
+    <p class="sec-body">Our physicians and nurse practitioners take the time to know you as a person, not just a patient. Most appointments run 30 minutes or more — no rushed visits here.</p>
+    <div class="providers-grid">
+      <div class="prov-card">
+        <div class="prov-photo">👩‍⚕️</div>
+        <div class="prov-info">
+          <h3>Dr. Sandra Okafor, MD</h3>
+          <div class="prov-spec">Founder · Family Medicine</div>
+          <div class="prov-edu">University of Pittsburgh School of Medicine<br/>Residency: Cleveland Clinic Family Medicine</div>
+          <span class="prov-langs">Languages: English, Igbo</span>
+        </div>
+      </div>
+      <div class="prov-card">
+        <div class="prov-photo">👨‍⚕️</div>
+        <div class="prov-info">
+          <h3>Dr. Michael Baum, DO</h3>
+          <div class="prov-spec">Internal Medicine · Geriatrics</div>
+          <div class="prov-edu">Ohio University Heritage College of Osteopathic Medicine<br/>Residency: Akron General Medical Center</div>
+          <span class="prov-langs">Languages: English, German</span>
+        </div>
+      </div>
+      <div class="prov-card">
+        <div class="prov-photo">👩‍⚕️</div>
+        <div class="prov-info">
+          <h3>Elena Vasquez, NP</h3>
+          <div class="prov-spec">Nurse Practitioner · Pediatrics</div>
+          <div class="prov-edu">Kent State University, MSN–FNP<br/>Board Certified: AANP</div>
+          <span class="prov-langs">Languages: English, Spanish</span>
+        </div>
+      </div>
+    </div>
+  </div>
+</section>
+
+<section id="insurance">
+  <div class="container">
+    <p class="sec-label">Coverage &amp; Billing</p>
+    <h2 class="sec-title" style="color:white;">We Accept Most Major Plans</h2>
+    <p>Don't see your plan listed? Call our billing team — we work with over 30 carriers and will verify your benefits before your visit so there are no surprises.</p>
+    <div class="ins-grid">
+      <div class="ins-pill">Aetna</div>
+      <div class="ins-pill">Anthem Blue Cross</div>
+      <div class="ins-pill">Cigna</div>
+      <div class="ins-pill">Humana</div>
+      <div class="ins-pill">Medical Mutual</div>
+      <div class="ins-pill">Medicare</div>
+      <div class="ins-pill">Medicaid / Caresource</div>
+      <div class="ins-pill">Molina Healthcare</div>
+      <div class="ins-pill">SummaCare</div>
+      <div class="ins-pill">United Healthcare</div>
+      <div class="ins-pill">UMR</div>
+      <div class="ins-pill">+ Many More</div>
+    </div>
+    <p class="ins-note">Self-pay &amp; sliding scale fee options available. Ask us about our uninsured discount program.</p>
+  </div>
+</section>
+
+<footer id="booking">
+  <div>
+    <div class="foot-brand-name">Lakewood Family Medicine</div>
+    <div class="foot-brand-sub">Primary &amp; Preventive Care</div>
+    <div class="foot-brand-copy">© 2026 Lakewood Family Medicine. All rights reserved.</div>
+  </div>
+  <div class="foot-col">
+    <h4>Quick Links</h4>
+    <a href="#services">Services</a>
+    <a href="#providers">Our Providers</a>
+    <a href="#insurance">Insurance</a>
+    <a href="#">Patient Portal</a>
+    <a href="#">Pay My Bill</a>
+    <a href="#">Medical Records</a>
+  </div>
+  <div class="foot-col">
+    <h4>Contact &amp; Hours</h4>
+    <p>
+      456 Lakeview Drive, Suite 200<br/>
+      Kent, OH 44240<br/><br/>
+      Phone: (330) 555-0200<br/>
+      Fax: (330) 555-0201<br/>
+      office@lakewoodfm.com<br/><br/>
+      Mon–Fri: 7:30am – 6:00pm<br/>
+      Sat: 8:00am – 2:00pm
+    </p>
+  </div>
+</footer>
+
+</body>
+</html>

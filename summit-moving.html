@@ -1,0 +1,662 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8"/>
+  <meta name="viewport" content="width=device-width, initial-scale=1.0"/>
+  <title>Summit Moving Co. — Stress-Free Moves</title>
+  <link href="https://fonts.googleapis.com/css2?family=Inter:wght@300;400;500;600;700;800&family=DM+Serif+Display:ital@0;1&display=swap" rel="stylesheet"/>
+  <style>
+    *, *::before, *::after { box-sizing: border-box; margin: 0; padding: 0; }
+    :root {
+      --navy:      #0d2240;
+      --navy-mid:  #163460;
+      --navy-pale: #e8eef8;
+      --orange:    #f7811a;
+      --orange2:   #ff9d40;
+      --text:      #0d1e30;
+      --muted:     #5a6e82;
+      --white:     #ffffff;
+      --off:       #f5f7fa;
+      --border:    #dde4ec;
+    }
+    html { scroll-behavior: smooth; }
+    body { font-family: 'Inter', sans-serif; color: var(--text); background: var(--white); overflow-x: hidden; }
+
+    /* ── NAV ── */
+    nav {
+      position: fixed; top: 0; left: 0; right: 0; z-index: 200;
+      background: white; border-bottom: 1px solid var(--border);
+      padding: 0 4rem;
+      display: flex; align-items: center; justify-content: space-between;
+      min-height: 66px;
+    }
+    .nav-brand { display: flex; align-items: center; gap: 0.9rem; text-decoration: none; }
+    .nav-brand-icon {
+      width: 38px; height: 38px; background: var(--navy);
+      display: flex; align-items: center; justify-content: center;
+      color: var(--orange); font-size: 1.1rem; font-weight: 800;
+      font-family: 'Inter', sans-serif;
+    }
+    .nav-brand-name {
+      font-weight: 800; font-size: 1rem; color: var(--navy);
+      letter-spacing: -0.01em; line-height: 1;
+    }
+    .nav-brand-sub { font-size: 0.65rem; color: var(--muted); font-weight: 400; margin-top: 0.08rem; }
+    .nav-links { display: flex; list-style: none; }
+    .nav-links a {
+      padding: 0 1.2rem; line-height: 66px;
+      font-size: 0.82rem; font-weight: 500; color: var(--muted);
+      text-decoration: none; transition: color 0.2s;
+    }
+    .nav-links a:hover { color: var(--navy); }
+    .nav-phone { font-size: 0.82rem; font-weight: 700; color: var(--navy); margin-right: 1rem; text-decoration: none; }
+    .nav-quote {
+      background: var(--orange); color: white;
+      padding: 0.6rem 1.4rem; font-size: 0.82rem; font-weight: 700;
+      text-decoration: none; transition: background 0.2s;
+    }
+    .nav-quote:hover { background: var(--orange2); }
+
+    /* ── HERO ── */
+    .hero {
+      min-height: 100vh; background: var(--navy);
+      display: grid; grid-template-columns: 1fr 1fr;
+      margin-top: 66px; overflow: hidden;
+    }
+    .hero-left {
+      display: flex; flex-direction: column;
+      justify-content: center; padding: 6rem 4rem 6rem 4rem;
+      position: relative;
+    }
+    .hero-left::after {
+      content: ''; position: absolute; inset: 0;
+      background-image: radial-gradient(circle at 80% 50%, rgba(247,129,26,0.08) 0%, transparent 55%);
+      pointer-events: none;
+    }
+    .hero-eyebrow {
+      display: inline-flex; align-items: center; gap: 0.6rem;
+      background: rgba(247,129,26,0.12); border: 1px solid rgba(247,129,26,0.25);
+      color: var(--orange); padding: 0.38rem 1rem;
+      font-size: 0.73rem; font-weight: 700; letter-spacing: 0.1em;
+      text-transform: uppercase; margin-bottom: 2rem; width: fit-content;
+    }
+    .hero h1 {
+      font-family: 'DM Serif Display', serif;
+      font-size: clamp(3rem, 5.5vw, 5rem); line-height: 1.1;
+      color: white; margin-bottom: 1.5rem; position: relative; z-index: 1;
+    }
+    .hero h1 em { font-style: italic; color: var(--orange); }
+    .hero p { font-size: 1rem; color: rgba(255,255,255,0.62); line-height: 1.75; max-width: 440px; margin-bottom: 2.5rem; position: relative; z-index: 1; }
+    .trust-pills { display: flex; gap: 0.75rem; flex-wrap: wrap; margin-bottom: 2.5rem; position: relative; z-index: 1; }
+    .trust-pill {
+      display: flex; align-items: center; gap: 0.5rem;
+      background: rgba(255,255,255,0.08); border: 1px solid rgba(255,255,255,0.12);
+      padding: 0.4rem 0.9rem; font-size: 0.74rem; font-weight: 600;
+      color: rgba(255,255,255,0.75); letter-spacing: 0.04em;
+    }
+    .trust-pill span { color: var(--orange); }
+    .hero-cta { display: flex; gap: 0.75rem; flex-wrap: wrap; position: relative; z-index: 1; }
+    .btn-orange {
+      background: var(--orange); color: white;
+      padding: 0.9rem 2rem; font-size: 0.88rem; font-weight: 700;
+      text-decoration: none; transition: background 0.2s, transform 0.2s;
+    }
+    .btn-orange:hover { background: var(--orange2); transform: translateY(-2px); }
+    .btn-ghost-white {
+      background: transparent; color: white;
+      border: 1px solid rgba(255,255,255,0.25);
+      padding: 0.9rem 2rem; font-size: 0.88rem; font-weight: 600;
+      text-decoration: none; transition: border-color 0.2s;
+    }
+    .btn-ghost-white:hover { border-color: rgba(255,255,255,0.6); }
+
+    .hero-right { background: var(--navy-mid); position: relative; overflow: hidden; }
+    .hero-form-wrap {
+      position: absolute; inset: 0;
+      display: flex; align-items: center; justify-content: center;
+      padding: 3rem 2.5rem;
+    }
+    .hero-form {
+      background: white; width: 100%; max-width: 400px;
+      padding: 2.25rem; box-shadow: 0 20px 60px rgba(0,0,0,0.3);
+    }
+    .hero-form-header {
+      background: var(--orange); margin: -2.25rem -2.25rem 1.75rem;
+      padding: 1.25rem 2.25rem;
+    }
+    .hero-form-header h3 { font-size: 1rem; font-weight: 800; color: white; }
+    .hero-form-header p { font-size: 0.75rem; color: rgba(255,255,255,0.8); margin-top: 0.2rem; }
+    .qf { margin-bottom: 0.9rem; }
+    .qf label { display: block; font-size: 0.7rem; font-weight: 700; color: var(--muted); text-transform: uppercase; letter-spacing: 0.08em; margin-bottom: 0.35rem; }
+    .qf input, .qf select {
+      width: 100%; padding: 0.7rem 0.9rem;
+      border: 1.5px solid var(--border); font-family: 'Inter', sans-serif;
+      font-size: 0.87rem; color: var(--text); background: white; outline: none;
+      transition: border-color 0.2s;
+    }
+    .qf input:focus, .qf select:focus { border-color: var(--navy); }
+    .qf-row { display: grid; grid-template-columns: 1fr 1fr; gap: 0.75rem; }
+    .qf-submit {
+      width: 100%; background: var(--navy); color: white; border: none;
+      padding: 0.88rem; font-family: 'Inter', sans-serif;
+      font-size: 0.85rem; font-weight: 700; cursor: pointer;
+      transition: background 0.2s;
+    }
+    .qf-submit:hover { background: var(--navy-mid); }
+    .form-guarantee { font-size: 0.7rem; color: var(--muted); text-align: center; margin-top: 0.75rem; }
+
+    /* ── TRUST BAR ── */
+    .trust-bar {
+      background: var(--off); border-bottom: 1px solid var(--border);
+      padding: 1.5rem 4rem;
+      display: flex; justify-content: space-around; flex-wrap: wrap; gap: 1.5rem;
+    }
+    .tb-item { display: flex; align-items: center; gap: 0.75rem; }
+    .tb-icon { font-size: 1.3rem; }
+    .tb-text h4 { font-size: 0.83rem; font-weight: 700; color: var(--navy); }
+    .tb-text p { font-size: 0.72rem; color: var(--muted); }
+
+    /* ── SERVICES ── */
+    #services { padding: 7rem 4rem; background: white; }
+    .container { max-width: 1100px; margin: 0 auto; }
+    .sec-label { font-size: 0.7rem; font-weight: 700; letter-spacing: 0.18em; text-transform: uppercase; color: var(--orange); margin-bottom: 0.75rem; }
+    .sec-title {
+      font-family: 'DM Serif Display', serif;
+      font-size: clamp(2rem, 4vw, 3.2rem); color: var(--text);
+      line-height: 1.1; margin-bottom: 0.9rem;
+    }
+    .sec-title em { font-style: italic; color: var(--navy); }
+    .sec-body { font-size: 0.95rem; color: var(--muted); max-width: 500px; line-height: 1.8; margin-bottom: 3.5rem; }
+    .svc-grid { display: grid; grid-template-columns: repeat(2,1fr); gap: 1.5rem; }
+    .svc-card {
+      border: 1.5px solid var(--border); padding: 2rem;
+      transition: border-color 0.25s, box-shadow 0.25s, transform 0.25s;
+    }
+    .svc-card:hover { border-color: var(--orange); box-shadow: 0 8px 30px rgba(247,129,26,0.08); transform: translateY(-3px); }
+    .svc-icon {
+      width: 52px; height: 52px; background: var(--navy-pale);
+      display: flex; align-items: center; justify-content: center;
+      font-size: 1.4rem; margin-bottom: 1.25rem;
+    }
+    .svc-card h3 { font-size: 1rem; font-weight: 700; color: var(--navy); margin-bottom: 0.5rem; }
+    .svc-card p { font-size: 0.85rem; color: var(--muted); line-height: 1.7; }
+    .svc-card .svc-link {
+      display: inline-block; margin-top: 1rem;
+      font-size: 0.78rem; font-weight: 700; color: var(--orange);
+      text-decoration: none; letter-spacing: 0.04em;
+    }
+
+    /* ── HOW IT WORKS ── */
+    #process { padding: 7rem 4rem; background: var(--navy); }
+    .process-header .sec-label { color: rgba(255,255,255,0.5); }
+    .process-header .sec-title { color: white; }
+    .steps { display: grid; grid-template-columns: repeat(4,1fr); gap: 1px; background: rgba(255,255,255,0.08); margin-top: 3.5rem; }
+    .step {
+      background: rgba(255,255,255,0.04); padding: 2.5rem 2rem;
+      position: relative; transition: background 0.3s;
+    }
+    .step:hover { background: rgba(255,255,255,0.08); }
+    .step-num {
+      font-family: 'DM Serif Display', serif; font-style: italic;
+      font-size: 4rem; color: rgba(247,129,26,0.2); line-height: 1;
+      margin-bottom: 1rem;
+    }
+    .step h3 { font-size: 1rem; font-weight: 700; color: white; margin-bottom: 0.5rem; }
+    .step p { font-size: 0.83rem; color: rgba(255,255,255,0.5); line-height: 1.7; }
+    .step-arrow {
+      position: absolute; right: -1px; top: 50%; transform: translateY(-50%);
+      width: 24px; height: 24px; background: var(--orange);
+      clip-path: polygon(0 0, 100% 50%, 0 100%);
+      z-index: 1;
+    }
+    .step:last-child .step-arrow { display: none; }
+
+    /* ── WHY US ── */
+    #why { padding: 7rem 4rem; background: var(--off); border-top: 1px solid var(--border); }
+    .why-grid { display: grid; grid-template-columns: 1fr 1fr; gap: 5rem; align-items: center; }
+    .why-list { display: flex; flex-direction: column; gap: 1.25rem; margin-top: 2.5rem; }
+    .why-item {
+      display: flex; align-items: flex-start; gap: 1.25rem;
+      padding: 1.25rem; background: white; border: 1px solid var(--border);
+      transition: border-color 0.2s, transform 0.2s;
+    }
+    .why-item:hover { border-color: var(--orange); transform: translateX(4px); }
+    .why-check {
+      width: 36px; height: 36px; background: var(--navy); flex-shrink: 0;
+      display: flex; align-items: center; justify-content: center;
+      color: var(--orange); font-size: 0.9rem; font-weight: 800;
+    }
+    .why-item h3 { font-size: 0.9rem; font-weight: 700; color: var(--navy); margin-bottom: 0.25rem; }
+    .why-item p { font-size: 0.82rem; color: var(--muted); line-height: 1.6; }
+    .why-visual {
+      background: var(--navy); aspect-ratio: 1;
+      display: flex; align-items: center; justify-content: center;
+      position: relative; overflow: hidden;
+    }
+    .why-visual-text {
+      font-family: 'DM Serif Display', serif; font-style: italic;
+      font-size: 8rem; color: rgba(255,255,255,0.04); line-height: 0.8; text-align: center;
+    }
+    .why-badges {
+      position: absolute; inset: 0;
+      display: flex; flex-direction: column;
+      align-items: center; justify-content: center; gap: 1.5rem;
+    }
+    .why-badge {
+      background: rgba(255,255,255,0.05); border: 1px solid rgba(255,255,255,0.1);
+      padding: 1rem 2rem; text-align: center; width: 80%;
+    }
+    .why-badge-n {
+      font-family: 'DM Serif Display', serif; font-style: italic;
+      font-size: 2.5rem; color: var(--orange); line-height: 1;
+    }
+    .why-badge-l { font-size: 0.72rem; font-weight: 600; letter-spacing: 0.1em; text-transform: uppercase; color: rgba(255,255,255,0.5); margin-top: 0.2rem; }
+
+    /* ── REVIEWS ── */
+    #reviews { padding: 7rem 4rem; background: white; border-top: 1px solid var(--border); }
+    .reviews-grid { display: grid; grid-template-columns: repeat(3,1fr); gap: 1.5rem; margin-top: 3rem; }
+    .review-card { border: 1.5px solid var(--border); padding: 2rem; transition: border-color 0.2s; }
+    .review-card:hover { border-color: var(--orange); }
+    .review-stars { color: var(--orange); font-size: 0.85rem; letter-spacing: 0.1em; margin-bottom: 1rem; }
+    .review-text { font-size: 0.9rem; color: var(--text); line-height: 1.75; font-style: italic; margin-bottom: 1.25rem; }
+    .review-author { display: flex; align-items: center; gap: 0.75rem; }
+    .review-avatar {
+      width: 36px; height: 36px; background: var(--navy-pale);
+      border-radius: 50%; display: flex; align-items: center; justify-content: center;
+      font-size: 0.75rem; font-weight: 700; color: var(--navy);
+    }
+    .review-name { font-size: 0.82rem; font-weight: 700; color: var(--navy); }
+    .review-location { font-size: 0.72rem; color: var(--muted); }
+
+    /* ── AREAS ── */
+    #areas { padding: 5rem 4rem; background: var(--navy-pale); border-top: 1px solid var(--border); }
+    .areas-inner { display: flex; justify-content: space-between; align-items: center; gap: 3rem; flex-wrap: wrap; }
+    .areas-left { max-width: 400px; }
+    .areas-left .sec-title { color: var(--navy); }
+    .areas-left p { font-size: 0.92rem; color: var(--muted); line-height: 1.75; margin-top: 1rem; }
+    .areas-tags { display: flex; flex-wrap: wrap; gap: 0.6rem; }
+    .area-tag {
+      background: white; border: 1px solid var(--border);
+      padding: 0.4rem 0.9rem; font-size: 0.78rem; font-weight: 600; color: var(--navy);
+      transition: border-color 0.2s, background 0.2s;
+    }
+    .area-tag:hover { border-color: var(--orange); background: var(--orange); color: white; }
+
+    footer {
+      background: var(--navy); color: white;
+      padding: 4rem 4rem 2.5rem;
+      display: grid; grid-template-columns: 2fr 1fr 1fr; gap: 3rem;
+    }
+    .foot-logo { font-size: 1rem; font-weight: 800; color: white; margin-bottom: 0.4rem; }
+    .foot-logo span { color: var(--orange); }
+    .foot-tagline { font-size: 0.75rem; color: rgba(255,255,255,0.4); margin-bottom: 1.5rem; }
+    .foot-contact p { font-size: 0.82rem; color: rgba(255,255,255,0.55); line-height: 2; }
+    .foot-col h4 { font-size: 0.68rem; font-weight: 700; letter-spacing: 0.14em; text-transform: uppercase; color: var(--orange); margin-bottom: 1.1rem; opacity: 0.7; }
+    .foot-col a { display: block; font-size: 0.82rem; color: rgba(255,255,255,0.5); text-decoration: none; margin-bottom: 0.5rem; transition: color 0.2s; }
+    .foot-col a:hover { color: var(--orange); }
+    .foot-bottom { grid-column: 1/-1; border-top: 1px solid rgba(255,255,255,0.08); padding-top: 1.5rem; display: flex; justify-content: space-between; font-size: 0.72rem; color: rgba(255,255,255,0.25); flex-wrap: wrap; gap: 1rem; }
+
+    @media (max-width: 1000px) {
+      nav { padding: 0 1.5rem; }
+      .nav-links { display: none; }
+      .hero { grid-template-columns: 1fr; margin-top: 66px; }
+      .hero-right { min-height: 600px; }
+      .hero-left { padding: 4rem 1.5rem; }
+      #services, #why, #reviews, #areas { padding: 4rem 1.5rem; }
+      #process { padding: 4rem 1.5rem; }
+      .svc-grid { grid-template-columns: 1fr; }
+      .steps { grid-template-columns: 1fr 1fr; }
+      .step-arrow { display: none; }
+      .why-grid { grid-template-columns: 1fr; }
+      .reviews-grid { grid-template-columns: 1fr; }
+      footer { grid-template-columns: 1fr; padding: 3rem 1.5rem 2rem; }
+      .trust-bar { padding: 1.5rem; }
+    }
+    @media (max-width: 600px) {
+      .steps { grid-template-columns: 1fr; }
+      .qf-row { grid-template-columns: 1fr; }
+    }
+  </style>
+</head>
+<body>
+
+<nav>
+  <a href="#" class="nav-brand">
+    <div class="nav-brand-icon">S</div>
+    <div>
+      <div class="nav-brand-name">Summit Moving Co.</div>
+      <div class="nav-brand-sub">Licensed · Insured · Trusted</div>
+    </div>
+  </a>
+  <ul class="nav-links">
+    <li><a href="#services">Services</a></li>
+    <li><a href="#process">How It Works</a></li>
+    <li><a href="#reviews">Reviews</a></li>
+    <li><a href="#areas">Service Areas</a></li>
+  </ul>
+  <a href="tel:3305550700" class="nav-phone">📞 (330) 555-0700</a>
+  <a href="#hero" class="nav-quote">Free Quote</a>
+</nav>
+
+<section class="hero" id="hero">
+  <div class="hero-left">
+    <div class="hero-eyebrow">🏆 Rated #1 Mover in Portage County</div>
+    <h1>Your Move,<br/><em>Simplified.</em></h1>
+    <p>Professional, on-time, and genuinely careful. Summit Moving handles every detail so you can focus on what matters — settling into your new place.</p>
+    <div class="trust-pills">
+      <div class="trust-pill"><span>✓</span> Licensed &amp; Insured</div>
+      <div class="trust-pill"><span>✓</span> No Hidden Fees</div>
+      <div class="trust-pill"><span>✓</span> Free Quote in 60 Seconds</div>
+    </div>
+    <div class="hero-cta">
+      <a href="#process" class="btn-orange">See How It Works</a>
+      <a href="#services" class="btn-ghost-white">View All Services</a>
+    </div>
+  </div>
+  <div class="hero-right">
+    <div class="hero-form-wrap">
+      <div class="hero-form">
+        <div class="hero-form-header">
+          <h3>Get Your Free Moving Quote</h3>
+          <p>No commitment — we'll respond within 2 hours</p>
+        </div>
+        <div class="qf-row">
+          <div class="qf">
+            <label>First Name</label>
+            <input type="text" placeholder="First"/>
+          </div>
+          <div class="qf">
+            <label>Phone</label>
+            <input type="tel" placeholder="(330) 555-0000"/>
+          </div>
+        </div>
+        <div class="qf">
+          <label>Moving From</label>
+          <input type="text" placeholder="Current ZIP or city"/>
+        </div>
+        <div class="qf">
+          <label>Moving To</label>
+          <input type="text" placeholder="Destination ZIP or city"/>
+        </div>
+        <div class="qf-row">
+          <div class="qf">
+            <label>Move Date</label>
+            <input type="date"/>
+          </div>
+          <div class="qf">
+            <label>Home Size</label>
+            <select>
+              <option value="">Select...</option>
+              <option>Studio / 1 BR</option>
+              <option>2 Bedroom</option>
+              <option>3 Bedroom</option>
+              <option>4+ Bedrooms</option>
+              <option>Office / Commercial</option>
+            </select>
+          </div>
+        </div>
+        <div class="qf">
+          <label>Services Needed</label>
+          <select>
+            <option value="">What do you need?</option>
+            <option>Full-Service Move (Pack + Move)</option>
+            <option>Move Only (I'll Pack)</option>
+            <option>Packing Services Only</option>
+            <option>Storage &amp; Moving</option>
+            <option>Furniture Assembly / Disassembly</option>
+          </select>
+        </div>
+        <button class="qf-submit">Get My Free Quote →</button>
+        <p class="form-guarantee">🔒 We never share your information</p>
+      </div>
+    </div>
+  </div>
+</section>
+
+<div class="trust-bar">
+  <div class="tb-item"><span class="tb-icon">⭐</span><div class="tb-text"><h4>4.9 / 5 Stars</h4><p>Based on 380+ reviews</p></div></div>
+  <div class="tb-item"><span class="tb-icon">📦</span><div class="tb-text"><h4>6,000+ Moves Completed</h4><p>Since 2011</p></div></div>
+  <div class="tb-item"><span class="tb-icon">🛡️</span><div class="tb-text"><h4>Fully Licensed &amp; Insured</h4><p>USDOT #3291847 · Ohio PUC Certified</p></div></div>
+  <div class="tb-item"><span class="tb-icon">💰</span><div class="tb-text"><h4>Transparent Pricing</h4><p>Zero hidden fees — ever</p></div></div>
+  <div class="tb-item"><span class="tb-icon">📅</span><div class="tb-text"><h4>On-Time Guarantee</h4><p>We show up or you don't pay the deposit</p></div></div>
+</div>
+
+<section id="services">
+  <div class="container">
+    <p class="sec-label">What We Do</p>
+    <h2 class="sec-title">Every Kind of Move,<br/><em>Done Right.</em></h2>
+    <p class="sec-body">Whether you're moving across the street or across the state, we have the crew, equipment, and experience to handle it without a single headache.</p>
+    <div class="svc-grid">
+      <div class="svc-card">
+        <div class="svc-icon">🏠</div>
+        <h3>Local Moving</h3>
+        <p>Same-city and local moves billed by the hour with a 2-man minimum crew. We bring all the equipment — dollies, pads, straps, and a fully wrapped truck. No move too small.</p>
+        <a href="#hero" class="svc-link">Get a quote →</a>
+      </div>
+      <div class="svc-card">
+        <div class="svc-icon">🚛</div>
+        <h3>Long-Distance Moving</h3>
+        <p>Moving out of state or across Ohio? We provide flat-rate long-distance quotes with a guaranteed delivery window. Your belongings travel in a dedicated truck — not shared.</p>
+        <a href="#hero" class="svc-link">Get a quote →</a>
+      </div>
+      <div class="svc-card">
+        <div class="svc-icon">📦</div>
+        <h3>Packing Services</h3>
+        <p>Let our crew pack your entire home using professional-grade materials. We label every box, protect fragile items individually, and provide a detailed inventory. Partial packing available too.</p>
+        <a href="#hero" class="svc-link">Get a quote →</a>
+      </div>
+      <div class="svc-card">
+        <div class="svc-icon">🏢</div>
+        <h3>Office &amp; Commercial Moving</h3>
+        <p>We understand that business downtime costs money. Our commercial crews work evenings and weekends, handle IT equipment with care, and get you operational in the new space, fast.</p>
+        <a href="#hero" class="svc-link">Get a quote →</a>
+      </div>
+      <div class="svc-card">
+        <div class="svc-icon">🗄️</div>
+        <h3>Storage Solutions</h3>
+        <p>Need a gap between move-out and move-in? We offer clean, climate-controlled storage with flexible month-to-month contracts. Your items are inventoried and insured the whole time.</p>
+        <a href="#hero" class="svc-link">Get a quote →</a>
+      </div>
+      <div class="svc-card">
+        <div class="svc-icon">🔧</div>
+        <h3>Furniture Assembly</h3>
+        <p>We disassemble large furniture before the move and reassemble everything exactly where you want it. IKEA, custom pieces, beds, office systems — we handle all of it.</p>
+        <a href="#hero" class="svc-link">Get a quote →</a>
+      </div>
+    </div>
+  </div>
+</section>
+
+<section id="process">
+  <div class="container">
+    <div class="process-header">
+      <p class="sec-label">How It Works</p>
+      <h2 class="sec-title" style="color:white;">Moving Shouldn't Be Hard.<br/>Here's the Proof.</h2>
+    </div>
+    <div class="steps">
+      <div class="step">
+        <div class="step-num">01</div>
+        <h3>Get Your Quote</h3>
+        <p>Fill out our form or call us. We ask a few quick questions and send you a transparent, flat-rate or hourly quote within 2 hours. No home visits required.</p>
+        <div class="step-arrow"></div>
+      </div>
+      <div class="step">
+        <div class="step-num">02</div>
+        <h3>Book &amp; Confirm</h3>
+        <p>Lock in your date with a small, fully refundable deposit. We send a confirmation with your crew's names, arrival window, and a direct contact number.</p>
+        <div class="step-arrow"></div>
+      </div>
+      <div class="step">
+        <div class="step-num">03</div>
+        <h3>We Show Up On Time</h3>
+        <p>Your crew arrives with a wrapped truck, all moving equipment, and a professional attitude. We do a walkthrough first, then get to work — carefully and efficiently.</p>
+        <div class="step-arrow"></div>
+      </div>
+      <div class="step">
+        <div class="step-num">04</div>
+        <h3>Settle In &amp; Relax</h3>
+        <p>Everything lands exactly where you want it. We do a final walkthrough with you, collect payment only after you're satisfied, and leave the space clean. Done.</p>
+        <div class="step-arrow"></div>
+      </div>
+    </div>
+  </div>
+</section>
+
+<section id="why">
+  <div class="container">
+    <div class="why-grid">
+      <div>
+        <p class="sec-label">Why Summit</p>
+        <h2 class="sec-title">We Treat Your Stuff<br/>Like <em>Our Own.</em></h2>
+        <div class="why-list">
+          <div class="why-item">
+            <div class="why-check">✓</div>
+            <div>
+              <h3>W-2 Employees Only</h3>
+              <p>No day laborers or subcontractors. Every crew member is a background-checked, trained Summit employee on payroll.</p>
+            </div>
+          </div>
+          <div class="why-item">
+            <div class="why-check">✓</div>
+            <div>
+              <h3>$0 Surprise Charges</h3>
+              <p>We quote stairs, long carries, and heavy items upfront. You pay exactly what we quoted — period.</p>
+            </div>
+          </div>
+          <div class="why-item">
+            <div class="why-check">✓</div>
+            <div>
+              <h3>Full Valuation Coverage</h3>
+              <p>Every move includes basic liability coverage. Full replacement value coverage available for an added fee.</p>
+            </div>
+          </div>
+          <div class="why-item">
+            <div class="why-check">✓</div>
+            <div>
+              <h3>15-Year Track Record</h3>
+              <p>We've completed 6,000+ moves since 2011. We're not going anywhere — and neither are your belongings without our care.</p>
+            </div>
+          </div>
+        </div>
+      </div>
+      <div class="why-visual">
+        <div class="why-visual-text">Move<br/>With<br/>Us</div>
+        <div class="why-badges">
+          <div class="why-badge">
+            <div class="why-badge-n">6,000+</div>
+            <div class="why-badge-l">Moves Completed</div>
+          </div>
+          <div class="why-badge">
+            <div class="why-badge-n">4.9 ★</div>
+            <div class="why-badge-l">Average Review Score</div>
+          </div>
+          <div class="why-badge">
+            <div class="why-badge-n">0</div>
+            <div class="why-badge-l">Hidden Fees — Ever</div>
+          </div>
+        </div>
+      </div>
+    </div>
+  </div>
+</section>
+
+<section id="reviews">
+  <div class="container">
+    <p class="sec-label">What Customers Say</p>
+    <h2 class="sec-title">380+ Five-Star<br/><em>Reviews.</em></h2>
+    <div class="reviews-grid">
+      <div class="review-card">
+        <div class="review-stars">★★★★★</div>
+        <p class="review-text">"The team was at our door 10 minutes early, wrapped every piece of furniture before it touched the truck, and had our 3-bedroom unloaded in under 4 hours. Zero damage, zero drama. Will use Summit for every move I ever make."</p>
+        <div class="review-author">
+          <div class="review-avatar">KM</div>
+          <div><div class="review-name">Kayla M.</div><div class="review-location">Kent → Akron, OH</div></div>
+        </div>
+      </div>
+      <div class="review-card">
+        <div class="review-stars">★★★★★</div>
+        <p class="review-text">"I was dreading moving my office because of all the tech equipment. The Summit crew labeled every cable, packed the servers properly, and had us set up in the new space the same day. Didn't miss a beat. Absolute professionals."</p>
+        <div class="review-author">
+          <div class="review-avatar">DL</div>
+          <div><div class="review-name">Derek L.</div><div class="review-location">Commercial Move · Kent, OH</div></div>
+        </div>
+      </div>
+      <div class="review-card">
+        <div class="review-stars">★★★★★</div>
+        <p class="review-text">"We needed storage for 6 weeks between houses. Summit picked everything up, stored it clean and climate-controlled, then delivered to our new place exactly when promised. The whole process was seamless — I genuinely couldn't have asked for better."</p>
+        <div class="review-author">
+          <div class="review-avatar">TR</div>
+          <div><div class="review-name">Tori R.</div><div class="review-location">Ravenna → Stow, OH</div></div>
+        </div>
+      </div>
+    </div>
+  </div>
+</section>
+
+<section id="areas">
+  <div class="container">
+    <div class="areas-inner">
+      <div class="areas-left">
+        <p class="sec-label">Service Area</p>
+        <h2 class="sec-title">We Move All Across<br/><em>Northeast Ohio</em></h2>
+        <p>We're based in Kent, OH and serve all surrounding communities. Long-distance moves available to any US destination.</p>
+      </div>
+      <div class="areas-tags">
+        <div class="area-tag">Kent</div>
+        <div class="area-tag">Akron</div>
+        <div class="area-tag">Cleveland</div>
+        <div class="area-tag">Cuyahoga Falls</div>
+        <div class="area-tag">Ravenna</div>
+        <div class="area-tag">Stow</div>
+        <div class="area-tag">Hudson</div>
+        <div class="area-tag">Aurora</div>
+        <div class="area-tag">Tallmadge</div>
+        <div class="area-tag">Streetsboro</div>
+        <div class="area-tag">Portage County</div>
+        <div class="area-tag">Summit County</div>
+        <div class="area-tag">+ Long Distance</div>
+      </div>
+    </div>
+  </div>
+</section>
+
+<footer>
+  <div>
+    <div class="foot-logo">Summit <span>Moving</span> Co.</div>
+    <div class="foot-tagline">Licensed · Insured · Trusted Since 2011</div>
+    <div class="foot-contact">
+      <p>
+        99 Truck Way, Kent, OH 44240<br/>
+        (330) 555-0700<br/>
+        hello@summitmovingco.com<br/><br/>
+        Mon–Sat: 7:00am – 8:00pm<br/>
+        Sun: 8:00am – 5:00pm
+      </p>
+    </div>
+  </div>
+  <div class="foot-col">
+    <h4>Services</h4>
+    <a href="#services">Local Moving</a>
+    <a href="#services">Long-Distance</a>
+    <a href="#services">Packing Services</a>
+    <a href="#services">Commercial Moving</a>
+    <a href="#services">Storage</a>
+    <a href="#services">Furniture Assembly</a>
+  </div>
+  <div class="foot-col">
+    <h4>Company</h4>
+    <a href="#why">Why Summit</a>
+    <a href="#process">How It Works</a>
+    <a href="#reviews">Reviews</a>
+    <a href="#areas">Service Areas</a>
+    <a href="#">Careers</a>
+    <a href="#">Contact Us</a>
+  </div>
+  <div class="foot-bottom">
+    <span>© 2026 Summit Moving Co. All rights reserved.</span>
+    <span>USDOT #3291847 · Ohio PUC Certified · Fully Insured</span>
+  </div>
+</footer>
+
+</body>
+</html>

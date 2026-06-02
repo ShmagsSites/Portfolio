@@ -372,6 +372,98 @@
     background: rgba(255,255,255,0.06);
   }
 
+  /* WHY A WEBSITE MATTERS */
+  #whysite {
+    padding: 7rem 3.5rem;
+    background: var(--void);
+    border-top: 1px solid var(--border);
+    border-bottom: 1px solid var(--border);
+  }
+  .why-header {
+    max-width: 1100px; margin: 0 auto 4rem;
+    display: flex; justify-content: space-between; align-items: flex-end;
+    gap: 3rem; flex-wrap: wrap;
+  }
+  .why-header-left { max-width: 560px; }
+  .why-eyebrow {
+    font-size: 0.65rem; font-weight: 500; letter-spacing: 0.26em;
+    text-transform: uppercase; color: var(--silver);
+    margin-bottom: 1.25rem;
+    display: flex; align-items: center; gap: 0.8rem;
+  }
+  .why-eyebrow::before { content: '✦'; font-size: 0.55rem; opacity: 0.5; }
+  .why-heading {
+    font-family: 'Crimson Pro', serif;
+    font-size: clamp(2.2rem, 4.5vw, 4rem);
+    font-weight: 300; line-height: 1.05; color: var(--white);
+  }
+  .why-heading em { font-style: italic; color: var(--silver); }
+  .why-header-right {
+    font-size: 0.88rem; color: var(--muted); line-height: 1.8;
+    max-width: 380px;
+  }
+
+  /* Big 3 stats */
+  .why-big-stats {
+    max-width: 1100px; margin: 0 auto 2px;
+    display: grid; grid-template-columns: repeat(3,1fr);
+    gap: 1px; background: var(--border);
+  }
+  .big-stat {
+    background: var(--deep); padding: 3rem 2.5rem;
+    position: relative; overflow: hidden;
+    transition: background 0.3s;
+  }
+  .big-stat:hover { background: var(--surface); }
+  .big-stat::after {
+    content: ''; position: absolute;
+    bottom: 0; left: 0; width: 100%; height: 2px;
+    background: linear-gradient(to right, var(--silver), transparent);
+    transform: scaleX(0); transform-origin: left;
+    transition: transform 0.4s cubic-bezier(0.22,1,0.36,1);
+  }
+  .big-stat:hover::after { transform: scaleX(1); }
+  .big-stat-n {
+    font-family: 'Crimson Pro', serif;
+    font-size: clamp(3.5rem, 6vw, 5.5rem);
+    font-weight: 300; color: var(--white); line-height: 1;
+    margin-bottom: 0.5rem;
+  }
+  .big-stat-n em { font-style: italic; color: var(--silver); }
+  .big-stat-claim {
+    font-size: 0.92rem; font-weight: 500; color: var(--text);
+    line-height: 1.45; margin-bottom: 0.5rem;
+  }
+  .big-stat-source { font-size: 0.65rem; letter-spacing: 0.1em; text-transform: uppercase; color: var(--muted); }
+
+  /* Fact cards */
+  .why-facts {
+    max-width: 1100px; margin: 1px auto 0;
+    display: grid; grid-template-columns: repeat(3, 1fr);
+    gap: 1px; background: var(--border);
+  }
+  .fact-card {
+    background: var(--surface); padding: 2rem 2.25rem;
+    display: flex; flex-direction: column; gap: 0.75rem;
+    transition: background 0.3s;
+  }
+  .fact-card:hover { background: #1e1e1e; }
+  .fact-icon {
+    font-size: 0.68rem; font-weight: 500; letter-spacing: 0.18em;
+    text-transform: uppercase; color: var(--silver);
+    display: flex; align-items: center; gap: 0.6rem;
+  }
+  .fact-icon::before { content: '—'; color: var(--muted); }
+  .fact-card p { font-size: 0.88rem; color: var(--muted); line-height: 1.75; }
+  .fact-card strong { color: var(--text); font-weight: 500; }
+
+  @media (max-width: 900px) {
+    #whysite { padding: 5rem 1.5rem; }
+    .why-big-stats { grid-template-columns: 1fr; }
+    .why-facts { grid-template-columns: 1fr; }
+    .why-header { flex-direction: column; gap: 1.5rem; }
+  }
+
   /* CONTACT */
   #contact {
     margin: 0 3.5rem 8rem;
@@ -532,11 +624,55 @@
   </div>
 </section>
 
+<!-- WHY A WEBSITE MATTERS -->
+<section id="whysite">
+  <div class="why-header reveal">
+    <div class="why-header-left">
+      <p class="why-eyebrow">The Stakes Are Real</p>
+      <h2 class="why-heading">Your website is your<br/><em>first impression.</em></h2>
+    </div>
+    <p class="why-header-right">Before a customer calls, texts, or walks through your door — they've already judged you. In most cases, your website is the only thing standing between a potential customer and your competitor's checkout page.</p>
+  </div>
+
+  <div class="why-big-stats">
+    <div class="big-stat reveal">
+      <div class="big-stat-n">75<em>%</em></div>
+      <div class="big-stat-claim">of people judge a company's credibility based on its website design alone</div>
+      <div class="big-stat-source">Stanford Web Credibility Research</div>
+    </div>
+    <div class="big-stat reveal d1">
+      <div class="big-stat-n">94<em>%</em></div>
+      <div class="big-stat-claim">of first impressions of a business are design-related — not content or price</div>
+      <div class="big-stat-source">ResearchGate UX Study</div>
+    </div>
+    <div class="big-stat reveal d2">
+      <div class="big-stat-n">3 <em>sec</em></div>
+      <div class="big-stat-claim">is all you get before a visitor decides to stay or hit the back button</div>
+      <div class="big-stat-source">Google UX Research</div>
+    </div>
+  </div>
+
+  <div class="why-facts">
+    <div class="fact-card reveal">
+      <div class="fact-icon">Trust &amp; Safety</div>
+      <p><strong>88% of online consumers</strong> say they are less likely to return to a website after a bad experience. A polished, professional site tells visitors their time — and money — are safe with you.</p>
+    </div>
+    <div class="fact-card reveal d1">
+      <div class="fact-icon">Mobile Matters</div>
+      <p><strong>57% of users</strong> say they won't recommend a business with a poorly designed mobile website. Over half your visitors are on a phone right now — if the site breaks, so does the sale.</p>
+    </div>
+    <div class="fact-card reveal d2">
+      <div class="fact-icon">Real Revenue</div>
+      <p>Businesses that invest in professional web design report an average <strong>200% increase in conversions</strong> compared to DIY or outdated sites. Your website isn't a cost — it's the hardest-working employee you have.</p>
+    </div>
+  </div>
+</section>
+
 <!-- WORK -->
 <section id="work">
   <div class="work-header reveal">
     <h2 class="work-title">Selected <em>Work</em></h2>
-    <div class="work-count">08 Projects</div>
+    <div class="work-count">09 Projects</div>
   </div>
 
   <div class="gothic-rule" aria-hidden="true">
@@ -546,23 +682,6 @@
   </div>
 
   <div class="proj-grid">
-
-    <!-- Ray's Place -->
-    <a href="https://shmagssites.github.io/Portfolio/rays-place-redesign.html"
-       class="proj-card reveal" title="View Ray's Place Redesign">
-      <img src="https://shmagssites.github.io/Portfolio/Images/After-Rays.PNG"
-           alt="Ray's Place redesign"
-           onerror="this.style.display='none'"/>
-      <div class="proj-card-overlay">
-        <div class="proj-card-tags">
-          <span class="ptag">Restaurant</span>
-          <span class="ptag">Redesign</span>
-        </div>
-        <div class="proj-card-name">Ray's Place Kent</div>
-        <div class="proj-card-type">Before / After</div>
-      </div>
-      <div class="proj-card-arrow">↗</div>
-    </a>
 
     <!-- Sweet Kneads -->
     <a href="https://thesweetkneadsbakery.com" target="_blank" rel="noopener"
@@ -682,6 +801,42 @@
         </div>
         <div class="proj-card-name">Luxe Locks Studio</div>
         <div class="proj-card-type">Luxury Salon &amp; Portfolio</div>
+      </div>
+      <div class="proj-card-arrow">↗</div>
+    </a>
+
+    <!-- Iron Ridge Gym -->
+    <a href="https://shmagssites.github.io/Portfolio/iron-ridge-gym.html"
+       class="proj-card reveal" title="View Iron Ridge Athletic Club">
+      <div class="proj-card-placeholder" style="background:#141414;">
+        <div class="placeholder-glyph" style="color:rgba(255,87,34,0.18);font-family:'Crimson Pro',serif;">IR</div>
+      </div>
+      <div class="proj-card-overlay">
+        <div class="proj-card-tags">
+          <span class="ptag">Fitness</span>
+          <span class="ptag">Memberships</span>
+          <span class="ptag">Classes</span>
+        </div>
+        <div class="proj-card-name">Iron Ridge Athletic Club</div>
+        <div class="proj-card-type">Gym &amp; Fitness Studio Site</div>
+      </div>
+      <div class="proj-card-arrow">↗</div>
+    </a>
+
+    <!-- Summit Moving -->
+    <a href="https://shmagssites.github.io/Portfolio/summit-moving.html"
+       class="proj-card reveal d1" title="View Summit Moving Co.">
+      <div class="proj-card-placeholder" style="background:#0d2240;">
+        <div class="placeholder-glyph" style="color:rgba(247,129,26,0.2);font-family:'Crimson Pro',serif;font-style:italic;">S</div>
+      </div>
+      <div class="proj-card-overlay">
+        <div class="proj-card-tags">
+          <span class="ptag">Moving</span>
+          <span class="ptag">Quotes</span>
+          <span class="ptag">Services</span>
+        </div>
+        <div class="proj-card-name">Summit Moving Co.</div>
+        <div class="proj-card-type">Moving Company &amp; Lead Gen</div>
       </div>
       <div class="proj-card-arrow">↗</div>
     </a>

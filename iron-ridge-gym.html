@@ -1,0 +1,688 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8"/>
+  <meta name="viewport" content="width=device-width, initial-scale=1.0"/>
+  <title>Iron Ridge Athletic Club</title>
+  <link href="https://fonts.googleapis.com/css2?family=Oswald:wght@300;400;500;600;700&family=Barlow:wght@300;400;500;600&display=swap" rel="stylesheet"/>
+  <style>
+    *, *::before, *::after { box-sizing: border-box; margin: 0; padding: 0; }
+    :root {
+      --black:   #0c0c0c;
+      --dark:    #141414;
+      --panel:   #1c1c1c;
+      --orange:  #ff5722;
+      --orange2: #ff7a50;
+      --red:     #c62828;
+      --white:   #f2f2f2;
+      --muted:   rgba(242,242,242,0.45);
+      --border:  rgba(255,255,255,0.07);
+    }
+    html { scroll-behavior: smooth; }
+    body { font-family: 'Barlow', sans-serif; background: var(--black); color: var(--white); overflow-x: hidden; }
+
+    /* ── NAV ── */
+    nav {
+      position: fixed; top: 0; left: 0; right: 0; z-index: 200;
+      background: rgba(12,12,12,0.95); backdrop-filter: blur(12px);
+      border-bottom: 2px solid var(--orange);
+      padding: 0 4rem;
+      display: flex; align-items: center; justify-content: space-between;
+      min-height: 64px;
+    }
+    .nav-logo {
+      font-family: 'Oswald', sans-serif; font-weight: 700;
+      font-size: 1.3rem; letter-spacing: 0.1em; text-transform: uppercase;
+      color: var(--white); text-decoration: none; display: flex; align-items: center; gap: 0.6rem;
+    }
+    .nav-logo-bar {
+      width: 4px; height: 24px; background: var(--orange);
+    }
+    .nav-links { display: flex; list-style: none; }
+    .nav-links a {
+      display: block; padding: 0 1.3rem; line-height: 64px;
+      font-family: 'Oswald', sans-serif; font-size: 0.82rem; font-weight: 500;
+      letter-spacing: 0.12em; text-transform: uppercase; color: var(--muted);
+      text-decoration: none; transition: color 0.2s;
+    }
+    .nav-links a:hover { color: var(--orange); }
+    .nav-cta {
+      background: var(--orange); color: white;
+      padding: 0.6rem 1.6rem; font-family: 'Oswald', sans-serif;
+      font-size: 0.82rem; font-weight: 600; letter-spacing: 0.12em;
+      text-transform: uppercase; text-decoration: none;
+      transition: background 0.2s, transform 0.15s;
+    }
+    .nav-cta:hover { background: var(--orange2); transform: translateY(-1px); }
+
+    /* ── HERO ── */
+    .hero {
+      min-height: 100vh; position: relative;
+      display: flex; align-items: center;
+      padding: 8rem 4rem 6rem; overflow: hidden;
+    }
+    .hero-bg {
+      position: absolute; inset: 0;
+      background: linear-gradient(105deg, #0c0c0c 0%, #1a0a06 50%, #0c0c0c 100%);
+    }
+    .hero-bg-grid {
+      position: absolute; inset: 0; pointer-events: none;
+      background-image:
+        linear-gradient(rgba(255,87,34,0.06) 1px, transparent 1px),
+        linear-gradient(90deg, rgba(255,87,34,0.06) 1px, transparent 1px);
+      background-size: 80px 80px;
+    }
+    .hero-slash {
+      position: absolute; right: 0; top: 0; bottom: 0;
+      width: 52%; clip-path: polygon(12% 0%, 100% 0%, 100% 100%, 0% 100%);
+      background: linear-gradient(135deg, #1a0a06 0%, #260e06 100%);
+      display: flex; align-items: center; justify-content: center;
+    }
+    .hero-slash-text {
+      font-family: 'Oswald', sans-serif; font-weight: 700;
+      font-size: 18rem; line-height: 0.85; letter-spacing: -0.05em;
+      color: rgba(255,87,34,0.06); user-select: none;
+    }
+    .hero-content { position: relative; z-index: 2; max-width: 600px; }
+    .hero-tag {
+      display: inline-flex; align-items: center; gap: 0.6rem;
+      background: rgba(255,87,34,0.12); border: 1px solid rgba(255,87,34,0.3);
+      color: var(--orange); padding: 0.38rem 1rem;
+      font-family: 'Oswald', sans-serif; font-size: 0.75rem; font-weight: 500;
+      letter-spacing: 0.16em; text-transform: uppercase; margin-bottom: 2rem;
+    }
+    .hero-tag-dot { width: 6px; height: 6px; background: var(--orange); border-radius: 50%; box-shadow: 0 0 8px var(--orange); }
+    .hero h1 {
+      font-family: 'Oswald', sans-serif; font-weight: 700;
+      font-size: clamp(4.5rem, 9vw, 9rem); line-height: 0.88;
+      letter-spacing: -0.01em; text-transform: uppercase;
+      margin-bottom: 2rem;
+    }
+    .hero h1 .accent { color: var(--orange); display: block; }
+    .hero p { font-size: 1rem; color: var(--muted); line-height: 1.75; max-width: 480px; margin-bottom: 2.5rem; }
+    .hero-btns { display: flex; gap: 0.75rem; flex-wrap: wrap; margin-bottom: 3.5rem; }
+    .btn-orange {
+      background: var(--orange); color: white;
+      padding: 0.9rem 2rem; font-family: 'Oswald', sans-serif;
+      font-size: 0.85rem; font-weight: 600; letter-spacing: 0.12em; text-transform: uppercase;
+      text-decoration: none; transition: background 0.2s, transform 0.2s;
+    }
+    .btn-orange:hover { background: var(--orange2); transform: translateY(-2px); }
+    .btn-ghost {
+      background: transparent; color: var(--white);
+      border: 1px solid rgba(255,255,255,0.2);
+      padding: 0.9rem 2rem; font-family: 'Oswald', sans-serif;
+      font-size: 0.85rem; font-weight: 500; letter-spacing: 0.12em; text-transform: uppercase;
+      text-decoration: none; transition: border-color 0.2s;
+    }
+    .btn-ghost:hover { border-color: rgba(255,255,255,0.5); }
+    .hero-stats { display: flex; gap: 0; border: 1px solid var(--border); }
+    .h-stat { padding: 1.2rem 2rem; border-right: 1px solid var(--border); }
+    .h-stat:last-child { border-right: none; }
+    .h-stat-n { font-family: 'Oswald', sans-serif; font-size: 2.2rem; font-weight: 700; color: var(--orange); line-height: 1; }
+    .h-stat-l { font-size: 0.7rem; font-weight: 500; letter-spacing: 0.1em; text-transform: uppercase; color: var(--muted); margin-top: 0.2rem; }
+
+    /* ── TICKER ── */
+    .ticker { background: var(--orange); padding: 0.7rem 0; overflow: hidden; white-space: nowrap; }
+    .ticker-inner { display: inline-block; animation: ticker 18s linear infinite; }
+    .ticker-item {
+      display: inline-block; font-family: 'Oswald', sans-serif;
+      font-size: 0.8rem; font-weight: 600; letter-spacing: 0.2em; text-transform: uppercase;
+      color: white; padding: 0 3rem;
+    }
+    .ticker-item::after { content: '✦'; margin-left: 3rem; opacity: 0.5; }
+    @keyframes ticker { from { transform: translateX(0); } to { transform: translateX(-50%); } }
+
+    /* ── MEMBERSHIP ── */
+    #membership { padding: 8rem 4rem; background: var(--dark); }
+    .section-eyebrow {
+      font-family: 'Oswald', sans-serif; font-size: 0.72rem; font-weight: 500;
+      letter-spacing: 0.22em; text-transform: uppercase; color: var(--orange);
+      margin-bottom: 0.75rem;
+    }
+    .section-title {
+      font-family: 'Oswald', sans-serif; font-weight: 700;
+      font-size: clamp(2.5rem, 5vw, 4.5rem); text-transform: uppercase;
+      line-height: 0.95; color: var(--white); margin-bottom: 0.75rem;
+    }
+    .section-body { font-size: 0.95rem; color: var(--muted); max-width: 480px; line-height: 1.75; margin-bottom: 3.5rem; }
+    .container { max-width: 1100px; margin: 0 auto; }
+    .plans-grid { display: grid; grid-template-columns: repeat(3,1fr); gap: 1px; background: var(--border); }
+    .plan-card {
+      background: var(--panel); padding: 2.5rem;
+      position: relative; transition: background 0.3s;
+    }
+    .plan-card:hover { background: #222; }
+    .plan-card.featured {
+      background: var(--orange);
+    }
+    .plan-card.featured:hover { background: var(--orange2); }
+    .plan-tag {
+      display: inline-block; font-family: 'Oswald', sans-serif;
+      font-size: 0.65rem; font-weight: 600; letter-spacing: 0.16em; text-transform: uppercase;
+      background: rgba(255,255,255,0.15); color: white;
+      padding: 0.22rem 0.7rem; margin-bottom: 1.5rem;
+    }
+    .plan-card:not(.featured) .plan-tag { background: rgba(255,87,34,0.12); color: var(--orange); }
+    .plan-name {
+      font-family: 'Oswald', sans-serif; font-size: 1.1rem; font-weight: 600;
+      letter-spacing: 0.1em; text-transform: uppercase;
+      color: var(--white); margin-bottom: 0.75rem;
+    }
+    .plan-card.featured .plan-name { color: white; }
+    .plan-price { margin-bottom: 1.5rem; }
+    .plan-price-n {
+      font-family: 'Oswald', sans-serif; font-size: 3.5rem; font-weight: 700;
+      color: var(--white); line-height: 1;
+    }
+    .plan-card.featured .plan-price-n { color: white; }
+    .plan-price-unit { font-size: 0.8rem; color: var(--muted); }
+    .plan-card.featured .plan-price-unit { color: rgba(255,255,255,0.7); }
+    .plan-features { list-style: none; margin-bottom: 2rem; }
+    .plan-features li {
+      display: flex; align-items: center; gap: 0.75rem;
+      font-size: 0.88rem; color: var(--muted);
+      padding: 0.55rem 0; border-bottom: 1px solid rgba(255,255,255,0.05);
+    }
+    .plan-card.featured .plan-features li { color: rgba(255,255,255,0.85); border-bottom-color: rgba(255,255,255,0.1); }
+    .plan-features li::before { content: '✓'; color: var(--orange); font-weight: 700; flex-shrink: 0; }
+    .plan-card.featured .plan-features li::before { color: white; }
+    .plan-btn {
+      display: block; text-align: center; text-decoration: none;
+      font-family: 'Oswald', sans-serif; font-size: 0.82rem; font-weight: 600;
+      letter-spacing: 0.12em; text-transform: uppercase;
+      padding: 0.85rem; border: 1px solid rgba(255,255,255,0.15);
+      color: var(--white); transition: all 0.25s;
+    }
+    .plan-btn:hover { background: var(--orange); border-color: var(--orange); }
+    .plan-card.featured .plan-btn {
+      background: white; color: var(--orange); border-color: white;
+    }
+    .plan-card.featured .plan-btn:hover { background: var(--dark); color: white; border-color: var(--dark); }
+
+    /* ── CLASSES ── */
+    #classes { padding: 8rem 4rem; background: var(--black); border-top: 1px solid var(--border); }
+    .classes-grid { display: grid; grid-template-columns: repeat(3,1fr); gap: 1px; background: var(--border); margin-top: 3.5rem; }
+    .class-card {
+      background: var(--dark); padding: 2rem; position: relative;
+      overflow: hidden; transition: background 0.3s;
+    }
+    .class-card:hover { background: var(--panel); }
+    .class-card::before {
+      content: ''; position: absolute; bottom: 0; left: 0;
+      height: 3px; width: 0; background: var(--orange);
+      transition: width 0.4s;
+    }
+    .class-card:hover::before { width: 100%; }
+    .class-time { font-size: 0.68rem; font-weight: 500; letter-spacing: 0.14em; text-transform: uppercase; color: var(--orange); margin-bottom: 0.75rem; }
+    .class-name { font-family: 'Oswald', sans-serif; font-size: 1.4rem; font-weight: 700; text-transform: uppercase; color: var(--white); margin-bottom: 0.5rem; line-height: 1.1; }
+    .class-desc { font-size: 0.83rem; color: var(--muted); line-height: 1.65; margin-bottom: 1.25rem; }
+    .class-meta { display: flex; gap: 1.5rem; }
+    .class-meta span { font-size: 0.72rem; font-weight: 500; letter-spacing: 0.08em; text-transform: uppercase; color: var(--muted); }
+    .class-meta .dot { color: var(--orange); }
+
+    /* ── FACILITIES ── */
+    #facilities {
+      padding: 8rem 4rem; background: var(--dark);
+      border-top: 1px solid var(--border);
+    }
+    .fac-grid { display: grid; grid-template-columns: 1fr 1fr; gap: 5rem; align-items: center; }
+    .fac-list { margin-top: 2.5rem; display: flex; flex-direction: column; gap: 0; }
+    .fac-item {
+      display: flex; align-items: flex-start; gap: 1.25rem;
+      padding: 1.25rem 0; border-bottom: 1px solid var(--border);
+      transition: background 0.2s;
+    }
+    .fac-icon {
+      width: 44px; height: 44px; background: rgba(255,87,34,0.1);
+      border: 1px solid rgba(255,87,34,0.2);
+      display: flex; align-items: center; justify-content: center;
+      font-size: 1.1rem; flex-shrink: 0;
+    }
+    .fac-item h3 { font-family: 'Oswald', sans-serif; font-size: 1rem; font-weight: 600; text-transform: uppercase; letter-spacing: 0.06em; color: var(--white); margin-bottom: 0.25rem; }
+    .fac-item p { font-size: 0.82rem; color: var(--muted); line-height: 1.6; }
+    .fac-visual {
+      background: var(--panel); border: 1px solid var(--border);
+      aspect-ratio: 4/5;
+      display: flex; align-items: center; justify-content: center;
+      position: relative; overflow: hidden;
+    }
+    .fac-visual::before {
+      content: ''; position: absolute; inset: 0;
+      background: linear-gradient(135deg, rgba(255,87,34,0.05) 0%, transparent 60%);
+    }
+    .fac-visual-text {
+      font-family: 'Oswald', sans-serif; font-weight: 700;
+      font-size: 7rem; color: rgba(255,87,34,0.08); text-transform: uppercase; letter-spacing: -0.03em;
+    }
+    .fac-badge {
+      position: absolute; bottom: 2rem; left: 2rem; right: 2rem;
+      background: var(--orange); padding: 1.25rem 1.5rem;
+    }
+    .fac-badge-n { font-family: 'Oswald', sans-serif; font-size: 2rem; font-weight: 700; color: white; line-height: 1; }
+    .fac-badge-l { font-size: 0.75rem; font-weight: 500; letter-spacing: 0.1em; text-transform: uppercase; color: rgba(255,255,255,0.75); margin-top: 0.2rem; }
+
+    /* ── TRAINERS ── */
+    #trainers { padding: 8rem 4rem; background: var(--black); border-top: 1px solid var(--border); }
+    .trainers-grid { display: grid; grid-template-columns: repeat(4,1fr); gap: 1px; background: var(--border); margin-top: 3.5rem; }
+    .trainer-card { background: var(--dark); overflow: hidden; transition: background 0.3s; }
+    .trainer-card:hover { background: var(--panel); }
+    .trainer-photo {
+      height: 220px; display: flex; align-items: center; justify-content: center;
+      position: relative; overflow: hidden;
+    }
+    .tp-a { background: linear-gradient(145deg, #1a0a06, #2a1008); }
+    .tp-b { background: linear-gradient(145deg, #0a0a1a, #0e0e26); }
+    .tp-c { background: linear-gradient(145deg, #0a1a0a, #0e260e); }
+    .tp-d { background: linear-gradient(145deg, #1a1206, #261c08); }
+    .trainer-photo-letter {
+      font-family: 'Oswald', sans-serif; font-weight: 700;
+      font-size: 5rem; color: rgba(255,87,34,0.12); letter-spacing: -0.02em;
+    }
+    .trainer-photo-bar {
+      position: absolute; bottom: 0; left: 0; right: 0;
+      height: 3px; background: var(--orange);
+    }
+    .trainer-info { padding: 1.5rem; }
+    .trainer-name { font-family: 'Oswald', sans-serif; font-size: 1.1rem; font-weight: 700; text-transform: uppercase; letter-spacing: 0.06em; color: var(--white); margin-bottom: 0.2rem; }
+    .trainer-cert { font-size: 0.68rem; font-weight: 500; letter-spacing: 0.12em; text-transform: uppercase; color: var(--orange); margin-bottom: 0.6rem; }
+    .trainer-spec { font-size: 0.8rem; color: var(--muted); line-height: 1.55; }
+
+    /* ── FREE PASS ── */
+    #freepass { padding: 8rem 4rem; background: var(--orange); position: relative; overflow: hidden; }
+    #freepass::before {
+      content: 'FREE PASS'; position: absolute;
+      font-family: 'Oswald', sans-serif; font-weight: 700;
+      font-size: 14rem; color: rgba(0,0,0,0.08); letter-spacing: -0.03em;
+      right: -2rem; top: 50%; transform: translateY(-50%);
+      pointer-events: none; white-space: nowrap;
+    }
+    .pass-grid { display: grid; grid-template-columns: 1fr 1fr; gap: 6rem; align-items: center; position: relative; z-index: 1; }
+    .pass-left h2 {
+      font-family: 'Oswald', sans-serif; font-weight: 700;
+      font-size: clamp(2.5rem, 5vw, 4.5rem); text-transform: uppercase;
+      line-height: 0.9; color: white; margin-bottom: 1.25rem;
+    }
+    .pass-left p { font-size: 1rem; color: rgba(255,255,255,0.8); line-height: 1.75; margin-bottom: 2rem; }
+    .pass-perks { display: flex; flex-direction: column; gap: 0.75rem; }
+    .pass-perk { display: flex; align-items: center; gap: 0.75rem; font-size: 0.9rem; color: rgba(255,255,255,0.85); }
+    .pass-perk-check { width: 22px; height: 22px; background: rgba(255,255,255,0.2); display: flex; align-items: center; justify-content: center; font-size: 0.7rem; flex-shrink: 0; }
+    .pass-form { background: var(--dark); padding: 2.5rem; }
+    .pass-form h3 { font-family: 'Oswald', sans-serif; font-size: 1.2rem; font-weight: 600; text-transform: uppercase; letter-spacing: 0.08em; color: var(--white); margin-bottom: 1.5rem; }
+    .pf { margin-bottom: 1rem; }
+    .pf label { display: block; font-size: 0.68rem; font-weight: 500; letter-spacing: 0.14em; text-transform: uppercase; color: var(--muted); margin-bottom: 0.38rem; }
+    .pf input, .pf select {
+      width: 100%; padding: 0.78rem 1rem;
+      background: var(--black); border: 1px solid var(--border);
+      color: var(--white); font-family: 'Barlow', sans-serif; font-size: 0.88rem;
+      outline: none; transition: border-color 0.2s;
+    }
+    .pf input:focus, .pf select:focus { border-color: var(--orange); }
+    .pf select option { background: var(--black); }
+    .pf-row { display: grid; grid-template-columns: 1fr 1fr; gap: 0.75rem; }
+    .pass-submit {
+      width: 100%; background: var(--orange); color: white; border: none;
+      padding: 0.9rem; font-family: 'Oswald', sans-serif;
+      font-size: 0.85rem; font-weight: 600; letter-spacing: 0.12em;
+      text-transform: uppercase; cursor: pointer; transition: background 0.2s;
+    }
+    .pass-submit:hover { background: var(--orange2); }
+
+    footer {
+      background: var(--dark); border-top: 2px solid var(--orange);
+      padding: 3rem 4rem;
+      display: flex; justify-content: space-between; align-items: center;
+      flex-wrap: wrap; gap: 2rem;
+    }
+    .foot-brand { font-family: 'Oswald', sans-serif; font-weight: 700; font-size: 1.1rem; letter-spacing: 0.1em; text-transform: uppercase; }
+    .foot-brand span { color: var(--orange); }
+    .foot-links { display: flex; gap: 2rem; }
+    .foot-links a { font-size: 0.75rem; font-weight: 500; letter-spacing: 0.12em; text-transform: uppercase; color: var(--muted); text-decoration: none; transition: color 0.2s; }
+    .foot-links a:hover { color: var(--orange); }
+    .foot-info { font-size: 0.78rem; color: var(--muted); line-height: 1.9; text-align: right; }
+
+    @media (max-width: 1000px) {
+      nav { padding: 0 1.5rem; }
+      .nav-links { display: none; }
+      .hero { padding: 7rem 1.5rem 4rem; }
+      .hero-slash { display: none; }
+      #membership, #classes, #facilities, #trainers, #freepass { padding: 5rem 1.5rem; }
+      .plans-grid { grid-template-columns: 1fr; }
+      .classes-grid { grid-template-columns: 1fr 1fr; }
+      .fac-grid { grid-template-columns: 1fr; }
+      .trainers-grid { grid-template-columns: 1fr 1fr; }
+      .pass-grid { grid-template-columns: 1fr; gap: 3rem; }
+      footer { flex-direction: column; text-align: center; padding: 2.5rem 1.5rem; }
+      .foot-info { text-align: center; }
+    }
+    @media (max-width: 600px) {
+      .classes-grid { grid-template-columns: 1fr; }
+      .trainers-grid { grid-template-columns: 1fr; }
+      .pf-row { grid-template-columns: 1fr; }
+    }
+  </style>
+</head>
+<body>
+
+<nav>
+  <a href="#" class="nav-logo">
+    <div class="nav-logo-bar"></div>
+    Iron Ridge
+  </a>
+  <ul class="nav-links">
+    <li><a href="#membership">Memberships</a></li>
+    <li><a href="#classes">Classes</a></li>
+    <li><a href="#facilities">Facilities</a></li>
+    <li><a href="#trainers">Trainers</a></li>
+  </ul>
+  <a href="#freepass" class="nav-cta">Free Day Pass</a>
+</nav>
+
+<section class="hero">
+  <div class="hero-bg"></div>
+  <div class="hero-bg-grid"></div>
+  <div class="hero-slash"><div class="hero-slash-text">IR</div></div>
+  <div class="hero-content">
+    <div class="hero-tag"><span class="hero-tag-dot"></span>Kent's Premier Fitness Club</div>
+    <h1>Forge<br/><span class="accent">Your Best</span><br/>Self.</h1>
+    <p>No fluff. No excuses. Just world-class equipment, elite coaches, and a community that pushes you further than you thought possible.</p>
+    <div class="hero-btns">
+      <a href="#membership" class="btn-orange">View Memberships</a>
+      <a href="#freepass" class="btn-ghost">Claim Free Day Pass</a>
+    </div>
+    <div class="hero-stats">
+      <div class="h-stat"><div class="h-stat-n">3,200</div><div class="h-stat-l">Members</div></div>
+      <div class="h-stat"><div class="h-stat-n">40+</div><div class="h-stat-l">Weekly Classes</div></div>
+      <div class="h-stat"><div class="h-stat-n">12</div><div class="h-stat-l">Certified Trainers</div></div>
+    </div>
+  </div>
+</section>
+
+<div class="ticker" aria-hidden="true">
+  <div class="ticker-inner">
+    <span class="ticker-item">Strength Training</span>
+    <span class="ticker-item">HIIT &amp; Cardio</span>
+    <span class="ticker-item">Open 24 Hours</span>
+    <span class="ticker-item">Personal Training</span>
+    <span class="ticker-item">Group Classes Daily</span>
+    <span class="ticker-item">Olympic Lifting</span>
+    <span class="ticker-item">Recovery Lounge</span>
+    <span class="ticker-item">Boxing &amp; Kickboxing</span>
+    <span class="ticker-item">Strength Training</span>
+    <span class="ticker-item">HIIT &amp; Cardio</span>
+    <span class="ticker-item">Open 24 Hours</span>
+    <span class="ticker-item">Personal Training</span>
+    <span class="ticker-item">Group Classes Daily</span>
+    <span class="ticker-item">Olympic Lifting</span>
+    <span class="ticker-item">Recovery Lounge</span>
+    <span class="ticker-item">Boxing &amp; Kickboxing</span>
+  </div>
+</div>
+
+<section id="membership">
+  <div class="container">
+    <p class="section-eyebrow">Memberships</p>
+    <h2 class="section-title">No Contracts.<br/>Just Results.</h2>
+    <p class="section-body">Pick the plan that fits your grind. Every membership includes 24/7 facility access, free parking, and no enrollment fees.</p>
+    <div class="plans-grid">
+      <div class="plan-card">
+        <span class="plan-tag">Starter</span>
+        <div class="plan-name">Basic</div>
+        <div class="plan-price">
+          <div class="plan-price-n">$29<span style="font-size:1.5rem;">/mo</span></div>
+          <div class="plan-price-unit">No contract · Cancel anytime</div>
+        </div>
+        <ul class="plan-features">
+          <li>24/7 Gym Floor Access</li>
+          <li>Cardio Equipment (50+ machines)</li>
+          <li>Free Weights &amp; Machines</li>
+          <li>Locker Room &amp; Showers</li>
+          <li>Free Parking</li>
+        </ul>
+        <a href="#freepass" class="plan-btn">Get Started</a>
+      </div>
+      <div class="plan-card featured">
+        <span class="plan-tag">Most Popular</span>
+        <div class="plan-name">Athletic</div>
+        <div class="plan-price">
+          <div class="plan-price-n">$49<span style="font-size:1.5rem;">/mo</span></div>
+          <div class="plan-price-unit">No contract · Cancel anytime</div>
+        </div>
+        <ul class="plan-features">
+          <li>Everything in Basic</li>
+          <li>Unlimited Group Classes</li>
+          <li>Olympic Lifting Platform Access</li>
+          <li>Recovery Lounge &amp; Sauna</li>
+          <li>Nutrition Tracking App Access</li>
+          <li>1 Guest Pass / Month</li>
+        </ul>
+        <a href="#freepass" class="plan-btn">Get Started</a>
+      </div>
+      <div class="plan-card">
+        <span class="plan-tag">All In</span>
+        <div class="plan-name">Elite</div>
+        <div class="plan-price">
+          <div class="plan-price-n">$79<span style="font-size:1.5rem;">/mo</span></div>
+          <div class="plan-price-unit">No contract · Cancel anytime</div>
+        </div>
+        <ul class="plan-features">
+          <li>Everything in Athletic</li>
+          <li>2 Personal Training Sessions / Month</li>
+          <li>Customized Programming</li>
+          <li>Priority Class Registration</li>
+          <li>Monthly Body Composition Scan</li>
+          <li>Unlimited Guest Passes</li>
+        </ul>
+        <a href="#freepass" class="plan-btn">Get Started</a>
+      </div>
+    </div>
+  </div>
+</section>
+
+<section id="classes">
+  <div class="container">
+    <p class="section-eyebrow">Class Schedule</p>
+    <h2 class="section-title">40+ Classes<br/>Every Week.</h2>
+    <p class="section-body">From first-timers to athletes, every class is led by certified coaches who modify for every level. No experience needed — just show up.</p>
+    <div class="classes-grid">
+      <div class="class-card">
+        <div class="class-time">Mon / Wed / Fri · 6:00am</div>
+        <div class="class-name">HIIT Ignite</div>
+        <div class="class-desc">45-minute high-intensity intervals combining bodyweight, kettlebells, and battle ropes. Your metabolism won't know what hit it.</div>
+        <div class="class-meta"><span class="dot">●</span><span>45 min</span><span>All Levels</span><span>Max 20</span></div>
+      </div>
+      <div class="class-card">
+        <div class="class-time">Tue / Thu · 5:30am &amp; 6:00pm</div>
+        <div class="class-name">Powerlifting</div>
+        <div class="class-desc">Coach-led squat, bench, and deadlift programming for raw strength gains. All experience levels welcome — technique comes first.</div>
+        <div class="class-meta"><span class="dot">●</span><span>60 min</span><span>Beginner–Advanced</span><span>Max 12</span></div>
+      </div>
+      <div class="class-card">
+        <div class="class-time">Mon / Wed / Sat · 7:00am</div>
+        <div class="class-name">Ride &amp; Burn</div>
+        <div class="class-desc">High-energy indoor cycling to a DJ-caliber playlist. Low impact, maximum burn. Bring a towel — you'll need it.</div>
+        <div class="class-meta"><span class="dot">●</span><span>45 min</span><span>All Levels</span><span>Max 24</span></div>
+      </div>
+      <div class="class-card">
+        <div class="class-time">Tue / Thu / Sun · 9:00am</div>
+        <div class="class-name">Iron Yoga</div>
+        <div class="class-desc">Athletic yoga blending mobility work with bodyweight strength. Designed for athletes who skip stretching (you know who you are).</div>
+        <div class="class-meta"><span class="dot">●</span><span>60 min</span><span>All Levels</span><span>Max 16</span></div>
+      </div>
+      <div class="class-card">
+        <div class="class-time">Mon / Wed / Fri · 7:00pm</div>
+        <div class="class-name">Boxing Fundamentals</div>
+        <div class="class-desc">Learn footwork, combinations, and defensive technique on the heavy bags. Build coordination, speed, and serious cardio.</div>
+        <div class="class-meta"><span class="dot">●</span><span>50 min</span><span>Beginner–Intermediate</span><span>Max 14</span></div>
+      </div>
+      <div class="class-card">
+        <div class="class-time">Sat · 10:00am</div>
+        <div class="class-name">Weekend Warrior</div>
+        <div class="class-desc">The signature Saturday class — a 75-minute team-based workout combining strength, conditioning, and competition. Bring your game.</div>
+        <div class="class-meta"><span class="dot">●</span><span>75 min</span><span>Intermediate–Advanced</span><span>Max 30</span></div>
+      </div>
+    </div>
+  </div>
+</section>
+
+<section id="facilities">
+  <div class="container">
+    <div class="fac-grid">
+      <div>
+        <p class="section-eyebrow">The Floor</p>
+        <h2 class="section-title">15,000 sq ft<br/>of Serious<br/>Equipment.</h2>
+        <div class="fac-list">
+          <div class="fac-item">
+            <div class="fac-icon">🏋️</div>
+            <div>
+              <h3>Olympic Platform Area</h3>
+              <p>6 dedicated platforms with bumper plates, bars, and chalk. No judgment — go heavy.</p>
+            </div>
+          </div>
+          <div class="fac-item">
+            <div class="fac-icon">🚴</div>
+            <div>
+              <h3>Cardio Zone</h3>
+              <p>50+ machines including treadmills, rowers, assault bikes, SkiErgs, and stair climbers.</p>
+            </div>
+          </div>
+          <div class="fac-item">
+            <div class="fac-icon">🥊</div>
+            <div>
+              <h3>Boxing Studio</h3>
+              <p>Dedicated room with 18 heavy bags, speed bags, double-end bags, and a full boxing ring.</p>
+            </div>
+          </div>
+          <div class="fac-item">
+            <div class="fac-icon">🧖</div>
+            <div>
+              <h3>Recovery Lounge</h3>
+              <p>Dry sauna, cold plunge, compression boots, and massage chairs. Recover like a pro.</p>
+            </div>
+          </div>
+        </div>
+      </div>
+      <div class="fac-visual">
+        <div class="fac-visual-text">15K</div>
+        <div class="fac-badge">
+          <div class="fac-badge-n">Open 24/7</div>
+          <div class="fac-badge-l">365 days a year — no exceptions</div>
+        </div>
+      </div>
+    </div>
+  </div>
+</section>
+
+<section id="trainers">
+  <div class="container">
+    <p class="section-eyebrow">Personal Training</p>
+    <h2 class="section-title">Coaches Who<br/>Live the Game.</h2>
+    <p class="section-body">Every trainer is certified, background-checked, and holds a specialty. Book a free strategy session to find your match.</p>
+    <div class="trainers-grid">
+      <div class="trainer-card">
+        <div class="trainer-photo tp-a"><div class="trainer-photo-letter">MK</div><div class="trainer-photo-bar"></div></div>
+        <div class="trainer-info">
+          <div class="trainer-name">Marcus Kane</div>
+          <div class="trainer-cert">NSCA–CSCS · Strength &amp; Power</div>
+          <div class="trainer-spec">Former collegiate lineman. Specializes in powerlifting programming and athletic performance.</div>
+        </div>
+      </div>
+      <div class="trainer-card">
+        <div class="trainer-photo tp-b"><div class="trainer-photo-letter">JR</div><div class="trainer-photo-bar"></div></div>
+        <div class="trainer-info">
+          <div class="trainer-name">Jade Rivera</div>
+          <div class="trainer-cert">NASM–CPT · HIIT &amp; Metabolic</div>
+          <div class="trainer-spec">Competitive CrossFit athlete. Builds programs around sustainable fat loss and functional movement.</div>
+        </div>
+      </div>
+      <div class="trainer-card">
+        <div class="trainer-photo tp-c"><div class="trainer-photo-letter">DP</div><div class="trainer-photo-bar"></div></div>
+        <div class="trainer-info">
+          <div class="trainer-name">Derek Park</div>
+          <div class="trainer-cert">ACE–CPT · Boxing &amp; Conditioning</div>
+          <div class="trainer-spec">12 years in competitive boxing. Coaches fighters and non-fighters alike — discipline is universal.</div>
+        </div>
+      </div>
+      <div class="trainer-card">
+        <div class="trainer-photo tp-d"><div class="trainer-photo-letter">SN</div><div class="trainer-photo-bar"></div></div>
+        <div class="trainer-info">
+          <div class="trainer-name">Sara Nguyen</div>
+          <div class="trainer-cert">RYT–500 · Mobility &amp; Recovery</div>
+          <div class="trainer-spec">Yoga therapist and mobility coach. Works with athletes recovering from injury and desk-job warriors alike.</div>
+        </div>
+      </div>
+    </div>
+  </div>
+</section>
+
+<section id="freepass">
+  <div class="container">
+    <div class="pass-grid">
+      <div class="pass-left">
+        <h2>Come In.<br/>Train Free.</h2>
+        <p>Claim your free day pass and experience the full Iron Ridge floor — every piece of equipment, every amenity, zero commitment. No credit card required.</p>
+        <div class="pass-perks">
+          <div class="pass-perk"><div class="pass-perk-check">✓</div>Full facility &amp; equipment access</div>
+          <div class="pass-perk"><div class="pass-perk-check">✓</div>Drop into any scheduled class</div>
+          <div class="pass-perk"><div class="pass-perk-check">✓</div>Free 20-min orientation with a coach</div>
+          <div class="pass-perk"><div class="pass-perk-check">✓</div>No sales pressure — just show up</div>
+        </div>
+      </div>
+      <div class="pass-form">
+        <h3>Claim Your Free Pass</h3>
+        <div class="pf-row">
+          <div class="pf">
+            <label>First Name</label>
+            <input type="text" placeholder="First"/>
+          </div>
+          <div class="pf">
+            <label>Last Name</label>
+            <input type="text" placeholder="Last"/>
+          </div>
+        </div>
+        <div class="pf">
+          <label>Email Address</label>
+          <input type="email" placeholder="you@email.com"/>
+        </div>
+        <div class="pf">
+          <label>Phone Number</label>
+          <input type="tel" placeholder="(330) 555-0000"/>
+        </div>
+        <div class="pf">
+          <label>Preferred Visit Day</label>
+          <input type="date"/>
+        </div>
+        <div class="pf">
+          <label>Fitness Goal</label>
+          <select>
+            <option value="">What brings you in?</option>
+            <option>Weight Loss &amp; Body Composition</option>
+            <option>Build Muscle &amp; Strength</option>
+            <option>Improve Athletic Performance</option>
+            <option>General Health &amp; Energy</option>
+            <option>Learn a New Skill (Boxing, Lifting)</option>
+            <option>Just Explore the Facility</option>
+          </select>
+        </div>
+        <button class="pass-submit">Claim My Free Pass →</button>
+      </div>
+    </div>
+  </div>
+</section>
+
+<footer>
+  <div class="foot-brand">Iron <span>Ridge</span> Athletic Club</div>
+  <div class="foot-links">
+    <a href="#membership">Memberships</a>
+    <a href="#classes">Classes</a>
+    <a href="#trainers">Trainers</a>
+    <a href="#freepass">Free Pass</a>
+  </div>
+  <div class="foot-info">
+    888 Iron Way, Kent, OH 44240<br/>
+    (330) 555-0600 · Open 24/7
+  </div>
+</footer>
+
+</body>
+</html>

@@ -1,0 +1,366 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8"/>
+  <meta name="viewport" content="width=device-width, initial-scale=1.0"/>
+  <title>Services — Bennett Land Title Agency</title>
+  <link rel="preconnect" href="https://fonts.googleapis.com"/>
+  <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin/>
+  <link href="https://fonts.googleapis.com/css2?family=Inter:wght@300;400;500;600;700&family=Playfair+Display:ital,wght@0,600;0,700;1,400;1,600&display=swap" rel="stylesheet"/>
+  <style>
+*,*::before,*::after{box-sizing:border-box;margin:0;padding:0}
+:root{--green:#00643c;--green-dark:#004d2e;--green-mid:#1a7a4a;--blue:#28aae6;--blue-light:#5cc4f5;--cream:#f4faf7;--white:#ffffff;--gray-line:#d4e8de;--gray-mid:#8a8880;--text:#1c1c1c;--text-soft:#4a4848;--radius:4px;--ease:0.22s ease}
+html{scroll-behavior:smooth}
+body{font-family:'Inter',sans-serif;font-size:16px;color:var(--text);background:var(--white);line-height:1.6;-webkit-font-smoothing:antialiased}
+img{display:block;max-width:100%}
+a{color:inherit;text-decoration:none}
+.topbar{background:var(--green);color:rgba(255,255,255,0.75);font-size:0.8rem;padding:0.45rem 1.5rem;display:flex;align-items:center;justify-content:space-between;gap:0.75rem;flex-wrap:wrap}
+.topbar a{color:rgba(255,255,255,0.75);transition:color var(--ease)}
+.topbar a:hover{color:#fff}
+.topbar-offices{display:flex;gap:2rem;flex-wrap:wrap}
+.topbar-offices span{display:flex;align-items:center;gap:0.4rem}
+.nav-wrap{position:sticky;top:0;z-index:100;background:var(--white);border-bottom:1px solid var(--gray-line);box-shadow:0 1px 8px rgba(0,0,0,0.06)}
+nav{max-width:1200px;margin:0 auto;padding:0 1.5rem;height:68px;display:flex;align-items:center;justify-content:space-between;gap:1rem}
+.nav-logo{display:flex;align-items:center}
+.nav-logo-img{height:46px;width:auto;display:block}
+.nav-links{display:flex;align-items:center;gap:0.2rem;list-style:none}
+.nav-links li a{padding:0.4rem 0.8rem;font-size:0.88rem;font-weight:500;color:var(--text-soft);border-radius:var(--radius);transition:color var(--ease),background var(--ease);white-space:nowrap}
+.nav-links li a:hover{color:var(--green);background:var(--cream)}
+.nav-links li a.active{color:var(--green);font-weight:600}
+.nav-links .menu-contact a{background:var(--green)!important;color:var(--white)!important;padding:0.48rem 1.1rem!important;border-radius:var(--radius)!important}
+.nav-links .menu-contact a:hover{background:var(--green-mid)!important}
+.nav-toggle{display:none;flex-direction:column;gap:5px;cursor:pointer;padding:6px;border:none;background:none}
+.nav-toggle span{display:block;width:24px;height:2px;background:var(--green);border-radius:2px;transition:all var(--ease)}
+.mobile-menu{display:none;flex-direction:column;background:var(--white);border-top:1px solid var(--gray-line);padding:0.75rem 1.5rem 1.25rem}
+.mobile-menu a{display:block;padding:0.65rem 0;font-size:0.92rem;font-weight:500;color:var(--text-soft);border-bottom:1px solid var(--gray-line)}
+.mobile-menu a:last-child{border-bottom:none}
+.mobile-menu a.active{color:var(--green);font-weight:600}
+.mobile-menu.open{display:flex}
+.btn{display:inline-flex;align-items:center;gap:0.4rem;padding:0.78rem 1.6rem;border-radius:var(--radius);font-size:0.9rem;font-weight:600;transition:all var(--ease);cursor:pointer;border:2px solid transparent;white-space:nowrap}
+.btn-green{background:var(--green);color:#fff;border-color:var(--green)}
+.btn-green:hover{background:var(--green-mid);border-color:var(--green-mid)}
+.btn-blue{background:var(--blue);color:#fff;border-color:var(--blue)}
+.btn-blue:hover{background:var(--blue-light);border-color:var(--blue-light)}
+.btn-white{background:#fff;color:var(--green);border-color:#fff;font-weight:700}
+.btn-white:hover{background:var(--cream)}
+.btn-outline-white{background:transparent;color:#fff;border-color:rgba(255,255,255,0.45)}
+.btn-outline-white:hover{border-color:#fff;background:rgba(255,255,255,0.1)}
+.btn-outline-green{background:transparent;color:var(--green);border-color:var(--green)}
+.btn-outline-green:hover{background:var(--green);color:#fff}
+section{padding:5rem 1.5rem}
+.container{max-width:1200px;margin:0 auto}
+.label-tag{display:inline-flex;align-items:center;gap:0.5rem;font-size:0.72rem;font-weight:600;letter-spacing:0.14em;text-transform:uppercase;color:var(--blue);margin-bottom:0.9rem}
+.label-tag::before{content:'';display:block;width:20px;height:1px;background:var(--blue)}
+.label-tag.on-dark{color:var(--blue-light)}
+.label-tag.on-dark::before{background:var(--blue-light)}
+h2.section-title{font-family:'Playfair Display',serif;font-size:clamp(1.7rem,3vw,2.5rem);font-weight:700;line-height:1.2;color:var(--green);letter-spacing:-0.02em}
+.section-body{font-size:1rem;color:var(--text-soft);line-height:1.78;max-width:600px}
+.page-hero{background:var(--green-dark);padding:4.5rem 1.5rem 3.5rem;position:relative;overflow:hidden}
+.page-hero-img{position:absolute;inset:0;background-size:cover;background-position:center;z-index:0}
+.page-hero-overlay{position:absolute;inset:0;background:linear-gradient(135deg,rgba(0,50,25,0.88) 0%,rgba(0,80,40,0.72) 100%);z-index:1}
+.page-hero-inner{position:relative;z-index:2;max-width:1200px;margin:0 auto}
+.page-hero h1{font-family:'Playfair Display',serif;font-size:clamp(2rem,4vw,3rem);font-weight:700;color:#fff;letter-spacing:-0.02em;line-height:1.2;margin-bottom:0.75rem}
+.page-hero p{font-size:1.05rem;color:rgba(255,255,255,0.68);max-width:560px;line-height:1.7}
+.cta-strip{background:var(--blue);padding:3.5rem 1.5rem}
+.cta-strip .container{display:flex;align-items:center;justify-content:space-between;gap:2rem;flex-wrap:wrap}
+.cta-strip h2{font-family:'Playfair Display',serif;font-size:clamp(1.4rem,2.5vw,2rem);font-weight:700;color:#fff;line-height:1.3}
+.cta-strip p{font-size:0.92rem;color:rgba(255,255,255,0.82);margin-top:0.4rem}
+.cta-strip-btns{display:flex;gap:1rem;flex-wrap:wrap}
+footer{background:var(--green);color:rgba(255,255,255,0.65);padding:4rem 1.5rem 2rem}
+.footer-grid{max-width:1200px;margin:0 auto;display:grid;grid-template-columns:2fr 1fr 1fr 1.5fr;gap:3rem;padding-bottom:3rem;border-bottom:1px solid rgba(255,255,255,0.1)}
+.footer-logo-img{height:46px;width:auto;filter:brightness(0) invert(1);opacity:0.9}
+.footer-brand p{margin-top:1.25rem;font-size:0.86rem;line-height:1.7;color:rgba(255,255,255,0.5)}
+.footer-badges{display:flex;align-items:center;gap:1rem;margin-top:1.25rem;flex-wrap:wrap}
+.footer-badges img{height:52px;width:auto;opacity:0.85}
+.footer-social{margin-top:1.25rem;display:flex;gap:0.6rem}
+.footer-social a{width:34px;height:34px;border-radius:4px;background:rgba(255,255,255,0.1);display:flex;align-items:center;justify-content:center;transition:background var(--ease)}
+.footer-social a:hover{background:var(--blue)}
+.footer-social svg{width:16px;height:16px;fill:#fff}
+.footer-col h4{font-size:0.78rem;font-weight:700;letter-spacing:0.12em;text-transform:uppercase;color:rgba(255,255,255,0.85);margin-bottom:1.1rem}
+.footer-col ul{list-style:none;display:flex;flex-direction:column;gap:0.6rem}
+.footer-col ul a{font-size:0.86rem;color:rgba(255,255,255,0.5);transition:color var(--ease)}
+.footer-col ul a:hover{color:var(--blue-light)}
+.footer-contact-item{display:flex;align-items:flex-start;gap:0.6rem;font-size:0.86rem;color:rgba(255,255,255,0.5);margin-bottom:0.8rem;line-height:1.5}
+.footer-contact-item svg{width:14px;height:14px;fill:var(--blue);flex-shrink:0;margin-top:0.2rem}
+.footer-contact-item a{color:rgba(255,255,255,0.55);transition:color var(--ease)}
+.footer-contact-item a:hover{color:var(--blue-light)}
+.footer-bottom{max-width:1200px;margin:2rem auto 0;display:flex;align-items:center;justify-content:space-between;gap:1rem;flex-wrap:wrap;font-size:0.78rem;color:rgba(255,255,255,0.3)}
+/* Services page */
+.svc-section{padding:5rem 1.5rem}
+.svc-grid{display:grid;grid-template-columns:1fr 1fr;gap:5rem;align-items:center}
+.svc-grid.reversed{direction:rtl}
+.svc-grid.reversed>*{direction:ltr}
+.svc-img img{width:100%;height:420px;object-fit:cover;border-radius:8px}
+.svc-text .section-body{margin-top:1.25rem;max-width:100%}
+.svc-text p+p{margin-top:1rem}
+.svc-list{margin-top:1.5rem;list-style:none;display:flex;flex-direction:column;gap:0.55rem}
+.svc-list li{display:flex;align-items:flex-start;gap:0.6rem;font-size:0.9rem;color:var(--text-soft)}
+.svc-list li::before{content:'';display:block;flex-shrink:0;width:6px;height:6px;border-radius:50%;background:var(--blue);margin-top:0.5rem}
+.svc-actions{margin-top:1.75rem;display:flex;gap:1rem;flex-wrap:wrap}
+.ins-detail{margin-top:1.75rem;border:1px solid var(--gray-line);border-radius:6px;overflow:hidden}
+.ins-detail-header{background:var(--green);color:#fff;padding:0.8rem 1.25rem;font-size:0.78rem;font-weight:700;letter-spacing:0.1em;text-transform:uppercase}
+.ins-detail-body{display:grid;grid-template-columns:1fr 1fr;gap:0}
+.ins-type{padding:1.25rem;border-right:1px solid var(--gray-line)}
+.ins-type:last-child{border-right:none}
+.ins-type h4{font-size:0.9rem;font-weight:700;color:var(--green);margin-bottom:0.5rem}
+.ins-type p{font-size:0.84rem;color:var(--text-soft);line-height:1.65}
+.checklist-section{background:var(--cream)}
+.checklist-grid{margin-top:3rem;display:grid;grid-template-columns:repeat(3,1fr);gap:2.5rem}
+.checklist-col h3{font-family:'Playfair Display',serif;font-size:1.05rem;font-weight:600;color:var(--green);margin-bottom:1rem;padding-bottom:0.75rem;border-bottom:1px solid var(--gray-line)}
+.checklist-col ul{list-style:none;display:flex;flex-direction:column;gap:0.55rem}
+.checklist-col li{display:flex;align-items:flex-start;gap:0.55rem;font-size:0.87rem;color:var(--text-soft)}
+.checklist-col li::before{content:'✓';color:var(--blue);font-weight:700;font-size:0.8rem;flex-shrink:0;margin-top:0.15rem}
+.why-bennett{background:var(--green);padding:5rem 1.5rem}
+.why-bennett-inner{max-width:1200px;margin:0 auto;display:grid;grid-template-columns:1fr 1fr;gap:4rem;align-items:start}
+.why-bennett h2{font-family:'Playfair Display',serif;font-size:clamp(1.7rem,3vw,2.5rem);font-weight:700;color:#fff;letter-spacing:-0.02em}
+.why-body{font-size:1rem;color:rgba(255,255,255,0.65);line-height:1.78;margin-top:1rem}
+.why-list{margin-top:2rem;display:flex;flex-direction:column;gap:1.25rem}
+.why-item{display:flex;align-items:flex-start;gap:0.75rem}
+.why-item-dot{width:8px;height:8px;border-radius:50%;background:var(--blue-light);flex-shrink:0;margin-top:0.55rem}
+.why-item-text h4{font-size:0.92rem;font-weight:600;color:#fff;margin-bottom:0.25rem}
+.why-item-text p{font-size:0.86rem;color:rgba(255,255,255,0.55);line-height:1.65}
+.why-contact-card{background:rgba(255,255,255,0.08);border:1px solid rgba(255,255,255,0.15);border-radius:8px;padding:2rem 1.75rem}
+.why-contact-card h3{font-family:'Playfair Display',serif;font-size:1.25rem;font-weight:600;color:#fff;margin-bottom:1rem}
+.why-citem{display:flex;align-items:center;gap:0.6rem;font-size:0.88rem;color:rgba(255,255,255,0.65);margin-bottom:0.75rem}
+.why-citem svg{width:14px;height:14px;fill:var(--blue-light);flex-shrink:0}
+.why-citem a{color:rgba(255,255,255,0.8);transition:color var(--ease)}
+.why-citem a:hover{color:var(--blue-light)}
+.why-contact-card .btn-blue{margin-top:1.25rem;width:100%;justify-content:center}
+@media(max-width:1024px){.footer-grid{grid-template-columns:1fr 1fr;gap:2rem}}
+@media(max-width:900px){
+  section{padding:3.5rem 1.25rem}
+  .svc-section{padding:3.5rem 1.25rem}
+  .svc-grid,.svc-grid.reversed{grid-template-columns:1fr;gap:2.5rem;direction:ltr}
+  .svc-img img{height:auto}
+  .checklist-grid{grid-template-columns:1fr 1fr}
+  .why-bennett-inner{grid-template-columns:1fr;gap:2.5rem}
+  .footer-grid{grid-template-columns:1fr;gap:2rem}
+  .cta-strip .container{flex-direction:column;align-items:flex-start}
+  nav{height:60px}
+  .nav-links{display:none}
+  .nav-toggle{display:flex}
+}
+@media(max-width:600px){.checklist-grid{grid-template-columns:1fr}.ins-detail-body{grid-template-columns:1fr}.ins-type{border-right:none;border-bottom:1px solid var(--gray-line)}.ins-type:last-child{border-bottom:none}}
+@media(max-width:480px){.topbar-offices{flex-direction:column;gap:0.2rem}}
+  </style>
+</head>
+<body>
+
+<div class="topbar">
+  <div class="topbar-offices">
+    <span><svg width="12" height="12" viewBox="0 0 24 24" fill="currentColor"><path d="M12 2C8.13 2 5 5.13 5 9c0 5.25 7 13 7 13s7-7.75 7-13c0-3.87-3.13-7-7-7zm0 9.5c-1.38 0-2.5-1.12-2.5-2.5S10.62 6.5 12 6.5s2.5 1.12 2.5 2.5S13.38 11.5 12 11.5z"/></svg>Brimfield: <a href="tel:3306774007">330-677-4007</a></span>
+    <span><svg width="12" height="12" viewBox="0 0 24 24" fill="currentColor"><path d="M12 2C8.13 2 5 5.13 5 9c0 5.25 7 13 7 13s7-7.75 7-13c0-3.87-3.13-7-7-7zm0 9.5c-1.38 0-2.5-1.12-2.5-2.5S10.62 6.5 12 6.5s2.5 1.12 2.5 2.5S13.38 11.5 12 11.5z"/></svg>Ravenna: <a href="tel:3302964007">330-296-4007</a></span>
+  </div>
+  <a href="mailto:sbennett@bennettlandtitle.com">sbennett@bennettlandtitle.com</a>
+</div>
+<div class="nav-wrap">
+  <nav>
+    <a href="bennett-land-title.html" class="nav-logo"><img src="bennett-images/bennett-logo.png" alt="Bennett Land Title, LLC" class="nav-logo-img"/></a>
+    <ul class="nav-links">
+      <li><a href="bennett-land-title.html">Home</a></li>
+      <li><a href="bennett-about.html">About Us</a></li>
+      <li><a href="bennett-services.html" class="active">Services</a></li>
+      <li><a href="bennett-team.html">Team</a></li>
+      <li class="menu-contact"><a href="bennett-contact.html">Contact Us</a></li>
+    </ul>
+    <button class="nav-toggle" onclick="toggleMenu()" aria-label="Open Menu"><span></span><span></span><span></span></button>
+  </nav>
+  <div class="mobile-menu" id="mobileMenu">
+    <a href="bennett-land-title.html" onclick="closeMenu()">Home</a>
+    <a href="bennett-about.html" onclick="closeMenu()">About Us</a>
+    <a href="bennett-services.html" class="active" onclick="closeMenu()">Services</a>
+    <a href="bennett-team.html" onclick="closeMenu()">Team</a>
+    <a href="bennett-contact.html" onclick="closeMenu()">Contact Us</a>
+  </div>
+</div>
+
+<div class="page-hero">
+  <div class="page-hero-img" style="background-image:url('bennett-images/post-15.jpg');"></div>
+  <div class="page-hero-overlay"></div>
+  <div class="page-hero-inner">
+    <p class="label-tag on-dark" style="margin-bottom:0.75rem;">What We Do</p>
+    <h1>Our Services</h1>
+    <p>Residential, commercial, and title insurance — all handled with care, precision, and flexibility.</p>
+  </div>
+</div>
+
+<section class="svc-section" id="residential" style="background:#fff;">
+  <div class="container">
+    <div class="svc-grid">
+      <div class="svc-img"><img src="bennett-images/post-6-1.jpg" alt="Residential real estate"/></div>
+      <div class="svc-text">
+        <div class="label-tag">Residential</div>
+        <h2 class="section-title">Your Home. Done Right.</h2>
+        <div class="section-body">
+          <p>It's not just a house — it's your home, and you need to make sure everything is done the right way for you and your family. At Bennett Land Title Agency, we've been doing residential title work for years and we know what you need and how to get it done correctly.</p>
+          <p>You can also choose the hours that work best for your family. We work nights and weekends and will meet you anywhere that is most convenient for you!</p>
+        </div>
+        <ul class="svc-list">
+          <li>Trusted and experienced title team</li>
+          <li>Covering all 88 Ohio counties</li>
+          <li>Flexible hours — nights and weekends</li>
+          <li>We come to you — no office visit required</li>
+          <li>FSBO (For Sale By Owner) packets available</li>
+          <li>Smooth, stress-free closing process</li>
+        </ul>
+        <div class="svc-actions"><a href="bennett-contact.html" class="btn btn-green">Request a Closing</a></div>
+      </div>
+    </div>
+  </div>
+</section>
+
+<section class="svc-section" id="commercial" style="background:var(--cream);">
+  <div class="container">
+    <div class="svc-grid reversed">
+      <div class="svc-img"><img src="bennett-images/iStock-664525214-370x260.jpg" alt="Commercial real estate"/></div>
+      <div class="svc-text">
+        <div class="label-tag">Commercial</div>
+        <h2 class="section-title">Commercial Title — Big or Small.</h2>
+        <div class="section-body">
+          <p>Spending millions of dollars on a commercial property means you need someone who knows what they're doing. Bennett Land Title Agency has been doing commercial title work for years and we know the ins and outs.</p>
+          <p>Commercial real estate can be complicated, with more parties, more paperwork, and more at stake. We handle all of it — from small storefronts to large industrial facilities.</p>
+        </div>
+        <ul class="svc-list">
+          <li>Small storefronts to large industrial factories</li>
+          <li>Multiple properties at one time</li>
+          <li>Zoning issues and renovations</li>
+          <li>Any size business or company</li>
+          <li>Coordination with multiple parties</li>
+          <li>Experienced in complex multi-parcel transactions</li>
+        </ul>
+        <div class="svc-actions"><a href="bennett-contact.html" class="btn btn-green">Talk to Our Team</a></div>
+      </div>
+    </div>
+  </div>
+</section>
+
+<section class="svc-section" id="insurance" style="background:#fff;">
+  <div class="container">
+    <div class="svc-grid">
+      <div class="svc-img"><img src="bennett-images/iStock-502396870-370x260.jpg" alt="Title insurance protection"/></div>
+      <div class="svc-text">
+        <div class="label-tag">Title Insurance</div>
+        <h2 class="section-title">Protect Your Investment.</h2>
+        <div class="section-body">
+          <p>Title insurance is a form of indemnity insurance that protects the holder from financial loss sustained from defects in title to a property. Because we underwrite for both Stewart Title and Fidelity National Title, you can be sure that we are held to the highest ethical and regulatory standards in the industry.</p>
+        </div>
+        <div class="ins-detail">
+          <div class="ins-detail-header">Types of Title Insurance</div>
+          <div class="ins-detail-body">
+            <div class="ins-type">
+              <h4>Owner's Policy</h4>
+              <p>Protects the buyer against loss from defects in title that arose prior to the date of the policy. The face amount is typically the purchase price of the property.</p>
+            </div>
+            <div class="ins-type">
+              <h4>Lender's Policy</h4>
+              <p>Required by most mortgage lenders. Protects the lender's interest in the property and is based on the loan amount rather than the purchase price.</p>
+            </div>
+          </div>
+        </div>
+        <div class="svc-actions"><a href="bennett-contact.html" class="btn btn-green">Get a Quote</a><a href="bennett-about.html" class="btn btn-outline-green">Learn More</a></div>
+      </div>
+    </div>
+  </div>
+</section>
+
+<section class="checklist-section">
+  <div class="container">
+    <div class="label-tag">Closing Day</div>
+    <h2 class="section-title">Closing Checklist</h2>
+    <div class="checklist-grid">
+      <div class="checklist-col">
+        <h3>Before Closing</h3>
+        <ul>
+          <li>Title search ordered &amp; reviewed</li>
+          <li>Lender commitment letter received</li>
+          <li>Homeowner's insurance confirmed</li>
+          <li>Final walk-through completed</li>
+          <li>Closing disclosure reviewed (3 days prior)</li>
+          <li>Funds wired or cashier's check arranged</li>
+        </ul>
+      </div>
+      <div class="checklist-col">
+        <h3>At the Table</h3>
+        <ul>
+          <li>Government-issued photo ID</li>
+          <li>Cashier's check or wire confirmation</li>
+          <li>Copy of purchase agreement</li>
+          <li>Homeowner's insurance policy/binder</li>
+          <li>Any documents from your lender</li>
+          <li>Social Security number (for IRS forms)</li>
+        </ul>
+      </div>
+      <div class="checklist-col">
+        <h3>After Closing</h3>
+        <ul>
+          <li>Title insurance policies issued</li>
+          <li>Deed recorded with county auditor</li>
+          <li>Keys and access codes handed over</li>
+          <li>Final settlement statement retained</li>
+          <li>Warranty deed copy filed safely</li>
+          <li>Update utilities and address records</li>
+        </ul>
+      </div>
+    </div>
+  </div>
+</section>
+
+<div class="why-bennett">
+  <div class="why-bennett-inner">
+    <div>
+      <div class="label-tag on-dark">Why Choose Us</div>
+      <h2>Why Bennett Land Title?</h2>
+      <p class="why-body">We make title work easy. It's really that simple, and what separates us from everyone else.</p>
+      <div class="why-list">
+        <div class="why-item"><div class="why-item-dot"></div><div class="why-item-text"><h4>All of Ohio</h4><p>We cover all 88 Ohio counties from our two Northeast Ohio offices.</p></div></div>
+        <div class="why-item"><div class="why-item-dot"></div><div class="why-item-text"><h4>Flexible Hours</h4><p>Nights, weekends, and we'll come to you — your schedule, not ours.</p></div></div>
+        <div class="why-item"><div class="why-item-dot"></div><div class="why-item-text"><h4>Nationally Backed</h4><p>Underwritten by Fidelity National Title and Stewart Title for maximum protection.</p></div></div>
+        <div class="why-item"><div class="why-item-dot"></div><div class="why-item-text"><h4>100+ Years Combined Experience</h4><p>Our team has seen it all and knows how to handle even the most complex transactions.</p></div></div>
+      </div>
+    </div>
+    <div class="why-contact-card">
+      <h3>Ready to get started?</h3>
+      <div class="why-citem"><svg viewBox="0 0 24 24"><path d="M6.62 10.79c1.44 2.83 3.76 5.14 6.59 6.59l2.2-2.2c.27-.27.67-.36 1.02-.24 1.12.37 2.33.57 3.57.57.55 0 1 .45 1 1V20c0 .55-.45 1-1 1-9.39 0-17-7.61-17-17 0-.55.45-1 1-1h3.5c.55 0 1 .45 1 1 0 1.25.2 2.45.57 3.57.11.35.03.74-.25 1.02l-2.2 2.2z"/></svg><span>Brimfield: <a href="tel:3306774007">330-677-4007</a></span></div>
+      <div class="why-citem"><svg viewBox="0 0 24 24"><path d="M6.62 10.79c1.44 2.83 3.76 5.14 6.59 6.59l2.2-2.2c.27-.27.67-.36 1.02-.24 1.12.37 2.33.57 3.57.57.55 0 1 .45 1 1V20c0 .55-.45 1-1 1-9.39 0-17-7.61-17-17 0-.55.45-1 1-1h3.5c.55 0 1 .45 1 1 0 1.25.2 2.45.57 3.57.11.35.03.74-.25 1.02l-2.2 2.2z"/></svg><span>Ravenna: <a href="tel:3302964007">330-296-4007</a></span></div>
+      <div class="why-citem"><svg viewBox="0 0 24 24"><path d="M20 4H4c-1.1 0-2 .9-2 2v12c0 1.1.9 2 2 2h16c1.1 0 2-.9 2-2V6c0-1.1-.9-2-2-2zm0 4l-8 5-8-5V6l8 5 8-5v2z"/></svg><a href="mailto:sbennett@bennettlandtitle.com">sbennett@bennettlandtitle.com</a></div>
+      <a href="bennett-contact.html" class="btn btn-blue">Contact Us Today</a>
+    </div>
+  </div>
+</div>
+
+<div class="cta-strip">
+  <div class="container">
+    <div><h2>Have questions about your transaction?</h2><p>We're happy to walk you through the process from start to finish.</p></div>
+    <div class="cta-strip-btns">
+      <a href="bennett-contact.html" class="btn btn-white">Send a Message</a>
+      <a href="tel:3306774007" class="btn btn-outline-white">330-677-4007</a>
+    </div>
+  </div>
+</div>
+
+<footer>
+  <div class="footer-grid">
+    <div class="footer-brand">
+      <a href="bennett-land-title.html"><img src="bennett-images/bennett-logo.png" alt="Bennett Land Title" class="footer-logo-img"/></a>
+      <p>Serving buyers, sellers, realtors, and lenders across all 88 Ohio counties from our two Northeast Ohio offices since 2008.</p>
+      <div class="footer-badges"><img src="bennett-images/blue-seal-293-61-bbb-90015865.png" alt="BBB Accredited"/><img src="bennett-images/habitat-for-humanity.png" alt="Habitat for Humanity"/></div>
+      <div class="footer-social"><a href="https://www.facebook.com/Bennett-Land-Title-Agency-LLC-107094369639242/" target="_blank" rel="noopener" aria-label="Facebook"><svg viewBox="0 0 24 24"><path d="M18 2h-3a5 5 0 0 0-5 5v3H7v4h3v8h4v-8h3l1-4h-4V7a1 1 0 0 1 1-1h3z"/></svg></a></div>
+    </div>
+    <div class="footer-col"><h4>Navigation</h4><ul><li><a href="bennett-land-title.html">Home</a></li><li><a href="bennett-about.html">About Us</a></li><li><a href="bennett-services.html">Services</a></li><li><a href="bennett-team.html">Our Team</a></li><li><a href="bennett-contact.html">Contact</a></li></ul></div>
+    <div class="footer-col"><h4>Services</h4><ul><li><a href="#residential">Residential Title</a></li><li><a href="#commercial">Commercial Title</a></li><li><a href="#insurance">Title Insurance</a></li><li><a href="#residential">FSBO Packets</a></li></ul></div>
+    <div class="footer-col"><h4>Contact</h4>
+      <div class="footer-contact-item"><svg viewBox="0 0 24 24"><path d="M12 2C8.13 2 5 5.13 5 9c0 5.25 7 13 7 13s7-7.75 7-13c0-3.87-3.13-7-7-7zm0 9.5c-1.38 0-2.5-1.12-2.5-2.5S10.62 6.5 12 6.5s2.5 1.12 2.5 2.5S13.38 11.5 12 11.5z"/></svg><span>1403 Tallmadge Rd., Brimfield OH<br/><a href="tel:3306774007">330-677-4007</a></span></div>
+      <div class="footer-contact-item"><svg viewBox="0 0 24 24"><path d="M12 2C8.13 2 5 5.13 5 9c0 5.25 7 13 7 13s7-7.75 7-13c0-3.87-3.13-7-7-7zm0 9.5c-1.38 0-2.5-1.12-2.5-2.5S10.62 6.5 12 6.5s2.5 1.12 2.5 2.5S13.38 11.5 12 11.5z"/></svg><span>214 New Milford Rd., Ravenna OH<br/><a href="tel:3302964007">330-296-4007</a></span></div>
+      <div class="footer-contact-item"><svg viewBox="0 0 24 24"><path d="M20 4H4c-1.1 0-2 .9-2 2v12c0 1.1.9 2 2 2h16c1.1 0 2-.9 2-2V6c0-1.1-.9-2-2-2zm0 4l-8 5-8-5V6l8 5 8-5v2z"/></svg><a href="mailto:sbennett@bennettlandtitle.com">sbennett@bennettlandtitle.com</a></div>
+    </div>
+  </div>
+  <div class="footer-bottom"><span>&copy; 2026 Bennett Land Title, LLC. All rights reserved.</span><span>BBB Accredited &nbsp;·&nbsp; Fidelity National Title &nbsp;·&nbsp; Stewart Title</span></div>
+</footer>
+
+<script>
+function toggleMenu(){document.getElementById('mobileMenu').classList.toggle('open')}
+function closeMenu(){document.getElementById('mobileMenu').classList.remove('open')}
+document.addEventListener('click',function(e){var m=document.getElementById('mobileMenu');var t=document.querySelector('.nav-toggle');if(m&&t&&!m.contains(e.target)&&!t.contains(e.target))m.classList.remove('open')});
+</script>
+</body>
+</html>

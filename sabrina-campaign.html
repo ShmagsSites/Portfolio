@@ -1,0 +1,487 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8"/>
+  <meta name="viewport" content="width=device-width, initial-scale=1.0"/>
+  <meta name="description" content="Re-Elect Sabrina Christian-Bennett for Portage County Commissioner — accessible, accountable, experienced leadership."/>
+  <title>Re-Elect Sabrina Christian-Bennett — Portage County Commissioner</title>
+  <link rel="preconnect" href="https://fonts.googleapis.com"/>
+  <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin/>
+  <link href="https://fonts.googleapis.com/css2?family=Inter:wght@300;400;500;600;700&family=Playfair+Display:ital,wght@0,500;0,600;0,700;0,800;1,500&display=swap" rel="stylesheet"/>
+  <style>
+*,*::before,*::after{box-sizing:border-box;margin:0;padding:0}
+:root{
+  --navy:#0e2a4f;
+  --navy-deep:#091d38;
+  --navy-mid:#1c3f6e;
+  --red:#b22234;
+  --red-deep:#8e1a28;
+  --gold:#c9a227;
+  --gold-light:#e3c456;
+  --cream:#f6f4ee;
+  --paper:#fbfaf7;
+  --white:#ffffff;
+  --line:#e2ddd2;
+  --text:#1a1a1a;
+  --text-soft:#4d4d4d;
+  --muted:#8a8578;
+  --radius:6px;
+  --ease:0.25s ease;
+}
+html{scroll-behavior:smooth}
+body{font-family:'Inter',sans-serif;font-size:16px;color:var(--text);background:var(--paper);line-height:1.65;-webkit-font-smoothing:antialiased}
+img{display:block;max-width:100%}
+a{color:inherit;text-decoration:none}
+.serif{font-family:'Playfair Display',serif}
+
+/* ── ANNOUNCEMENT BAR ── */
+.announce{background:var(--red);color:#fff;font-size:0.82rem;font-weight:500;letter-spacing:0.02em;padding:0.55rem 1.5rem;text-align:center;display:flex;align-items:center;justify-content:center;gap:0.6rem;flex-wrap:wrap}
+.announce strong{font-weight:700}
+.announce .star{color:var(--gold-light)}
+
+/* ── NAV ── */
+.nav-wrap{position:sticky;top:0;z-index:100;background:rgba(251,250,247,0.96);backdrop-filter:blur(8px);border-bottom:1px solid var(--line)}
+nav{max-width:1200px;margin:0 auto;padding:0 1.5rem;height:74px;display:flex;align-items:center;justify-content:space-between;gap:1rem}
+.brand{display:flex;align-items:center;gap:0.7rem}
+.brand-mark{width:42px;height:42px;border-radius:50%;background:var(--navy);display:flex;align-items:center;justify-content:center;color:var(--gold-light);font-family:'Playfair Display',serif;font-weight:700;font-size:1.15rem;flex-shrink:0;border:2px solid var(--gold)}
+.brand-text{display:flex;flex-direction:column;line-height:1.15}
+.brand-text .name{font-family:'Playfair Display',serif;font-size:1.08rem;font-weight:700;color:var(--navy)}
+.brand-text .role{font-size:0.66rem;font-weight:600;letter-spacing:0.16em;text-transform:uppercase;color:var(--red)}
+.nav-links{display:flex;align-items:center;gap:0.25rem;list-style:none}
+.nav-links a{padding:0.45rem 0.85rem;font-size:0.86rem;font-weight:500;color:var(--text-soft);border-radius:var(--radius);transition:color var(--ease),background var(--ease)}
+.nav-links a:hover{color:var(--navy);background:var(--cream)}
+.nav-cta{margin-left:0.5rem}
+.nav-toggle{display:none;flex-direction:column;gap:5px;cursor:pointer;padding:6px;border:none;background:none}
+.nav-toggle span{display:block;width:24px;height:2px;background:var(--navy);border-radius:2px}
+.mobile-menu{display:none;flex-direction:column;background:var(--paper);border-top:1px solid var(--line);padding:0.75rem 1.5rem 1.25rem}
+.mobile-menu a{display:block;padding:0.7rem 0;font-size:0.92rem;font-weight:500;color:var(--text-soft);border-bottom:1px solid var(--line)}
+.mobile-menu a:last-child{border-bottom:none}
+.mobile-menu.open{display:flex}
+
+/* ── BUTTONS ── */
+.btn{display:inline-flex;align-items:center;gap:0.45rem;padding:0.8rem 1.7rem;border-radius:var(--radius);font-size:0.9rem;font-weight:600;letter-spacing:0.01em;transition:all var(--ease);cursor:pointer;border:2px solid transparent;white-space:nowrap}
+.btn-red{background:var(--red);color:#fff;border-color:var(--red)}
+.btn-red:hover{background:var(--red-deep);border-color:var(--red-deep);transform:translateY(-1px)}
+.btn-navy{background:var(--navy);color:#fff;border-color:var(--navy)}
+.btn-navy:hover{background:var(--navy-deep);border-color:var(--navy-deep);transform:translateY(-1px)}
+.btn-gold{background:var(--gold);color:var(--navy-deep);border-color:var(--gold);font-weight:700}
+.btn-gold:hover{background:var(--gold-light);border-color:var(--gold-light)}
+.btn-outline{background:transparent;color:var(--navy);border-color:var(--navy)}
+.btn-outline:hover{background:var(--navy);color:#fff}
+.btn-outline-white{background:transparent;color:#fff;border-color:rgba(255,255,255,0.5)}
+.btn-outline-white:hover{background:#fff;color:var(--navy)}
+.btn-lg{padding:0.95rem 2.1rem;font-size:0.95rem}
+
+/* ── LAYOUT ── */
+section{padding:5.5rem 1.5rem}
+.container{max-width:1200px;margin:0 auto}
+.eyebrow{display:inline-flex;align-items:center;gap:0.55rem;font-size:0.72rem;font-weight:700;letter-spacing:0.16em;text-transform:uppercase;color:var(--red);margin-bottom:1rem}
+.eyebrow::before{content:'';display:block;width:26px;height:2px;background:var(--gold)}
+.eyebrow.on-dark{color:var(--gold-light)}
+.eyebrow.center{justify-content:center}
+.section-head{text-align:center;max-width:680px;margin:0 auto 3.25rem}
+h2.title{font-family:'Playfair Display',serif;font-size:clamp(1.9rem,3.4vw,2.7rem);font-weight:700;line-height:1.18;color:var(--navy);letter-spacing:-0.01em}
+.lead{font-size:1.02rem;color:var(--text-soft);line-height:1.8;margin-top:1rem}
+
+/* ── HERO ── */
+.hero{position:relative;background:var(--navy);color:#fff;overflow:hidden;padding:0}
+.hero::before{content:'';position:absolute;inset:0;background:
+  radial-gradient(circle at 18% 30%,rgba(201,162,39,0.14),transparent 45%),
+  linear-gradient(135deg,var(--navy-deep) 0%,var(--navy) 55%,var(--navy-mid) 100%);z-index:0}
+.hero-stripes{position:absolute;top:0;right:0;bottom:0;width:38%;z-index:1;opacity:0.10;background:repeating-linear-gradient(180deg,#fff 0,#fff 18px,transparent 18px,transparent 36px)}
+.hero-inner{position:relative;z-index:2;max-width:1200px;margin:0 auto;display:grid;grid-template-columns:1.15fr 0.85fr;gap:3rem;align-items:center;padding:4.5rem 1.5rem 5rem}
+.hero-flag{display:inline-flex;align-items:center;gap:0.5rem;font-size:0.74rem;font-weight:700;letter-spacing:0.18em;text-transform:uppercase;color:var(--gold-light);margin-bottom:1.5rem}
+.hero-flag .bars{display:inline-flex;gap:3px}
+.hero-flag .bars i{display:block;width:4px;height:14px;border-radius:1px}
+.hero-flag .bars i:nth-child(1){background:var(--red)}
+.hero-flag .bars i:nth-child(2){background:#fff}
+.hero-flag .bars i:nth-child(3){background:var(--gold)}
+.hero h1{font-family:'Playfair Display',serif;font-size:clamp(2.5rem,5vw,4rem);font-weight:800;line-height:1.05;letter-spacing:-0.02em;margin-bottom:0.4rem}
+.hero h1 .re{color:var(--gold-light);display:block;font-size:0.5em;font-weight:600;letter-spacing:0.05em;text-transform:uppercase;margin-bottom:0.5rem}
+.hero .for{font-family:'Playfair Display',serif;font-style:italic;font-size:clamp(1.1rem,2vw,1.5rem);font-weight:500;color:rgba(255,255,255,0.85);margin-top:0.75rem}
+.hero p.sub{font-size:1.05rem;color:rgba(255,255,255,0.72);line-height:1.75;margin-top:1.5rem;max-width:480px}
+.hero-actions{margin-top:2.25rem;display:flex;gap:1rem;flex-wrap:wrap}
+.hero-portrait{position:relative}
+.portrait-frame{position:relative;width:100%;aspect-ratio:4/5;border-radius:10px;overflow:hidden;background:linear-gradient(160deg,var(--navy-mid),var(--navy-deep));border:1px solid rgba(255,255,255,0.12);box-shadow:0 30px 60px rgba(0,0,0,0.4)}
+.portrait-monogram{position:absolute;inset:0;display:flex;align-items:center;justify-content:center;flex-direction:column;text-align:center;gap:0.5rem}
+.portrait-monogram .mono{font-family:'Playfair Display',serif;font-size:5rem;font-weight:700;color:var(--gold);line-height:1}
+.portrait-monogram .ph-label{font-size:0.72rem;letter-spacing:0.18em;text-transform:uppercase;color:rgba(255,255,255,0.4);max-width:200px;line-height:1.6}
+.portrait-frame img{width:100%;height:100%;object-fit:cover}
+.portrait-badge{position:absolute;bottom:-18px;left:50%;transform:translateX(-50%);background:var(--gold);color:var(--navy-deep);padding:0.65rem 1.4rem;border-radius:50px;font-size:0.78rem;font-weight:700;letter-spacing:0.05em;white-space:nowrap;box-shadow:0 8px 24px rgba(0,0,0,0.3);display:flex;align-items:center;gap:0.4rem}
+
+/* ── STAT STRIP ── */
+.stats{background:var(--cream);border-bottom:1px solid var(--line)}
+.stats-inner{max-width:1200px;margin:0 auto;display:grid;grid-template-columns:repeat(4,1fr);gap:1rem;text-align:center}
+.stat .num{font-family:'Playfair Display',serif;font-size:clamp(2rem,4vw,2.8rem);font-weight:700;color:var(--navy);line-height:1}
+.stat .lbl{font-size:0.82rem;color:var(--text-soft);margin-top:0.5rem;font-weight:500}
+.stat+.stat{border-left:1px solid var(--line)}
+
+/* ── ABOUT ── */
+.about{background:var(--paper)}
+.about-grid{display:grid;grid-template-columns:0.9fr 1.1fr;gap:4.5rem;align-items:center}
+.about-img{position:relative}
+.about-img-frame{width:100%;aspect-ratio:5/6;border-radius:10px;overflow:hidden;background:linear-gradient(160deg,var(--cream),#e9e4d8);border:1px solid var(--line);display:flex;align-items:center;justify-content:center;flex-direction:column;gap:0.75rem;box-shadow:0 18px 40px rgba(14,42,79,0.10)}
+.about-img-frame img{width:100%;height:100%;object-fit:cover}
+.about-img-frame .mono{font-family:'Playfair Display',serif;font-size:4rem;color:var(--navy);opacity:0.25}
+.about-img-frame .ph-label{font-size:0.7rem;letter-spacing:0.16em;text-transform:uppercase;color:var(--muted);max-width:180px;text-align:center;line-height:1.6}
+.about-img-tag{position:absolute;bottom:1.25rem;left:1.25rem;background:var(--navy);color:#fff;padding:0.85rem 1.4rem;border-radius:var(--radius);box-shadow:0 10px 28px rgba(0,0,0,0.22)}
+.about-img-tag .y{font-family:'Playfair Display',serif;font-size:1.5rem;font-weight:700;line-height:1;color:var(--gold-light)}
+.about-img-tag .t{font-size:0.78rem;color:rgba(255,255,255,0.8);margin-top:0.2rem}
+.about-text .lead{max-width:100%}
+.about-text p+p{margin-top:1.1rem}
+.about-sign{margin-top:2rem;font-family:'Playfair Display',serif;font-style:italic;font-size:1.4rem;color:var(--navy)}
+.about-sign .role{display:block;font-family:'Inter',sans-serif;font-style:normal;font-size:0.78rem;font-weight:600;letter-spacing:0.1em;text-transform:uppercase;color:var(--red);margin-top:0.35rem}
+
+/* ── QUOTE BANNER ── */
+.quote-band{background:var(--navy);color:#fff;position:relative;overflow:hidden}
+.quote-band::before{content:'"';position:absolute;top:-2rem;left:2rem;font-family:'Playfair Display',serif;font-size:16rem;color:rgba(255,255,255,0.05);line-height:1;z-index:0}
+.quote-inner{position:relative;z-index:1;max-width:900px;margin:0 auto;text-align:center}
+.quote-inner blockquote{font-family:'Playfair Display',serif;font-size:clamp(1.5rem,3vw,2.2rem);font-weight:500;font-style:italic;line-height:1.4;color:#fff}
+.quote-inner cite{display:block;margin-top:1.75rem;font-style:normal;font-size:0.82rem;font-weight:700;letter-spacing:0.14em;text-transform:uppercase;color:var(--gold-light)}
+
+/* ── PRIORITIES ── */
+.priorities{background:var(--cream)}
+.pri-grid{display:grid;grid-template-columns:repeat(2,1fr);gap:1.5rem;margin-top:1rem}
+.pri-card{background:#fff;border:1px solid var(--line);border-radius:10px;padding:2.25rem 2rem;transition:transform var(--ease),box-shadow var(--ease);position:relative;overflow:hidden}
+.pri-card::before{content:'';position:absolute;top:0;left:0;width:4px;height:100%;background:var(--gold);transform:scaleY(0);transform-origin:top;transition:transform var(--ease)}
+.pri-card:hover{transform:translateY(-4px);box-shadow:0 16px 40px rgba(14,42,79,0.12)}
+.pri-card:hover::before{transform:scaleY(1)}
+.pri-icon{width:52px;height:52px;border-radius:10px;background:var(--navy);display:flex;align-items:center;justify-content:center;margin-bottom:1.25rem}
+.pri-icon svg{width:24px;height:24px;fill:var(--gold-light)}
+.pri-card h3{font-family:'Playfair Display',serif;font-size:1.3rem;font-weight:600;color:var(--navy);margin-bottom:0.6rem}
+.pri-card p{font-size:0.92rem;color:var(--text-soft);line-height:1.7}
+
+/* ── ENDORSEMENTS ── */
+.endorse{background:var(--paper)}
+.endorse-grid{display:grid;grid-template-columns:repeat(3,1fr);gap:1.5rem;margin-top:1rem}
+.endorse-card{background:var(--cream);border:1px solid var(--line);border-radius:10px;padding:2rem 1.85rem;display:flex;flex-direction:column}
+.endorse-stars{color:var(--gold);font-size:0.95rem;letter-spacing:2px;margin-bottom:1rem}
+.endorse-card p{font-size:0.93rem;color:var(--text-soft);line-height:1.72;font-style:italic;flex:1}
+.endorse-who{margin-top:1.4rem;padding-top:1.25rem;border-top:1px solid var(--line);display:flex;align-items:center;gap:0.85rem}
+.endorse-avatar{width:44px;height:44px;border-radius:50%;background:var(--navy);color:var(--gold-light);display:flex;align-items:center;justify-content:center;font-family:'Playfair Display',serif;font-weight:700;font-size:1rem;flex-shrink:0}
+.endorse-who .nm{font-size:0.9rem;font-weight:600;color:var(--navy)}
+.endorse-who .ti{font-size:0.78rem;color:var(--muted)}
+
+/* ── GET INVOLVED ── */
+.involved{background:var(--cream)}
+.involved-grid{display:grid;grid-template-columns:repeat(3,1fr);gap:1.5rem;margin-top:1rem}
+.inv-card{text-align:center;background:#fff;border:1px solid var(--line);border-radius:10px;padding:2.75rem 2rem;transition:transform var(--ease),box-shadow var(--ease)}
+.inv-card:hover{transform:translateY(-4px);box-shadow:0 16px 40px rgba(14,42,79,0.12)}
+.inv-emblem{width:64px;height:64px;margin:0 auto 1.5rem;border-radius:50%;background:var(--cream);border:2px solid var(--gold);display:flex;align-items:center;justify-content:center}
+.inv-emblem svg{width:28px;height:28px;fill:var(--navy)}
+.inv-card h3{font-family:'Playfair Display',serif;font-size:1.4rem;font-weight:600;color:var(--navy);margin-bottom:0.65rem}
+.inv-card p{font-size:0.92rem;color:var(--text-soft);line-height:1.7;margin-bottom:1.6rem}
+
+/* ── DONATE BAND ── */
+.donate{background:linear-gradient(135deg,var(--red) 0%,var(--red-deep) 100%);color:#fff;text-align:center;position:relative;overflow:hidden}
+.donate::after{content:'';position:absolute;inset:0;background:repeating-linear-gradient(90deg,rgba(255,255,255,0.04) 0,rgba(255,255,255,0.04) 2px,transparent 2px,transparent 40px)}
+.donate-inner{position:relative;z-index:1;max-width:760px;margin:0 auto}
+.donate h2{font-family:'Playfair Display',serif;font-size:clamp(1.9rem,3.4vw,2.6rem);font-weight:700;color:#fff;line-height:1.2}
+.donate p{font-size:1.02rem;color:rgba(255,255,255,0.88);margin-top:1rem;line-height:1.7}
+.donate-amounts{margin-top:2rem;display:flex;gap:0.85rem;justify-content:center;flex-wrap:wrap}
+.amt{padding:0.85rem 1.6rem;border:2px solid rgba(255,255,255,0.5);border-radius:var(--radius);font-weight:700;font-size:1rem;cursor:pointer;transition:all var(--ease);background:transparent;color:#fff}
+.amt:hover,.amt.active{background:#fff;color:var(--red-deep);border-color:#fff}
+.donate-actions{margin-top:2rem;display:flex;gap:1rem;justify-content:center;flex-wrap:wrap}
+
+/* ── FOOTER ── */
+footer{background:var(--navy-deep);color:rgba(255,255,255,0.62);padding:4rem 1.5rem 2rem}
+.footer-grid{max-width:1200px;margin:0 auto;display:grid;grid-template-columns:1.7fr 1fr 1.3fr;gap:3rem;padding-bottom:2.5rem;border-bottom:1px solid rgba(255,255,255,0.1)}
+.footer-brand .brand-mark{width:48px;height:48px;font-size:1.3rem}
+.footer-brand .fb-name{font-family:'Playfair Display',serif;font-size:1.25rem;font-weight:700;color:#fff;margin-top:1.1rem}
+.footer-brand .fb-role{font-size:0.72rem;font-weight:600;letter-spacing:0.14em;text-transform:uppercase;color:var(--gold-light);margin-top:0.25rem}
+.footer-brand p{margin-top:1rem;font-size:0.86rem;line-height:1.7;color:rgba(255,255,255,0.5);max-width:340px}
+.footer-col h4{font-size:0.76rem;font-weight:700;letter-spacing:0.14em;text-transform:uppercase;color:rgba(255,255,255,0.85);margin-bottom:1.1rem}
+.footer-col ul{list-style:none;display:flex;flex-direction:column;gap:0.6rem}
+.footer-col ul a{font-size:0.88rem;color:rgba(255,255,255,0.5);transition:color var(--ease)}
+.footer-col ul a:hover{color:var(--gold-light)}
+.footer-contact-item{display:flex;align-items:flex-start;gap:0.6rem;font-size:0.88rem;color:rgba(255,255,255,0.55);margin-bottom:0.85rem;line-height:1.55}
+.footer-contact-item svg{width:15px;height:15px;fill:var(--gold-light);flex-shrink:0;margin-top:0.25rem}
+.footer-contact-item a:hover{color:var(--gold-light)}
+.footer-social{margin-top:1.25rem;display:flex;gap:0.6rem}
+.footer-social a{width:36px;height:36px;border-radius:6px;background:rgba(255,255,255,0.1);display:flex;align-items:center;justify-content:center;transition:background var(--ease)}
+.footer-social a:hover{background:var(--gold)}
+.footer-social svg{width:17px;height:17px;fill:#fff}
+.footer-bottom{max-width:1200px;margin:2rem auto 0;text-align:center;font-size:0.78rem;color:rgba(255,255,255,0.38);line-height:1.7}
+.footer-bottom .disclaimer{font-style:italic;margin-top:0.5rem}
+
+/* ── RESPONSIVE ── */
+@media(max-width:980px){
+  .hero-inner{grid-template-columns:1fr;gap:3.5rem;text-align:center}
+  .hero-flag,.eyebrow{justify-content:center}
+  .hero p.sub{margin-left:auto;margin-right:auto}
+  .hero-actions{justify-content:center}
+  .hero-portrait{max-width:360px;margin:0 auto;width:100%}
+  .about-grid{grid-template-columns:1fr;gap:3rem}
+  .about-img{max-width:420px;margin:0 auto;width:100%}
+  .footer-grid{grid-template-columns:1fr 1fr;gap:2rem}
+}
+@media(max-width:760px){
+  section{padding:3.75rem 1.25rem}
+  .nav-links{display:none}
+  .nav-toggle{display:flex}
+  nav{height:64px}
+  .stats-inner{grid-template-columns:1fr 1fr;gap:2rem}
+  .stat+.stat{border-left:none}
+  .stat:nth-child(3),.stat:nth-child(4){padding-top:1.5rem;border-top:1px solid var(--line)}
+  .pri-grid,.endorse-grid,.involved-grid{grid-template-columns:1fr}
+  .footer-grid{grid-template-columns:1fr;gap:2rem}
+}
+  </style>
+</head>
+<body>
+
+<!-- ANNOUNCEMENT BAR -->
+<div class="announce">
+  <span class="star">★</span> <strong>Re-Elect Sabrina</strong> &nbsp;—&nbsp; Vote in the Primary: <strong>February 20 – March 19</strong> <span class="star">★</span>
+</div>
+
+<!-- NAV -->
+<div class="nav-wrap">
+  <nav>
+    <a href="#top" class="brand">
+      <div class="brand-mark">SB</div>
+      <div class="brand-text">
+        <span class="name">Sabrina Christian-Bennett</span>
+        <span class="role">Portage County Commissioner</span>
+      </div>
+    </a>
+    <ul class="nav-links">
+      <li><a href="#about">Meet Sabrina</a></li>
+      <li><a href="#priorities">Priorities</a></li>
+      <li><a href="#endorsements">Endorsements</a></li>
+      <li><a href="#involved">Get Involved</a></li>
+      <li><a href="#donate" class="btn btn-red nav-cta">Donate</a></li>
+    </ul>
+    <button class="nav-toggle" onclick="toggleMenu()" aria-label="Open Menu"><span></span><span></span><span></span></button>
+  </nav>
+  <div class="mobile-menu" id="mobileMenu">
+    <a href="#about" onclick="closeMenu()">Meet Sabrina</a>
+    <a href="#priorities" onclick="closeMenu()">Priorities</a>
+    <a href="#endorsements" onclick="closeMenu()">Endorsements</a>
+    <a href="#involved" onclick="closeMenu()">Get Involved</a>
+    <a href="#donate" onclick="closeMenu()">Donate</a>
+  </div>
+</div>
+
+<!-- HERO -->
+<header class="hero" id="top">
+  <div class="hero-stripes"></div>
+  <div class="hero-inner">
+    <div class="hero-copy">
+      <div class="hero-flag"><span class="bars"><i></i><i></i><i></i></span> Portage County, Ohio</div>
+      <h1><span class="re">Re-Elect</span> Sabrina<br/>Christian-Bennett</h1>
+      <div class="for">for Portage County Commissioner</div>
+      <p class="sub">Proven, accessible leadership for a financially sound county. The most important quality in any leader is the willingness to listen — and my door is always open.</p>
+      <div class="hero-actions">
+        <a href="#donate" class="btn btn-gold btn-lg">Donate Now</a>
+        <a href="#involved" class="btn btn-outline-white btn-lg">Get Involved</a>
+      </div>
+    </div>
+    <div class="hero-portrait">
+      <div class="portrait-frame">
+        <!-- Replace the monogram block below with: <img src="sabrina-photo.jpg" alt="Sabrina Christian-Bennett"/> -->
+        <div class="portrait-monogram">
+          <span class="mono">SCB</span>
+          <span class="ph-label">Add candidate photo here</span>
+        </div>
+      </div>
+      <div class="portrait-badge">★ Experienced County Leadership ★</div>
+    </div>
+  </div>
+</header>
+
+<!-- STAT STRIP -->
+<div class="stats">
+  <div class="stats-inner" style="padding:3.25rem 1.5rem;">
+    <div class="stat"><div class="num">36</div><div class="lbl">Years a Portage Resident</div></div>
+    <div class="stat"><div class="num">100%</div><div class="lbl">Accessible to Constituents</div></div>
+    <div class="stat"><div class="num">Small</div><div class="lbl">Business Owner &amp; Employer</div></div>
+    <div class="stat"><div class="num">County</div><div class="lbl">-Wide Representation</div></div>
+  </div>
+</div>
+
+<!-- ABOUT -->
+<section class="about" id="about">
+  <div class="container">
+    <div class="about-grid">
+      <div class="about-img">
+        <div class="about-img-frame">
+          <!-- Replace with: <img src="sabrina-about.jpg" alt="Sabrina Christian-Bennett"/> -->
+          <span class="mono">SCB</span>
+          <span class="ph-label">Add candidate photo here</span>
+        </div>
+        <div class="about-img-tag"><div class="y">36 Years</div><div class="t">Calling Portage County home</div></div>
+      </div>
+      <div class="about-text">
+        <div class="eyebrow">Meet Sabrina</div>
+        <h2 class="title">A neighbor, a business owner, and a public servant who listens.</h2>
+        <p class="lead">For 36 years, Portage County has been the place I'm proud to call home — a great place to work, shop, run a business, go to church, and raise a family. As a local small business owner, I understand what it takes to meet a payroll, balance a budget, and serve people well.</p>
+        <p class="lead">I believe the most critical quality of any effective leader is the willingness and ability to listen. That's why my door is always open and I remain accessible to my constituents through every means of communication. I'm committed to being an effective leader in helping us build a financially sound county government — one rooted in accountability and responsible stewardship of taxpayer dollars.</p>
+        <div class="about-sign">Sabrina Christian-Bennett<span class="role">Portage County Commissioner</span></div>
+      </div>
+    </div>
+  </div>
+</section>
+
+<!-- QUOTE BANNER -->
+<section class="quote-band">
+  <div class="quote-inner">
+    <div class="eyebrow on-dark center">In Her Words</div>
+    <blockquote>The most critical quality of any effective leader is the willingness and ability to listen. My door is always open.</blockquote>
+    <cite>— Sabrina Christian-Bennett</cite>
+  </div>
+</section>
+
+<!-- PRIORITIES -->
+<section class="priorities" id="priorities">
+  <div class="container">
+    <div class="section-head">
+      <div class="eyebrow center">What I Stand For</div>
+      <h2 class="title">Priorities for Portage County</h2>
+      <p class="lead">Practical, accountable leadership focused on the issues that matter most to the families and businesses of our county.</p>
+    </div>
+    <div class="pri-grid">
+      <div class="pri-card">
+        <div class="pri-icon"><svg viewBox="0 0 24 24"><path d="M11.8 10.9c-2.27-.59-3-1.2-3-2.15 0-1.09 1.01-1.85 2.7-1.85 1.78 0 2.44.85 2.5 2.1h2.21c-.07-1.72-1.12-3.3-3.21-3.81V3h-3v2.16c-1.94.42-3.5 1.68-3.5 3.61 0 2.31 1.91 3.46 4.7 4.13 2.5.6 3 1.48 3 2.41 0 .69-.49 1.79-2.7 1.79-2.06 0-2.87-.92-2.98-2.1h-2.2c.12 2.19 1.76 3.42 3.68 3.83V21h3v-2.15c1.95-.37 3.5-1.5 3.5-3.55 0-2.84-2.43-3.81-4.7-4.4z"/></svg></div>
+        <h3>Fiscal Responsibility</h3>
+        <p>Building an effective and financially sound county government through disciplined budgeting, accountability, and responsible stewardship of every taxpayer dollar.</p>
+      </div>
+      <div class="pri-card">
+        <div class="pri-icon"><svg viewBox="0 0 24 24"><path d="M12 2C6.48 2 2 6.48 2 12s4.48 10 10 10 10-4.48 10-10S17.52 2 12 2zm-1 17.93c-3.95-.49-7-3.85-7-7.93 0-.62.08-1.21.21-1.79L9 15v1c0 1.1.9 2 2 2v1.93zm6.9-2.54c-.26-.81-1-1.39-1.9-1.39h-1v-3c0-.55-.45-1-1-1H8v-2h2c.55 0 1-.45 1-1V7h2c1.1 0 2-.9 2-2v-.41c2.93 1.19 5 4.06 5 7.41 0 2.08-.8 3.97-2.1 5.39z"/></svg></div>
+        <h3>Open &amp; Accessible Government</h3>
+        <p>Keeping the door open to every resident. Real leadership starts with listening — and being reachable through every means of communication, every day.</p>
+      </div>
+      <div class="pri-card">
+        <div class="pri-icon"><svg viewBox="0 0 24 24"><path d="M12 7V3H2v18h20V7H12zM6 19H4v-2h2v2zm0-4H4v-2h2v2zm0-4H4V9h2v2zm0-4H4V5h2v2zm4 12H8v-2h2v2zm0-4H8v-2h2v2zm0-4H8V9h2v2zm0-4H8V5h2v2zm10 12h-8v-2h2v-2h-2v-2h2v-2h-2V9h8v10zm-2-8h-2v2h2v-2zm0 4h-2v2h2v-2z"/></svg></div>
+        <h3>Economic Growth &amp; Jobs</h3>
+        <p>Supporting local small businesses and a strong economy so Portage County remains a great place to work, shop, and build a livelihood for generations.</p>
+      </div>
+      <div class="pri-card">
+        <div class="pri-icon"><svg viewBox="0 0 24 24"><path d="M16 11c1.66 0 2.99-1.34 2.99-3S17.66 5 16 5c-1.66 0-3 1.34-3 3s1.34 3 3 3zm-8 0c1.66 0 2.99-1.34 2.99-3S9.66 5 8 5C6.34 5 5 6.34 5 8s1.34 3 3 3zm0 2c-2.33 0-7 1.17-7 3.5V19h14v-2.5c0-2.33-4.67-3.5-7-3.5zm8 0c-.29 0-.62.02-.97.05 1.16.84 1.97 1.97 1.97 3.45V19h6v-2.5c0-2.33-4.67-3.5-7-3.5z"/></svg></div>
+        <h3>Strong Communities</h3>
+        <p>Championing the neighborhoods, churches, and families that make Portage County home — and representing the interests of the entire county, not just a few.</p>
+      </div>
+    </div>
+  </div>
+</section>
+
+<!-- ENDORSEMENTS -->
+<section class="endorse" id="endorsements">
+  <div class="container">
+    <div class="section-head">
+      <div class="eyebrow center">Why People Support Sabrina</div>
+      <h2 class="title">Trusted Across the County</h2>
+    </div>
+    <div class="endorse-grid">
+      <div class="endorse-card">
+        <div class="endorse-stars">★★★★★</div>
+        <p>"Sabrina genuinely listens. Whenever I've reached out with a concern, she responds personally and follows through. That kind of accessibility is rare in local government."</p>
+        <div class="endorse-who"><div class="endorse-avatar">JM</div><div><div class="nm">Local Resident</div><div class="ti">Ravenna, OH</div></div></div>
+      </div>
+      <div class="endorse-card">
+        <div class="endorse-stars">★★★★★</div>
+        <p>"As a fellow small business owner, I trust Sabrina to understand budgets and make responsible decisions with our county's money. She's earned my vote."</p>
+        <div class="endorse-who"><div class="endorse-avatar">DT</div><div><div class="nm">Business Owner</div><div class="ti">Portage County</div></div></div>
+      </div>
+      <div class="endorse-card">
+        <div class="endorse-stars">★★★★★</div>
+        <p>"Sabrina has been a steady, accountable voice for all of Portage County. She represents everyone fairly and keeps our community's best interests first."</p>
+        <div class="endorse-who"><div class="endorse-avatar">KR</div><div><div class="nm">Community Member</div><div class="ti">Portage County</div></div></div>
+      </div>
+    </div>
+  </div>
+</section>
+
+<!-- GET INVOLVED -->
+<section class="involved" id="involved">
+  <div class="container">
+    <div class="section-head">
+      <div class="eyebrow center">Join the Campaign</div>
+      <h2 class="title">Get Involved</h2>
+      <p class="lead">This campaign is powered by neighbors helping neighbors. Here's how you can help re-elect Sabrina.</p>
+    </div>
+    <div class="involved-grid">
+      <div class="inv-card">
+        <div class="inv-emblem"><svg viewBox="0 0 24 24"><path d="M9 16.17L4.83 12l-1.42 1.41L9 19 21 7l-1.41-1.41z"/></svg></div>
+        <h3>Vote</h3>
+        <p>Make your voice heard in the primary, February 20 – March 19. Every vote counts in a local election.</p>
+        <a href="https://www.portagecounty-oh.gov/board-elections" target="_blank" rel="noopener" class="btn btn-navy">Voting Info</a>
+      </div>
+      <div class="inv-card">
+        <div class="inv-emblem"><svg viewBox="0 0 24 24"><path d="M16 11c1.66 0 2.99-1.34 2.99-3S17.66 5 16 5c-1.66 0-3 1.34-3 3s1.34 3 3 3zm-8 0c1.66 0 2.99-1.34 2.99-3S9.66 5 8 5C6.34 5 5 6.34 5 8s1.34 3 3 3zm0 2c-2.33 0-7 1.17-7 3.5V19h14v-2.5c0-2.33-4.67-3.5-7-3.5zm8 0c-.29 0-.62.02-.97.05 1.16.84 1.97 1.97 1.97 3.45V19h6v-2.5c0-2.33-4.67-3.5-7-3.5z"/></svg></div>
+        <h3>Volunteer</h3>
+        <p>Knock on doors, make calls, or display a yard sign. A few hours of your time makes a real difference.</p>
+        <a href="#contact" class="btn btn-navy">Sign Up</a>
+      </div>
+      <div class="inv-card">
+        <div class="inv-emblem"><svg viewBox="0 0 24 24"><path d="M11.8 10.9c-2.27-.59-3-1.2-3-2.15 0-1.09 1.01-1.85 2.7-1.85 1.78 0 2.44.85 2.5 2.1h2.21c-.07-1.72-1.12-3.3-3.21-3.81V3h-3v2.16c-1.94.42-3.5 1.68-3.5 3.61 0 2.31 1.91 3.46 4.7 4.13 2.5.6 3 1.48 3 2.41 0 .69-.49 1.79-2.7 1.79-2.06 0-2.87-.92-2.98-2.1h-2.2c.12 2.19 1.76 3.42 3.68 3.83V21h3v-2.15c1.95-.37 3.5-1.5 3.5-3.55 0-2.84-2.43-3.81-4.7-4.4z"/></svg></div>
+        <h3>Donate</h3>
+        <p>Grassroots contributions keep this campaign running. Any amount helps us reach more voters.</p>
+        <a href="#donate" class="btn btn-red">Contribute</a>
+      </div>
+    </div>
+  </div>
+</section>
+
+<!-- DONATE BAND -->
+<section class="donate" id="donate">
+  <div class="donate-inner">
+    <div class="eyebrow center on-dark" style="color:#fff;">Support the Campaign</div>
+    <h2>Chip in to Re-Elect Sabrina</h2>
+    <p>Your contribution helps us spread our message of accessible, accountable, financially responsible leadership across Portage County.</p>
+    <div class="donate-amounts">
+      <button class="amt" onclick="pickAmt(this)">$25</button>
+      <button class="amt active" onclick="pickAmt(this)">$50</button>
+      <button class="amt" onclick="pickAmt(this)">$100</button>
+      <button class="amt" onclick="pickAmt(this)">$250</button>
+      <button class="amt" onclick="pickAmt(this)">Other</button>
+    </div>
+    <div class="donate-actions">
+      <a href="#contact" class="btn btn-gold btn-lg">Donate Now</a>
+      <a href="#contact" class="btn btn-outline-white btn-lg">Mail a Check</a>
+    </div>
+  </div>
+</section>
+
+<!-- FOOTER -->
+<footer id="contact">
+  <div class="footer-grid">
+    <div class="footer-brand">
+      <div class="brand-mark">SB</div>
+      <div class="fb-name">Sabrina Christian-Bennett</div>
+      <div class="fb-role">For Portage County Commissioner</div>
+      <p>Accessible, accountable leadership for a financially sound Portage County — a great place to live, work, and raise a family.</p>
+      <div class="footer-social">
+        <a href="https://www.facebook.com/" target="_blank" rel="noopener" aria-label="Facebook"><svg viewBox="0 0 24 24"><path d="M18 2h-3a5 5 0 0 0-5 5v3H7v4h3v8h4v-8h3l1-4h-4V7a1 1 0 0 1 1-1h3z"/></svg></a>
+      </div>
+    </div>
+    <div class="footer-col">
+      <h4>Campaign</h4>
+      <ul>
+        <li><a href="#about">Meet Sabrina</a></li>
+        <li><a href="#priorities">Priorities</a></li>
+        <li><a href="#endorsements">Endorsements</a></li>
+        <li><a href="#involved">Get Involved</a></li>
+        <li><a href="#donate">Donate</a></li>
+      </ul>
+    </div>
+    <div class="footer-col">
+      <h4>Contact</h4>
+      <div class="footer-contact-item"><svg viewBox="0 0 24 24"><path d="M12 2C8.13 2 5 5.13 5 9c0 5.25 7 13 7 13s7-7.75 7-13c0-3.87-3.13-7-7-7zm0 9.5c-1.38 0-2.5-1.12-2.5-2.5S10.62 6.5 12 6.5s2.5 1.12 2.5 2.5S13.38 11.5 12 11.5z"/></svg><span>6601 Red Brush Road<br/>Ravenna, OH 44266</span></div>
+      <div class="footer-contact-item"><svg viewBox="0 0 24 24"><path d="M6.62 10.79c1.44 2.83 3.76 5.14 6.59 6.59l2.2-2.2c.27-.27.67-.36 1.02-.24 1.12.37 2.33.57 3.57.57.55 0 1 .45 1 1V20c0 .55-.45 1-1 1-9.39 0-17-7.61-17-17 0-.55.45-1 1-1h3.5c.55 0 1 .45 1 1 0 1.25.2 2.45.57 3.57.11.35.03.74-.25 1.02l-2.2 2.2z"/></svg><a href="tel:3303483573">330-348-3573</a></div>
+    </div>
+  </div>
+  <div class="footer-bottom">
+    <span>&copy; 2026 Citizens to Elect Sabrina Christian-Bennett for Commissioner. All rights reserved.</span>
+    <div class="disclaimer">Paid for by Citizens to Elect Sabrina Christian-Bennett for Commissioner, Bev Kibler, Treasurer.</div>
+  </div>
+</footer>
+
+<script>
+function toggleMenu(){document.getElementById('mobileMenu').classList.toggle('open')}
+function closeMenu(){document.getElementById('mobileMenu').classList.remove('open')}
+document.addEventListener('click',function(e){var m=document.getElementById('mobileMenu');var t=document.querySelector('.nav-toggle');if(m&&t&&!m.contains(e.target)&&!t.contains(e.target))m.classList.remove('open')});
+function pickAmt(el){document.querySelectorAll('.amt').forEach(function(a){a.classList.remove('active')});el.classList.add('active')}
+</script>
+</body>
+</html>

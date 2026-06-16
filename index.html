@@ -312,22 +312,6 @@
   }
   .proj-card:hover img { transform: scale(1.04); opacity: 0.5; }
 
-  .proj-card-placeholder {
-    width: 100%; height: 100%;
-    background: var(--surface);
-    display: flex; flex-direction: column;
-    align-items: center; justify-content: center; gap: 0.5rem;
-    transition: background 0.4s;
-  }
-  .proj-card:hover .proj-card-placeholder { background: var(--panel); }
-  .placeholder-glyph {
-    font-family: 'Crimson Pro', serif;
-    font-size: 4rem; font-weight: 300; line-height: 1;
-    color: rgba(168,165,160,0.15); text-align: center;
-    transition: color 0.4s;
-  }
-  .proj-card:hover .placeholder-glyph { color: rgba(168,165,160,0.25); }
-
   .proj-card-overlay {
     position: absolute; inset: 0;
     background: linear-gradient(to top, rgba(8,8,8,0.9) 0%, transparent 55%);
@@ -720,9 +704,10 @@
     <!-- Iron Ridge Gym -->
     <a href="https://shmagssites.github.io/Portfolio/iron-ridge-gym.html"
        class="proj-card reveal" title="View Iron Ridge Athletic Club">
-      <div class="proj-card-placeholder" style="background:#141414;">
-        <div class="placeholder-glyph" style="color:rgba(255,87,34,0.18);font-family:'Crimson Pro',serif;">IR</div>
-      </div>
+      <img src="https://shmagssites.github.io/Portfolio/Images/ironridge.png"
+           alt="Iron Ridge Athletic Club website"
+           loading="lazy"
+           onerror="this.style.display='none'"/>
       <div class="proj-card-overlay">
         <div class="proj-card-tags">
           <span class="ptag">Fitness</span>
@@ -738,9 +723,10 @@
     <!-- Bright Smiles Dental -->
     <a href="https://shmagssites.github.io/Portfolio/bright-smiles-dental.html"
        class="proj-card reveal d1" title="View Bright Smiles Dental">
-      <div class="proj-card-placeholder">
-        <div class="placeholder-glyph" style="color:rgba(26,140,134,0.25);">🦷</div>
-      </div>
+      <img src="https://shmagssites.github.io/Portfolio/Images/brightsmiles.png"
+           alt="Bright Smiles Dental website"
+           loading="lazy"
+           onerror="this.style.display='none'"/>
       <div class="proj-card-overlay">
         <div class="proj-card-tags">
           <span class="ptag">Dental</span>
@@ -755,9 +741,10 @@
     <!-- Lakewood Family Medicine -->
     <a href="https://shmagssites.github.io/Portfolio/lakewood-family-medicine.html"
        class="proj-card reveal" title="View Lakewood Family Medicine">
-      <div class="proj-card-placeholder">
-        <div class="placeholder-glyph" style="color:rgba(26,58,92,0.2);">⚕</div>
-      </div>
+      <img src="https://shmagssites.github.io/Portfolio/Images/lakewood.png"
+           alt="Lakewood Family Medicine website"
+           loading="lazy"
+           onerror="this.style.display='none'"/>
       <div class="proj-card-overlay">
         <div class="proj-card-tags">
           <span class="ptag">Medical</span>
@@ -772,9 +759,10 @@
     <!-- Bennett Land Title -->
     <a href="https://shmagssites.github.io/Portfolio/bennett-land-title.html"
        class="proj-card reveal d1" title="View Bennett Land Title Agency">
-      <div class="proj-card-placeholder" style="background:#004d2e;">
-        <div class="placeholder-glyph" style="color:rgba(88,196,245,0.25);font-family:'Crimson Pro',serif;">🏠</div>
-      </div>
+      <img src="https://shmagssites.github.io/Portfolio/Images/bennett.png"
+           alt="Bennett Land Title Agency website"
+           loading="lazy"
+           onerror="this.style.display='none'"/>
       <div class="proj-card-overlay">
         <div class="proj-card-tags">
           <span class="ptag">Title Insurance</span>
@@ -790,9 +778,10 @@
     <!-- Meadowbrook Lawn -->
     <a href="https://shmagssites.github.io/Portfolio/meadowbrook-lawn.html"
        class="proj-card reveal" title="View Meadowbrook Lawn &amp; Landscape">
-      <div class="proj-card-placeholder" style="background:#0c3b1f;">
-        <div class="placeholder-glyph" style="color:rgba(134,239,172,0.2);font-family:'Crimson Pro',serif;">🌿</div>
-      </div>
+      <img src="https://shmagssites.github.io/Portfolio/Images/meadowbrook.png"
+           alt="Meadowbrook Lawn &amp; Landscape website"
+           loading="lazy"
+           onerror="this.style.display='none'"/>
       <div class="proj-card-overlay">
         <div class="proj-card-tags">
           <span class="ptag">Lawn Care</span>
@@ -808,9 +797,10 @@
     <!-- Saffron Kitchen -->
     <a href="https://shmagssites.github.io/Portfolio/saffron-kitchen.html"
        class="proj-card reveal d1" title="View Saffron Kitchen">
-      <div class="proj-card-placeholder" style="background:#1a0a08;">
-        <div class="placeholder-glyph" style="color:rgba(201,168,76,0.2);">✦</div>
-      </div>
+      <img src="https://shmagssites.github.io/Portfolio/Images/saffron.png"
+           alt="Saffron Kitchen website"
+           loading="lazy"
+           onerror="this.style.display='none'"/>
       <div class="proj-card-overlay">
         <div class="proj-card-tags">
           <span class="ptag">Restaurant</span>
@@ -826,9 +816,10 @@
     <!-- Bamboo Garden -->
     <a href="https://shmagssites.github.io/Portfolio/bamboo-garden.html"
        class="proj-card reveal" title="View Bamboo Garden">
-      <div class="proj-card-placeholder" style="background:#1e3d1a;">
-        <div class="placeholder-glyph" style="color:rgba(232,160,48,0.2);">🎋</div>
-      </div>
+      <img src="https://shmagssites.github.io/Portfolio/Images/bamboo.png"
+           alt="Bamboo Garden website"
+           loading="lazy"
+           onerror="this.style.display='none'"/>
       <div class="proj-card-overlay">
         <div class="proj-card-tags">
           <span class="ptag">Restaurant</span>
@@ -844,9 +835,10 @@
     <!-- Luxe Locks -->
     <a href="https://shmagssites.github.io/Portfolio/luxe-locks-salon.html"
        class="proj-card reveal d1" title="View Luxe Locks Salon">
-      <div class="proj-card-placeholder" style="background:#0f0f0f;">
-        <div class="placeholder-glyph" style="color:rgba(196,163,90,0.18);font-family:'Crimson Pro',serif;font-style:italic;">L</div>
-      </div>
+      <img src="https://shmagssites.github.io/Portfolio/Images/luxelocks.png"
+           alt="Luxe Locks Studio website"
+           loading="lazy"
+           onerror="this.style.display='none'"/>
       <div class="proj-card-overlay">
         <div class="proj-card-tags">
           <span class="ptag">Salon</span>
@@ -863,9 +855,10 @@
     <!-- Summit Moving -->
     <a href="https://shmagssites.github.io/Portfolio/summit-moving.html"
        class="proj-card reveal d1" title="View Summit Moving Co.">
-      <div class="proj-card-placeholder" style="background:#0d2240;">
-        <div class="placeholder-glyph" style="color:rgba(247,129,26,0.2);font-family:'Crimson Pro',serif;font-style:italic;">S</div>
-      </div>
+      <img src="https://shmagssites.github.io/Portfolio/Images/summit.png"
+           alt="Summit Moving Co. website"
+           loading="lazy"
+           onerror="this.style.display='none'"/>
       <div class="proj-card-overlay">
         <div class="proj-card-tags">
           <span class="ptag">Moving</span>
@@ -881,9 +874,10 @@
     <!-- Clearwater Plumbing -->
     <a href="https://shmagssites.github.io/Portfolio/clearwater-plumbing.html"
        class="proj-card reveal" title="View Clearwater Plumbing">
-      <div class="proj-card-placeholder" style="background:#023e6e;">
-        <div class="placeholder-glyph" style="color:rgba(3,132,199,0.3);font-family:'Crimson Pro',serif;">💧</div>
-      </div>
+      <img src="https://shmagssites.github.io/Portfolio/Images/clearwater.png"
+           alt="Clearwater Plumbing website"
+           loading="lazy"
+           onerror="this.style.display='none'"/>
       <div class="proj-card-overlay">
         <div class="proj-card-tags">
           <span class="ptag">Plumbing</span>
@@ -899,9 +893,10 @@
     <!-- Volt Electric -->
     <a href="https://shmagssites.github.io/Portfolio/volt-electric.html"
        class="proj-card reveal d1" title="View Volt Electric">
-      <div class="proj-card-placeholder" style="background:#0a0a10;">
-        <div class="placeholder-glyph" style="color:rgba(245,197,24,0.22);font-family:'Crimson Pro',serif;">⚡</div>
-      </div>
+      <img src="https://shmagssites.github.io/Portfolio/Images/volt.png"
+           alt="Volt Electric website"
+           loading="lazy"
+           onerror="this.style.display='none'"/>
       <div class="proj-card-overlay">
         <div class="proj-card-tags">
           <span class="ptag">Electrical</span>

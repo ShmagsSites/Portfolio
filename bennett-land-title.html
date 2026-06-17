@@ -220,7 +220,7 @@ h2.section-title {
 .service-card p { font-size: 0.9rem; color: var(--text-soft); line-height: 1.72; flex: 1; }
 .service-link { display: inline-flex; align-items: center; gap: 0.35rem; font-size: 0.85rem; font-weight: 600; color: var(--blue); margin-top: 1.25rem; transition: gap var(--ease); }
 .service-link:hover { gap: 0.6rem; }
-.service-link::after { content: '→'; }
+.service-link::after { content: ''; display: inline-block; width: 0.85em; height: 0.85em; margin-left: 0.35em; vertical-align: -0.1em; background-color: currentColor; -webkit-mask: url("data:image/svg+xml,%3Csvg xmlns='http://www.w3.org/2000/svg' viewBox='0 0 24 24' fill='none' stroke='%23000' stroke-width='2.5' stroke-linecap='round' stroke-linejoin='round'%3E%3Cpath d='M5 12h14M13 6l6 6-6 6'/%3E%3C/svg%3E") center/contain no-repeat; mask: url("data:image/svg+xml,%3Csvg xmlns='http://www.w3.org/2000/svg' viewBox='0 0 24 24' fill='none' stroke='%23000' stroke-width='2.5' stroke-linecap='round' stroke-linejoin='round'%3E%3Cpath d='M5 12h14M13 6l6 6-6 6'/%3E%3C/svg%3E") center/contain no-repeat; }
 
 /* ─── HOME ABOUT TEASER ─────────────────────────── */
 .about-teaser { background: #fff; }
@@ -381,7 +381,11 @@ footer {
 @media (max-width: 480px) {
   .topbar-offices { flex-direction: column; gap: 0.2rem; }
 }
-  </style>
+  
+  /* inline glyph icons */
+  .g-ico{width:1em;height:1em;display:inline-block;vertical-align:-0.125em;flex-shrink:0}
+  .g-ico--line{fill:none;stroke-width:2}
+</style>
 </head>
 <body>
 

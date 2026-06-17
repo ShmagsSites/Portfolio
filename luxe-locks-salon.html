@@ -336,7 +336,11 @@
       .gallery-item:nth-child(4) { grid-column: span 1; }
       .team-grid { grid-template-columns: 1fr; }
     }
-  </style>
+  
+  /* inline glyph icons */
+  .g-ico{width:1em;height:1em;display:inline-block;vertical-align:-0.125em;flex-shrink:0}
+  .g-ico--line{fill:none;stroke-width:2}
+</style>
 </head>
 <body>
 
@@ -664,7 +668,7 @@
           <label>Notes for Your Stylist</label>
           <textarea placeholder="Inspiration photos, hair history, concerns, goals, tell us anything that will help us prepare..."></textarea>
         </div>
-        <button class="book-btn">Request Appointment →</button>
+        <button class="book-btn">Request Appointment <svg class="g-ico g-ico--line" viewBox="0 0 24 24" stroke="currentColor" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><path d="M5 12h14M13 6l6 6-6 6"/></svg></button>
       </div>
     </div>
   </div>

@@ -174,7 +174,7 @@
       padding: 0.55rem 0; border-bottom: 1px solid rgba(255,255,255,0.05);
     }
     .plan-card.featured .plan-features li { color: rgba(255,255,255,0.85); border-bottom-color: rgba(255,255,255,0.1); }
-    .plan-features li::before { content: '✓'; color: var(--orange); font-weight: 700; flex-shrink: 0; }
+    .plan-features li::before { content: ''; width: 0.95em; height: 0.95em; margin-top: 0.15em; background-color: var(--orange); -webkit-mask: url("data:image/svg+xml,%3Csvg xmlns='http://www.w3.org/2000/svg' viewBox='0 0 24 24' fill='none' stroke='%23000' stroke-width='3' stroke-linecap='round' stroke-linejoin='round'%3E%3Cpath d='M20 6 9 17l-5-5'/%3E%3C/svg%3E") center/contain no-repeat; mask: url("data:image/svg+xml,%3Csvg xmlns='http://www.w3.org/2000/svg' viewBox='0 0 24 24' fill='none' stroke='%23000' stroke-width='3' stroke-linecap='round' stroke-linejoin='round'%3E%3Cpath d='M20 6 9 17l-5-5'/%3E%3C/svg%3E") center/contain no-repeat; flex-shrink: 0; }
     .plan-card.featured .plan-features li::before { color: white; }
     .plan-btn {
       display: block; text-align: center; text-decoration: none;
@@ -228,6 +228,7 @@
       display: flex; align-items: center; justify-content: center;
       font-size: 1.1rem; flex-shrink: 0;
     }
+    .fac-icon svg { width: 22px; height: 22px; color: var(--orange); }
     .fac-item h3 { font-family: 'Oswald', sans-serif; font-size: 1rem; font-weight: 600; text-transform: uppercase; letter-spacing: 0.06em; color: var(--white); margin-bottom: 0.25rem; }
     .fac-item p { font-size: 0.82rem; color: var(--muted); line-height: 1.6; }
     .fac-visual {
@@ -349,7 +350,11 @@
       .trainers-grid { grid-template-columns: 1fr; }
       .pf-row { grid-template-columns: 1fr; }
     }
-  </style>
+  
+  /* inline glyph icons */
+  .g-ico{width:1em;height:1em;display:inline-block;vertical-align:-0.125em;flex-shrink:0}
+  .g-ico--line{fill:none;stroke-width:2}
+</style>
 </head>
 <body>
 
@@ -372,7 +377,6 @@
   <div class="hero-bg-grid"></div>
   <div class="hero-slash"><div class="hero-slash-text">IR</div></div>
   <div class="hero-content">
-    <div class="hero-tag"><span class="hero-tag-dot"></span>Kent's Premier Fitness Club</div>
     <h1>Forge<br/><span class="accent">Your Best</span><br/>Self.</h1>
     <p>world-class equipment, elite coaches, and a community that pushes you further than you thought possible.</p>
     <div class="hero-btns">
@@ -501,28 +505,28 @@
         <h2 class="section-title">15,000 sq ft<br/>of Serious<br/>Equipment.</h2>
         <div class="fac-list">
           <div class="fac-item">
-            <div class="fac-icon">EQ</div>
+            <div class="fac-icon"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><path d="m6.5 6.5 11 11"/><path d="m21 21-1-1"/><path d="m3 3 1 1"/><path d="m18 22 4-4"/><path d="m2 6 4-4"/><path d="m3 10 7-7"/><path d="m14 21 7-7"/></svg></div>
             <div>
               <h3>Olympic Platform Area</h3>
               <p>6 dedicated platforms with bumper plates, bars, and chalk. No judgment, go heavy.</p>
             </div>
           </div>
           <div class="fac-item">
-            <div class="fac-icon">BIKE</div>
+            <div class="fac-icon"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><circle cx="18.5" cy="17.5" r="3.5"/><circle cx="5.5" cy="17.5" r="3.5"/><circle cx="15" cy="5" r="1"/><path d="M12 17.5V14l-3-3 4-3 2 3h2"/></svg></div>
             <div>
               <h3>Cardio Zone</h3>
               <p>50+ machines including treadmills, rowers, assault bikes, SkiErgs, and stair climbers.</p>
             </div>
           </div>
           <div class="fac-item">
-            <div class="fac-icon">BOX</div>
+            <div class="fac-icon"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><path d="M14 4h-3a5 5 0 0 0-5 5v3a4 4 0 0 0 4 4h4a4 4 0 0 0 4-4V8a4 4 0 0 0-4-4Z"/><path d="M6 10H5a2 2 0 1 0 0 4h1"/><path d="M9 21h6v-3H9z"/></svg></div>
             <div>
               <h3>Boxing Studio</h3>
               <p>Dedicated room with 18 heavy bags, speed bags, double-end bags, and a full boxing ring.</p>
             </div>
           </div>
           <div class="fac-item">
-            <div class="fac-icon">REC</div>
+            <div class="fac-icon"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><path d="M19 14c1.49-1.46 3-3.21 3-5.5A5.5 5.5 0 0 0 16.5 3c-1.76 0-3 .5-4.5 2-1.5-1.5-2.74-2-4.5-2A5.5 5.5 0 0 0 2 8.5c0 2.3 1.5 4.05 3 5.5l7 7Z"/><path d="M3.22 12H9.5l.5-1 2 4.5 2-7 1.5 3.5h5.27"/></svg></div>
             <div>
               <h3>Recovery Lounge</h3>
               <p>Dry sauna, cold plunge, compression boots, and massage chairs. Recover like a pro.</p>
@@ -590,10 +594,10 @@
         <h2>Come In.<br/>Train Free.</h2>
         <p>Claim your free day pass and experience the full Iron Ridge floor, every piece of equipment, every amenity, zero commitment. No credit card required.</p>
         <div class="pass-perks">
-          <div class="pass-perk"><div class="pass-perk-check">✓</div>Full facility &amp; equipment access</div>
-          <div class="pass-perk"><div class="pass-perk-check">✓</div>Drop into any scheduled class</div>
-          <div class="pass-perk"><div class="pass-perk-check">✓</div>Free 20-min orientation with a coach</div>
-          <div class="pass-perk"><div class="pass-perk-check">✓</div>No sales pressure, just show up</div>
+          <div class="pass-perk"><div class="pass-perk-check"><svg class="g-ico g-ico--line" viewBox="0 0 24 24" stroke="currentColor" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><path d="M20 6 9 17l-5-5"/></svg></div>Full facility &amp; equipment access</div>
+          <div class="pass-perk"><div class="pass-perk-check"><svg class="g-ico g-ico--line" viewBox="0 0 24 24" stroke="currentColor" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><path d="M20 6 9 17l-5-5"/></svg></div>Drop into any scheduled class</div>
+          <div class="pass-perk"><div class="pass-perk-check"><svg class="g-ico g-ico--line" viewBox="0 0 24 24" stroke="currentColor" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><path d="M20 6 9 17l-5-5"/></svg></div>Free 20-min orientation with a coach</div>
+          <div class="pass-perk"><div class="pass-perk-check"><svg class="g-ico g-ico--line" viewBox="0 0 24 24" stroke="currentColor" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><path d="M20 6 9 17l-5-5"/></svg></div>No sales pressure, just show up</div>
         </div>
       </div>
       <div class="pass-form">
@@ -632,7 +636,7 @@
             <option>Just Explore the Facility</option>
           </select>
         </div>
-        <button class="pass-submit">Claim My Free Pass →</button>
+        <button class="pass-submit">Claim My Free Pass <svg class="g-ico g-ico--line" viewBox="0 0 24 24" stroke="currentColor" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><path d="M5 12h14M13 6l6 6-6 6"/></svg></button>
       </div>
     </div>
   </div>

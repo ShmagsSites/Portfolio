@@ -120,7 +120,11 @@ footer{background:var(--green);color:rgba(255,255,255,0.65);padding:4rem 1.5rem 
 @media(max-width:1024px){.footer-grid{grid-template-columns:1fr 1fr;gap:2rem}.contact-layout{grid-template-columns:1fr;gap:3rem}.contact-sidebar{max-width:500px}}
 @media(max-width:900px){section{padding:3.5rem 1.25rem}.form-row{grid-template-columns:1fr}.locations-grid{grid-template-columns:1fr}.footer-grid{grid-template-columns:1fr;gap:2rem}nav{height:60px}.nav-links{display:none}.nav-toggle{display:flex}}
 @media(max-width:480px){.topbar-offices{flex-direction:column;gap:0.2rem}}
-  </style>
+  
+  /* inline glyph icons */
+  .g-ico{width:1em;height:1em;display:inline-block;vertical-align:-0.125em;flex-shrink:0}
+  .g-ico--line{fill:none;stroke-width:2}
+</style>
 </head>
 <body>
 
@@ -193,7 +197,7 @@ footer{background:var(--green);color:rgba(255,255,255,0.65);padding:4rem 1.5rem 
           <button type="submit" class="form-submit">Send Message</button>
         </form>
         <div id="form-success" style="display:none;margin-top:1.5rem;padding:1rem 1.25rem;background:var(--cream);border:1px solid var(--green);border-radius:var(--radius);font-size:0.9rem;color:var(--green);font-weight:500;">
-          ✓ Your message has been sent! We'll be in touch soon.
+          <svg class="g-ico g-ico--line" viewBox="0 0 24 24" stroke="currentColor" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><path d="M20 6 9 17l-5-5"/></svg> Your message has been sent! We'll be in touch soon.
         </div>
       </div>
       <div class="contact-sidebar">

@@ -153,6 +153,9 @@
     }
     .tb-item { display: flex; align-items: center; gap: 0.75rem; }
     .tb-icon { font-size: 1.3rem; }
+    .nav-brand-icon svg { width: 22px; height: 22px; }
+    .tb-icon svg { width: 22px; height: 22px; color: var(--orange); }
+    .svc-icon svg { width: 24px; height: 24px; color: var(--orange); }
     .tb-text h4 { font-size: 0.83rem; font-weight: 700; color: var(--navy); }
     .tb-text p { font-size: 0.72rem; color: var(--muted); }
 
@@ -316,13 +319,17 @@
       .steps { grid-template-columns: 1fr; }
       .qf-row { grid-template-columns: 1fr; }
     }
-  </style>
+  
+  /* inline glyph icons */
+  .g-ico{width:1em;height:1em;display:inline-block;vertical-align:-0.125em;flex-shrink:0}
+  .g-ico--line{fill:none;stroke-width:2}
+</style>
 </head>
 <body>
 
 <nav>
   <a href="#" class="nav-brand">
-    <div class="nav-brand-icon">S</div>
+    <div class="nav-brand-icon"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><path d="m8 3 4 8 5-5 5 15H2L8 3z"/></svg></div>
     <div>
       <div class="nav-brand-name">Summit Moving Co.</div>
       <div class="nav-brand-sub">Licensed · Insured · Trusted</div>
@@ -344,9 +351,9 @@
     <h1>Your Move,<br/><em>Simplified.</em></h1>
     <p>Professional, on-time, and genuinely careful. Summit Moving handles every detail so you can focus on what matters, settling into your new place.</p>
     <div class="trust-pills">
-      <div class="trust-pill"><span>✓</span> Licensed &amp; Insured</div>
-      <div class="trust-pill"><span>✓</span> No Hidden Fees</div>
-      <div class="trust-pill"><span>✓</span> Free Quote in 60 Seconds</div>
+      <div class="trust-pill"><span><svg class="g-ico g-ico--line" viewBox="0 0 24 24" stroke="currentColor" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><path d="M20 6 9 17l-5-5"/></svg></span> Licensed &amp; Insured</div>
+      <div class="trust-pill"><span><svg class="g-ico g-ico--line" viewBox="0 0 24 24" stroke="currentColor" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><path d="M20 6 9 17l-5-5"/></svg></span> No Hidden Fees</div>
+      <div class="trust-pill"><span><svg class="g-ico g-ico--line" viewBox="0 0 24 24" stroke="currentColor" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><path d="M20 6 9 17l-5-5"/></svg></span> Free Quote in 60 Seconds</div>
     </div>
     <div class="hero-cta">
       <a href="#process" class="btn-orange">See How It Works</a>
@@ -406,7 +413,7 @@
             <option>Furniture Assembly / Disassembly</option>
           </select>
         </div>
-        <button class="qf-submit">Get My Free Quote →</button>
+        <button class="qf-submit">Get My Free Quote <svg class="g-ico g-ico--line" viewBox="0 0 24 24" stroke="currentColor" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><path d="M5 12h14M13 6l6 6-6 6"/></svg></button>
         <p class="form-guarantee">We never share your information</p>
       </div>
     </div>
@@ -414,11 +421,11 @@
 </section>
 
 <div class="trust-bar">
-  <div class="tb-item"><span class="tb-icon">4.9</span><div class="tb-text"><h4>4.9 / 5 Stars</h4><p>Based on 380+ reviews</p></div></div>
-  <div class="tb-item"><span class="tb-icon">BOX</span><div class="tb-text"><h4>6,000+ Moves Completed</h4><p>Since 2011</p></div></div>
-  <div class="tb-item"><span class="tb-icon">INS</span><div class="tb-text"><h4>Fully Licensed &amp; Insured</h4><p>USDOT #3291847 · Ohio PUC Certified</p></div></div>
-  <div class="tb-item"><span class="tb-icon">$</span><div class="tb-text"><h4>Transparent Pricing</h4><p>Zero hidden fees, ever</p></div></div>
-  <div class="tb-item"><span class="tb-icon">ON</span><div class="tb-text"><h4>On-Time Guarantee</h4><p>We show up or you don't pay the deposit</p></div></div>
+  <div class="tb-item"><span class="tb-icon"><svg viewBox="0 0 24 24" fill="currentColor" aria-hidden="true"><path d="M12 2.6l2.9 5.9 6.5.95-4.7 4.58 1.1 6.47L12 17.97 6.2 20.5l1.1-6.47L2.6 9.45l6.5-.95z"/></svg></span><div class="tb-text"><h4>4.9 / 5 Stars</h4><p>Based on 380+ reviews</p></div></div>
+  <div class="tb-item"><span class="tb-icon"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><path d="m7.5 4.27 9 5.15"/><path d="M21 8a2 2 0 0 0-1-1.73l-7-4a2 2 0 0 0-2 0l-7 4A2 2 0 0 0 3 8v8a2 2 0 0 0 1 1.73l7 4a2 2 0 0 0 2 0l7-4A2 2 0 0 0 21 16Z"/><path d="m3.3 7 8.7 5 8.7-5"/><path d="M12 22V12"/></svg></span><div class="tb-text"><h4>6,000+ Moves Completed</h4><p>Since 2011</p></div></div>
+  <div class="tb-item"><span class="tb-icon"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><path d="M20 13c0 5-3.5 7.5-7.66 8.95a1 1 0 0 1-.67-.01C7.5 20.5 4 18 4 13V6a1 1 0 0 1 1-1c2 0 4.5-1.2 6.24-2.72a1.17 1.17 0 0 1 1.52 0C14.51 3.81 17 5 19 5a1 1 0 0 1 1 1z"/><path d="m9 12 2 2 4-4"/></svg></span><div class="tb-text"><h4>Fully Licensed &amp; Insured</h4><p>USDOT #3291847 · Ohio PUC Certified</p></div></div>
+  <div class="tb-item"><span class="tb-icon"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><circle cx="12" cy="12" r="10"/><path d="M16 8h-6a2 2 0 1 0 0 4h4a2 2 0 1 1 0 4H8"/><path d="M12 6v2m0 8v2"/></svg></span><div class="tb-text"><h4>Transparent Pricing</h4><p>Zero hidden fees, ever</p></div></div>
+  <div class="tb-item"><span class="tb-icon"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><circle cx="12" cy="12" r="10"/><path d="M12 6v6l4 2"/></svg></span><div class="tb-text"><h4>On-Time Guarantee</h4><p>We show up or you don't pay the deposit</p></div></div>
 </div>
 
 <section id="services">
@@ -428,40 +435,40 @@
     <p class="sec-body">Whether you're moving across the street or across the state, we have the crew, equipment, and experience to handle it without a single headache.</p>
     <div class="svc-grid">
       <div class="svc-card">
-        <div class="svc-icon">HM</div>
+        <div class="svc-icon"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><path d="m3 9 9-7 9 7v11a2 2 0 0 1-2 2H5a2 2 0 0 1-2-2z"/><path d="M9 22V12h6v10"/></svg></div>
         <h3>Local Moving</h3>
         <p>Same-city and local moves billed by the hour with a 2-man minimum crew. We bring all the equipment, dollies, pads, straps, and a fully wrapped truck. No move too small.</p>
-        <a href="#hero" class="svc-link">Get a quote →</a>
+        <a href="#hero" class="svc-link">Get a quote <svg class="g-ico g-ico--line" viewBox="0 0 24 24" stroke="currentColor" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><path d="M5 12h14M13 6l6 6-6 6"/></svg></a>
       </div>
       <div class="svc-card">
-        <div class="svc-icon">TRK</div>
+        <div class="svc-icon"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><path d="M14 18V6a2 2 0 0 0-2-2H4a2 2 0 0 0-2 2v11a1 1 0 0 0 1 1h2"/><path d="M15 18H9"/><path d="M19 18h2a1 1 0 0 0 1-1v-3.65a1 1 0 0 0-.22-.62l-3.48-4.35A1 1 0 0 0 17.52 8H14"/><circle cx="17" cy="18" r="2"/><circle cx="7" cy="18" r="2"/></svg></div>
         <h3>Long-Distance Moving</h3>
         <p>Moving out of state or across Ohio? We provide flat-rate long-distance quotes with a guaranteed delivery window. Your belongings travel in a dedicated truck, not shared.</p>
-        <a href="#hero" class="svc-link">Get a quote →</a>
+        <a href="#hero" class="svc-link">Get a quote <svg class="g-ico g-ico--line" viewBox="0 0 24 24" stroke="currentColor" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><path d="M5 12h14M13 6l6 6-6 6"/></svg></a>
       </div>
       <div class="svc-card">
-        <div class="svc-icon">BOX</div>
+        <div class="svc-icon"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><path d="m7.5 4.27 9 5.15"/><path d="M21 8a2 2 0 0 0-1-1.73l-7-4a2 2 0 0 0-2 0l-7 4A2 2 0 0 0 3 8v8a2 2 0 0 0 1 1.73l7 4a2 2 0 0 0 2 0l7-4A2 2 0 0 0 21 16Z"/><path d="m3.3 7 8.7 5 8.7-5"/><path d="M12 22V12"/></svg></div>
         <h3>Packing Services</h3>
         <p>Let our crew pack your entire home using professional-grade materials. We label every box, protect fragile items individually, and provide a detailed inventory. Partial packing available too.</p>
-        <a href="#hero" class="svc-link">Get a quote →</a>
+        <a href="#hero" class="svc-link">Get a quote <svg class="g-ico g-ico--line" viewBox="0 0 24 24" stroke="currentColor" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><path d="M5 12h14M13 6l6 6-6 6"/></svg></a>
       </div>
       <div class="svc-card">
-        <div class="svc-icon">OF</div>
+        <div class="svc-icon"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><path d="M6 22V4a2 2 0 0 1 2-2h8a2 2 0 0 1 2 2v18Z"/><path d="M6 12H4a2 2 0 0 0-2 2v6a2 2 0 0 0 2 2h2"/><path d="M18 9h2a2 2 0 0 1 2 2v9a2 2 0 0 1-2 2h-2"/><path d="M10 6h4M10 10h4M10 14h4M10 18h4"/></svg></div>
         <h3>Office &amp; Commercial Moving</h3>
         <p>We understand that business downtime costs money. Our commercial crews work evenings and weekends, handle IT equipment with care, and get you operational in the new space, fast.</p>
-        <a href="#hero" class="svc-link">Get a quote →</a>
+        <a href="#hero" class="svc-link">Get a quote <svg class="g-ico g-ico--line" viewBox="0 0 24 24" stroke="currentColor" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><path d="M5 12h14M13 6l6 6-6 6"/></svg></a>
       </div>
       <div class="svc-card">
-        <div class="svc-icon">ST</div>
+        <div class="svc-icon"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><path d="M22 8.35V20a2 2 0 0 1-2 2H4a2 2 0 0 1-2-2V8.35A2 2 0 0 1 3.26 6.5l8-3.2a2 2 0 0 1 1.48 0l8 3.2A2 2 0 0 1 22 8.35Z"/><path d="M6 18h12M6 14h12M6 10h12"/></svg></div>
         <h3>Storage Solutions</h3>
         <p>Need a gap between move-out and move-in? We offer clean, climate-controlled storage with flexible month-to-month contracts. Your items are inventoried and insured the whole time.</p>
-        <a href="#hero" class="svc-link">Get a quote →</a>
+        <a href="#hero" class="svc-link">Get a quote <svg class="g-ico g-ico--line" viewBox="0 0 24 24" stroke="currentColor" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><path d="M5 12h14M13 6l6 6-6 6"/></svg></a>
       </div>
       <div class="svc-card">
-        <div class="svc-icon">ASM</div>
+        <div class="svc-icon"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><path d="M14.7 6.3a1 1 0 0 0 0 1.4l1.6 1.6a1 1 0 0 0 1.4 0l3.77-3.77a6 6 0 0 1-7.94 7.94l-6.91 6.91a2.12 2.12 0 0 1-3-3l6.91-6.91a6 6 0 0 1 7.94-7.94l-3.76 3.76z"/></svg></div>
         <h3>Furniture Assembly</h3>
         <p>We disassemble large furniture before the move and reassemble everything exactly where you want it. IKEA, custom pieces, beds, office systems, we handle all of it.</p>
-        <a href="#hero" class="svc-link">Get a quote →</a>
+        <a href="#hero" class="svc-link">Get a quote <svg class="g-ico g-ico--line" viewBox="0 0 24 24" stroke="currentColor" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><path d="M5 12h14M13 6l6 6-6 6"/></svg></a>
       </div>
     </div>
   </div>
@@ -510,28 +517,28 @@
         <h2 class="sec-title">We Treat Your Stuff<br/>Like <em>Our Own.</em></h2>
         <div class="why-list">
           <div class="why-item">
-            <div class="why-check">✓</div>
+            <div class="why-check"><svg class="g-ico g-ico--line" viewBox="0 0 24 24" stroke="currentColor" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><path d="M20 6 9 17l-5-5"/></svg></div>
             <div>
               <h3>W-2 Employees Only</h3>
               <p>No day laborers or subcontractors. Every crew member is a background-checked, trained Summit employee on payroll.</p>
             </div>
           </div>
           <div class="why-item">
-            <div class="why-check">✓</div>
+            <div class="why-check"><svg class="g-ico g-ico--line" viewBox="0 0 24 24" stroke="currentColor" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><path d="M20 6 9 17l-5-5"/></svg></div>
             <div>
               <h3>$0 Surprise Charges</h3>
               <p>We quote stairs, long carries, and heavy items upfront. You pay exactly what we quoted, period.</p>
             </div>
           </div>
           <div class="why-item">
-            <div class="why-check">✓</div>
+            <div class="why-check"><svg class="g-ico g-ico--line" viewBox="0 0 24 24" stroke="currentColor" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><path d="M20 6 9 17l-5-5"/></svg></div>
             <div>
               <h3>Full Valuation Coverage</h3>
               <p>Every move includes basic liability coverage. Full replacement value coverage available for an added fee.</p>
             </div>
           </div>
           <div class="why-item">
-            <div class="why-check">✓</div>
+            <div class="why-check"><svg class="g-ico g-ico--line" viewBox="0 0 24 24" stroke="currentColor" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><path d="M20 6 9 17l-5-5"/></svg></div>
             <div>
               <h3>15-Year Track Record</h3>
               <p>We've completed 6,000+ moves since 2011. We're not going anywhere, and neither are your belongings without our care.</p>
@@ -547,7 +554,7 @@
             <div class="why-badge-l">Moves Completed</div>
           </div>
           <div class="why-badge">
-            <div class="why-badge-n">4.9 ★</div>
+            <div class="why-badge-n">4.9 <svg class="g-ico" viewBox="0 0 24 24" fill="currentColor" aria-hidden="true"><path d="M12 2.6l2.9 5.9 6.5.95-4.7 4.58 1.1 6.47L12 17.97 6.2 20.5l1.1-6.47L2.6 9.45l6.5-.95z"/></svg></div>
             <div class="why-badge-l">Average Review Score</div>
           </div>
           <div class="why-badge">
@@ -566,15 +573,15 @@
     <h2 class="sec-title">380+ Five-Star<br/><em>Reviews.</em></h2>
     <div class="reviews-grid">
       <div class="review-card">
-        <div class="review-stars">★★★★★</div>
+        <div class="review-stars"><svg class="g-ico" viewBox="0 0 24 24" fill="currentColor" aria-hidden="true"><path d="M12 2.6l2.9 5.9 6.5.95-4.7 4.58 1.1 6.47L12 17.97 6.2 20.5l1.1-6.47L2.6 9.45l6.5-.95z"/></svg><svg class="g-ico" viewBox="0 0 24 24" fill="currentColor" aria-hidden="true"><path d="M12 2.6l2.9 5.9 6.5.95-4.7 4.58 1.1 6.47L12 17.97 6.2 20.5l1.1-6.47L2.6 9.45l6.5-.95z"/></svg><svg class="g-ico" viewBox="0 0 24 24" fill="currentColor" aria-hidden="true"><path d="M12 2.6l2.9 5.9 6.5.95-4.7 4.58 1.1 6.47L12 17.97 6.2 20.5l1.1-6.47L2.6 9.45l6.5-.95z"/></svg><svg class="g-ico" viewBox="0 0 24 24" fill="currentColor" aria-hidden="true"><path d="M12 2.6l2.9 5.9 6.5.95-4.7 4.58 1.1 6.47L12 17.97 6.2 20.5l1.1-6.47L2.6 9.45l6.5-.95z"/></svg><svg class="g-ico" viewBox="0 0 24 24" fill="currentColor" aria-hidden="true"><path d="M12 2.6l2.9 5.9 6.5.95-4.7 4.58 1.1 6.47L12 17.97 6.2 20.5l1.1-6.47L2.6 9.45l6.5-.95z"/></svg></div>
         <p class="review-text">"The team was at our door 10 minutes early, wrapped every piece of furniture before it touched the truck, and had our 3-bedroom unloaded in under 4 hours. Zero damage, zero drama. Will use Summit for every move I ever make."</p>
         <div class="review-author">
           <div class="review-avatar">KM</div>
-          <div><div class="review-name">Kayla M.</div><div class="review-location">Kent → Akron, OH</div></div>
+          <div><div class="review-name">Kayla M.</div><div class="review-location">Kent <svg class="g-ico g-ico--line" viewBox="0 0 24 24" stroke="currentColor" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><path d="M5 12h14M13 6l6 6-6 6"/></svg> Akron, OH</div></div>
         </div>
       </div>
       <div class="review-card">
-        <div class="review-stars">★★★★★</div>
+        <div class="review-stars"><svg class="g-ico" viewBox="0 0 24 24" fill="currentColor" aria-hidden="true"><path d="M12 2.6l2.9 5.9 6.5.95-4.7 4.58 1.1 6.47L12 17.97 6.2 20.5l1.1-6.47L2.6 9.45l6.5-.95z"/></svg><svg class="g-ico" viewBox="0 0 24 24" fill="currentColor" aria-hidden="true"><path d="M12 2.6l2.9 5.9 6.5.95-4.7 4.58 1.1 6.47L12 17.97 6.2 20.5l1.1-6.47L2.6 9.45l6.5-.95z"/></svg><svg class="g-ico" viewBox="0 0 24 24" fill="currentColor" aria-hidden="true"><path d="M12 2.6l2.9 5.9 6.5.95-4.7 4.58 1.1 6.47L12 17.97 6.2 20.5l1.1-6.47L2.6 9.45l6.5-.95z"/></svg><svg class="g-ico" viewBox="0 0 24 24" fill="currentColor" aria-hidden="true"><path d="M12 2.6l2.9 5.9 6.5.95-4.7 4.58 1.1 6.47L12 17.97 6.2 20.5l1.1-6.47L2.6 9.45l6.5-.95z"/></svg><svg class="g-ico" viewBox="0 0 24 24" fill="currentColor" aria-hidden="true"><path d="M12 2.6l2.9 5.9 6.5.95-4.7 4.58 1.1 6.47L12 17.97 6.2 20.5l1.1-6.47L2.6 9.45l6.5-.95z"/></svg></div>
         <p class="review-text">"I was dreading moving my office because of all the tech equipment. The Summit crew labeled every cable, packed the servers properly, and had us set up in the new space the same day. Didn't miss a beat. Absolute professionals."</p>
         <div class="review-author">
           <div class="review-avatar">DL</div>
@@ -582,11 +589,11 @@
         </div>
       </div>
       <div class="review-card">
-        <div class="review-stars">★★★★★</div>
+        <div class="review-stars"><svg class="g-ico" viewBox="0 0 24 24" fill="currentColor" aria-hidden="true"><path d="M12 2.6l2.9 5.9 6.5.95-4.7 4.58 1.1 6.47L12 17.97 6.2 20.5l1.1-6.47L2.6 9.45l6.5-.95z"/></svg><svg class="g-ico" viewBox="0 0 24 24" fill="currentColor" aria-hidden="true"><path d="M12 2.6l2.9 5.9 6.5.95-4.7 4.58 1.1 6.47L12 17.97 6.2 20.5l1.1-6.47L2.6 9.45l6.5-.95z"/></svg><svg class="g-ico" viewBox="0 0 24 24" fill="currentColor" aria-hidden="true"><path d="M12 2.6l2.9 5.9 6.5.95-4.7 4.58 1.1 6.47L12 17.97 6.2 20.5l1.1-6.47L2.6 9.45l6.5-.95z"/></svg><svg class="g-ico" viewBox="0 0 24 24" fill="currentColor" aria-hidden="true"><path d="M12 2.6l2.9 5.9 6.5.95-4.7 4.58 1.1 6.47L12 17.97 6.2 20.5l1.1-6.47L2.6 9.45l6.5-.95z"/></svg><svg class="g-ico" viewBox="0 0 24 24" fill="currentColor" aria-hidden="true"><path d="M12 2.6l2.9 5.9 6.5.95-4.7 4.58 1.1 6.47L12 17.97 6.2 20.5l1.1-6.47L2.6 9.45l6.5-.95z"/></svg></div>
         <p class="review-text">"We needed storage for 6 weeks between houses. Summit picked everything up, stored it clean and climate-controlled, then delivered to our new place exactly when promised. The whole process was seamless, I genuinely couldn't have asked for better."</p>
         <div class="review-author">
           <div class="review-avatar">TR</div>
-          <div><div class="review-name">Tori R.</div><div class="review-location">Ravenna → Stow, OH</div></div>
+          <div><div class="review-name">Tori R.</div><div class="review-location">Ravenna <svg class="g-ico g-ico--line" viewBox="0 0 24 24" stroke="currentColor" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><path d="M5 12h14M13 6l6 6-6 6"/></svg> Stow, OH</div></div>
         </div>
       </div>
     </div>

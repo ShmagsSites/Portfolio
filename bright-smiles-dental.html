@@ -33,6 +33,7 @@
       display: flex; align-items: center; justify-content: center;
       color: white; font-size: 1rem; font-weight: 700;
     }
+    .nav-logo-mark svg { width: 19px; height: 19px; }
     .nav-logo-text { font-weight: 600; font-size: 1rem; color: var(--teal); letter-spacing: -0.01em; }
     .nav-links { display: flex; gap: 2.5rem; list-style: none; }
     .nav-links a { text-decoration: none; color: var(--text); font-size: 0.85rem; font-weight: 400; transition: color 0.2s; }
@@ -146,6 +147,9 @@
       border-radius: 14px; display: flex; align-items: center; justify-content: center;
       font-size: 1.4rem; margin-bottom: 1.25rem;
     }
+    .svc-icon svg { width: 26px; height: 26px; color: var(--teal); }
+    .hero-tooth svg { width: 7rem; height: 7rem; color: var(--teal); }
+    .check-icon svg { width: 15px; height: 15px; }
     .service-card h3 { font-size: 1rem; font-weight: 600; margin-bottom: 0.5rem; color: var(--text); }
     .service-card p { font-size: 0.83rem; color: var(--muted); line-height: 1.65; }
 
@@ -271,13 +275,17 @@
       .services-grid { grid-template-columns: 1fr; }
       .team-grid { grid-template-columns: 1fr; }
     }
-  </style>
+  
+  /* inline glyph icons */
+  .g-ico{width:1em;height:1em;display:inline-block;vertical-align:-0.125em;flex-shrink:0}
+  .g-ico--line{fill:none;stroke-width:2}
+</style>
 </head>
 <body>
 
 <nav>
   <a href="#" class="nav-logo">
-    <div class="nav-logo-mark">B</div>
+    <div class="nav-logo-mark"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.8" stroke-linecap="round" stroke-linejoin="round"><path d="M12 5.5c-1.5-1.5-3.5-2.2-5.2-1.4C5 4.9 4 6.7 4 9c0 2 .5 3.4 1 5 .4 1.3.7 3 1 4.5.2 1 .5 1.5 1.2 1.5.8 0 1-.7 1.2-1.8.2-1.3.4-2.7 1.1-3.2.3-.2.7-.2 1 0 .7.5.9 1.9 1.1 3.2.2 1.1.4 1.8 1.2 1.8.7 0 1-.5 1.2-1.5.3-1.5.6-3.2 1-4.5.5-1.6 1-3 1-5 0-2.3-1-4.1-2.8-4.9C15.5 3.3 13.5 4 12 5.5Z"/></svg></div>
     <span class="nav-logo-text">Bright Smiles Dental</span>
   </a>
   <ul class="nav-links">
@@ -293,15 +301,11 @@
   <div class="hero-blob"></div>
   <div class="hero-circle">
     <div class="hero-circle-inner">
-      <div class="hero-tooth">BS</div>
+      <div class="hero-tooth"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.4" stroke-linecap="round" stroke-linejoin="round"><path d="M12 5.5c-1.5-1.5-3.5-2.2-5.2-1.4C5 4.9 4 6.7 4 9c0 2 .5 3.4 1 5 .4 1.3.7 3 1 4.5.2 1 .5 1.5 1.2 1.5.8 0 1-.7 1.2-1.8.2-1.3.4-2.7 1.1-3.2.3-.2.7-.2 1 0 .7.5.9 1.9 1.1 3.2.2 1.1.4 1.8 1.2 1.8.7 0 1-.5 1.2-1.5.3-1.5.6-3.2 1-4.5.5-1.6 1-3 1-5 0-2.3-1-4.1-2.8-4.9C15.5 3.3 13.5 4 12 5.5Z"/></svg></div>
       <div class="hero-circle-label">Kent's Trusted Dentist</div>
     </div>
   </div>
   <div class="hero-content">
-    <div class="hero-badge">
-      <span class="hero-badge-dot"></span>
-      Now Accepting New Patients
-    </div>
     <h1>Your Best <em>Smile</em><br/>Starts Here</h1>
     <p>Compassionate, modern dentistry for the whole family. We combine the latest technology with a gentle, personal touch to give you the care you deserve, in a space that feels nothing like a typical dental office.</p>
     <div class="hero-btns">
@@ -318,7 +322,7 @@
         <div class="stat-l">In Practice</div>
       </div>
       <div>
-        <div class="stat-n">4.9 ★</div>
+        <div class="stat-n">4.9 <svg class="g-ico" viewBox="0 0 24 24" fill="currentColor" aria-hidden="true"><path d="M12 2.6l2.9 5.9 6.5.95-4.7 4.58 1.1 6.47L12 17.97 6.2 20.5l1.1-6.47L2.6 9.45l6.5-.95z"/></svg></div>
         <div class="stat-l">Average Rating</div>
       </div>
     </div>
@@ -332,32 +336,32 @@
     <p class="section-body">From routine cleanings to full smile makeovers, we offer everything your family needs under one roof, with technology that makes every visit faster and more comfortable.</p>
     <div class="services-grid">
       <div class="service-card">
-        <div class="svc-icon">PC</div>
+        <div class="svc-icon"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><path d="M12 5.5c-1.5-1.5-3.5-2.2-5.2-1.4C5 4.9 4 6.7 4 9c0 2 .5 3.4 1 5 .4 1.3.7 3 1 4.5.2 1 .5 1.5 1.2 1.5.8 0 1-.7 1.2-1.8.2-1.3.4-2.7 1.1-3.2.3-.2.7-.2 1 0 .7.5.9 1.9 1.1 3.2.2 1.1.4 1.8 1.2 1.8.7 0 1-.5 1.2-1.5.3-1.5.6-3.2 1-4.5.5-1.6 1-3 1-5 0-2.3-1-4.1-2.8-4.9C15.5 3.3 13.5 4 12 5.5Z"/></svg></div>
         <h3>Preventive Care</h3>
         <p>Regular cleanings, comprehensive exams, digital X-rays, and fluoride treatments to keep your smile healthy for life.</p>
       </div>
       <div class="service-card">
-        <div class="svc-icon">WH</div>
+        <div class="svc-icon"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><path d="m12 3 1.9 5.6L19 10l-5.1 1.4L12 17l-1.9-5.6L5 10l5.1-1.4z"/><path d="M19 14v4M21 16h-4M5 4v3M6.5 5.5h-3"/></svg></div>
         <h3>Teeth Whitening</h3>
         <p>Professional in-office and custom take-home whitening treatments for results up to 8 shades brighter in a single visit.</p>
       </div>
       <div class="service-card">
-        <div class="svc-icon">CO</div>
+        <div class="svc-icon"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><circle cx="12" cy="12" r="10"/><path d="M8 14s1.5 2 4 2 4-2 4-2"/><line x1="9" y1="9" x2="9.01" y2="9"/><line x1="15" y1="9" x2="15.01" y2="9"/></svg></div>
         <h3>Cosmetic Dentistry</h3>
         <p>Porcelain veneers, dental bonding, and complete smile makeovers designed to enhance your natural beauty.</p>
       </div>
       <div class="service-card">
-        <div class="svc-icon">IM</div>
+        <div class="svc-icon"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><path d="M20 13c0 5-3.5 7.5-7.66 8.95a1 1 0 0 1-.67-.01C7.5 20.5 4 18 4 13V6a1 1 0 0 1 1-1c2 0 4.5-1.2 6.24-2.72a1.17 1.17 0 0 1 1.52 0C14.51 3.81 17 5 19 5a1 1 0 0 1 1 1z"/><path d="m9 12 2 2 4-4"/></svg></div>
         <h3>Implants &amp; Restorations</h3>
         <p>Dental implants, crowns, bridges, and natural-looking fillings to restore full function and confidence to your smile.</p>
       </div>
       <div class="service-card">
-        <div class="svc-icon">AL</div>
+        <div class="svc-icon"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><path d="m12 2 8.7 5-8.7 5L3.3 7z"/><path d="m3.3 12 8.7 5 8.7-5"/></svg></div>
         <h3>Invisalign® Aligners</h3>
         <p>Clear, comfortable aligner therapy to straighten your teeth discreetly, no metal brackets, no wires, no problem.</p>
       </div>
       <div class="service-card">
-        <div class="svc-icon">SOS</div>
+        <div class="svc-icon"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><path d="m21.73 18-8-14a2 2 0 0 0-3.48 0l-8 14A2 2 0 0 0 4 21h16a2 2 0 0 0 1.73-3Z"/><path d="M12 9v4M12 17h.01"/></svg></div>
         <h3>Emergency Dentistry</h3>
         <p>Same-day and next-day appointments available for toothaches, cracked teeth, lost fillings, and other urgent situations.</p>
       </div>
@@ -374,23 +378,23 @@
         <p>We make it simple to get the care you need. Fill out the form and one of our friendly front desk team will confirm your appointment within 24 hours. No long hold times, no runaround.</p>
         <div class="booking-checks">
           <div class="booking-check">
-            <div class="check-icon">✓</div>
+            <div class="check-icon"><svg class="g-ico g-ico--line" viewBox="0 0 24 24" stroke="currentColor" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><path d="M20 6 9 17l-5-5"/></svg></div>
             <span>Most major insurance plans accepted</span>
           </div>
           <div class="booking-check">
-            <div class="check-icon">✓</div>
+            <div class="check-icon"><svg class="g-ico g-ico--line" viewBox="0 0 24 24" stroke="currentColor" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><path d="M20 6 9 17l-5-5"/></svg></div>
             <span>Flexible morning, afternoon &amp; evening hours</span>
           </div>
           <div class="booking-check">
-            <div class="check-icon">✓</div>
+            <div class="check-icon"><svg class="g-ico g-ico--line" viewBox="0 0 24 24" stroke="currentColor" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><path d="M20 6 9 17l-5-5"/></svg></div>
             <span>New patient specials &amp; free consultations</span>
           </div>
           <div class="booking-check">
-            <div class="check-icon">✓</div>
+            <div class="check-icon"><svg class="g-ico g-ico--line" viewBox="0 0 24 24" stroke="currentColor" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><path d="M20 6 9 17l-5-5"/></svg></div>
             <span>Automated text &amp; email appointment reminders</span>
           </div>
           <div class="booking-check">
-            <div class="check-icon">✓</div>
+            <div class="check-icon"><svg class="g-ico g-ico--line" viewBox="0 0 24 24" stroke="currentColor" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><path d="M20 6 9 17l-5-5"/></svg></div>
             <span>Interest-free payment plans available</span>
           </div>
         </div>
@@ -443,7 +447,7 @@
           </div>
         </div>
         <p class="form-note">* A team member will confirm your time within 24 hrs.</p>
-        <button class="form-btn">Request Appointment →</button>
+        <button class="form-btn">Request Appointment <svg class="g-ico g-ico--line" viewBox="0 0 24 24" stroke="currentColor" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><path d="M5 12h14M13 6l6 6-6 6"/></svg></button>
       </div>
     </div>
   </div>

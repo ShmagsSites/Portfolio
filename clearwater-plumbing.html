@@ -156,6 +156,11 @@
     .svc-card p { font-size: 0.82rem; color: var(--muted); line-height: 1.65; }
     .svc-urgent { border-left: 3px solid var(--orange); }
     .svc-urgent .svc-icon { background: #fff3ee; }
+    .nav-brand-icon svg { width: 22px; height: 22px; color: #fff; }
+    .ts-icon svg { width: 22px; height: 22px; }
+    .svc-icon svg { width: 24px; height: 24px; color: var(--blue-mid); }
+    .svc-urgent .svc-icon svg { color: var(--orange); }
+    .bi-icon svg { width: 24px; height: 24px; }
     .urgent-label { font-size: 0.65rem; font-weight: 700; letter-spacing: 0.1em; text-transform: uppercase; color: var(--orange); margin-bottom: 0.5rem; }
 
     /* BOOK */
@@ -224,7 +229,11 @@
       .fg-row { grid-template-columns: 1fr; }
       .why-stats { flex-direction: column; }
     }
-  </style>
+  
+  /* inline glyph icons */
+  .g-ico{width:1em;height:1em;display:inline-block;vertical-align:-0.125em;flex-shrink:0}
+  .g-ico--line{fill:none;stroke-width:2}
+</style>
 </head>
 <body>
 
@@ -234,7 +243,7 @@
 
 <nav>
   <a href="#" class="nav-brand">
-    <div class="nav-brand-icon">CW</div>
+    <div class="nav-brand-icon"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><path d="M12 2.69l5.66 5.66a8 8 0 1 1-11.31 0z"/></svg></div>
     <div>
       <div class="nav-brand-name">Clearwater Plumbing</div>
       <div class="nav-brand-sub">Licensed · Insured · Kent, OH</div>
@@ -253,13 +262,12 @@
 
 <section class="hero">
   <div class="hero-left">
-    <div class="hero-badge"><span class="badge-dot"></span> 24 / 7 Emergency Service</div>
     <h1>Fast Plumbing.<br/><span>No Surprises.</span></h1>
     <p>Licensed plumbers you can actually trust. We show up on time, tell you the price before we touch anything, and fix it right the first time.</p>
     <div class="hero-pills">
-      <div class="hero-pill"><span>✓</span> Licensed &amp; Insured</div>
-      <div class="hero-pill"><span>✓</span> Upfront Flat-Rate Pricing</div>
-      <div class="hero-pill"><span>✓</span> Same-Day Service Available</div>
+      <div class="hero-pill"><span><svg class="g-ico g-ico--line" viewBox="0 0 24 24" stroke="currentColor" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><path d="M20 6 9 17l-5-5"/></svg></span> Licensed &amp; Insured</div>
+      <div class="hero-pill"><span><svg class="g-ico g-ico--line" viewBox="0 0 24 24" stroke="currentColor" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><path d="M20 6 9 17l-5-5"/></svg></span> Upfront Flat-Rate Pricing</div>
+      <div class="hero-pill"><span><svg class="g-ico g-ico--line" viewBox="0 0 24 24" stroke="currentColor" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><path d="M20 6 9 17l-5-5"/></svg></span> Same-Day Service Available</div>
     </div>
   </div>
   <div class="hero-right">
@@ -310,17 +318,17 @@
       <label>Brief Description (optional)</label>
       <textarea placeholder="Tell us what's going on, the more detail, the better we can help…"></textarea>
     </div>
-    <button class="form-submit">Request Service →</button>
+    <button class="form-submit">Request Service <svg class="g-ico g-ico--line" viewBox="0 0 24 24" stroke="currentColor" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><path d="M5 12h14M13 6l6 6-6 6"/></svg></button>
     <p class="form-note">No spam. Your info stays private.</p>
   </div>
 </section>
 
 <div class="trust-strip">
-  <div class="ts-item"><span class="ts-icon">LIC</span><div class="ts-text">State Licensed<span>Ohio Plumbing License #PL-48291</span></div></div>
-  <div class="ts-item"><span class="ts-icon">INS</span><div class="ts-text">Fully Insured<span>$1M liability + workers comp</span></div></div>
-  <div class="ts-item"><span class="ts-icon">24</span><div class="ts-text">Same-Day Available<span>Call before noon for today's slot</span></div></div>
-  <div class="ts-item"><span class="ts-icon">$</span><div class="ts-text">Upfront Flat Pricing<span>You approve before we start</span></div></div>
-  <div class="ts-item"><span class="ts-icon">4.9</span><div class="ts-text">4.9 Stars · 200+ Reviews<span>Google · HomeAdvisor · Angi</span></div></div>
+  <div class="ts-item"><span class="ts-icon"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><circle cx="12" cy="8" r="6"/><path d="M15.477 12.89 17 22l-5-3-5 3 1.523-9.11"/></svg></span><div class="ts-text">State Licensed<span>Ohio Plumbing License #PL-48291</span></div></div>
+  <div class="ts-item"><span class="ts-icon"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><path d="M20 13c0 5-3.5 7.5-7.66 8.95a1 1 0 0 1-.67-.01C7.5 20.5 4 18 4 13V6a1 1 0 0 1 1-1c2 0 4.5-1.2 6.24-2.72a1.17 1.17 0 0 1 1.52 0C14.51 3.81 17 5 19 5a1 1 0 0 1 1 1z"/><path d="m9 12 2 2 4-4"/></svg></span><div class="ts-text">Fully Insured<span>$1M liability + workers comp</span></div></div>
+  <div class="ts-item"><span class="ts-icon"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><circle cx="12" cy="12" r="10"/><path d="M12 6v6l4 2"/></svg></span><div class="ts-text">Same-Day Available<span>Call before noon for today's slot</span></div></div>
+  <div class="ts-item"><span class="ts-icon"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><circle cx="12" cy="12" r="10"/><path d="M16 8h-6a2 2 0 1 0 0 4h4a2 2 0 1 1 0 4H8"/><path d="M12 6v2m0 8v2"/></svg></span><div class="ts-text">Upfront Flat Pricing<span>You approve before we start</span></div></div>
+  <div class="ts-item"><span class="ts-icon"><svg viewBox="0 0 24 24" fill="currentColor" aria-hidden="true"><path d="M12 2.6l2.9 5.9 6.5.95-4.7 4.58 1.1 6.47L12 17.97 6.2 20.5l1.1-6.47L2.6 9.45l6.5-.95z"/></svg></span><div class="ts-text">4.9 Stars · 200+ Reviews<span>Google · HomeAdvisor · Angi</span></div></div>
 </div>
 
 <section id="services">
@@ -331,32 +339,32 @@
     <div class="svc-grid">
       <div class="svc-card svc-urgent">
         <div class="urgent-label">Emergency</div>
-        <div class="svc-icon" style="background:#fff3ee;">24</div>
+        <div class="svc-icon" style="background:#fff3ee;"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><path d="M7 12a5 5 0 0 1 10 0v6H7z"/><path d="M5 18h14a1 1 0 0 1 1 1v2H4v-2a1 1 0 0 1 1-1Z"/><path d="M12 4V2M19 6l1.5-1.5M5 6 3.5 4.5"/></svg></div>
         <h3>Burst Pipes &amp; Flooding</h3>
         <p>Water pouring where it shouldn't be? Call us now. We have 24/7 emergency crews ready to respond and stop the damage fast.</p>
       </div>
       <div class="svc-card">
-        <div class="svc-icon">DR</div>
+        <div class="svc-icon"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><path d="M22 3H2l8 9.46V19l4 2v-8.54z"/></svg></div>
         <h3>Drain Cleaning</h3>
         <p>Slow drains, full clogs, recurring backups. We use professional-grade augers and hydro-jetting to clear the line completely, not just push it down.</p>
       </div>
       <div class="svc-card">
-        <div class="svc-icon">FX</div>
+        <div class="svc-icon"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><path d="M14.7 6.3a1 1 0 0 0 0 1.4l1.6 1.6a1 1 0 0 0 1.4 0l3.77-3.77a6 6 0 0 1-7.94 7.94l-6.91 6.91a2.12 2.12 0 0 1-3-3l6.91-6.91a6 6 0 0 1 7.94-7.94l-3.76 3.76z"/></svg></div>
         <h3>Leak Repair</h3>
         <p>Leaky faucets, running toilets, dripping supply lines, slab leaks. We find it, quote it, and fix it, often in a single visit.</p>
       </div>
       <div class="svc-card">
-        <div class="svc-icon">WH</div>
+        <div class="svc-icon"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><path d="M8.5 14.5A2.5 2.5 0 0 0 11 12c0-1.38-.5-2-1-3-1.072-2.143-.224-4.054 2-6 .5 2.5 2 4.9 4 6.5 2 1.6 3 3.5 3 5.5a7 7 0 1 1-14 0c0-1.153.433-2.294 1-3a2.5 2.5 0 0 0 2.5 2.5z"/></svg></div>
         <h3>Water Heater Service</h3>
         <p>Tank and tankless water heater repair, replacement, and installation. We carry common tank sizes on the truck for same-day installs.</p>
       </div>
       <div class="svc-card">
-        <div class="svc-icon">WC</div>
+        <div class="svc-icon"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><path d="M12 2.69l5.66 5.66a8 8 0 1 1-11.31 0z"/></svg></div>
         <h3>Toilet Repair &amp; Replacement</h3>
         <p>Running, rocking, not flushing, or leaking at the base, we repair all brands and can replace with a new unit the same day.</p>
       </div>
       <div class="svc-card">
-        <div class="svc-icon">HM</div>
+        <div class="svc-icon"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><path d="m3 9 9-7 9 7v11a2 2 0 0 1-2 2H5a2 2 0 0 1-2-2z"/><path d="M9 22V12h6v10"/></svg></div>
         <h3>Remodel &amp; New Installs</h3>
         <p>Bathroom or kitchen remodel? Adding a laundry room? We rough-in and finish plumbing for new construction and renovation projects of all sizes.</p>
       </div>
@@ -373,28 +381,28 @@
         <p>Fill out the form and we'll confirm your appointment within 30 minutes during business hours, or first thing the next morning if you submit after hours.</p>
         <div class="book-info">
           <div class="book-info-item">
-            <div class="bi-icon">PLAN</div>
+            <div class="bi-icon"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><rect width="8" height="4" x="8" y="2" rx="1" ry="1"/><path d="M16 4h2a2 2 0 0 1 2 2v14a2 2 0 0 1-2 2H6a2 2 0 0 1-2-2V6a2 2 0 0 1 2-2h2"/><path d="M12 11h4M12 16h4M8 11h.01M8 16h.01"/></svg></div>
             <div class="bi-text">
               <h4>Free Diagnostic</h4>
               <p>We diagnose the problem at no charge and give you a flat-rate quote before any work begins. No hourly surprises.</p>
             </div>
           </div>
           <div class="book-info-item">
-            <div class="bi-icon">VAN</div>
+            <div class="bi-icon"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><path d="M14 18V6a2 2 0 0 0-2-2H4a2 2 0 0 0-2 2v11a1 1 0 0 0 1 1h2"/><path d="M15 18H9"/><path d="M19 18h2a1 1 0 0 0 1-1v-3.65a1 1 0 0 0-.22-.62l-3.48-4.35A1 1 0 0 0 17.52 8H14"/><circle cx="17" cy="18" r="2"/><circle cx="7" cy="18" r="2"/></svg></div>
             <div class="bi-text">
               <h4>Fully Stocked Trucks</h4>
               <p>Our service vehicles carry thousands of parts. Most repairs, even complex ones, are finished in a single trip.</p>
             </div>
           </div>
           <div class="book-info-item">
-            <div class="bi-icon">TIME</div>
+            <div class="bi-icon"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><circle cx="12" cy="12" r="10"/><path d="M12 6v6l4 2"/></svg></div>
             <div class="bi-text">
               <h4>On-Time Arrival Window</h4>
               <p>We give you a 1-hour arrival window (not a 4-hour block) and text you when the plumber is on the way.</p>
             </div>
           </div>
           <div class="book-info-item">
-            <div class="bi-icon">SEC</div>
+            <div class="bi-icon"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><path d="M20 13c0 5-3.5 7.5-7.66 8.95a1 1 0 0 1-.67-.01C7.5 20.5 4 18 4 13V6a1 1 0 0 1 1-1c2 0 4.5-1.2 6.24-2.72a1.17 1.17 0 0 1 1.52 0C14.51 3.81 17 5 19 5a1 1 0 0 1 1 1z"/><path d="m9 12 2 2 4-4"/></svg></div>
             <div class="bi-text">
               <h4>90-Day Labor Warranty</h4>
               <p>Every repair comes with a 90-day workmanship guarantee. If it comes back, we come back, no charge.</p>
@@ -470,7 +478,7 @@
           <label>Additional Notes</label>
           <textarea placeholder="Anything else that would help us prepare? (Age of home, shut-off location, prior repairs, etc.)"></textarea>
         </div>
-        <button class="form-submit">Book My Appointment →</button>
+        <button class="form-submit">Book My Appointment <svg class="g-ico g-ico--line" viewBox="0 0 24 24" stroke="currentColor" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><path d="M5 12h14M13 6l6 6-6 6"/></svg></button>
       </div>
     </div>
   </div>
@@ -494,7 +502,7 @@
           <div class="why-stat-l">Jobs Completed</div>
         </div>
         <div class="why-stat">
-          <div class="why-stat-n">4.9★</div>
+          <div class="why-stat-n">4.9<svg class="g-ico" viewBox="0 0 24 24" fill="currentColor" aria-hidden="true"><path d="M12 2.6l2.9 5.9 6.5.95-4.7 4.58 1.1 6.47L12 17.97 6.2 20.5l1.1-6.47L2.6 9.45l6.5-.95z"/></svg></div>
           <div class="why-stat-l">Average Rating</div>
         </div>
         <div class="why-stat">

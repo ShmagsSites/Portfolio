@@ -152,6 +152,9 @@
       display: flex; align-items: center; justify-content: center;
       font-size: 1.2rem; flex-shrink: 0;
     }
+    .svc-icon-box svg { width: 24px; height: 24px; color: var(--yellow); }
+    .trust-icon svg { width: 32px; height: 32px; color: var(--yellow); }
+    .cb-icon svg { width: 24px; height: 24px; color: var(--yellow); }
     .svc-text h3 { font-size: 0.97rem; font-weight: 700; color: white; margin-bottom: 0.4rem; }
     .svc-text p { font-size: 0.82rem; color: var(--muted); line-height: 1.65; }
     .svc-urgent-tag { font-size: 0.62rem; font-weight: 700; letter-spacing: 0.1em; text-transform: uppercase; color: var(--yellow); margin-bottom: 0.35rem; }
@@ -261,7 +264,11 @@
       .ef-row { grid-template-columns: 1fr; }
       .hero-stats { flex-wrap: wrap; }
     }
-  </style>
+  
+  /* inline glyph icons */
+  .g-ico{width:1em;height:1em;display:inline-block;vertical-align:-0.125em;flex-shrink:0}
+  .g-ico--line{fill:none;stroke-width:2}
+</style>
 </head>
 <body>
 
@@ -295,7 +302,6 @@
   <div class="hero-lines"></div>
   <div class="hero-bolt-bg"></div>
   <div class="hero-content">
-    <div class="hero-eyebrow"><span class="eyebrow-dot"></span>Licensed Electricians · Kent, OH</div>
     <h1>Power Done <span class="hl">Right.</span><br/>Every Time.</h1>
     <p>From a tripped breaker to a full panel upgrade, Volt Electric handles residential and commercial electrical with precision and care. Licensed, insured, and honest about what things cost.</p>
     <div class="hero-btns">
@@ -305,7 +311,7 @@
     <div class="hero-stats">
       <div class="hs"><div class="hs-n">12+</div><div class="hs-l">Years in Business</div></div>
       <div class="hs"><div class="hs-n">1,800+</div><div class="hs-l">Jobs Done</div></div>
-      <div class="hs"><div class="hs-n">4.9★</div><div class="hs-l">Google Rating</div></div>
+      <div class="hs"><div class="hs-n">4.9<svg class="g-ico" viewBox="0 0 24 24" fill="currentColor" aria-hidden="true"><path d="M12 2.6l2.9 5.9 6.5.95-4.7 4.58 1.1 6.47L12 17.97 6.2 20.5l1.1-6.47L2.6 9.45l6.5-.95z"/></svg></div><div class="hs-l">Google Rating</div></div>
       <div class="hs"><div class="hs-n">24/7</div><div class="hs-l">Emergency Line</div></div>
     </div>
   </div>
@@ -318,7 +324,7 @@
     <p class="sec-body">Every job, big or small, is done by a licensed electrician with the experience to get it right and the integrity to tell you what you actually need.</p>
     <div class="svc-grid">
       <div class="svc-card">
-        <div class="svc-icon-box">24</div>
+        <div class="svc-icon-box"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><path d="M7 12a5 5 0 0 1 10 0v6H7z"/><path d="M5 18h14a1 1 0 0 1 1 1v2H4v-2a1 1 0 0 1 1-1Z"/><path d="M12 4V2M19 6l1.5-1.5M5 6 3.5 4.5"/></svg></div>
         <div class="svc-text">
           <div class="svc-urgent-tag">Emergency</div>
           <h3>Power Outages &amp; Tripped Breakers</h3>
@@ -326,49 +332,49 @@
         </div>
       </div>
       <div class="svc-card">
-        <div class="svc-icon-box">PNL</div>
+        <div class="svc-icon-box"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><rect width="20" height="8" x="2" y="2" rx="2" ry="2"/><rect width="20" height="8" x="2" y="14" rx="2" ry="2"/><path d="M6 6h.01M6 18h.01"/></svg></div>
         <div class="svc-text">
           <h3>Panel Upgrades &amp; Replacements</h3>
           <p>Outdated 100-amp panels, Federal Pacific or Zinsco panels, or panels that just can't keep up, we upgrade to modern 200-amp service safely and to code.</p>
         </div>
       </div>
       <div class="svc-card">
-        <div class="svc-icon-box">LGT</div>
+        <div class="svc-icon-box"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><path d="M12 22v-5M9 8V2M15 8V2M18 8v5a4 4 0 0 1-4 4h-4a4 4 0 0 1-4-4V8Z"/></svg></div>
         <div class="svc-text">
           <h3>Outlet, Switch &amp; Fixture Installs</h3>
           <p>Adding outlets, replacing switches, installing ceiling fans, recessed lighting, or exterior fixtures. Clean work, no shortcuts, everything to code.</p>
         </div>
       </div>
       <div class="svc-card">
-        <div class="svc-icon-box">WR</div>
+        <div class="svc-icon-box"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><path d="M5 3v4a3 3 0 0 0 3 3h0a3 3 0 0 1 3 3v8"/><path d="M19 21v-4a3 3 0 0 0-3-3h0a3 3 0 0 1-3-3V3"/></svg></div>
         <div class="svc-text">
           <h3>Whole-Home Rewiring</h3>
           <p>Older home with knob-and-tube or aluminum wiring? We safely replace it with modern copper wiring, protecting your home and your insurance coverage.</p>
         </div>
       </div>
       <div class="svc-card">
-        <div class="svc-icon-box">PRO</div>
+        <div class="svc-icon-box"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><path d="M20 13c0 5-3.5 7.5-7.66 8.95a1 1 0 0 1-.67-.01C7.5 20.5 4 18 4 13V6a1 1 0 0 1 1-1c2 0 4.5-1.2 6.24-2.72a1.17 1.17 0 0 1 1.52 0C14.51 3.81 17 5 19 5a1 1 0 0 1 1 1z"/><path d="m13 7-3 5h4l-3 5"/></svg></div>
         <div class="svc-text">
           <h3>Surge Protection</h3>
           <p>Whole-home surge protectors guard your appliances and electronics from damaging power spikes. One install, everything protected.</p>
         </div>
       </div>
       <div class="svc-card">
-        <div class="svc-icon-box">CHK</div>
+        <div class="svc-icon-box"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><rect width="8" height="4" x="8" y="2" rx="1" ry="1"/><path d="M16 4h2a2 2 0 0 1 2 2v14a2 2 0 0 1-2 2H6a2 2 0 0 1-2-2V6a2 2 0 0 1 2-2h2"/><path d="m9 14 2 2 4-4"/></svg></div>
         <div class="svc-text">
           <h3>Safety Inspections &amp; Permits</h3>
           <p>Buying or selling a home? We perform electrical safety inspections, pull permits for all permitted work, and provide documentation for real estate closings.</p>
         </div>
       </div>
       <div class="svc-card">
-        <div class="svc-icon-box">EV</div>
+        <div class="svc-icon-box"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><path d="M15 7h1a2 2 0 0 1 2 2v6a2 2 0 0 1-2 2h-2"/><path d="M9 7H4a2 2 0 0 0-2 2v6a2 2 0 0 0 2 2h1"/><path d="M22 11v2"/><path d="m11 7-3 5h4l-3 5"/></svg></div>
         <div class="svc-text">
           <h3>EV Charger Installation</h3>
           <p>Level 1 or Level 2 home charging stations installed correctly, up to code, and in the location that works best for your garage or driveway.</p>
         </div>
       </div>
       <div class="svc-card">
-        <div class="svc-icon-box">COM</div>
+        <div class="svc-icon-box"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><path d="M6 22V4a2 2 0 0 1 2-2h8a2 2 0 0 1 2 2v18Z"/><path d="M6 12H4a2 2 0 0 0-2 2v6a2 2 0 0 0 2 2h2"/><path d="M18 9h2a2 2 0 0 1 2 2v9a2 2 0 0 1-2 2h-2"/><path d="M10 6h4M10 10h4M10 14h4M10 18h4"/></svg></div>
         <div class="svc-text">
           <h3>Commercial &amp; Light Industrial</h3>
           <p>Tenant buildouts, equipment connections, lighting retrofits, and more. We work around your schedule so you stay open and operational.</p>
@@ -387,23 +393,23 @@
         <p class="sec-body">Tell us what you need and we'll come take a look, no charge for the visit, no pressure to book. You'll get a clear, itemized quote before any work begins.</p>
         <div class="est-features">
           <div class="est-feature">
-            <div class="ef-check">✓</div>
+            <div class="ef-check"><svg class="g-ico g-ico--line" viewBox="0 0 24 24" stroke="currentColor" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><path d="M20 6 9 17l-5-5"/></svg></div>
             <span>Free on-site assessment, we come to you</span>
           </div>
           <div class="est-feature">
-            <div class="ef-check">✓</div>
+            <div class="ef-check"><svg class="g-ico g-ico--line" viewBox="0 0 24 24" stroke="currentColor" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><path d="M20 6 9 17l-5-5"/></svg></div>
             <span>Itemized written quote, no vague numbers</span>
           </div>
           <div class="est-feature">
-            <div class="ef-check">✓</div>
+            <div class="ef-check"><svg class="g-ico g-ico--line" viewBox="0 0 24 24" stroke="currentColor" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><path d="M20 6 9 17l-5-5"/></svg></div>
             <span>Estimates honored for 30 days</span>
           </div>
           <div class="est-feature">
-            <div class="ef-check">✓</div>
+            <div class="ef-check"><svg class="g-ico g-ico--line" viewBox="0 0 24 24" stroke="currentColor" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><path d="M20 6 9 17l-5-5"/></svg></div>
             <span>We pull all required permits, included in price</span>
           </div>
           <div class="est-feature">
-            <div class="ef-check">✓</div>
+            <div class="ef-check"><svg class="g-ico g-ico--line" viewBox="0 0 24 24" stroke="currentColor" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><path d="M20 6 9 17l-5-5"/></svg></div>
             <span>1-year warranty on all labor, 5+ on fixtures we supply</span>
           </div>
         </div>
@@ -479,7 +485,7 @@
           <label>Describe the Project</label>
           <textarea placeholder="Any details that help us prepare, scope, age of home, what's not working, etc."></textarea>
         </div>
-        <button class="est-submit">Request My Free Estimate →</button>
+        <button class="est-submit">Request My Free Estimate <svg class="g-ico g-ico--line" viewBox="0 0 24 24" stroke="currentColor" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><path d="M5 12h14M13 6l6 6-6 6"/></svg></button>
       </div>
     </div>
   </div>
@@ -492,22 +498,22 @@
     <p class="sec-body">Every electrician on our team is licensed and background-checked. We're not a franchise, we're your neighbors, and we stand behind every job we do.</p>
     <div class="trust-grid">
       <div class="trust-card">
-        <div class="trust-icon">LIC</div>
+        <div class="trust-icon"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><circle cx="12" cy="8" r="6"/><path d="M15.477 12.89 17 22l-5-3-5 3 1.523-9.11"/></svg></div>
         <h3>Ohio Licensed</h3>
         <p>All work performed by licensed electricians. License #EL-77402. We pull permits for every job that requires one, no exceptions.</p>
       </div>
       <div class="trust-card">
-        <div class="trust-icon">INS</div>
+        <div class="trust-icon"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><path d="M20 13c0 5-3.5 7.5-7.66 8.95a1 1 0 0 1-.67-.01C7.5 20.5 4 18 4 13V6a1 1 0 0 1 1-1c2 0 4.5-1.2 6.24-2.72a1.17 1.17 0 0 1 1.52 0C14.51 3.81 17 5 19 5a1 1 0 0 1 1 1z"/><path d="m9 12 2 2 4-4"/></svg></div>
         <h3>Fully Insured</h3>
         <p>$2M general liability and workers' comp for every job. Your home and property are protected on every single visit.</p>
       </div>
       <div class="trust-card">
-        <div class="trust-icon">QTE</div>
+        <div class="trust-icon"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><path d="M15 2H6a2 2 0 0 0-2 2v16a2 2 0 0 0 2 2h12a2 2 0 0 0 2-2V7Z"/><path d="M14 2v4a2 2 0 0 0 2 2h4"/><path d="M16 13H8M16 17H8M10 9H8"/></svg></div>
         <h3>Honest Estimates</h3>
         <p>We tell you exactly what the job will cost before we start. The price you approve is the price you pay, no added charges after the fact.</p>
       </div>
       <div class="trust-card">
-        <div class="trust-icon">LOC</div>
+        <div class="trust-icon"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><path d="M20 10c0 6-8 12-8 12s-8-6-8-12a8 8 0 0 1 16 0Z"/><circle cx="12" cy="10" r="3"/></svg></div>
         <h3>Local &amp; Family-Owned</h3>
         <p>Based in Kent since 2013. We work in the community we live in, which means your review, your referral, and your trust actually matter to us.</p>
       </div>
@@ -523,7 +529,7 @@
     </div>
     <div class="contact-right">
       <div class="contact-box">
-        <div class="cb-icon">Call</div>
+        <div class="cb-icon"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><path d="M22 16.92v3a2 2 0 0 1-2.18 2 19.79 19.79 0 0 1-8.63-3.07 19.5 19.5 0 0 1-6-6 19.79 19.79 0 0 1-3.07-8.67A2 2 0 0 1 4.11 2h3a2 2 0 0 1 2 1.72 12.84 12.84 0 0 0 .7 2.81 2 2 0 0 1-.45 2.11L8.09 9.91a16 16 0 0 0 6 6l1.27-1.27a2 2 0 0 1 2.11-.45 12.84 12.84 0 0 0 2.81.7A2 2 0 0 1 22 16.92z"/></svg></div>
         <div>
           <div class="cb-label">Call or Text</div>
           <div class="cb-value">(330) 555-0900</div>
@@ -531,7 +537,7 @@
         </div>
       </div>
       <div class="contact-box">
-        <div class="cb-icon">Email</div>
+        <div class="cb-icon"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><rect width="20" height="16" x="2" y="4" rx="2"/><path d="m22 7-8.97 5.7a1.94 1.94 0 0 1-2.06 0L2 7"/></svg></div>
         <div>
           <div class="cb-label">Email Us</div>
           <div class="cb-value">quotes@voltelectrickent.com</div>
@@ -539,7 +545,7 @@
         </div>
       </div>
       <div class="contact-box">
-        <div class="cb-icon">Loc</div>
+        <div class="cb-icon"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><path d="M20 10c0 6-8 12-8 12s-8-6-8-12a8 8 0 0 1 16 0Z"/><circle cx="12" cy="10" r="3"/></svg></div>
         <div>
           <div class="cb-label">Based In</div>
           <div class="cb-value">Kent, OH 44240</div>

@@ -208,10 +208,15 @@
     }
     .svc-seasonal { border-left: 3px solid var(--amber); }
     .svc-seasonal .svc-icon { background: #fffbeb; }
+    .nav-brand-icon svg { width: 22px; height: 22px; color: #fff; }
+    .ts-icon svg { width: 22px; height: 22px; }
+    .svc-icon svg { width: 24px; height: 24px; color: var(--green); }
+    .svc-seasonal .svc-icon svg { color: #b45309; }
+    .bi-icon svg { width: 24px; height: 24px; }
     .seasonal-label { font-size: 0.65rem; font-weight: 700; letter-spacing: 0.1em; text-transform: uppercase; color: var(--amber); margin-bottom: 0.5rem; }
     .svc-detail-list { margin-top: 0.75rem; padding-top: 0.75rem; border-top: 1px solid var(--border); }
     .svc-detail-list li { font-size: 0.76rem; color: var(--muted); line-height: 1.8; list-style: none; display: flex; align-items: flex-start; gap: 0.4rem; }
-    .svc-detail-list li::before { content: '✓'; color: var(--green); font-weight: 700; flex-shrink: 0; }
+    .svc-detail-list li::before { content: ''; width: 0.95em; height: 0.95em; margin-top: 0.2em; background-color: var(--green); -webkit-mask: url("data:image/svg+xml,%3Csvg xmlns='http://www.w3.org/2000/svg' viewBox='0 0 24 24' fill='none' stroke='%23000' stroke-width='3' stroke-linecap='round' stroke-linejoin='round'%3E%3Cpath d='M20 6 9 17l-5-5'/%3E%3C/svg%3E") center/contain no-repeat; mask: url("data:image/svg+xml,%3Csvg xmlns='http://www.w3.org/2000/svg' viewBox='0 0 24 24' fill='none' stroke='%23000' stroke-width='3' stroke-linecap='round' stroke-linejoin='round'%3E%3Cpath d='M20 6 9 17l-5-5'/%3E%3C/svg%3E") center/contain no-repeat; flex-shrink: 0; }
 
     /* PROGRAMS */
     #programs { padding: 6rem 4rem; background: var(--off); border-top: 1px solid var(--border); }
@@ -230,7 +235,7 @@
     .prog-tagline { font-size: 0.8rem; color: var(--muted); margin-bottom: 1.25rem; line-height: 1.5; }
     .prog-includes { list-style: none; display: flex; flex-direction: column; gap: 0.55rem; }
     .prog-includes li { font-size: 0.81rem; color: var(--muted); display: flex; align-items: flex-start; gap: 0.5rem; }
-    .prog-includes li::before { content: '✓'; color: var(--green); font-weight: 700; flex-shrink: 0; margin-top: 0.05rem; }
+    .prog-includes li::before { content: ''; width: 0.95em; height: 0.95em; margin-top: 0.2em; background-color: var(--green); -webkit-mask: url("data:image/svg+xml,%3Csvg xmlns='http://www.w3.org/2000/svg' viewBox='0 0 24 24' fill='none' stroke='%23000' stroke-width='3' stroke-linecap='round' stroke-linejoin='round'%3E%3Cpath d='M20 6 9 17l-5-5'/%3E%3C/svg%3E") center/contain no-repeat; mask: url("data:image/svg+xml,%3Csvg xmlns='http://www.w3.org/2000/svg' viewBox='0 0 24 24' fill='none' stroke='%23000' stroke-width='3' stroke-linecap='round' stroke-linejoin='round'%3E%3Cpath d='M20 6 9 17l-5-5'/%3E%3C/svg%3E") center/contain no-repeat; flex-shrink: 0; }
 
     /* BOOK */
     #book { padding: 6rem 4rem; background: var(--green-deep); }
@@ -341,17 +346,21 @@
       .why-row { flex-direction: column; }
       .why-stats { flex-direction: column; }
     }
-  </style>
+  
+  /* inline glyph icons */
+  .g-ico{width:1em;height:1em;display:inline-block;vertical-align:-0.125em;flex-shrink:0}
+  .g-ico--line{fill:none;stroke-width:2}
+</style>
 </head>
 <body>
 
 <div class="seasonal-bar">
-  <strong>Summer Lawn Care Season is here.</strong> Lock in your mowing schedule, spots filling fast. <a href="#book">Book Online →</a>
+  <strong>Summer Lawn Care Season is here.</strong> Lock in your mowing schedule, spots filling fast. <a href="#book">Book Online <svg class="g-ico g-ico--line" viewBox="0 0 24 24" stroke="currentColor" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><path d="M5 12h14M13 6l6 6-6 6"/></svg></a>
 </div>
 
 <nav>
   <a href="#" class="nav-brand">
-    <div class="nav-brand-icon">MB</div>
+    <div class="nav-brand-icon"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><path d="M11 20A7 7 0 0 1 9.8 6.1C15.5 5 17 4.48 19 2c1 2 2 4.18 2 8 0 5.5-4.78 10-10 10Z"/><path d="M2 21c0-3 1.85-5.36 5.08-6"/></svg></div>
     <div>
       <div class="nav-brand-name">Meadowbrook Lawn &amp; Landscape</div>
       <div class="nav-brand-sub">Licensed · Insured · Portage County, OH</div>
@@ -372,14 +381,13 @@
 
 <section class="hero">
   <div class="hero-left">
-    <div class="hero-badge"><span class="badge-dot"></span> Locally Owned Since 2009</div>
     <h1>The Lawn You've<br/>Always Wanted.<br/><span>Guaranteed.</span></h1>
     <p>Professional lawn care and landscaping for Portage County homeowners. We show up on schedule, treat your yard like our own, and back every service with a 100% satisfaction guarantee.</p>
     <div class="hero-pills">
-      <div class="hero-pill"><span>✓</span> Ohio Pesticide License #PAC-08847</div>
-      <div class="hero-pill"><span>✓</span> Fully Insured &amp; Background-Checked</div>
-      <div class="hero-pill"><span>✓</span> Free On-Site Estimate</div>
-      <div class="hero-pill"><span>✓</span> No Long-Term Contracts</div>
+      <div class="hero-pill"><span><svg class="g-ico g-ico--line" viewBox="0 0 24 24" stroke="currentColor" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><path d="M20 6 9 17l-5-5"/></svg></span> Ohio Pesticide License #PAC-08847</div>
+      <div class="hero-pill"><span><svg class="g-ico g-ico--line" viewBox="0 0 24 24" stroke="currentColor" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><path d="M20 6 9 17l-5-5"/></svg></span> Fully Insured &amp; Background-Checked</div>
+      <div class="hero-pill"><span><svg class="g-ico g-ico--line" viewBox="0 0 24 24" stroke="currentColor" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><path d="M20 6 9 17l-5-5"/></svg></span> Free On-Site Estimate</div>
+      <div class="hero-pill"><span><svg class="g-ico g-ico--line" viewBox="0 0 24 24" stroke="currentColor" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><path d="M20 6 9 17l-5-5"/></svg></span> No Long-Term Contracts</div>
     </div>
   </div>
   <div class="hero-right">
@@ -428,17 +436,17 @@
       <label>Anything Else? (optional)</label>
       <textarea placeholder="Tell us about your lawn, current condition, problem spots, goals, or specific concerns..."></textarea>
     </div>
-    <button class="form-submit">Get My Free Estimate →</button>
+    <button class="form-submit">Get My Free Estimate <svg class="g-ico g-ico--line" viewBox="0 0 24 24" stroke="currentColor" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><path d="M5 12h14M13 6l6 6-6 6"/></svg></button>
     <p class="form-note">No spam. No sales pressure. Just an honest quote.</p>
   </div>
 </section>
 
 <div class="trust-strip">
-  <div class="ts-item"><span class="ts-icon">LIC</span><div class="ts-text">Ohio Licensed<span>Pesticide Applicator #PAC-08847</span></div></div>
-  <div class="ts-item"><span class="ts-icon">INS</span><div class="ts-text">Fully Insured<span>$2M general liability + workers comp</span></div></div>
-  <div class="ts-item"><span class="ts-icon">ECO</span><div class="ts-text">Eco-Conscious Options<span>Low-impact &amp; organic treatments available</span></div></div>
-  <div class="ts-item"><span class="ts-icon">APP</span><div class="ts-text">Digital Visit Reports<span>Photo confirmation after every service</span></div></div>
-  <div class="ts-item"><span class="ts-icon">4.9</span><div class="ts-text">4.9 Stars · 340+ Reviews<span>Google · Angi · Nextdoor</span></div></div>
+  <div class="ts-item"><span class="ts-icon"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><circle cx="12" cy="8" r="6"/><path d="M15.477 12.89 17 22l-5-3-5 3 1.523-9.11"/></svg></span><div class="ts-text">Ohio Licensed<span>Pesticide Applicator #PAC-08847</span></div></div>
+  <div class="ts-item"><span class="ts-icon"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><path d="M20 13c0 5-3.5 7.5-7.66 8.95a1 1 0 0 1-.67-.01C7.5 20.5 4 18 4 13V6a1 1 0 0 1 1-1c2 0 4.5-1.2 6.24-2.72a1.17 1.17 0 0 1 1.52 0C14.51 3.81 17 5 19 5a1 1 0 0 1 1 1z"/><path d="m9 12 2 2 4-4"/></svg></span><div class="ts-text">Fully Insured<span>$2M general liability + workers comp</span></div></div>
+  <div class="ts-item"><span class="ts-icon"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><path d="M7 19H4.815a1.83 1.83 0 0 1-1.57-.881 1.785 1.785 0 0 1-.004-1.784L7.196 9.5"/><path d="M11 19h8.203a1.83 1.83 0 0 0 1.556-.89 1.784 1.784 0 0 0 0-1.775l-1.226-2.12"/><path d="m14 16-3 3 3 3"/><path d="M8.293 13.596 7.196 9.5 3.1 10.598"/><path d="m9.344 5.811 1.093-1.892A1.83 1.83 0 0 1 11.985 3a1.784 1.784 0 0 1 1.546.888l3.943 6.843"/><path d="m13.378 9.633 4.096 1.098 1.097-4.096"/></svg></span><div class="ts-text">Eco-Conscious Options<span>Low-impact &amp; organic treatments available</span></div></div>
+  <div class="ts-item"><span class="ts-icon"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><rect width="14" height="20" x="5" y="2" rx="2" ry="2"/><path d="M12 18h.01"/></svg></span><div class="ts-text">Digital Visit Reports<span>Photo confirmation after every service</span></div></div>
+  <div class="ts-item"><span class="ts-icon"><svg viewBox="0 0 24 24" fill="currentColor" aria-hidden="true"><path d="M12 2.6l2.9 5.9 6.5.95-4.7 4.58 1.1 6.47L12 17.97 6.2 20.5l1.1-6.47L2.6 9.45l6.5-.95z"/></svg></span><div class="ts-text">4.9 Stars · 340+ Reviews<span>Google · Angi · Nextdoor</span></div></div>
 </div>
 
 <div class="lawn-score-bar">
@@ -452,7 +460,7 @@
     <div class="lsb-step">We recommend a plan</div>
     <div class="lsb-step">No pressure, ever</div>
   </div>
-  <button class="lsb-cta">Book Free Assessment →</button>
+  <button class="lsb-cta">Book Free Assessment <svg class="g-ico g-ico--line" viewBox="0 0 24 24" stroke="currentColor" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><path d="M5 12h14M13 6l6 6-6 6"/></svg></button>
 </div>
 
 <section id="services">
@@ -464,7 +472,7 @@
 
       <div class="svc-card">
         <div class="svc-popular">Most Popular</div>
-        <div class="svc-icon">MOW</div>
+        <div class="svc-icon"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><circle cx="6" cy="6" r="3"/><path d="M8.12 8.12 12 12"/><path d="M20 4 8.12 15.88"/><circle cx="6" cy="18" r="3"/><path d="M14.8 14.8 20 20"/></svg></div>
         <h3>Lawn Mowing &amp; Edging</h3>
         <p>Weekly or bi-weekly cuts, clean line edging along all borders, and blow-down of all hard surfaces after every visit. We mow at the right height for your grass type, not just the fastest pass.</p>
         <ul class="svc-detail-list">
@@ -476,7 +484,7 @@
       </div>
 
       <div class="svc-card">
-        <div class="svc-icon">SOIL</div>
+        <div class="svc-icon"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><path d="M7 20h10"/><path d="M10 20c5.5-2.5.8-6.4 3-10"/><path d="M9.5 9.4c1.1.8 1.8 2.2 2.3 3.7-2 .4-3.5.4-4.8-.3-1.2-.6-2.3-1.9-3-4.2 2.8-.5 4.4 0 5.5.8z"/><path d="M14.1 6a7 7 0 0 0-1.1 4c1.9-.1 3.3-.6 4.3-1.4 1-1 1.6-2.3 1.7-4.6-2.7.1-4 1-4.9 2z"/></svg></div>
         <h3>Fertilization &amp; Weed Control</h3>
         <p>A 5-round annual program calibrated to Northeast Ohio's soil and climate. We pull a soil sample before round one so every application targets your lawn's actual deficiencies, not a generic formula.</p>
         <ul class="svc-detail-list">
@@ -488,7 +496,7 @@
       </div>
 
       <div class="svc-card">
-        <div class="svc-icon">AIR</div>
+        <div class="svc-icon"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><path d="M12.8 19.6A2 2 0 1 0 14 16H2"/><path d="M17.5 8a2.5 2.5 0 1 1 2 4H2"/><path d="M9.8 4.4A2 2 0 1 1 11 8H2"/></svg></div>
         <h3>Core Aeration &amp; Overseeding</h3>
         <p>Compacted soil is the #1 reason Ohio lawns thin out over time. Our core aerators pull actual plugs from the soil, not spike rolls, allowing water, air, and seed direct root contact.</p>
         <ul class="svc-detail-list">
@@ -501,7 +509,7 @@
 
       <div class="svc-card svc-seasonal">
         <div class="seasonal-label">Seasonal Priority</div>
-        <div class="svc-icon">FALL</div>
+        <div class="svc-icon"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><path d="M11 20A7 7 0 0 1 9.8 6.1C15.5 5 17 4.48 19 2c1 2 2 4.18 2 8 0 5.5-4.78 10-10 10Z"/><path d="M2 21c0-3 1.85-5.36 5.08-6"/></svg></div>
         <h3>Spring &amp; Fall Cleanup</h3>
         <p>Leaf removal, debris hauling, bed edging, and turf cleanup. We don't just blow everything to the curb, we haul it off. Spring visits also include a post-winter lawn damage assessment at no extra charge.</p>
         <ul class="svc-detail-list">
@@ -513,7 +521,7 @@
 
       <div class="svc-card svc-seasonal">
         <div class="seasonal-label">Spring Service</div>
-        <div class="svc-icon">MULCH</div>
+        <div class="svc-icon"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><path d="m12.83 2.18a2 2 0 0 0-1.66 0L2.6 6.08a1 1 0 0 0 0 1.83l8.58 3.91a2 2 0 0 0 1.66 0l8.58-3.9a1 1 0 0 0 0-1.83Z"/><path d="m22 17.65-9.17 4.16a2 2 0 0 1-1.66 0L2 17.65"/><path d="m22 12.65-9.17 4.16a2 2 0 0 1-1.66 0L2 12.65"/></svg></div>
         <h3>Mulching &amp; Bed Maintenance</h3>
         <p>Fresh mulch installation, bed weeding, edging definition, and annual renewal, the fastest way to make your whole property look professionally maintained between lawn visits.</p>
         <ul class="svc-detail-list">
@@ -524,7 +532,7 @@
       </div>
 
       <div class="svc-card">
-        <div class="svc-icon">CUT</div>
+        <div class="svc-icon"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><path d="M10 10v.2A3 3 0 0 1 8.9 16H5a3 3 0 0 1-1-5.8V10a3 3 0 0 1 6 0Z"/><path d="M7 16v6"/><path d="M13 19v3"/><path d="M12 19h8.3a1 1 0 0 0 .7-1.7L18 14h.3a1 1 0 0 0 .7-1.7L16 9h.2a1 1 0 0 0 .8-1.7L13 3l-1.4 1.5"/></svg></div>
         <h3>Shrub &amp; Hedge Trimming</h3>
         <p>Precision trimming of ornamentals, hedges, and foundation shrubs. We use hand shears for delicate specimens and don't "top" plants, proper form preserves plant health and keeps the look clean through the season.</p>
         <ul class="svc-detail-list">
@@ -606,35 +614,35 @@
         <p>We come to you, walk the property, and give you a written quote, no vague ballpark, no pressure. Most estimates are delivered within 24 hours of our visit.</p>
         <div class="book-info">
           <div class="book-info-item">
-            <div class="bi-icon">PLAN</div>
+            <div class="bi-icon"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><rect width="8" height="4" x="8" y="2" rx="1" ry="1"/><path d="M16 4h2a2 2 0 0 1 2 2v14a2 2 0 0 1-2 2H6a2 2 0 0 1-2-2V6a2 2 0 0 1 2-2h2"/><path d="M12 11h4M12 16h4M8 11h.01M8 16h.01"/></svg></div>
             <div class="bi-text">
               <h4>Free 25-Point Property Walk</h4>
               <p>We assess soil, thatch, drainage, grade, weed pressure, and turf density before quoting. You'll know more about your lawn than you did before we arrived.</p>
             </div>
           </div>
           <div class="book-info-item">
-            <div class="bi-icon">APP</div>
+            <div class="bi-icon"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><rect width="14" height="20" x="5" y="2" rx="2" ry="2"/><path d="M12 18h.01"/></svg></div>
             <div class="bi-text">
               <h4>Photo Reports After Every Service</h4>
               <p>You'll receive a text confirmation with geo-stamped photos when your crew leaves. Always know what was done, when, and by whom.</p>
             </div>
           </div>
           <div class="book-info-item">
-            <div class="bi-icon">DATE</div>
+            <div class="bi-icon"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><rect width="18" height="18" x="3" y="4" rx="2" ry="2"/><path d="M16 2v4M8 2v4M3 10h18"/></svg></div>
             <div class="bi-text">
               <h4>Consistent Crew, Consistent Day</h4>
               <p>We assign you to a permanent route crew and a regular service day. No revolving door of strangers showing up at random times.</p>
             </div>
           </div>
           <div class="book-info-item">
-            <div class="bi-icon">SEC</div>
+            <div class="bi-icon"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><path d="M20 13c0 5-3.5 7.5-7.66 8.95a1 1 0 0 1-.67-.01C7.5 20.5 4 18 4 13V6a1 1 0 0 1 1-1c2 0 4.5-1.2 6.24-2.72a1.17 1.17 0 0 1 1.52 0C14.51 3.81 17 5 19 5a1 1 0 0 1 1 1z"/><path d="m9 12 2 2 4-4"/></svg></div>
             <div class="bi-text">
               <h4>5-Day Re-Service Guarantee</h4>
               <p>Not happy with any service? Tell us within 5 days and we return to make it right, completely free. No questions, no debate.</p>
             </div>
           </div>
           <div class="book-info-item">
-            <div class="bi-icon">BILL</div>
+            <div class="bi-icon"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><path d="M4 2v20l2-1 2 1 2-1 2 1 2-1 2 1 2-1 2 1V2l-2 1-2-1-2 1-2-1-2 1-2-1-2 1Z"/><path d="M8 7h8M8 11h8M8 15h5"/></svg></div>
             <div class="bi-text">
               <h4>No Contracts Required</h4>
               <p>Every program runs month-to-month. Pause for vacation, skip a round, or cancel anytime, we earn your business every single visit.</p>
@@ -718,7 +726,7 @@
           <label>Additional Notes (optional)</label>
           <textarea placeholder="Anything that would help us prepare, pets, gate codes, problem areas, prior treatments, neighboring trees..."></textarea>
         </div>
-        <button class="form-submit">Request My Free Estimate →</button>
+        <button class="form-submit">Request My Free Estimate <svg class="g-ico g-ico--line" viewBox="0 0 24 24" stroke="currentColor" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><path d="M5 12h14M13 6l6 6-6 6"/></svg></button>
         <p class="form-note">No commitment. No spam. Just a straight answer and an honest price.</p>
       </div>
     </div>
@@ -732,7 +740,7 @@
     <div class="review-grid">
 
       <div class="review-card">
-        <div class="review-stars">★★★★★</div>
+        <div class="review-stars"><svg class="g-ico" viewBox="0 0 24 24" fill="currentColor" aria-hidden="true"><path d="M12 2.6l2.9 5.9 6.5.95-4.7 4.58 1.1 6.47L12 17.97 6.2 20.5l1.1-6.47L2.6 9.45l6.5-.95z"/></svg><svg class="g-ico" viewBox="0 0 24 24" fill="currentColor" aria-hidden="true"><path d="M12 2.6l2.9 5.9 6.5.95-4.7 4.58 1.1 6.47L12 17.97 6.2 20.5l1.1-6.47L2.6 9.45l6.5-.95z"/></svg><svg class="g-ico" viewBox="0 0 24 24" fill="currentColor" aria-hidden="true"><path d="M12 2.6l2.9 5.9 6.5.95-4.7 4.58 1.1 6.47L12 17.97 6.2 20.5l1.1-6.47L2.6 9.45l6.5-.95z"/></svg><svg class="g-ico" viewBox="0 0 24 24" fill="currentColor" aria-hidden="true"><path d="M12 2.6l2.9 5.9 6.5.95-4.7 4.58 1.1 6.47L12 17.97 6.2 20.5l1.1-6.47L2.6 9.45l6.5-.95z"/></svg><svg class="g-ico" viewBox="0 0 24 24" fill="currentColor" aria-hidden="true"><path d="M12 2.6l2.9 5.9 6.5.95-4.7 4.58 1.1 6.47L12 17.97 6.2 20.5l1.1-6.47L2.6 9.45l6.5-.95z"/></svg></div>
         <p class="review-text">"They walked the whole yard before quoting me, pointed out a drainage issue I'd never noticed, and gave me options at different price points. That kind of transparency is rare. Hired them on the spot."</p>
         <div class="review-author">
           <div class="review-avatar">DM</div>
@@ -744,7 +752,7 @@
       </div>
 
       <div class="review-card">
-        <div class="review-stars">★★★★★</div>
+        <div class="review-stars"><svg class="g-ico" viewBox="0 0 24 24" fill="currentColor" aria-hidden="true"><path d="M12 2.6l2.9 5.9 6.5.95-4.7 4.58 1.1 6.47L12 17.97 6.2 20.5l1.1-6.47L2.6 9.45l6.5-.95z"/></svg><svg class="g-ico" viewBox="0 0 24 24" fill="currentColor" aria-hidden="true"><path d="M12 2.6l2.9 5.9 6.5.95-4.7 4.58 1.1 6.47L12 17.97 6.2 20.5l1.1-6.47L2.6 9.45l6.5-.95z"/></svg><svg class="g-ico" viewBox="0 0 24 24" fill="currentColor" aria-hidden="true"><path d="M12 2.6l2.9 5.9 6.5.95-4.7 4.58 1.1 6.47L12 17.97 6.2 20.5l1.1-6.47L2.6 9.45l6.5-.95z"/></svg><svg class="g-ico" viewBox="0 0 24 24" fill="currentColor" aria-hidden="true"><path d="M12 2.6l2.9 5.9 6.5.95-4.7 4.58 1.1 6.47L12 17.97 6.2 20.5l1.1-6.47L2.6 9.45l6.5-.95z"/></svg><svg class="g-ico" viewBox="0 0 24 24" fill="currentColor" aria-hidden="true"><path d="M12 2.6l2.9 5.9 6.5.95-4.7 4.58 1.1 6.47L12 17.97 6.2 20.5l1.1-6.47L2.6 9.45l6.5-.95z"/></svg></div>
         <p class="review-text">"Our lawn had never looked this good, thick, green, no crabgrass. The photo reports after every service are a genius touch. I always know someone came, and I can see exactly what they did."</p>
         <div class="review-author">
           <div class="review-avatar">SL</div>
@@ -756,7 +764,7 @@
       </div>
 
       <div class="review-card">
-        <div class="review-stars">★★★★★</div>
+        <div class="review-stars"><svg class="g-ico" viewBox="0 0 24 24" fill="currentColor" aria-hidden="true"><path d="M12 2.6l2.9 5.9 6.5.95-4.7 4.58 1.1 6.47L12 17.97 6.2 20.5l1.1-6.47L2.6 9.45l6.5-.95z"/></svg><svg class="g-ico" viewBox="0 0 24 24" fill="currentColor" aria-hidden="true"><path d="M12 2.6l2.9 5.9 6.5.95-4.7 4.58 1.1 6.47L12 17.97 6.2 20.5l1.1-6.47L2.6 9.45l6.5-.95z"/></svg><svg class="g-ico" viewBox="0 0 24 24" fill="currentColor" aria-hidden="true"><path d="M12 2.6l2.9 5.9 6.5.95-4.7 4.58 1.1 6.47L12 17.97 6.2 20.5l1.1-6.47L2.6 9.45l6.5-.95z"/></svg><svg class="g-ico" viewBox="0 0 24 24" fill="currentColor" aria-hidden="true"><path d="M12 2.6l2.9 5.9 6.5.95-4.7 4.58 1.1 6.47L12 17.97 6.2 20.5l1.1-6.47L2.6 9.45l6.5-.95z"/></svg><svg class="g-ico" viewBox="0 0 24 24" fill="currentColor" aria-hidden="true"><path d="M12 2.6l2.9 5.9 6.5.95-4.7 4.58 1.1 6.47L12 17.97 6.2 20.5l1.1-6.47L2.6 9.45l6.5-.95z"/></svg></div>
         <p class="review-text">"First year in, the aeration and overseeding completely transformed the bare patches on my back slope. I've tried to do it myself for years. These guys did it once and I haven't had bare spots since."</p>
         <div class="review-author">
           <div class="review-avatar">TR</div>
@@ -768,7 +776,7 @@
       </div>
 
       <div class="review-card">
-        <div class="review-stars">★★★★★</div>
+        <div class="review-stars"><svg class="g-ico" viewBox="0 0 24 24" fill="currentColor" aria-hidden="true"><path d="M12 2.6l2.9 5.9 6.5.95-4.7 4.58 1.1 6.47L12 17.97 6.2 20.5l1.1-6.47L2.6 9.45l6.5-.95z"/></svg><svg class="g-ico" viewBox="0 0 24 24" fill="currentColor" aria-hidden="true"><path d="M12 2.6l2.9 5.9 6.5.95-4.7 4.58 1.1 6.47L12 17.97 6.2 20.5l1.1-6.47L2.6 9.45l6.5-.95z"/></svg><svg class="g-ico" viewBox="0 0 24 24" fill="currentColor" aria-hidden="true"><path d="M12 2.6l2.9 5.9 6.5.95-4.7 4.58 1.1 6.47L12 17.97 6.2 20.5l1.1-6.47L2.6 9.45l6.5-.95z"/></svg><svg class="g-ico" viewBox="0 0 24 24" fill="currentColor" aria-hidden="true"><path d="M12 2.6l2.9 5.9 6.5.95-4.7 4.58 1.1 6.47L12 17.97 6.2 20.5l1.1-6.47L2.6 9.45l6.5-.95z"/></svg><svg class="g-ico" viewBox="0 0 24 24" fill="currentColor" aria-hidden="true"><path d="M12 2.6l2.9 5.9 6.5.95-4.7 4.58 1.1 6.47L12 17.97 6.2 20.5l1.1-6.47L2.6 9.45l6.5-.95z"/></svg></div>
         <p class="review-text">"I was skeptical about the soil test thing but I'm glad I listened. They found my yard was severely phosphorus-deficient, adjusted the fertilizer plan, and by July it was the greenest lawn on the street."</p>
         <div class="review-author">
           <div class="review-avatar">KJ</div>
@@ -780,7 +788,7 @@
       </div>
 
       <div class="review-card">
-        <div class="review-stars">★★★★★</div>
+        <div class="review-stars"><svg class="g-ico" viewBox="0 0 24 24" fill="currentColor" aria-hidden="true"><path d="M12 2.6l2.9 5.9 6.5.95-4.7 4.58 1.1 6.47L12 17.97 6.2 20.5l1.1-6.47L2.6 9.45l6.5-.95z"/></svg><svg class="g-ico" viewBox="0 0 24 24" fill="currentColor" aria-hidden="true"><path d="M12 2.6l2.9 5.9 6.5.95-4.7 4.58 1.1 6.47L12 17.97 6.2 20.5l1.1-6.47L2.6 9.45l6.5-.95z"/></svg><svg class="g-ico" viewBox="0 0 24 24" fill="currentColor" aria-hidden="true"><path d="M12 2.6l2.9 5.9 6.5.95-4.7 4.58 1.1 6.47L12 17.97 6.2 20.5l1.1-6.47L2.6 9.45l6.5-.95z"/></svg><svg class="g-ico" viewBox="0 0 24 24" fill="currentColor" aria-hidden="true"><path d="M12 2.6l2.9 5.9 6.5.95-4.7 4.58 1.1 6.47L12 17.97 6.2 20.5l1.1-6.47L2.6 9.45l6.5-.95z"/></svg><svg class="g-ico" viewBox="0 0 24 24" fill="currentColor" aria-hidden="true"><path d="M12 2.6l2.9 5.9 6.5.95-4.7 4.58 1.1 6.47L12 17.97 6.2 20.5l1.1-6.47L2.6 9.45l6.5-.95z"/></svg></div>
         <p class="review-text">"Same crew every week, which I really appreciated. They learned our yard quirks, were always careful around my wife's flower beds, and never once left without cleaning the sidewalk. Professional every time."</p>
         <div class="review-author">
           <div class="review-avatar">BW</div>
@@ -792,7 +800,7 @@
       </div>
 
       <div class="review-card">
-        <div class="review-stars">★★★★★</div>
+        <div class="review-stars"><svg class="g-ico" viewBox="0 0 24 24" fill="currentColor" aria-hidden="true"><path d="M12 2.6l2.9 5.9 6.5.95-4.7 4.58 1.1 6.47L12 17.97 6.2 20.5l1.1-6.47L2.6 9.45l6.5-.95z"/></svg><svg class="g-ico" viewBox="0 0 24 24" fill="currentColor" aria-hidden="true"><path d="M12 2.6l2.9 5.9 6.5.95-4.7 4.58 1.1 6.47L12 17.97 6.2 20.5l1.1-6.47L2.6 9.45l6.5-.95z"/></svg><svg class="g-ico" viewBox="0 0 24 24" fill="currentColor" aria-hidden="true"><path d="M12 2.6l2.9 5.9 6.5.95-4.7 4.58 1.1 6.47L12 17.97 6.2 20.5l1.1-6.47L2.6 9.45l6.5-.95z"/></svg><svg class="g-ico" viewBox="0 0 24 24" fill="currentColor" aria-hidden="true"><path d="M12 2.6l2.9 5.9 6.5.95-4.7 4.58 1.1 6.47L12 17.97 6.2 20.5l1.1-6.47L2.6 9.45l6.5-.95z"/></svg><svg class="g-ico" viewBox="0 0 24 24" fill="currentColor" aria-hidden="true"><path d="M12 2.6l2.9 5.9 6.5.95-4.7 4.58 1.1 6.47L12 17.97 6.2 20.5l1.1-6.47L2.6 9.45l6.5-.95z"/></svg></div>
         <p class="review-text">"Called them for a spring cleanup and they showed up the next morning, did an immaculate job, and left a lawn health report in my mailbox. I've been on the Full Season Pro plan ever since. Worth every penny."</p>
         <div class="review-author">
           <div class="review-avatar">MH</div>
@@ -845,7 +853,7 @@
             <div class="why-stat-l">Active Lawn<br/>Care Clients</div>
           </div>
           <div class="why-stat">
-            <div class="why-stat-n">4.9★</div>
+            <div class="why-stat-n">4.9<svg class="g-ico" viewBox="0 0 24 24" fill="currentColor" aria-hidden="true"><path d="M12 2.6l2.9 5.9 6.5.95-4.7 4.58 1.1 6.47L12 17.97 6.2 20.5l1.1-6.47L2.6 9.45l6.5-.95z"/></svg></div>
             <div class="why-stat-l">Average Rating<br/>340+ Reviews</div>
           </div>
           <div class="why-stat">

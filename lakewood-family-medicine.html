@@ -35,6 +35,7 @@
       display: flex; align-items: center; justify-content: center;
       color: white; font-size: 1rem;
     }
+    .nav-brand-icon svg { width: 20px; height: 20px; }
     .nav-brand-name { color: white; font-weight: 700; font-size: 1rem; line-height: 1.1; }
     .nav-brand-sub { color: rgba(255,255,255,0.5); font-size: 0.7rem; letter-spacing: 0.1em; text-transform: uppercase; }
     .nav-links { display: flex; list-style: none; }
@@ -247,13 +248,17 @@
       .providers-grid { grid-template-columns: 1fr; }
       .qf-row { grid-template-columns: 1fr; }
     }
-  </style>
+  
+  /* inline glyph icons */
+  .g-ico{width:1em;height:1em;display:inline-block;vertical-align:-0.125em;flex-shrink:0}
+  .g-ico--line{fill:none;stroke-width:2}
+</style>
 </head>
 <body>
 
 <nav>
   <a href="#" class="nav-brand">
-    <div class="nav-brand-icon">+</div>
+    <div class="nav-brand-icon"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><path d="M11 2a2 2 0 0 0-2 2v5H4a2 2 0 0 0-2 2v2c0 1.1.9 2 2 2h5v5c0 1.1.9 2 2 2h2a2 2 0 0 0 2-2v-5h5a2 2 0 0 0 2-2v-2a2 2 0 0 0-2-2h-5V4a2 2 0 0 0-2-2z"/></svg></div>
     <div>
       <div class="nav-brand-name">Lakewood Family Medicine</div>
       <div class="nav-brand-sub">Primary &amp; Preventive Care</div>
@@ -275,7 +280,6 @@
 
 <section class="hero">
   <div class="hero-text">
-    <div class="hero-tag">Accepting New Patients, All Ages</div>
     <h1>Compassionate Care for <em>Every Stage</em> of Life</h1>
     <p>From newborns to grandparents, our board-certified physicians and nurse practitioners deliver personalized, evidence-based medicine in a warm, unhurried environment. Your health is our whole focus.</p>
     <div class="hero-btns">
@@ -356,7 +360,7 @@
     <div class="trust-l">Years Serving Kent</div>
   </div>
   <div class="trust-item">
-    <div class="trust-n">4.8 ★</div>
+    <div class="trust-n">4.8 <svg class="g-ico" viewBox="0 0 24 24" fill="currentColor" aria-hidden="true"><path d="M12 2.6l2.9 5.9 6.5.95-4.7 4.58 1.1 6.47L12 17.97 6.2 20.5l1.1-6.47L2.6 9.45l6.5-.95z"/></svg></div>
     <div class="trust-l">Patient Satisfaction</div>
   </div>
   <div class="trust-item">

@@ -3,20 +3,20 @@
 <head>
   <meta charset="UTF-8"/>
   <meta name="viewport" content="width=device-width, initial-scale=1.0"/>
-  <meta name="description" content="Maxwell Wilson — Web Designer Portfolio"/>
+  <meta name="description" content="Maxwell Wilson, Web Designer Portfolio"/>
   <meta name="author" content="Maxwell Wilson"/>
   <meta name="theme-color" content="#080808"/>
   <link rel="canonical" href="https://shmagssites.com/"/>
   <meta property="og:type" content="website"/>
   <meta property="og:url" content="https://shmagssites.com/"/>
-  <meta property="og:title" content="Maxwell Wilson — Web Designer"/>
-  <meta property="og:description" content="Premium, conversion-focused websites and redesigns — web designer, Kent State University 2026."/>
+  <meta property="og:title" content="Maxwell Wilson, Web Designer"/>
+  <meta property="og:description" content="Premium, conversion-focused websites and redesigns, web designer, Kent State University 2026."/>
   <meta property="og:image" content="https://shmagssites.github.io/Portfolio/Images/sweetkneads.png"/>
   <meta name="twitter:card" content="summary_large_image"/>
-  <meta name="twitter:title" content="Maxwell Wilson — Web Designer"/>
+  <meta name="twitter:title" content="Maxwell Wilson, Web Designer"/>
   <meta name="twitter:description" content="Premium, conversion-focused websites and redesigns."/>
   <meta name="twitter:image" content="https://shmagssites.github.io/Portfolio/Images/sweetkneads.png"/>
-  <title>Maxwell Wilson — Web Designer</title>
+  <title>Maxwell Wilson, Web Designer</title>
   <link rel="preconnect" href="https://fonts.googleapis.com"/>
   <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin/>
   <link href="https://fonts.googleapis.com/css2?family=UnifrakturMaguntia&family=Crimson+Pro:ital,wght@0,300;0,400;0,600;1,300;1,400;1,600&family=Barlow:wght@300;400;500;600&display=swap" rel="stylesheet"/>
@@ -116,16 +116,6 @@
   }
   .nav-links a:hover { color: var(--white); }
   .nav-links a:hover::after { left: 0; right: 0; }
-  .nav-avail {
-    font-size: 0.68rem; font-weight: 500; letter-spacing: 0.16em;
-    text-transform: uppercase; color: var(--silver);
-    border: 1px solid var(--border2); padding: 0.4rem 1rem;
-    display: flex; align-items: center; gap: 0.5rem;
-  }
-  .nav-avail::before {
-    content: ''; width: 5px; height: 5px; border-radius: 50%;
-    background: #7a9a7a; box-shadow: 0 0 6px #7a9a7a;
-  }
 
   /* HERO */
   .hero {
@@ -218,7 +208,7 @@
   .d1 { transition-delay: 0.12s; }
   .d2 { transition-delay: 0.24s; }
 
-  /* ABOUT — slim version */
+  /* ABOUT, slim version */
   #about {
     padding: 7rem 3.5rem;
     display: grid; grid-template-columns: auto 1fr;
@@ -308,7 +298,7 @@
     padding: 0 1.5rem; font-size: 0.75rem; color: var(--border2); letter-spacing: 0.3em;
   }
 
-  /* PROJECT GRID — image cards */
+  /* PROJECT GRID, image cards */
   .proj-grid {
     display: grid;
     grid-template-columns: repeat(2, 1fr);
@@ -455,7 +445,7 @@
     text-transform: uppercase; color: var(--silver);
     display: flex; align-items: center; gap: 0.6rem;
   }
-  .fact-icon::before { content: '—'; color: var(--muted); }
+  .fact-icon::before { content: '-'; color: var(--muted); }
   .fact-card p { font-size: 0.88rem; color: var(--muted); line-height: 1.75; }
   .fact-card strong { color: var(--text); font-weight: 500; }
 
@@ -530,7 +520,6 @@
   /* RESPONSIVE */
   @media (max-width: 900px) {
     nav { padding: 1.2rem 1.5rem; }
-    .nav-avail { display: none; }
     .hero { padding: 9rem 1.5rem 5rem; }
     #about { grid-template-columns: 1fr; gap: 2.5rem; padding: 5rem 1.5rem; }
     .about-portrait { width: 160px; }
@@ -551,7 +540,7 @@
   }
   /* ============================================================
      ENHANCED MOTION LAYER  (scroll FX, parallax, counters, tilt)
-     Tuned to the existing dark/refined aesthetic. All optional —
+     Tuned to the existing dark/refined aesthetic. All optional,
      fully disabled under prefers-reduced-motion further below.
      ============================================================ */
 
@@ -611,25 +600,9 @@
 
   .btn-main, .btn-outline { will-change: transform; }
 
-  /* Marquee band */
-  .marquee {
-    border-top: 1px solid var(--border); border-bottom: 1px solid var(--border);
-    background: var(--void); overflow: hidden; padding: 1.5rem 0; display: flex;
-    -webkit-mask-image: linear-gradient(to right, transparent, #000 8%, #000 92%, transparent);
-    mask-image: linear-gradient(to right, transparent, #000 8%, #000 92%, transparent);
-  }
-  .marquee-track { display: inline-flex; align-items: center; white-space: nowrap; animation: marqueeScroll 30s linear infinite; }
-  .marquee:hover .marquee-track { animation-play-state: paused; }
-  .marquee-item {
-    font-family: 'Crimson Pro', serif; font-style: italic; font-size: 1.7rem;
-    color: var(--silver); display: inline-flex; align-items: center; padding: 0 2.5rem;
-  }
-  .marquee-item::after { content: '\2726'; font-style: normal; color: rgba(168,165,160,0.35); font-size: 0.85rem; margin-left: 2.5rem; }
-  @keyframes marqueeScroll { from { transform: translateX(0); } to { transform: translateX(-50%); } }
-
   .stat-n, .big-stat-n { font-variant-numeric: tabular-nums; }
 
-  /* Accessibility: honor reduced-motion — kill non-essential motion, show everything */
+  /* Accessibility: honor reduced-motion, kill non-essential motion, show everything */
   @media (prefers-reduced-motion: reduce) {
     *, *::before, *::after {
       animation-duration: 0.001ms !important; animation-iteration-count: 1 !important;
@@ -639,7 +612,7 @@
       opacity: 1 !important; transform: none !important; filter: none !important;
     }
     .line-reveal { clip-path: none !important; }
-    .hero-aurora, .marquee-track { animation: none !important; }
+    .hero-aurora { animation: none !important; }
   }
   </style>
 </head>
@@ -657,7 +630,7 @@
     <li><a href="#work">Work</a></li>
     <li><a href="#contact">Contact</a></li>
   </ul>
-  <div class="nav-avail">Available for Projects</div>
+
 </nav>
 
 <!-- HERO -->
@@ -667,7 +640,7 @@
   <div class="hero-arch"></div>
   <div class="hero-aurora"></div>
 
-  <p class="hero-eyebrow">Web Designer — Kent State University 2026</p>
+  <p class="hero-eyebrow">Web Designer, Kent State University 2026</p>
 
   <h1 class="hero-title">
     <span class="row"><span>Websites</span></span>
@@ -685,24 +658,6 @@
     Scroll
   </div>
 </section>
-
-<!-- MARQUEE -->
-<div class="marquee" aria-hidden="true">
-  <div class="marquee-track">
-    <span class="marquee-item">Web Design</span>
-    <span class="marquee-item">Brand Identity</span>
-    <span class="marquee-item">Redesigns</span>
-    <span class="marquee-item">Conversion Focused</span>
-    <span class="marquee-item">Mobile First</span>
-    <span class="marquee-item">Custom Built</span>
-    <span class="marquee-item">Web Design</span>
-    <span class="marquee-item">Brand Identity</span>
-    <span class="marquee-item">Redesigns</span>
-    <span class="marquee-item">Conversion Focused</span>
-    <span class="marquee-item">Mobile First</span>
-    <span class="marquee-item">Custom Built</span>
-  </div>
-</div>
 
 <!-- ABOUT -->
 <section id="about">
@@ -749,7 +704,7 @@
       <p class="why-eyebrow">The Stakes Are Real</p>
       <h2 class="why-heading">Your website is your<br/><em>first impression.</em></h2>
     </div>
-    <p class="why-header-right">Before a customer calls, texts, or walks through your door — they've already judged you. In most cases, your website is the only thing standing between a potential customer and your competitor's checkout page.</p>
+    <p class="why-header-right">Before a customer calls, texts, or walks through your door, they've already judged you. In most cases, your website is the only thing standing between a potential customer and your competitor's checkout page.</p>
   </div>
 
   <div class="why-big-stats">
@@ -760,7 +715,7 @@
     </div>
     <div class="big-stat reveal d1">
       <div class="big-stat-n">94<em>%</em></div>
-      <div class="big-stat-claim">of first impressions of a business are design-related — not content or price</div>
+      <div class="big-stat-claim">of first impressions of a business are design-related, not content or price</div>
       <div class="big-stat-source">ResearchGate UX Study</div>
     </div>
     <div class="big-stat reveal d2">
@@ -777,7 +732,7 @@
     </div>
     <div class="fact-card reveal d1">
       <div class="fact-icon">Mobile Matters</div>
-      <p><strong>57% of users</strong> say they won't recommend a business with a poorly designed mobile website. Over half your visitors are on a phone right now — if the site breaks, so does the sale.</p>
+      <p><strong>57% of users</strong> say they won't recommend a business with a poorly designed mobile website. Over half your visitors are on a phone right now, if the site breaks, so does the sale.</p>
     </div>
     <div class="fact-card reveal d2">
       <div class="fact-icon">Real Revenue</div>
@@ -819,8 +774,8 @@
       </div>
       <div class="proj-card-arrow">↗</div>
     </a>
-    
-    <a href="https://shmagssites.github.io/Portfolio/shear-grace.html"
+
+    <a href="shear-grace.html"
        class="proj-card reveal" title="View Shear Grace">
       <img src="https://shmagssites.github.io/Portfolio/Images/sheargrace.png"
            alt="Shear Grace Salon website"
@@ -836,9 +791,9 @@
       </div>
       <div class="proj-card-arrow">↗</div>
     </a>
-    
+
     <!-- Iron Ridge Gym -->
-    <a href="https://shmagssites.github.io/Portfolio/iron-ridge-gym.html"
+    <a href="iron-ridge-gym.html"
        class="proj-card reveal" title="View Iron Ridge Athletic Club">
       <img src="https://shmagssites.github.io/Portfolio/Images/ironridge.png"
            alt="Iron Ridge Athletic Club website"
@@ -849,6 +804,7 @@
           <span class="ptag">Fitness</span>
           <span class="ptag">Memberships</span>
           <span class="ptag">Classes</span>
+          <span class="ptag">Concept</span>
         </div>
         <div class="proj-card-name">Iron Ridge Athletic Club</div>
         <div class="proj-card-type">Gym &amp; Fitness Studio Site</div>
@@ -857,7 +813,7 @@
     </a>
 
     <!-- Bright Smiles Dental -->
-    <a href="https://shmagssites.github.io/Portfolio/bright-smiles-dental.html"
+    <a href="bright-smiles-dental.html"
        class="proj-card reveal d1" title="View Bright Smiles Dental">
       <img src="https://shmagssites.github.io/Portfolio/Images/brightsmiles.png"
            alt="Bright Smiles Dental website"
@@ -867,6 +823,7 @@
         <div class="proj-card-tags">
           <span class="ptag">Dental</span>
           <span class="ptag">Booking</span>
+          <span class="ptag">Concept</span>
         </div>
         <div class="proj-card-name">Bright Smiles Dental</div>
         <div class="proj-card-type">Appointment Booking Site</div>
@@ -875,7 +832,7 @@
     </a>
 
     <!-- Lakewood Family Medicine -->
-    <a href="https://shmagssites.github.io/Portfolio/lakewood-family-medicine.html"
+    <a href="lakewood-family-medicine.html"
        class="proj-card reveal" title="View Lakewood Family Medicine">
       <img src="https://shmagssites.github.io/Portfolio/Images/lakewood.png"
            alt="Lakewood Family Medicine website"
@@ -885,6 +842,7 @@
         <div class="proj-card-tags">
           <span class="ptag">Medical</span>
           <span class="ptag">Scheduling</span>
+          <span class="ptag">Concept</span>
         </div>
         <div class="proj-card-name">Lakewood Family Medicine</div>
         <div class="proj-card-type">Primary Care Practice Site</div>
@@ -893,7 +851,7 @@
     </a>
 
     <!-- Bennett Land Title -->
-    <a href="https://shmagssites.github.io/Portfolio/bennett-land-title.html"
+    <a href="bennett-land-title.html"
        class="proj-card reveal d1" title="View Bennett Land Title Agency">
       <img src="https://shmagssites.github.io/Portfolio/Images/bennett.png"
            alt="Bennett Land Title Agency website"
@@ -904,6 +862,7 @@
           <span class="ptag">Title Insurance</span>
           <span class="ptag">Real Estate</span>
           <span class="ptag">WordPress Theme</span>
+          <span class="ptag">Concept</span>
         </div>
         <div class="proj-card-name">Bennett Land Title Agency</div>
         <div class="proj-card-type">Ohio Title &amp; Closing Services</div>
@@ -912,7 +871,7 @@
     </a>
 
     <!-- Meadowbrook Lawn -->
-    <a href="https://shmagssites.github.io/Portfolio/meadowbrook-lawn.html"
+    <a href="meadowbrook-lawn.html"
        class="proj-card reveal" title="View Meadowbrook Lawn &amp; Landscape">
       <img src="https://shmagssites.github.io/Portfolio/Images/meadowbrook.png"
            alt="Meadowbrook Lawn &amp; Landscape website"
@@ -923,15 +882,16 @@
           <span class="ptag">Lawn Care</span>
           <span class="ptag">Programs</span>
           <span class="ptag">Estimates</span>
+          <span class="ptag">Concept</span>
         </div>
         <div class="proj-card-name">Meadowbrook Lawn &amp; Landscape</div>
         <div class="proj-card-type">Lawn Care &amp; Lead Gen Site</div>
       </div>
       <div class="proj-card-arrow">↗</div>
     </a>
-    
+
     <!-- Saffron Kitchen -->
-    <a href="https://shmagssites.github.io/Portfolio/saffron-kitchen.html"
+    <a href="saffron-kitchen.html"
        class="proj-card reveal d1" title="View Saffron Kitchen">
       <img src="https://shmagssites.github.io/Portfolio/Images/saffron.png"
            alt="Saffron Kitchen website"
@@ -942,6 +902,7 @@
           <span class="ptag">Restaurant</span>
           <span class="ptag">Menu</span>
           <span class="ptag">Takeout</span>
+          <span class="ptag">Concept</span>
         </div>
         <div class="proj-card-name">Saffron Kitchen</div>
         <div class="proj-card-type">Upscale Restaurant &amp; Ordering</div>
@@ -950,7 +911,7 @@
     </a>
 
     <!-- Bamboo Garden -->
-    <a href="https://shmagssites.github.io/Portfolio/bamboo-garden.html"
+    <a href="bamboo-garden.html"
        class="proj-card reveal" title="View Bamboo Garden">
       <img src="https://shmagssites.github.io/Portfolio/Images/bamboo.png"
            alt="Bamboo Garden website"
@@ -961,6 +922,7 @@
           <span class="ptag">Restaurant</span>
           <span class="ptag">Asian Fusion</span>
           <span class="ptag">Ordering</span>
+          <span class="ptag">Concept</span>
         </div>
         <div class="proj-card-name">Bamboo Garden</div>
         <div class="proj-card-type">Asian Restaurant &amp; Online Order</div>
@@ -969,7 +931,7 @@
     </a>
 
     <!-- Luxe Locks -->
-    <a href="https://shmagssites.github.io/Portfolio/luxe-locks-salon.html"
+    <a href="luxe-locks-salon.html"
        class="proj-card reveal d1" title="View Luxe Locks Salon">
       <img src="https://shmagssites.github.io/Portfolio/Images/luxelocks.png"
            alt="Luxe Locks Studio website"
@@ -980,6 +942,7 @@
           <span class="ptag">Salon</span>
           <span class="ptag">Pricing</span>
           <span class="ptag">Gallery</span>
+          <span class="ptag">Concept</span>
         </div>
         <div class="proj-card-name">Luxe Locks Studio</div>
         <div class="proj-card-type">Luxury Salon &amp; Portfolio</div>
@@ -987,9 +950,8 @@
       <div class="proj-card-arrow">↗</div>
     </a>
 
-
     <!-- Summit Moving -->
-    <a href="https://shmagssites.github.io/Portfolio/summit-moving.html"
+    <a href="summit-moving.html"
        class="proj-card reveal d1" title="View Summit Moving Co.">
       <img src="https://shmagssites.github.io/Portfolio/Images/summit.png"
            alt="Summit Moving Co. website"
@@ -1000,6 +962,7 @@
           <span class="ptag">Moving</span>
           <span class="ptag">Quotes</span>
           <span class="ptag">Services</span>
+          <span class="ptag">Concept</span>
         </div>
         <div class="proj-card-name">Summit Moving Co.</div>
         <div class="proj-card-type">Moving Company &amp; Lead Gen</div>
@@ -1008,7 +971,7 @@
     </a>
 
     <!-- Clearwater Plumbing -->
-    <a href="https://shmagssites.github.io/Portfolio/clearwater-plumbing.html"
+    <a href="clearwater-plumbing.html"
        class="proj-card reveal" title="View Clearwater Plumbing">
       <img src="https://shmagssites.github.io/Portfolio/Images/clearwater.png"
            alt="Clearwater Plumbing website"
@@ -1019,6 +982,7 @@
           <span class="ptag">Plumbing</span>
           <span class="ptag">Booking</span>
           <span class="ptag">Emergency</span>
+          <span class="ptag">Concept</span>
         </div>
         <div class="proj-card-name">Clearwater Plumbing</div>
         <div class="proj-card-type">Plumber &amp; Appointment Site</div>
@@ -1027,7 +991,7 @@
     </a>
 
     <!-- Volt Electric -->
-    <a href="https://shmagssites.github.io/Portfolio/volt-electric.html"
+    <a href="volt-electric.html"
        class="proj-card reveal d1" title="View Volt Electric">
       <img src="https://shmagssites.github.io/Portfolio/Images/volt.png"
            alt="Volt Electric website"
@@ -1038,13 +1002,13 @@
           <span class="ptag">Electrical</span>
           <span class="ptag">Estimates</span>
           <span class="ptag">Emergency</span>
+          <span class="ptag">Concept</span>
         </div>
         <div class="proj-card-name">Volt Electric</div>
         <div class="proj-card-type">Electrician &amp; Lead Gen Site</div>
       </div>
       <div class="proj-card-arrow">↗</div>
     </a>
-
 
   </div>
 </section>

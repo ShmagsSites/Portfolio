@@ -1,0 +1,86 @@
+==================================================================
+ FACEBOOK MARKETPLACE POST — ShmagsSites Web Design
+ Copy each field below into the matching box. Upload images in order.
+==================================================================
+
+------------------------------------------------------------------
+ TITLE  (copy this line)
+------------------------------------------------------------------
+Custom Website Design for Local Businesses — Free Mockup
+
+
+------------------------------------------------------------------
+ PRICE
+------------------------------------------------------------------
+Set your real starting price (example: 250).
+Marketplace requires a number — your "free mockup" is the hook in the
+description, NOT the listed price. Don't list $1 bait pricing.
+
+
+------------------------------------------------------------------
+ CATEGORY
+------------------------------------------------------------------
+Services   (if asked for a sub-type, choose "Other" / Miscellaneous)
+
+
+------------------------------------------------------------------
+ CONDITION  (if this field appears)
+------------------------------------------------------------------
+New
+
+
+------------------------------------------------------------------
+ LOCATION
+------------------------------------------------------------------
+Your town + ~25 mile radius
+
+
+------------------------------------------------------------------
+ DESCRIPTION  (copy everything between the lines)
+------------------------------------------------------------------
+Modern, mobile-friendly websites for local businesses — built to turn visitors into paying customers.
+
+I'm a web designer who creates clean, fast, professional sites for the businesses that make a community run: restaurants, salons, gyms, contractors, medical offices, and more. If you look great in person but your website is outdated (or you don't have one yet), you're handing customers to your competition.
+
+What you get:
+✅ Mobile-optimized — over half your customers are on a phone
+✅ Online booking, quote forms & menus built right in
+✅ Designed around YOUR brand and colors
+✅ Fast, easy to update, and built to load quick
+✅ Friendly local service — no big-agency runaround
+
+💡 FREE MOCKUP — Before you pay a cent, I'll design a custom preview of your new website so you can see exactly what you're getting. No cost, no obligation.
+
+👉 Swipe through the photos to see real examples of my work.
+
+📩 Message me here, or email ShmagsSites@gmail.com
+🔗 See the full portfolio: shmagssites.github.io/Portfolio
+------------------------------------------------------------------
+
+
+==================================================================
+ PHOTO UPLOAD ORDER  (drag from the /images folder, 10 max)
+==================================================================
+ 00-cover.png ............. branded cover (your main thumbnail)
+ 01-sweet-kneads-bakery ... real live client — lead with proof
+ 02-rays-place-redesign ... before/after redesign result
+ 03-saffron-restaurant
+ 04-luxe-locks-salon
+ 05-iron-ridge-gym
+ 06-bright-smiles-dental
+ 07-clearwater-plumbing
+ 08-bennett-title
+ 09-bamboo-restaurant
+
+ Tip: keep 00-cover first so it's your thumbnail in the feed. If you'd
+ rather lead with a real screenshot, swap 01 to first instead.
+
+
+==================================================================
+ AFTER YOU POST
+==================================================================
+ • When prompted, tick "Also list in groups" and share to your local
+   Buy/Sell + small-business groups — that's free distribution.
+ • Renew the listing every ~7 days to stay near the top of search.
+ • Post ONE strong listing, not five duplicates (duplicates get flagged).
+ • Reply fast — Marketplace buyers expect a quick response.
